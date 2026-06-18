@@ -64,14 +64,13 @@ section{position:relative}
   position:fixed;top:0;left:0;right:0;z-index:50;
   display:grid;grid-template-columns:1fr auto 1fr;
   align-items:start;
-  padding:22px var(--gut) 14px;
-  mix-blend-mode:difference;
-  color:#EDEAE1;
+  padding:20px var(--gut) 14px;
+  color:var(--ink);
 }
-.site-head a{color:#EDEAE1}
-.brand{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:.95}
-.brand b{font-weight:700}
-.brand span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.18em;margin-top:6px;text-transform:uppercase}
+.site-head a{color:var(--ink)}
+.brand{display:inline-block;line-height:1}
+.brand-mark{height:48px;width:auto;display:block}
+.brand span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.18em;margin-top:7px;text-transform:uppercase;color:var(--ink-soft)}
 .nav{display:flex;gap:28px;justify-content:center;padding-top:4px}
 .nav a{position:relative;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 .nav a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:currentColor;transition:width var(--t)}
@@ -207,7 +206,8 @@ section{position:relative}
   body{font-size:16px}
   .nav{display:none}
   .head-meta{display:none}
-  .site-head{grid-template-columns:1fr auto;padding:18px var(--gut)}
+  .site-head{grid-template-columns:1fr auto;padding:16px var(--gut)}
+  .brand-mark{height:40px}
   .menu-btn{display:block;justify-self:end;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:none;border:1px solid currentColor;color:inherit;padding:7px 12px;border-radius:30px;cursor:pointer}
   .nav.open{display:flex;position:fixed;inset:0;background:var(--ink);color:var(--paper);flex-direction:column;justify-content:center;align-items:center;gap:30px;mix-blend-mode:normal;z-index:60}
   .nav.open a{color:var(--paper);font-size:24px;font-family:var(--serif);text-transform:none;letter-spacing:0}

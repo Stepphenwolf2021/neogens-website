@@ -1,4 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#19140F"/>
-  <text x="32" y="46" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="600" fill="#EDEAE1">N</text>
+  <rect width="64" height="64" rx="13" fill="#19140F"/>
+  <g fill="none" stroke="#EDEAE1" stroke-width="4.4" stroke-linecap="butt" transform="translate(13.5,15) scale(0.185)">
+    <line x1="52" y1="46" x2="52" y2="150"/>
+    <line x1="52" y1="46" x2="150" y2="150"/>
+    <circle cx="122" cy="98" r="54"/>
+    <line x1="122" y1="98" x2="176" y2="98"/>
+  </g>
 </svg>
