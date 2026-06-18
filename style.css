@@ -68,8 +68,8 @@ section{position:relative}
   color:var(--ink);
 }
 .site-head a{color:var(--ink)}
-.brand{display:inline-block;line-height:1}
-.brand-mark{height:48px;width:auto;display:block}
+.brand{display:inline-block;font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:.95}
+.brand b{font-weight:700}
 .brand span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.18em;margin-top:7px;text-transform:uppercase;color:var(--ink-soft)}
 .nav{display:flex;gap:28px;justify-content:center;padding-top:4px}
 .nav a{position:relative;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
