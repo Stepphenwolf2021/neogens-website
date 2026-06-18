@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Neo Gens</title>
+<meta name="description" content="Start a conversation with Neo Gens — a neo-generalist studio for business, education and technology.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="brand" href="index.html"><b>Neo Gens</b><span>Neo-Generalist Studio</span></a>
+  <nav class="nav">
+    <a href="index.html">Index</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Practice</a>
+    <a href="contact.html" class="active">Contact</a>
+    <span class="lang-switch"><a href="contact.html" class="on">EN</a><span class="sep">/</span><a href="th-contact.html">TH</a></span>
+  </nav>
+  <div class="head-meta">Bangkok, TH<br><span data-clock>—</span>
+    <span class="lang-switch"><a href="contact.html" class="on">EN</a><span class="sep">/</span><a href="th-contact.html">TH</a></span>
+  </div>
+  <button class="menu-btn">Menu</button>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <p class="mono eyebrow">Contact — Let's make something</p>
+    <h1 class="display">Bring us the<br>problem that<br>won't <em>fit a box.</em></h1>
+    <div class="hero-sub">
+      <p>Whether it's a business at a crossroads, a learning program to build, or technology to put to work — we'd love to hear about it.</p>
+      <div class="right"><a class="alink" href="mailto:hello@neogens.co">hello@neogens.co <span class="ar">→</span></a></div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="block wrap rv">
+    <div class="kicker"><span class="mono">01 — Direct</span><span class="mono">Reach us</span></div>
+    <div class="contact-grid">
+      <div>
+        <div class="cline"><span class="mono">General &amp; New Work</span><a href="mailto:hello@neogens.co">hello@neogens.co</a></div>
+        <div class="cline"><span class="mono">Call</span><a href="tel:+6620000000">+66 2 000 0000</a></div>
+        <div class="cline"><span class="mono">Studio</span><span>Bangkok, Thailand — working globally</span></div>
+      </div>
+      <div>
+        <div class="cline"><span class="mono">LinkedIn</span><a href="#">/neogens</a></div>
+        <div class="cline"><span class="mono">Instagram</span><a href="#">@neogens</a></div>
+        <div class="cline"><span class="mono">Hours</span><span>Mon–Fri · <span data-clock>—</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="block wrap rv">
+    <div class="kicker"><span class="mono">02 — Brief</span><span class="mono">Tell us more</span></div>
+    <form class="cform" onsubmit="event.preventDefault(); this.reset(); document.getElementById('formok').style.display='block';">
+      <div class="contact-grid" style="margin-top:0">
+        <label class="cline" style="display:block">
+          <span class="mono">Your name</span>
+          <input type="text" name="name" required placeholder="Jane Doe">
+        </label>
+        <label class="cline" style="display:block">
+          <span class="mono">Email</span>
+          <input type="email" name="email" required placeholder="jane@company.com">
+        </label>
+      </div>
+      <label class="cline" style="display:block">
+        <span class="mono">What are you trying to change?</span>
+        <textarea name="message" rows="4" required placeholder="A few lines about your challenge..."></textarea>
+      </label>
+      <button class="submit" type="submit">Send the brief →</button>
+      <p id="formok" class="mono" style="display:none;margin-top:18px;color:var(--accent)">Thank you — we'll be in touch shortly.</p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-top">
+    <div class="big-mark">Neo&nbsp;Gens</div>
+    <div class="foot-col"><h5>Navigate</h5><a href="index.html">Index</a><a href="about.html">About</a><a href="services.html">Practice</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h5>Connect</h5><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="#">LinkedIn</a><a href="#">Instagram</a></div>
+  </div>
+  <div class="foot-bot">
+    <span class="mono">© 2026 Neo Gens — Neo-Generalist Studio</span>
+    <span class="mono">Business · Education · Technology</span>
+    <span class="mono">Service Design Thinking</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
