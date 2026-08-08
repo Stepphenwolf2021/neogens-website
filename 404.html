@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Page not found · Neo Gens</title>
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#EDEAE1">
+<meta name="theme-color" content="#08090A">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
 <script>
@@ -16,45 +18,30 @@
   gtag('js', new Date());
   gtag('config', 'G-TPBNZQKVWE');
 </script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#08090A;color:#EDEBE6;font-family:'Inter',-apple-system,sans-serif;
+  min-height:100vh;display:grid;place-items:center;padding:32px;line-height:1.6}
+.wrap{max-width:560px;text-align:center}
+.k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6E757D;margin-bottom:24px}
+h1{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(32px,6vw,54px);line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+p{color:#A2A8AF;font-size:17px;margin-bottom:32px}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+a.btn{display:inline-flex;align-items:center;background:#B8F04A;color:#08090A;font-size:14px;font-weight:600;
+  padding:11px 18px;border-radius:999px;text-decoration:none;transition:transform .18s}
+a.btn:hover{transform:translateY(-1px)}
+a.ghost{background:transparent;color:#EDEBE6;border:1px solid rgba(255,255,255,.18)}
+</style>
 </head>
 <body>
-
-<header class="site-head">
-  <a class="brand" href="/index.html"><img class="brand-mark" src="/logo.svg" alt="Neo Gens"><span>Neo-Generalist Studio</span></a>
-  <nav class="nav">
-    <a href="/index.html">Index</a>
-    <a href="/about.html">About</a>
-    <a href="/services.html">Practice</a>
-    <a href="/contact.html">Contact</a>
-  </nav>
-  <div class="head-meta">Bangkok, TH<br><span data-clock>—</span></div>
-  <button class="menu-btn">Menu</button>
-</header>
-
-<main>
-  <section class="hero wrap">
-    <p class="mono eyebrow">Error 404 — Off the map</p>
-    <h1 class="display">This page<br>lives <em>between</em><br>categories.</h1>
-    <div class="hero-sub">
-      <p>The page you're looking for doesn't exist — or has moved. Let's get you back to familiar ground.</p>
-      <div class="right"><a class="alink" href="/index.html">Back to home <span class="ar">→</span></a></div>
+  <div class="wrap">
+    <div class="k">404 — Page not found</div>
+    <h1>That page has no provenance.</h1>
+    <p>We couldn't trace this address back to anything. Which, given what we do for a living, is a little embarrassing.</p>
+    <div class="btns">
+      <a class="btn" href="/">Back to the start</a>
+      <a class="btn ghost" href="/th-index.html">ฉบับภาษาไทย</a>
     </div>
-  </section>
-</main>
-
-<footer class="site-foot">
-  <div class="foot-top">
-    <div class="big-mark">Neo&nbsp;Gens</div>
-    <div class="foot-col"><h5>Navigate</h5><a href="/index.html">Index</a><a href="/about.html">About</a><a href="/services.html">Practice</a><a href="/contact.html">Contact</a></div>
-    <div class="foot-col"><h5>Connect</h5><a href="mailto:noppadol@neogens.co">noppadol@neogens.co</a><a href="#">LinkedIn</a><a href="#">Instagram</a></div>
   </div>
-  <div class="foot-bot">
-    <span class="mono">© 2026 Neo Gens — Neo-Generalist Studio</span>
-    <span class="mono">Business · Education · Technology</span>
-    <span class="mono">Service Design Thinking</span>
-  </div>
-</footer>
-
-<script src="/script.js"></script>
 </body>
 </html>

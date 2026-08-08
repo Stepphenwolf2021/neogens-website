@@ -1,20 +1,24 @@
 # Neo Gens — Company Website
 
-Marketing site for **Neo Gens**, a neo-generalist studio working across business, education, and technology through Service Design Thinking.
+Site for **Neo Gens**, a Modern Knowledge Management practice. First practice area:
+museums, libraries and archives.
 
 - Live site: https://www.neogens.co
-- Stack: static HTML + CSS + JS (no build step)
-- Languages: English (`index.html`, `about.html`, `services.html`, `contact.html`) and Thai (`th-*.html`)
+- Stack: static HTML (no build step, no external CSS/JS — each page is self-contained)
+- Languages: English (`index.html`) and Thai (`th-index.html`)
 
 ## Structure
 | File | Page |
 |------|------|
-| `index.html` / `th-index.html` | Home |
-| `about.html` / `th-about.html` | About |
-| `services.html` / `th-services.html` | Practice |
-| `contact.html` / `th-contact.html` | Contact |
-| `style.css` | Shared styles |
-| `script.js` | Nav, clock, scroll reveal |
+| `index.html` | Home — English |
+| `th-index.html` | Home — Thai |
+| `km-for-museums.html` | Long read: Modern Knowledge Management for Museums (EN) |
+| `404.html` | Not found |
+| `sitemap.xml`, `robots.txt` | Crawling |
+| `favicon.svg`, `logo.svg`, `logo-light.svg`, `og-image.png` | Brand assets |
+
+Each HTML file carries its own CSS and JS inline, so there is no shared stylesheet to
+keep in sync. Diagrams are hand-authored inline SVG.
 
 ## Hosting
-Served via GitHub Pages from the repository root. Custom domain configured in `CNAME`.
+GitHub Pages from the repository root. Custom domain in `CNAME`.

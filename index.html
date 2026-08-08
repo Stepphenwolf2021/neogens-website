@@ -1,33 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Neo Gens — Neo-Generalist Studio for Business, Education & Technology</title>
-<meta name="description" content="Neo Gens is a neo-generalist consultancy working across business, education and technology through the philosophy and tools of Service Design Thinking.">
+<title>Neo Gens — A Modern Knowledge Management practice</title>
+<meta name="description" content="Neo Gens is a Modern Knowledge Management practice. We help your team design the mission-driven ontology and knowledge graph that hold what your institution knows — and how it came to be known. First practice area: museums, libraries and archives.">
+<meta property="og:title" content="Neo Gens — A Modern Knowledge Management practice">
+<meta property="og:description" content="Knowledge management for the age of AI: what is known, and how it came to be known, held in a layer you own. First practice area — museums, libraries and archives.">
 <link rel="canonical" href="https://www.neogens.co/">
 <link rel="alternate" hreflang="en" href="https://www.neogens.co/">
 <link rel="alternate" hreflang="th" href="https://www.neogens.co/th-index.html">
 <link rel="alternate" hreflang="x-default" href="https://www.neogens.co/">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Neo Gens">
-<meta name="theme-color" content="#EDEAE1">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Neo Gens">
-<meta property="og:locale" content="en_US">
-<meta property="og:title" content="Neo Gens — Neo-Generalist Studio for Business, Education &amp; Technology">
-<meta property="og:description" content="Neo Gens is a neo-generalist consultancy working across business, education and technology through the philosophy and tools of Service Design Thinking.">
 <meta property="og:url" content="https://www.neogens.co/">
 <meta property="og:image" content="https://www.neogens.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Neo Gens — Neo-Generalist Studio for Business, Education &amp; Technology">
-<meta name="twitter:description" content="Neo Gens is a neo-generalist consultancy working across business, education and technology through the philosophy and tools of Service Design Thinking.">
-<meta name="twitter:image" content="https://www.neogens.co/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Neo Gens","url":"https://www.neogens.co","logo":"https://www.neogens.co/og-image.png","image":"https://www.neogens.co/og-image.png","description":"Neo Gens is a neo-generalist consultancy working across business, education and technology through the philosophy and tools of Service Design Thinking.","email":"noppadol@neogens.co","address":{"@type":"PostalAddress","addressLocality":"Bangkok","addressCountry":"TH"},"areaServed":"Worldwide","knowsAbout":["Business consulting","Education","Technology","Service Design Thinking"]}</script>
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
 <script>
@@ -36,141 +29,1509 @@
   gtag('js', new Date());
   gtag('config', 'G-TPBNZQKVWE');
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090A; --bg-2:#0D0F11; --surface:#111417; --surface-2:#171B1F;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.18);
+  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#6E757D;
+  --go:#B8F04A;      /* grounded / corroborated */
+  --guess:#E8A33D;   /* generated / claim */
+  --ask:#7FC7E8;     /* visitor / enquiry */
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --max:1160px; --pad:clamp(20px,5vw,60px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--go);color:#08090A}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+section{padding:clamp(70px,8.5vw,118px) 0;position:relative}
+.rule{height:1px;background:var(--line)}
+h1,h2,h3,h4{letter-spacing:-.03em;line-height:1.1;font-weight:600}
+h1{font-size:clamp(36px,6vw,72px);letter-spacing:-.04em}
+h2{font-size:clamp(27px,3.7vw,44px)}
+h3{font-size:clamp(18px,1.9vw,22px);letter-spacing:-.02em;line-height:1.3}
+.lede{font-size:clamp(17px,1.95vw,20px);line-height:1.55;color:var(--dim);max-width:58ch}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--line-2)}
+.serif{font-family:var(--serif);font-weight:400}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,5vw,68px)}
+@media(max-width:860px){.grid-2{grid-template-columns:1fr}}
+.note{margin-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--mute);line-height:1.65}
+.note b{color:var(--go);font-weight:500}
+
+/* ===== diagrams ===== */
+figure{margin:clamp(34px,4.5vw,56px) 0 0}
+.dbox{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:clamp(16px,2.6vw,26px)}
+.dsvg{width:100%;height:auto;display:block}
+.dsvg .bx{fill:#171B1F;stroke:rgba(255,255,255,.16);stroke-width:1}
+.dsvg .bx-go{fill:rgba(184,240,74,.08);stroke:#B8F04A;stroke-width:1.3}
+.dsvg .bx-am{fill:rgba(232,163,61,.07);stroke:rgba(232,163,61,.55);stroke-width:1.2}
+.dsvg .bx-as{fill:rgba(127,199,232,.07);stroke:rgba(127,199,232,.5);stroke-width:1.2}
+.dsvg .bx-gh{fill:none;stroke:rgba(255,255,255,.14);stroke-width:1;stroke-dasharray:4 4}
+.dsvg .t{font-family:'Inter',sans-serif;font-size:13px;fill:#EDEBE6;font-weight:500}
+.dsvg .t-b{font-family:'Inter',sans-serif;font-size:14px;fill:#EDEBE6;font-weight:600}
+.dsvg .t-s{font-family:'Inter',sans-serif;font-size:11.5px;fill:#A2A8AF}
+.dsvg .m{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:#6E757D;letter-spacing:.12em}
+.dsvg .m-go{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:#B8F04A;letter-spacing:.12em}
+.dsvg .m-am{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:#E8A33D;letter-spacing:.12em}
+.dsvg .m-as{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:#7FC7E8;letter-spacing:.12em}
+.dsvg .ln{stroke:rgba(255,255,255,.2);stroke-width:1;fill:none}
+.dsvg .ln-go{stroke:rgba(184,240,74,.55);stroke-width:1.3;fill:none}
+.dsvg .ln-am{stroke:rgba(232,163,61,.5);stroke-width:1.3;fill:none;stroke-dasharray:5 4}
+.dsvg .ln-gh{stroke:rgba(255,255,255,.14);stroke-width:1;fill:none;stroke-dasharray:4 4}
+figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(--mute);margin-top:14px;max-width:70ch}
+figcaption b{color:var(--dim);font-weight:400}
+.dsplit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.dsplit{grid-template-columns:1fr}}
+.dlab{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:14px}
+.dlab.am{color:var(--guess)} .dlab.go{color:var(--go)}
+
+/* ===== nav ===== */
+nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(8,9,10,.74);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.stuck{border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none}
+.glyph{width:21px;height:21px;flex:none}
+.brand .bt{font-weight:600;letter-spacing:-.02em;font-size:16px;line-height:1.1}
+.brand .bs{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);display:block;margin-top:2px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:var(--dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg)}
+.lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;flex:none}
+.lang a{text-decoration:none;color:var(--mute);transition:color .2s}
+.lang a.on{color:var(--go);font-weight:500}
+.lang a:hover{color:var(--fg)}
+.lang span{color:var(--line-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--go);color:#08090A;border:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em;padding:11px 18px;border-radius:999px;cursor:pointer;text-decoration:none;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(184,240,74,.22)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
+@media(max-width:960px){.nav-links a:not(.btn){display:none}}
+
+/* ===== hero ===== */
+.hero{padding-top:clamp(60px,8vw,102px);padding-bottom:clamp(52px,6.5vw,88px);overflow:hidden}
+.hero-bg{position:absolute;inset:-20% -10% auto -10%;height:120%;pointer-events:none;
+  background:radial-gradient(56% 46% at 20% 8%,rgba(184,240,74,.10),transparent 66%),radial-gradient(46% 42% at 84% 22%,rgba(127,199,232,.07),transparent 68%);filter:blur(6px)}
+.hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(66% 50% at 46% 0%,#000,transparent 78%);mask-image:radial-gradient(66% 50% at 46% 0%,#000,transparent 78%)}
+.hero .wrap{position:relative}
+.motto{font-family:var(--serif);font-size:clamp(38px,7vw,84px);line-height:1.03;letter-spacing:-.035em;max-width:17ch}
+.motto em{font-style:italic;color:var(--go)}
+.hero-sub{margin-top:28px;max-width:60ch;font-size:clamp(17px,1.9vw,20px);color:var(--dim);line-height:1.55}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;align-items:center}
+.hero-note{font-family:var(--mono);font-size:12px;color:var(--mute)}
+.practice{margin-top:clamp(44px,5.5vw,72px);border:1px solid var(--line-2);border-radius:16px;background:var(--surface);padding:24px 26px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.practice .pk{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--go);flex:none}
+.practice .pt{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.practice .pd{font-size:14.5px;color:var(--dim);flex:1;min-width:240px;line-height:1.5}
+
+/* ===== practice band ===== */
+.pband{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:
+  linear-gradient(180deg,rgba(184,240,74,.07),rgba(184,240,74,.015));
+  padding:clamp(56px,7vw,92px) 0;position:relative;overflow:hidden}
+.pband::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(60% 70% at 30% 50%,#000,transparent 76%);mask-image:radial-gradient(60% 70% at 30% 50%,#000,transparent 76%)}
+.pband .wrap{position:relative}
+.pb-k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--go);margin-bottom:20px}
+.pb-t{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5.4vw,64px);line-height:1.05;letter-spacing:-.03em;margin-bottom:22px}
+.pb-d{font-size:clamp(16px,1.85vw,19px);color:var(--dim);line-height:1.55;max-width:62ch}
+.pb-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:32px}
+.pb-nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--dim);text-decoration:none;
+  border:1px solid var(--line-2);border-radius:999px;padding:9px 15px;transition:all .22s}
+.pb-nav a:hover{border-color:var(--go);color:var(--go)}
+
+/* ===== cards ===== */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
+.card{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:var(--surface);transition:border-color .25s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.card:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.card .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.card .k.go{color:var(--go)} .card .k.am{color:var(--guess)} .card .k.as{color:var(--ask)}
+.card h3,.card h4{font-size:17px;margin-bottom:9px;line-height:1.3;font-weight:600;letter-spacing:-.02em}
+.card p{font-size:14.8px;color:var(--dim);line-height:1.58}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.card li{font-family:var(--mono);font-size:12.2px;color:var(--mute);display:flex;gap:9px;line-height:1.5}
+.card li::before{content:'—';color:var(--line-2);flex:none}
+.card .ill{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11.8px;line-height:1.65;color:var(--mute)}
+.card .ill b{color:var(--fg);font-weight:400}
+@media(max-width:900px){.cards3{grid-template-columns:1fr}.cards2{grid-template-columns:1fr}}
+
+/* ===== interactive demo ===== */
+.demo{border:1px solid var(--line);border-radius:18px;background:var(--surface);padding:clamp(20px,3vw,32px);margin-top:44px}
+.demo-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+.demo-lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.switch{display:flex;gap:4px;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:4px}
+.switch button{background:transparent;border:none;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:500;color:var(--mute);padding:8px 15px;border-radius:999px;transition:all .22s;white-space:nowrap}
+.switch button.on[data-d]{background:rgba(127,199,232,.14);color:var(--ask)}
+.q-lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.q{font-size:clamp(17px,2vw,21px);line-height:1.35;letter-spacing:-.02em}
+.ans{margin-top:22px;border-top:1px dashed var(--line);padding-top:20px}
+.ans-body{font-size:15.5px;line-height:1.62;color:var(--dim);min-height:92px}
+.ans-body b{color:var(--fg);font-weight:500}
+.trace{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.tr{display:flex;gap:11px;align-items:flex-start;font-family:var(--mono);font-size:12.2px;line-height:1.55;color:var(--dim)}
+.tr i{width:5px;height:5px;border-radius:50%;margin-top:8px;flex:none}
+.tr.good i{background:var(--go)} .tr.bad i{background:var(--guess)}
+.tr b{color:var(--fg);font-weight:500}
+
+/* ===== visit story ===== */
+.story{border:1px solid var(--line-2);border-radius:18px;background:var(--surface);padding:clamp(28px,4vw,48px);margin-top:44px}
+.story .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ask);margin-bottom:20px}
+.story blockquote{font-family:var(--serif);font-size:clamp(23px,3.3vw,38px);line-height:1.22;letter-spacing:-.025em;color:var(--fg);max-width:22ch;border-left:2px solid var(--ask);padding-left:clamp(18px,2.6vw,28px)}
+.story .attr{font-family:var(--mono);font-size:11.5px;color:var(--mute);margin-top:18px;line-height:1.6;padding-left:clamp(20px,2.8vw,30px)}
+.story .g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,54px);align-items:center}
+.story p{font-size:15.8px;color:var(--dim);line-height:1.65}
+.story p+p{margin-top:15px}
+.story strong{color:var(--fg);font-weight:500}
+@media(max-width:820px){.story .g{grid-template-columns:1fr}.story blockquote{max-width:none}}
+
+.asks{margin-top:44px;border-top:1px solid var(--line)}
+.ask-row{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:230px 1fr;gap:clamp(16px,4vw,44px);align-items:start}
+.ask-row .q2{font-family:var(--serif);font-size:19px;line-height:1.3;color:var(--fg);letter-spacing:-.015em}
+.ask-row p{font-size:14.8px;color:var(--dim);line-height:1.6}
+.ask-row .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--go);margin-top:10px;display:block}
+@media(max-width:760px){.ask-row{grid-template-columns:1fr;gap:8px}}
+
+/* ===== ledger table ===== */
+.ledger{margin-top:40px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.lr{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.lr:first-child{border-top:none}
+.lr>div{padding:19px 24px;font-size:15.2px;line-height:1.5}
+.lr>div:first-child{border-right:1px solid var(--line);color:var(--dim)}
+.lr.head>div{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:15px 24px;background:var(--bg-2)}
+.lr.flag>div:last-child{background:rgba(184,240,74,.05)}
+@media(max-width:700px){
+  .lr{grid-template-columns:1fr}
+  .lr>div:first-child{border-right:none;padding-bottom:6px}
+  .lr>div:last-child{padding-top:8px}
+  .lr.head{display:none}
+}
+
+/* ===== duty block ===== */
+.duty{margin-top:clamp(44px,5.5vw,68px);border:1px solid rgba(184,240,74,.3);background:linear-gradient(180deg,rgba(184,240,74,.06),rgba(184,240,74,.02));border-radius:18px;padding:clamp(26px,3.6vw,42px)}
+.duty .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--go);margin-bottom:20px}
+.duty blockquote{font-family:var(--serif);font-size:clamp(22px,3vw,33px);line-height:1.24;letter-spacing:-.025em;color:var(--fg);max-width:24ch;margin-bottom:22px}
+.duty p{font-size:15.8px;color:var(--dim);line-height:1.65;max-width:64ch}
+.duty p+p{margin-top:15px}
+.duty strong{color:var(--fg);font-weight:500}
+.duty .g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px);align-items:start}
+@media(max-width:820px){.duty .g{grid-template-columns:1fr}.duty blockquote{max-width:none}}
+
+/* ===== who brings what ===== */
+.split{margin-top:40px;display:grid;grid-template-columns:1fr 54px 1fr;align-items:stretch}
+.sp{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:var(--surface)}
+.sp .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--go);margin-bottom:16px}
+.sp ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.sp li{font-size:14.8px;color:var(--dim);line-height:1.5;padding-left:16px;position:relative}
+.sp li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--line-2)}
+.sp.mid{border:none;background:none;padding:0;display:grid;place-items:center}
+.sp.mid span{font-family:var(--mono);font-size:19px;color:var(--mute)}
+@media(max-width:860px){.split{grid-template-columns:1fr;gap:12px}.sp.mid{height:10px}.sp.mid span{display:none}}
+
+/* ===== phases ===== */
+.phases{margin-top:36px;border-top:1px solid var(--line)}
+.ph{border-bottom:1px solid var(--line);padding:26px 0;display:grid;grid-template-columns:100px 1.05fr 1fr;gap:clamp(18px,4vw,46px);align-items:start}
+.ph .p-k{font-family:var(--mono);font-size:11.5px;color:var(--go);letter-spacing:.08em;padding-top:5px}
+.ph h4{font-size:17.5px;margin-bottom:8px}
+.ph p{font-size:14.8px;color:var(--dim);line-height:1.58}
+.ph .out{border-left:2px solid var(--line-2);padding-left:18px}
+.ph .out .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);margin-bottom:9px}
+@media(max-width:900px){.ph{grid-template-columns:76px 1fr}.ph .out{grid-column:2}}
+
+/* ===== outcomes ===== */
+.oc{margin-top:40px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.oc-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.oc-row:first-child{border-top:none}
+.oc-row>div{padding:19px 24px;font-size:15.2px;line-height:1.5}
+.oc-row>div:first-child{border-right:1px solid var(--line);color:var(--mute);background:var(--bg-2)}
+.oc-row>div:last-child{color:var(--fg);background:var(--surface)}
+.oc-row.head>div{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:14px 24px}
+.oc-row.head>div:first-child{color:var(--guess)}
+.oc-row.head>div:last-child{color:var(--go);background:var(--bg-2)}
+@media(max-width:700px){
+  .oc-row{grid-template-columns:1fr}
+  .oc-row>div:first-child{border-right:none}
+  .oc-row.head{display:none}
+  .oc-row>div:first-child::before{content:'Today — ';font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--guess)}
+  .oc-row>div:last-child::before{content:'With a knowledge layer — ';font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--go)}
+}
+
+/* ===== case ===== */
+.case{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.case-tag{display:inline-flex;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line-2);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.app{margin-top:36px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg);box-shadow:0 34px 88px -34px rgba(0,0,0,.9)}
+.app-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.dots{display:flex;gap:6px}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line-2);display:block}
+.app-url{flex:1;font-family:var(--mono);font-size:11.5px;color:var(--mute);background:var(--bg-2);border-radius:6px;padding:5px 12px;text-align:center}
+.badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--guess);border:1px solid rgba(232,163,61,.35);padding:4px 9px;border-radius:999px;white-space:nowrap}
+.app-body{display:grid;grid-template-columns:178px 1fr;min-height:340px}
+.side{border-right:1px solid var(--line);padding:20px 14px;background:var(--surface)}
+.side .grp{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 8px 10px}
+.side a{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:8px;font-size:13.5px;color:var(--dim);text-decoration:none}
+.side a.on{background:rgba(255,255,255,.055);color:var(--fg)}
+.side a small{font-family:var(--mono);font-size:10.5px;color:var(--mute)}
+.side .sep{height:1px;background:var(--line);margin:16px 8px}
+.main{padding:22px}
+.main-head{display:flex;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
+.main-head h5{font-size:15.5px;font-weight:600;letter-spacing:-.02em}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--mute)}
+.chip.v{color:var(--go);border-color:rgba(184,240,74,.3)}
+.chip.c{color:var(--guess);border-color:rgba(232,163,61,.3)}
+.books{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.bk{border:1px solid var(--line);border-radius:11px;padding:12px;background:var(--surface)}
+.cover{height:100px;border-radius:7px;margin-bottom:11px;display:flex;align-items:flex-end;padding:9px}
+.cover span{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.bk .t{font-size:12.5px;font-weight:500;line-height:1.3;margin-bottom:4px}
+.bk .a{font-size:11px;color:var(--mute);margin-bottom:9px}
+.bk .st{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase}
+.bk .st i{width:5px;height:5px;border-radius:50%;display:block}
+.st.v{color:var(--go)} .st.v i{background:var(--go)}
+.st.c{color:var(--guess)} .st.c i{background:var(--guess)}
+.linkrow{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--mute);line-height:1.7}
+.linkrow b{color:var(--dim);font-weight:400}
+@media(max-width:900px){.books{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.app-body{grid-template-columns:1fr}.side{display:none}}
+
+/* ===== read next ===== */
+.read{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:40px;
+  border:1px solid var(--line-2);border-radius:16px;background:var(--surface);padding:28px 30px;
+  text-decoration:none;transition:border-color .25s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.read:hover{border-color:var(--go);transform:translateY(-2px)}
+.read .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--go);margin-bottom:10px}
+.read h3{margin-bottom:8px}
+.read p{font-size:15px;color:var(--dim);line-height:1.55;max-width:62ch}
+.read .arrow{font-size:22px;color:var(--go);flex:none;transition:transform .25s}
+.read:hover .arrow{transform:translateX(4px)}
+@media(max-width:640px){.read{flex-direction:column;align-items:flex-start;gap:16px}}
+
+/* ===== honesty ===== */
+.gaps{margin-top:36px;border-top:1px solid var(--line)}
+.gap{padding:23px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:172px 1fr;gap:clamp(16px,4vw,42px);align-items:start}
+.gap .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--guess);padding-top:4px}
+.gap h4{font-size:16.5px;margin-bottom:7px}
+.gap p{font-size:15px;color:var(--dim);line-height:1.6;max-width:64ch}
+@media(max-width:700px){.gap{grid-template-columns:1fr;gap:9px}}
+
+/* ===== cta ===== */
+.cta{text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(48% 58% at 50% 100%,rgba(184,240,74,.10),transparent 70%)}
+.cta .wrap{position:relative}
+.cta .eyebrow{justify-content:center}
+.cta h2{max-width:19ch;margin:0 auto}
+.cta .lede{margin:22px auto 0;text-align:center}
+form{margin:38px auto 0;max-width:520px;display:flex;flex-direction:column;gap:9px}
+.frow{display:flex;gap:9px}
+form input{flex:1;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;padding:13px 20px;min-width:0;transition:border-color .22s}
+form input:focus{border-color:rgba(184,240,74,.5)}
+form input::placeholder{color:var(--mute)}
+form .btn{justify-content:center;padding:13px 20px}
+.ok{margin:38px auto 0;max-width:520px;padding:18px;border-radius:14px;border:1px solid rgba(184,240,74,.35);background:rgba(184,240,74,.06);font-family:var(--mono);font-size:13.5px;color:var(--go);display:none}
+.form-note{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--mute)}
+@media(max-width:520px){.frow{flex-direction:column}}
+
+footer{border-top:1px solid var(--line);padding:48px 0 56px}
+.f-in{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.f-brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.02em;margin-bottom:12px}
+.f-tag{font-family:var(--serif);font-size:19px;color:var(--dim);max-width:26ch;line-height:1.35}
+.f-cols{display:flex;gap:clamp(28px,6vw,66px);flex-wrap:wrap}
+.f-col .h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.f-col a,.f-col p{display:block;font-size:14px;color:var(--dim);text-decoration:none;margin-bottom:9px}
+.f-col a:hover{color:var(--fg)}
+.f-bot{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute)}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.card:hover,.read:hover{transform:none}}
+</style>
 </head>
 <body>
 
-<header class="site-head">
-  <a class="brand" href="index.html"><b>Neo Gens</b><span>Neo-Generalist Studio</span></a>
-  <nav class="nav">
-    <a href="index.html" class="active">Index</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Practice</a>
-    <a href="contact.html">Contact</a>
-    <span class="lang-switch"><a href="index.html" class="on">EN</a><span class="sep">/</span><a href="th-index.html">TH</a></span>
-  </nav>
-  <div class="head-meta">
-    Bangkok, TH<br><span data-clock>—</span>
-    <span class="lang-switch"><a href="index.html" class="on">EN</a><span class="sep">/</span><a href="th-index.html">TH</a></span>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="arw" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0 0.8 6.4 4 0 7.2Z" fill="rgba(255,255,255,.28)"/></marker>
+  <marker id="arwg" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0 0.8 6.4 4 0 7.2Z" fill="rgba(184,240,74,.7)"/></marker>
+  <marker id="arwa" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0 0.8 6.4 4 0 7.2Z" fill="rgba(232,163,61,.7)"/></marker>
+</defs></svg>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="5" r="2.6" stroke="#B8F04A" stroke-width="1.5"/>
+        <circle cx="5" cy="18" r="2.6" stroke="#EDEBE6" stroke-width="1.5"/>
+        <circle cx="19" cy="18" r="2.6" stroke="#EDEBE6" stroke-width="1.5"/>
+        <path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="#6E757D" stroke-width="1.3"/>
+      </svg>
+      <span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#problem">The problem</a>
+      <a href="#what">What it is</a>
+      <a href="#visit">KM for Museums</a>
+      <a href="#engagement">Engagement</a>
+      <span class="lang"><a class="on" href="#top">EN</a><span>/</span><a href="th-index.html">TH</a></span>
+      <a class="btn" href="#contact">Request a briefing</a>
+    </div>
   </div>
-  <button class="menu-btn">Menu</button>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap">
+    <div class="eyebrow">Neo Gens Co., Ltd. — a Modern Knowledge Management practice</div>
+    <h1 class="motto">We help you turn knowledge into <em>wisdom</em>.</h1>
+    <p class="hero-sub">
+      Knowledge management used to mean storing documents so people could find them again.
+      That is no longer enough. In an age where a machine will answer any question fluently and without
+      evidence, an institution needs a layer that holds not only <strong style="color:var(--fg);font-weight:500">what
+      is known</strong>, but <strong style="color:var(--fg);font-weight:500">how it came to be known</strong> —
+      and it needs to own that layer.
+    </p>
+    <div class="hero-cta">
+      <a class="btn" href="#contact">Request a briefing</a>
+      <a class="btn btn-ghost" href="#problem">Start with the problem</a>
+      <span class="hero-note">90 minutes, with your team in the room.</span>
+    </div>
+
+    <div class="practice">
+      <span class="pk">First practice area</span>
+      <span class="pt">Modern Knowledge Management for Museums</span>
+      <span class="pd">Museums, libraries and archives have practised this discipline longer than anyone. It's where the method proves itself first — and where the stakes of getting AI wrong are highest.</span>
+      <a class="btn btn-ghost" href="#museums">See the practice</a>
+    </div>
+  </div>
 </header>
 
-<main>
+<div class="rule"></div>
 
-  <!-- HERO -->
-  <section class="hero wrap">
-    <div class="hero-bg" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <p class="mono eyebrow">Neo Gens — Est. for the curious / Business · Education · Technology</p>
-    <h1 class="display">Between<br>categories,<br>we find <span class="blk">the&nbsp;answer.</span></h1>
-    <div class="hero-sub">
-      <p>A neo-generalist studio. We traverse multiple domains — encompassing rather than rejecting — to synthesise ideas, people and practice into a better future.</p>
-      <div class="right">
-        <a class="alink" href="about.html">Read the philosophy <span class="ar">→</span></a>
+<!-- ================= THE PROBLEM ================= -->
+<section id="problem">
+  <div class="wrap">
+    <div class="eyebrow rv">01 — The problem</div>
+    <div class="grid-2">
+      <div class="rv"><h2>The institutions that invented knowledge management are being left behind by organisations holding a fraction of their material.</h2></div>
+      <div class="rv">
+        <p class="lede">
+          Museums, libraries and archives built this discipline. Cataloguing, authority control, provenance,
+          the practice of separating an attribution from a certainty — all of it existed in these buildings
+          for two centuries before anyone in industry said “data governance”.
+        </p>
+        <p class="lede" style="margin-top:16px;color:var(--fg)">
+          They are now at risk of becoming the least modern institutions in a society whose knowledge they hold.
+        </p>
       </div>
     </div>
-  </section>
 
-  <!-- INTRO / PHILOSOPHY -->
-  <section class="block wrap rv">
-    <div class="kicker">
-      <span class="mono">01 — The Premise</span>
-      <span class="mono">Neo-Generalist</span>
-    </div>
-    <div class="split">
-      <h2 class="big">Specialist <em>and</em> generalist. A restless multidisciplinarian, forever transforming.</h2>
-      <div class="body">
-        <p>We are tricksters who traverse multiple domains, living between the labels. The neo-generalist is curious, responsive and connective — bringing together diverse people and synthesising ideas across fields that rarely speak to one another.</p>
-        <p>Neo Gens applies that mindset to the big issues confronting organisations today: how to grow a business, how to teach and learn, how to put technology to humane use. We don't pick one lane. We connect them.</p>
+    <div class="cards3">
+      <div class="card rv">
+        <div class="k go">The asset</div>
+        <h4>They are sitting on the best material anyone has</h4>
+        <p>Real objects with documented provenance. Primary sources. Field notes. A century of scholarship. Specialists who have spent decades inside one collection. None of it can be licensed, scraped or generated.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">The standing</div>
+        <h4>And on trust nobody else still commands</h4>
+        <p>A visitor arrives assuming the institution is telling them the truth. Almost no other organisation in public life still enjoys that assumption — and it took a century of careful practice to earn.</p>
+      </div>
+      <div class="card rv">
+        <div class="k am">The exposure</div>
+        <h4>Both are locked in a form technology can't reach</h4>
+        <p>Catalogue records, conservation files, exhibition scripts, published papers, and the memories of people approaching retirement. Rich, correct, and structurally unable to reach a modern audience — or a machine.</p>
       </div>
     </div>
-  </section>
 
-  <!-- VALUES TRIAD -->
-  <section class="block wrap rv">
-    <div class="kicker">
-      <span class="mono">02 — How we move</span>
-      <span class="mono">Curious · Responsive · Connective</span>
-    </div>
-    <div class="triad">
-      <div>
-        <span class="num">(01)</span>
-        <div><h3>Curious</h3><p>We ask better questions before we offer answers — learning across categories rather than defending one.</p></div>
+    <p class="note rv" style="margin-top:24px">
+      <b>This is not a story about budgets or about staff.</b> It is a story about form. The knowledge is
+      there and it is better than anyone else's. It was simply never written down in a shape that the systems
+      now mediating public attention can work with.
+    </p>
+
+    <div class="duty rv">
+      <div class="k">What we propose</div>
+      <div class="g">
+        <div><blockquote>Take the leadership back — on the merits, not on nostalgia.</blockquote></div>
+        <div>
+          <p>
+            <strong>Modern Knowledge Management</strong> is the practice of turning an institution's domain
+            knowledge into a managed asset that creates value for the organisation and for its audience —
+            by designing an <strong>ontology and knowledge graph genuinely aligned to that institution's
+            philosophy and mission</strong>, rather than to a generic template.
+          </p>
+          <p>
+            Done properly it holds not only what is known, but how it came to be known — which is what makes
+            it safe to put AI on top of, and what turns a fixed collection into something that can answer
+            questions it was never designed for.
+          </p>
+          <p>
+            The ambition is not survival. These institutions were the world's knowledge leaders and the
+            underlying advantage has never actually gone away. <strong>The work is to make that advantage
+            usable again, and to reclaim that position on the strength of the assets they already hold.</strong>
+          </p>
+        </div>
       </div>
-      <div>
-        <span class="num">(02)</span>
-        <div><h3>Responsive</h3><p>We adapt our tools to the problem, not the problem to our tools. Method follows context.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= WHAT IT IS ================= -->
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow rv">02 — What Modern Knowledge Management means</div>
+    <div class="grid-2">
+      <div class="rv"><h2>The difference is one layer — and where you put it.</h2></div>
+      <div class="rv">
+        <p class="lede">
+          Most organisations connect AI straight to their documents and hope for the best. The model
+          reads what it's given and produces the most plausible answer. It works, right up until the moment
+          the answer matters.
+        </p>
+        <p class="lede" style="margin-top:16px;color:var(--fg)">
+          Modern Knowledge Management puts a layer in between: an explicit model of the things you deal in,
+          and a graph of how they relate — each statement carrying its source. The AI then works on that,
+          instead of guessing.
+        </p>
       </div>
-      <div>
-        <span class="num">(03)</span>
-        <div><h3>Connective</h3><p>We synthesise people, ideas and practice — turning fragments into a system that works.</p></div>
+    </div>
+
+    <figure class="rv">
+      <div class="dsplit">
+        <div class="dbox">
+          <div class="dlab am">The common approach</div>
+          <svg class="dsvg" viewBox="0 0 420 300" role="img" aria-label="Diagram: documents feed directly into an AI model, which produces a generated answer with no trail back to a source">
+            <rect class="bx" x="30" y="22" width="360" height="66" rx="12"/>
+            <text class="t-b" x="210" y="48" text-anchor="middle">Documents &amp; systems</text>
+            <text class="t-s" x="210" y="68" text-anchor="middle">catalogue · reports · files · spreadsheets · email</text>
+
+            <line class="ln-am" x1="210" y1="88" x2="210" y2="126" marker-end="url(#arwa)"/>
+
+            <rect class="bx-am" x="110" y="132" width="200" height="58" rx="12"/>
+            <text class="t-b" x="210" y="157" text-anchor="middle">AI model</text>
+            <text class="m-am" x="210" y="175" text-anchor="middle">READS · PREDICTS · WRITES</text>
+
+            <line class="ln-am" x1="210" y1="190" x2="210" y2="226" marker-end="url(#arwa)"/>
+
+            <rect class="bx" x="30" y="232" width="360" height="52" rx="12"/>
+            <text class="t" x="210" y="255" text-anchor="middle">A fluent, confident answer</text>
+            <text class="m-am" x="210" y="273" text-anchor="middle">NO TRAIL BACK · NOT REPRODUCIBLE</text>
+          </svg>
+        </div>
+
+        <div class="dbox">
+          <div class="dlab go">Modern Knowledge Management</div>
+          <svg class="dsvg" viewBox="0 0 420 300" role="img" aria-label="Diagram: documents feed a knowledge layer of ontology and graph, which the AI reads from, producing an answer that carries its evidence">
+            <rect class="bx" x="30" y="14" width="360" height="52" rx="12"/>
+            <text class="t-b" x="210" y="36" text-anchor="middle">Documents &amp; systems</text>
+            <text class="t-s" x="210" y="54" text-anchor="middle">the same material you already hold</text>
+
+            <line class="ln-go" x1="210" y1="66" x2="210" y2="96" marker-end="url(#arwg)"/>
+
+            <rect class="bx-go" x="30" y="102" width="360" height="86" rx="12"/>
+            <text class="m-go" x="52" y="124">THE KNOWLEDGE LAYER · YOU OWN IT</text>
+            <text class="t-b" x="52" y="147">Ontology + knowledge graph</text>
+            <text class="t-s" x="52" y="167">what is known — and how it came to be known</text>
+            <circle cx="352" cy="150" r="4" fill="#B8F04A"/>
+            <circle cx="332" cy="132" r="4" fill="#B8F04A" opacity=".55"/>
+            <circle cx="332" cy="168" r="4" fill="#B8F04A" opacity=".55"/>
+            <path class="ln-go" d="M336 135 348 147M336 165 348 153"/>
+
+            <line class="ln-go" x1="210" y1="188" x2="210" y2="216" marker-end="url(#arwg)"/>
+
+            <rect class="bx" x="110" y="222" width="200" height="46" rx="12"/>
+            <text class="t" x="210" y="243" text-anchor="middle">AI model</text>
+            <text class="m" x="210" y="259" text-anchor="middle">READS THE GRAPH · ASSEMBLES</text>
+
+            <line class="ln-go" x1="210" y1="268" x2="210" y2="284" marker-end="url(#arwg)"/>
+            <text class="m-go" x="210" y="297" text-anchor="middle">ANSWER + ITS EVIDENCE · REPRODUCIBLE</text>
+          </svg>
+        </div>
       </div>
-    </div>
-  </section>
+      <figcaption>
+        <b>The whole argument in one picture.</b> Same documents, same model. The difference is whether
+        the institution's knowledge lives in a layer it governs, or only inside the model's guess.
+      </figcaption>
+    </figure>
 
-  <!-- PRACTICE PREVIEW -->
-  <section class="block wrap rv">
-    <div class="kicker">
-      <span class="mono">03 — Practice</span>
-      <a class="mono" href="services.html" style="border-bottom:1px solid currentColor">All services →</a>
-    </div>
-    <div class="svc">
-      <a class="svc-item" href="services.html">
-        <span class="idx">A/</span>
-        <h3>Business Consulting</h3>
-        <span class="desc">Strategy, service design and organisational change for teams ready to grow.</span>
-      </a>
-      <a class="svc-item" href="services.html">
-        <span class="idx">B/</span>
-        <h3>Education &amp; Learning</h3>
-        <span class="desc">Curriculum, facilitation and capability building that turns knowledge into practice.</span>
-      </a>
-      <a class="svc-item" href="services.html">
-        <span class="idx">C/</span>
-        <h3>Technology</h3>
-        <span class="desc">Human-centred digital products, platforms and AI adoption, designed to be used.</span>
-      </a>
-    </div>
-  </section>
+    <h3 class="rv" style="margin-top:clamp(52px,6vw,80px)">So what is actually in there?</h3>
+    <p class="lede rv" style="margin-top:10px">
+      Less exotic than it sounds. It's the diagram anyone would draw on a whiteboard to explain how
+      things in your institution relate — written down in a form a machine can follow.
+    </p>
 
-  <!-- QUOTE -->
-  <section class="quote wrap rv">
-    <blockquote class="display">“Encompassing rather than rejecting — addressing the big issues to shape a better future.”</blockquote>
-    <cite>— The neo-generalist creed</cite>
-  </section>
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">Anatomy — three parts, and you already think this way</div>
+        <svg class="dsvg" viewBox="0 0 900 300" role="img" aria-label="Diagram explaining the three parts of a knowledge graph: things as nodes, relationships as labelled links, and properties held on each">
+          <circle cx="180" cy="106" r="46" fill="rgba(184,240,74,.09)" stroke="#B8F04A" stroke-width="1.3"/>
+          <text class="t" x="180" y="102" text-anchor="middle">Bowl</text>
+          <text class="m-go" x="180" y="119" text-anchor="middle">OBJECT</text>
 
-  <!-- CTA -->
-  <section class="block wrap rv">
-    <div class="kicker"><span class="mono">04 — Let's talk</span><span class="mono">Bangkok / Remote</span></div>
-    <p class="lede">Have a problem that doesn't fit neatly in one box?</p>
-    <div class="cta"><a href="contact.html">Start a project <span class="ar">→</span></a></div>
-  </section>
+          <circle cx="450" cy="106" r="46" fill="rgba(184,240,74,.09)" stroke="#B8F04A" stroke-width="1.3"/>
+          <text class="t" x="450" y="102" text-anchor="middle">S. Wattana</text>
+          <text class="m-go" x="450" y="119" text-anchor="middle">PERSON</text>
 
-</main>
+          <circle cx="720" cy="106" r="46" fill="rgba(184,240,74,.09)" stroke="#B8F04A" stroke-width="1.3"/>
+          <text class="t" x="720" y="102" text-anchor="middle">1911 trip</text>
+          <text class="m-go" x="720" y="119" text-anchor="middle">EVENT</text>
 
-<footer class="site-foot">
-  <div class="foot-top">
-    <div class="big-mark">Neo&nbsp;Gens</div>
-    <div class="foot-col">
-      <h5>Navigate</h5>
-      <a href="index.html">Index</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Practice</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="foot-col">
-      <h5>Connect</h5>
-      <a href="mailto:noppadol@neogens.co">noppadol@neogens.co</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Instagram</a>
+          <line class="ln-go" x1="226" y1="106" x2="398" y2="106" marker-end="url(#arwg)"/>
+          <text class="m-go" x="312" y="96" text-anchor="middle">WAS COLLECTED BY</text>
+          <line class="ln-go" x1="496" y1="106" x2="668" y2="106" marker-end="url(#arwg)"/>
+          <text class="m-go" x="582" y="96" text-anchor="middle">TOOK PART IN</text>
+
+          <path class="ln-gh" d="M180 152 180 186"/>
+          <rect class="bx" x="70" y="190" width="220" height="66" rx="11"/>
+          <text class="m" x="86" y="210">PROPERTIES ON THE THING</text>
+          <text class="t-s" x="86" y="228">material · dimensions · location</text>
+          <text class="t-s" x="86" y="246">accession number · condition</text>
+
+          <path class="ln-gh" d="M312 112 312 186"/>
+          <rect class="bx" x="310" y="190" width="250" height="66" rx="11"/>
+          <text class="m-go" x="326" y="210">PROPERTIES ON THE RELATIONSHIP</text>
+          <text class="t-s" x="326" y="228">source: donor correspondence</text>
+          <text class="t-s" x="326" y="246">status: corroborated · asserted by: J.P.</text>
+
+          <path class="ln-gh" d="M720 152 720 186"/>
+          <rect class="bx" x="600" y="190" width="250" height="66" rx="11"/>
+          <text class="m" x="616" y="210">AND SO ON, WITHOUT LIMIT</text>
+          <text class="t-s" x="616" y="228">new kinds of thing attach to what</text>
+          <text class="t-s" x="616" y="246">exists — nothing gets rebuilt</text>
+
+          <text class="m-go" x="30" y="34">THINGS BECOME NODES · HOW THEY RELATE BECOMES A NAMED LINK · EVIDENCE RIDES ON THE LINK ITSELF</text>
+          <text class="m" x="30" y="286">THE SECOND BOX IS THE UNUSUAL PART — MOST SYSTEMS RECORD THAT TWO THINGS ARE RELATED, BUT NOT HOW ANYONE KNOWS</text>
+        </svg>
+      </div>
+      <figcaption>
+        <b>The relationship carries the evidence.</b> That single decision is what makes the whole thing
+        auditable later — and it is the part almost every data model leaves out.
+      </figcaption>
+    </figure>
+
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">And it remembers three different things, not one</div>
+        <svg class="dsvg" viewBox="0 0 900 250" role="img" aria-label="Diagram of three kinds of memory a knowledge layer holds: the current enquiry, the institution's settled knowledge, and the reasoning behind past decisions">
+          <rect class="bx-as" x="24" y="46" width="272" height="120" rx="13"/>
+          <text class="m-as" x="44" y="74">01 · WHAT IS BEING ASKED NOW</text>
+          <text class="t-b" x="44" y="98">The live enquiry</text>
+          <text class="t-s" x="44" y="120">the conversation in progress —</text>
+          <text class="t-s" x="44" y="138">what a visitor or researcher</text>
+          <text class="t-s" x="44" y="156">has already been told today</text>
+
+          <rect class="bx-go" x="312" y="46" width="272" height="120" rx="13"/>
+          <text class="m-go" x="332" y="74">02 · WHAT THE INSTITUTION KNOWS</text>
+          <text class="t-b" x="332" y="98">The settled record</text>
+          <text class="t-s" x="332" y="120">objects, people, places, events —</text>
+          <text class="t-s" x="332" y="138">organised by your ontology,</text>
+          <text class="t-s" x="332" y="156">each statement with its source</text>
+
+          <rect class="bx-go" x="600" y="46" width="276" height="120" rx="13"/>
+          <text class="m-go" x="620" y="74">03 · WHY IT CONCLUDED THAT</text>
+          <text class="t-b" x="620" y="98">The reasoning record</text>
+          <text class="t-s" x="620" y="120">which evidence was weighed,</text>
+          <text class="t-s" x="620" y="138">what was rejected and why,</text>
+          <text class="t-s" x="620" y="156">who decided, and when</text>
+
+          <line class="ln-go" x1="296" y1="106" x2="306" y2="106"/>
+          <line class="ln-go" x1="584" y1="106" x2="594" y2="106"/>
+
+          <path class="ln-am" d="M738 166 738 196 150 196 150 172"/>
+          <text class="m-am" x="444" y="190" text-anchor="middle">PRECEDENT MADE QUERYABLE — THE NEXT SIMILAR CASE STARTS FROM WHAT WAS DECIDED LAST TIME</text>
+
+          <text class="m-am" x="24" y="30">MOST SYSTEMS STORE ONLY THE MIDDLE ONE — AND KEEP THE CONCLUSION WITHOUT THE ARGUMENT</text>
+          <text class="m" x="24" y="228">THE THIRD IS THE ONE THAT USUALLY RETIRES WITH THE PERSON WHO HELD IT</text>
+        </svg>
+      </div>
+      <figcaption>
+        <b>The third one is the quiet loss.</b> When an attribution is revisited in twenty years, the useful
+        thing is not the conclusion — it's knowing what evidence was considered, what was rejected, and why.
+      </figcaption>
+    </figure>
+
+    <div class="cards3">
+      <div class="card rv">
+        <div class="k am">Old knowledge management</div>
+        <h4>Store it so a person can find it</h4>
+        <p>Repositories, folder structures, search. Optimised for retrieval by a human who already knows roughly what they're looking for.</p>
+      </div>
+      <div class="card rv">
+        <div class="k as">What changed</div>
+        <h4>A machine now answers first</h4>
+        <p>People ask a model before they open a system. Whatever the model can't verify, it invents — fluently, and in your institution's name.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">Modern knowledge management</div>
+        <h4>Structure it so a machine can be held to it</h4>
+        <p>Explicit meaning, explicit relationships, explicit evidence. Built so the answer can be traced, repeated and defended.</p>
+      </div>
     </div>
   </div>
-  <div class="foot-bot">
-    <span class="mono">© 2026 Neo Gens — Neo-Generalist Studio</span>
-    <span class="mono">Business · Education · Technology</span>
-    <span class="mono">Service Design Thinking</span>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= WHY PROSE FAILS ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow rv">03 — Why "we already have all of this" isn't enough</div>
+    <div class="grid-2">
+      <div class="rv"><h2>Your knowledge exists. It just can't be traversed.</h2></div>
+      <div class="rv">
+        <p class="lede">
+          The usual objection is fair: <em>we have a collections system, an archive, published research,
+          and specialists who know all of it.</em> True — and every one of those is written in prose.
+        </p>
+        <p class="lede" style="margin-top:16px;color:var(--fg)">
+          Prose can be read. It cannot be traversed. No amount of search will answer a question that has to
+          cross four documents held by three departments in two vocabularies.
+        </p>
+      </div>
+    </div>
+
+    <figure class="rv">
+      <div class="dbox">
+        <svg class="dsvg" viewBox="0 0 900 330" role="img" aria-label="Diagram comparing five disconnected documents on the left with the same five expressed as a connected graph around a central object on the right">
+          <text class="m-am" x="30" y="24">TODAY · READABLE, NOT CONNECTABLE</text>
+          <rect class="bx" x="30" y="42" width="150" height="46" rx="10"/>
+          <text class="t-s" x="105" y="70" text-anchor="middle">Catalogue record</text>
+          <rect class="bx" x="200" y="70" width="150" height="46" rx="10"/>
+          <text class="t-s" x="275" y="98" text-anchor="middle">Conservation report</text>
+          <rect class="bx" x="40" y="132" width="150" height="46" rx="10"/>
+          <text class="t-s" x="115" y="160" text-anchor="middle">Donor correspondence</text>
+          <rect class="bx" x="210" y="166" width="150" height="46" rx="10"/>
+          <text class="t-s" x="285" y="194" text-anchor="middle">Published research</text>
+          <rect class="bx-gh" x="70" y="228" width="200" height="46" rx="10"/>
+          <text class="t-s" x="170" y="250" text-anchor="middle">A specialist's memory</text>
+          <text class="m-am" x="170" y="266" text-anchor="middle">RETIRES IN 4 YEARS</text>
+          <text class="m" x="30" y="308">NO PATH BETWEEN THEM · A QUESTION STOPS AT EACH EDGE</text>
+
+          <line class="ln-gh" x1="450" y1="20" x2="450" y2="310"/>
+
+          <text class="m-go" x="520" y="24">CONNECTED · SAME CONTENT, AS RELATIONSHIPS</text>
+
+          <line class="ln-go" x1="690" y1="165" x2="580" y2="84"/>
+          <line class="ln-go" x1="690" y1="165" x2="580" y2="246"/>
+          <line class="ln-go" x1="690" y1="165" x2="812" y2="84"/>
+          <line class="ln-go" x1="690" y1="165" x2="812" y2="246"/>
+          <line class="ln" x1="580" y1="84" x2="812" y2="84"/>
+          <line class="ln" x1="580" y1="246" x2="812" y2="246"/>
+
+          <text class="m" x="622" y="126" text-anchor="middle">COLLECTED WITH</text>
+          <text class="m" x="622" y="212" text-anchor="middle">GLAZE MATCHES</text>
+          <text class="m" x="762" y="126" text-anchor="middle">ACQUIRED VIA</text>
+          <text class="m" x="762" y="212" text-anchor="middle">SHOWS USE</text>
+
+          <rect class="bx-go" x="618" y="144" width="144" height="44" rx="11"/>
+          <text class="t" x="690" y="163" text-anchor="middle">The object</text>
+          <text class="m-go" x="690" y="179" text-anchor="middle">ACC. 1974.221</text>
+
+          <rect class="bx" x="510" y="62" width="140" height="42" rx="10"/>
+          <text class="t-s" x="580" y="88" text-anchor="middle">Textile, another dept.</text>
+          <rect class="bx" x="510" y="224" width="140" height="42" rx="10"/>
+          <text class="t-s" x="580" y="250" text-anchor="middle">1998 kiln paper</text>
+          <rect class="bx" x="742" y="62" width="140" height="42" rx="10"/>
+          <text class="t-s" x="812" y="88" text-anchor="middle">Donor archive</text>
+          <rect class="bx" x="742" y="224" width="140" height="42" rx="10"/>
+          <text class="t-s" x="812" y="250" text-anchor="middle">Conservation file</text>
+
+          <text class="m-go" x="520" y="308">ONE QUESTION CAN NOW TRAVEL ALL THE WAY THROUGH</text>
+        </svg>
+      </div>
+      <figcaption>
+        <b>Nothing new was researched here.</b> Every relationship on the right already existed in the
+        institution — it had simply never been expressed in a form a question could move through.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= PRACTICE BAND ================= -->
+<div class="pband">
+  <div class="wrap">
+    <div class="pb-k">Practice area 01</div>
+    <h2 class="pb-t">Modern Knowledge Management<br>for Museums &amp; Libraries</h2>
+    <p class="pb-d">Everything above applies to any institution holding knowledge worth defending. What follows
+    is specific: what the problem looks like on a museum floor, who these institutions are really competing
+    with, and what changes when the collection can finally be asked a question.</p>
+    <div class="pb-nav">
+      <a href="#visit">01 · Where it stands today</a>
+      <a href="#experience">02 · What changes for the visitor</a>
+      <a href="#museums">03 · What leadership looks like</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= THE VISIT ================= -->
+<section id="visit">
+  <div class="wrap">
+    <div class="eyebrow rv">KM for Museums · 01 — Where it stands today</div>
+    <div class="grid-2">
+      <div class="rv"><h2>The institutions with the best knowledge in the room are losing the room.</h2></div>
+      <div class="rv">
+        <p class="lede">
+          Four educated adults spend an afternoon in a well-funded new gallery, read every panel, try every
+          interactive — and leave with nothing they can repeat to a child in the car. Meanwhile that same
+          family's Sunday is being contested by a cinema, a shopping centre and a documentary made for more
+          money than the gallery cost to fit out.
+        </p>
+        <p class="lede" style="margin-top:16px;color:var(--fg)">
+          Neither problem is about money, staff or accuracy. Both are about form.
+        </p>
+      </div>
+    </div>
+
+    <div class="story rv">
+      <div class="k">The sentence every director should be afraid of</div>
+      <div class="g">
+        <div>
+          <blockquote>“I can't name one thing I understand now that I didn't understand this morning.”</blockquote>
+          <p class="attr">Illustrative composite, drawn from patterns we see repeatedly. No institution is named — the pattern is near-universal, and singling one out would be both unfair and beside the point.</p>
+        </div>
+        <div>
+          <p>
+            The failures were never about content quality. Stations of accurate information with nothing
+            saying how any of them produced any other. Analogies borrowed from a landscape the visitor has
+            never stood in. Three time-scales in three rooms, never reconciled. An exhibition that rewards
+            only the visitor who already knew.
+          </p>
+          <p>
+            <strong>Every one of those is a failure of relationships between pieces of knowledge</strong> —
+            precisely the thing nobody had modelled.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">The position, drawn honestly</div>
+        <svg class="dsvg" viewBox="0 0 900 400" role="img" aria-label="A quadrant chart plotting depth of trustworthy knowledge against ability to deliver it as experience. Museums sit high on knowledge and low on delivery; streaming and social sit low on knowledge and high on delivery. An arrow shows the only available move for museums.">
+          <line class="ln" x1="120" y1="340" x2="850" y2="340" marker-end="url(#arw)"/>
+          <line class="ln" x1="120" y1="340" x2="120" y2="30" marker-end="url(#arw)"/>
+          <line class="ln-gh" x1="120" y1="185" x2="850" y2="185"/>
+          <line class="ln-gh" x1="485" y1="30" x2="485" y2="340"/>
+
+          <text class="m" x="130" y="362">ABILITY TO DELIVER IT AS AN EXPERIENCE  →</text>
+          <text class="m" x="0" y="0" transform="translate(104,340) rotate(-90)">DEPTH OF TRUSTWORTHY KNOWLEDGE HELD  →</text>
+
+          <rect class="bx-go" x="152" y="62" width="212" height="66" rx="12"/>
+          <text class="t-b" x="258" y="90" text-anchor="middle">Museums today</text>
+          <text class="m-go" x="258" y="110" text-anchor="middle">EVERYTHING TO SAY</text>
+          <text class="m-go" x="258" y="122" text-anchor="middle">NO WAY TO SAY IT WELL</text>
+
+          <rect class="bx-am" x="596" y="228" width="212" height="66" rx="12"/>
+          <text class="t-b" x="702" y="256" text-anchor="middle">Streaming &amp; social</text>
+          <text class="m-am" x="702" y="276" text-anchor="middle">THIN MATERIAL</text>
+          <text class="m-am" x="702" y="288" text-anchor="middle">DELIVERED SUPERBLY</text>
+
+          <rect class="bx" x="596" y="62" width="212" height="66" rx="12" style="stroke:rgba(184,240,74,.55);stroke-dasharray:5 4"/>
+          <text class="t-b" x="702" y="90" text-anchor="middle">The open position</text>
+          <text class="m-go" x="702" y="110" text-anchor="middle">UNMATCHED MATERIAL,</text>
+          <text class="m-go" x="702" y="122" text-anchor="middle">FINALLY DELIVERABLE</text>
+
+          <path class="ln-go" d="M364 95 L588 95" marker-end="url(#arwg)"/>
+          <text class="m-go" x="476" y="84" text-anchor="middle">THE ONLY MOVE AVAILABLE TO YOU</text>
+
+          <path class="ln-am" d="M702 228 L702 140" marker-end="url(#arwa)"/>
+          <text class="m-am" x="716" y="186">THEY ARE TRYING</text>
+          <text class="m-am" x="716" y="200">TO MOVE UP TOO —</text>
+          <text class="m-am" x="716" y="214">AND CANNOT</text>
+
+          <text class="m" x="152" y="250">NOBODY OCCUPIES</text>
+          <text class="m" x="152" y="264">THE TOP RIGHT YET.</text>
+          <text class="m" x="152" y="286">IT IS REACHABLE ONLY</text>
+          <text class="m" x="152" y="300">FROM WHERE YOU ALREADY</text>
+          <text class="m" x="152" y="314">STAND.</text>
+        </svg>
+      </div>
+      <figcaption>
+        <b>The direction of travel matters.</b> A platform can improve its material only slowly, and can
+        never acquire provenance or public trust. An institution can improve its delivery relatively
+        quickly — because the hard half is already done and paid for.
+      </figcaption>
+    </figure>
+
+    <div class="duty rv">
+      <div class="k">The uncomfortable diagnosis</div>
+      <div class="g">
+        <div><blockquote>They are not beating you on knowledge. They are beating you on structure.</blockquote></div>
+        <div>
+          <p>
+            A platform can recommend, sequence and adapt because everything it holds is structured from the
+            moment it is made. <strong>Its advantage is not better material. It is worse material, organised
+            properly.</strong>
+          </p>
+          <p>
+            Yours is incomparably richer and sits in prose — catalogue records, conservation files,
+            exhibition scripts, and the memories of people approaching retirement. Rich, correct, and
+            structurally unable to be delivered as an adaptive experience.
+          </p>
+          <p>
+            <strong>That gap is closeable</strong> — not by out-spending a studio, and not by bolting a
+            chatbot onto a website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow rv">KM for Museums · 02 — What changes for the visitor</div>
+    <div class="grid-2">
+      <div class="rv"><h2>The objects don't change. The paths through them do.</h2></div>
+      <div class="rv">
+        <p class="lede">
+          Once concepts, objects, people and evidence are modelled as a graph, a route through the
+          collection becomes a question rather than a construction project — and can be recomposed
+          endlessly from scholarship you already own.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo rv">
+      <div class="demo-top">
+        <span class="demo-lab">Same exhibit, same evening, three visitors</span>
+        <div class="switch" role="tablist" aria-label="Visitor depth">
+          <button data-d="0" class="on" role="tab" aria-selected="true">A child who can't read yet</button>
+          <button data-d="1" role="tab" aria-selected="false">A curious adult</button>
+          <button data-d="2" role="tab" aria-selected="false">Someone who already knows</button>
+        </div>
+      </div>
+      <div class="q-lab">Standing in front of the same object</div>
+      <div class="q" id="depthQ"></div>
+      <div class="ans">
+        <div class="ans-body" id="depthA"></div>
+        <div class="trace" id="depthT"></div>
+      </div>
+    </div>
+    <p class="note rv">
+      <b>This is not three exhibitions.</b> It is one concept, with depth held as a property and different
+      relationships followed for each visitor. Illustrative example.
+    </p>
+
+    <div class="cards3">
+      <div class="card rv">
+        <div class="k as">Experience 01</div>
+        <h4>A different thread every visit</h4>
+        <p>The permanent collection stays permanent — but the route through it can change monthly, entered through trade, through repair and reuse, through a single decade.</p>
+      </div>
+      <div class="card rv">
+        <div class="k as">Experience 02</div>
+        <h4>The stored collection joins in</h4>
+        <p>Most of what you hold will never fit in a gallery. Connected, those objects still take part — as the thing the object in front of you turns out to be related to.</p>
+      </div>
+      <div class="card rv">
+        <div class="k as">Experience 03</div>
+        <h4>Every question becomes an asset</h4>
+        <p>Questions the collection can't answer are recorded against the object. Repeated often enough, they become a research agenda ranked by real public curiosity.</p>
+      </div>
+    </div>
+
+    <div class="duty rv">
+      <div class="k">And the guardrail that makes it safe to do at all</div>
+      <div class="g">
+        <div><blockquote>A visitor-facing AI is not an exhibit. It is publishing.</blockquote></div>
+        <div>
+          <p>
+            Every answer it gives is an institutional statement, made in your name, at scale, without a
+            curator reading it first. An institution that holds society's knowledge cannot let statements
+            without provenance go out under its name — <strong>and that obligation doesn't lapse because the
+            statement was generated rather than written.</strong>
+          </p>
+          <p>
+            Which is why the layer comes first, and why the rules on it are strict: sensitive material stays
+            inside your boundary, contested attributions stay contested, and only a curator promotes a claim
+            to a fact. <strong>Prepared properly, the constraint becomes the feature</strong> — an AI that is
+            structurally incapable of overclaiming is something no general assistant can offer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= MUSEUMS ================= -->
+<section id="museums" class="case">
+  <div class="wrap">
+    <div class="eyebrow rv">KM for Museums · 03 — What leadership looks like from here</div>
+    <div class="grid-2">
+      <div class="rv">
+        <div class="case-tag">The projection</div>
+        <h2>Leadership in this era means being upstream.</h2>
+      </div>
+      <div class="rv">
+        <p class="lede">
+          The world is not short of answers any more. It is short of answers anyone can check.
+          Every organisation now generating content at volume has the same problem, and none of them can
+          solve it — because solving it requires exactly what your institution has been accumulating for a century.
+        </p>
+        <p class="lede" style="margin-top:16px;color:var(--fg)">
+          The move is from being a destination people visit to being a source the world draws on.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards2">
+      <div class="card rv">
+        <div class="k go">Horizon 01 · your floor</div>
+        <h3>The collection answers, in your voice</h3>
+        <p>Visitors ask and receive your own scholarship at the depth they need, with the evidence attached. A return visit offers what the last one didn't. The measure stops being footfall and becomes whether anyone left holding a question.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">Horizon 02 · your people</div>
+        <h3>Curators stop searching and start asking</h3>
+        <p>The reasoning behind an attribution is captured while the person who made it is still here to explain it. An exhibition question that used to take months of hunting is answered in an afternoon, across every department at once.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">Horizon 03 · beyond the walls</div>
+        <h3>Schools and researchers build on you directly</h3>
+        <p>Rather than citing a web page, a curriculum team, a university or a peer institution queries your layer and gets sourced, current, attributable knowledge. You stop being a reference and become a supplier.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">Horizon 04 · the AI ecosystem</div>
+        <h3>You become the ground truth others reach for</h3>
+        <p>When systems need verified knowledge in your domain, yours is the layer they query — and every answer they give carries your attribution. That is what leadership means now: not the loudest voice, but the one everyone else is standing on.</p>
+      </div>
+    </div>
+
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">From destination to infrastructure</div>
+        <svg class="dsvg" viewBox="0 0 900 320" role="img" aria-label="Left: a museum as a destination that people must travel to. Right: the same museum as a knowledge layer supplying galleries, schools, researchers, media and AI systems, each carrying attribution back.">
+          <text class="m-am" x="30" y="24">TODAY · A DESTINATION</text>
+          <rect class="bx-am" x="94" y="128" width="180" height="62" rx="12"/>
+          <text class="t-b" x="184" y="154" text-anchor="middle">The institution</text>
+          <text class="m-am" x="184" y="172" text-anchor="middle">VALUE ONLY IF YOU COME</text>
+          <path class="ln-am" d="M60 70 L150 122" marker-end="url(#arwa)"/>
+          <path class="ln-am" d="M40 159 L86 159" marker-end="url(#arwa)"/>
+          <path class="ln-am" d="M60 248 L150 196" marker-end="url(#arwa)"/>
+          <text class="m" x="30" y="62">VISITORS</text>
+          <text class="m" x="30" y="286">SCHOOL TRIPS</text>
+          <text class="m-am" x="30" y="308">EVERYTHING FLOWS INWARDS · NOTHING LEAVES THE BUILDING</text>
+
+          <line class="ln-gh" x1="330" y1="20" x2="330" y2="300"/>
+
+          <text class="m-go" x="390" y="24">TOMORROW · INFRASTRUCTURE</text>
+          <rect class="bx-go" x="386" y="128" width="180" height="62" rx="12"/>
+          <text class="t-b" x="476" y="152" text-anchor="middle">Your knowledge layer</text>
+          <text class="m-go" x="476" y="170" text-anchor="middle">SOURCED · TRACEABLE · YOURS</text>
+
+          <path class="ln-go" d="M566 145 L660 66" marker-end="url(#arwg)"/>
+          <path class="ln-go" d="M566 152 L660 122" marker-end="url(#arwg)"/>
+          <path class="ln-go" d="M566 166 L660 178" marker-end="url(#arwg)"/>
+          <path class="ln-go" d="M566 173 L660 234" marker-end="url(#arwg)"/>
+          <path class="ln-go" d="M566 180 L660 290" marker-end="url(#arwg)"/>
+
+          <rect class="bx" x="666" y="44" width="204" height="40" rx="10"/>
+          <text class="t-s" x="682" y="69">Galleries &amp; visitors</text>
+          <rect class="bx" x="666" y="100" width="204" height="40" rx="10"/>
+          <text class="t-s" x="682" y="125">Schools &amp; curricula</text>
+          <rect class="bx" x="666" y="156" width="204" height="40" rx="10"/>
+          <text class="t-s" x="682" y="181">Researchers &amp; peers</text>
+          <rect class="bx" x="666" y="212" width="204" height="40" rx="10"/>
+          <text class="t-s" x="682" y="237">Media &amp; publishers</text>
+          <rect class="bx-go" x="666" y="268" width="204" height="40" rx="10"/>
+          <text class="t-s" x="682" y="293">AI systems, anywhere</text>
+
+          <text class="m-go" x="386" y="222">EVERY ONE OF THEM</text>
+          <text class="m-go" x="386" y="236">CAN CITE YOU —</text>
+          <text class="m-go" x="386" y="250">BECAUSE EVERY ANSWER</text>
+          <text class="m-go" x="386" y="264">CARRIES ITS SOURCE</text>
+        </svg>
+      </div>
+      <figcaption>
+        <b>This is the position no competitor can take.</b> A platform can distribute faster than you will
+        ever distribute. It cannot become the thing that has to be true underneath.
+      </figcaption>
+    </figure>
+
+    <div class="duty rv">
+      <div class="k">Why this is reachable, and reachable now</div>
+      <div class="g">
+        <div><blockquote>The expensive half was finished a century ago.</blockquote></div>
+        <div>
+          <p>
+            Nobody has to acquire the objects, establish the provenance, build the scholarship or earn the
+            public's trust — that work is done, paid for, and irreplaceable.
+            <strong>What remains is expressing it in a form the present century can use.</strong>
+          </p>
+          <p>
+            It does not begin with a platform purchase or an institution-wide programme. It begins with one
+            question your specialists could not answer, modelled properly, end to end — and then your own
+            team doing the next collection without us.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="rule"></div>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow rv">04 — What we do together</div>
+    <div class="grid-2">
+      <div class="rv"><h2>We don't build your knowledge layer for you. We build it with your specialists.</h2></div>
+      <div class="rv">
+        <p class="lede">
+          Neo Gens is an advisory and design practice, not a systems vendor. Every engagement runs as a
+          joint team: your curators, cataloguers, archivists and systems staff alongside our ontologists
+          and knowledge engineers.
+        </p>
+        <p class="lede" style="margin-top:16px;color:var(--fg)">
+          The reason is practical, not diplomatic. The knowledge worth modelling is in your people, not in
+          your documents — and an ontology built by an outside firm alone is one your institution will
+          neither trust nor maintain.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards2">
+      <div class="card rv">
+        <div class="k go">Service 01</div>
+        <h3>Knowledge assessment</h3>
+        <p>Run together before anything is built: what does the institution actually know, where is it held, and which questions can't currently be asked of it?</p>
+        <ul>
+          <li>Your team brings the enquiries that keep failing; we bring the method</li>
+          <li>Where knowledge sits outside the collections system entirely</li>
+          <li>Which of it is at risk of leaving with a retirement</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <div class="k go">Service 02</div>
+        <h3>Mission-driven ontology design</h3>
+        <p>Working sessions where your specialists define meaning and we make it rigorous and shared. Built from your existing vocabularies, not over them.</p>
+        <ul>
+          <li>Your authority files and controlled vocabularies are the starting material</li>
+          <li>One model across departments that catalogue differently and always have</li>
+          <li>Governance your team runs: who owns a definition, how it changes</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <div class="k go">Service 03</div>
+        <h3>Knowledge &amp; context graph</h3>
+        <p>The ontology made real, built beside your systems staff so they know every design decision from the inside — not from a handover document.</p>
+        <ul>
+          <li>Records reconciled — one person, not nine name variants</li>
+          <li>Objects, people, places, events and documents in one traversable network</li>
+          <li>Provenance carried on every statement, by design rather than convention</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <div class="k go">Service 04</div>
+        <h3>Grounded AI, and the capability to run it</h3>
+        <p>AI reasoning over your graph, inside your boundary, bound by your evidentiary rules — and your team trained to extend it after we've gone.</p>
+        <ul>
+          <li>Deployed on your infrastructure or your own tenancy</li>
+          <li>Answers reproducible and citable, for staff enquiries or visitor-facing use</li>
+          <li>Your team adds the next collection without calling us</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="split rv">
+      <div class="sp">
+        <div class="k">Your team brings</div>
+        <ul>
+          <li>The curatorial and cataloguing knowledge — nobody outside has it</li>
+          <li>Authority to settle terminology across departments</li>
+          <li>Systems staff who will own the graph afterwards</li>
+          <li>A director-level sponsor and one enquiry worth answering</li>
+        </ul>
+      </div>
+      <div class="sp mid" aria-hidden="true"><span>+</span></div>
+      <div class="sp">
+        <div class="k">We bring</div>
+        <ul>
+          <li>Ontology and knowledge-graph design discipline</li>
+          <li>A method for turning specialist judgement into an explicit model</li>
+          <li>The claim, evidence and status rules that keep AI honest on top of it</li>
+          <li>Structured transfer, so the capability stays inside the institution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= ENGAGEMENT ================= -->
+<section id="engagement">
+  <div class="wrap">
+    <div class="eyebrow rv">05 — How an engagement runs</div>
+    <div class="grid-2">
+      <div class="rv"><h2>A joint team, working on one enquiry your institution couldn't answer.</h2></div>
+      <div class="rv"><p class="lede">
+        We start narrow and deliberately: one exhibition question, reference enquiry or provenance
+        investigation that a specialist genuinely tried and abandoned. Your people are in every session,
+        not briefed afterwards. Durations are the typical shape and are scoped per institution.
+      </p></div>
+    </div>
+
+    <figure class="rv">
+      <div class="dbox">
+        <svg class="dsvg" viewBox="0 0 900 190" role="img" aria-label="Timeline of four engagement phases with what the client team leaves with at each stage, and Neo Gens involvement decreasing over time">
+          <line class="ln" x1="40" y1="70" x2="860" y2="70"/>
+          <circle cx="90" cy="70" r="6" fill="#B8F04A"/>
+          <circle cx="320" cy="70" r="6" fill="#B8F04A"/>
+          <circle cx="550" cy="70" r="6" fill="#B8F04A"/>
+          <circle cx="800" cy="70" r="6" fill="#B8F04A"/>
+
+          <text class="m-go" x="90" y="48" text-anchor="middle">PHASE 0</text>
+          <text class="m-go" x="320" y="48" text-anchor="middle">PHASE 1</text>
+          <text class="m-go" x="550" y="48" text-anchor="middle">PHASE 2</text>
+          <text class="m-go" x="800" y="48" text-anchor="middle">PHASE 3</text>
+
+          <text class="t" x="90" y="96" text-anchor="middle">Alignment</text>
+          <text class="t" x="320" y="96" text-anchor="middle">Ontology design</text>
+          <text class="t" x="550" y="96" text-anchor="middle">Graph &amp; first enquiry</text>
+          <text class="t" x="800" y="96" text-anchor="middle">Capability transfer</text>
+
+          <text class="t-s" x="90" y="116" text-anchor="middle">a knowledge map</text>
+          <text class="t-s" x="320" y="116" text-anchor="middle">an ontology you authored</text>
+          <text class="t-s" x="550" y="116" text-anchor="middle">a real, evidenced answer</text>
+          <text class="t-s" x="800" y="116" text-anchor="middle">your team, working alone</text>
+
+          <path class="ln-gh" d="M40 152 L860 152"/>
+          <path d="M40 152 C 300 152, 520 152, 860 152" fill="none" stroke="rgba(184,240,74,.35)" stroke-width="0"/>
+          <rect x="40" y="144" width="240" height="9" rx="4.5" fill="rgba(184,240,74,.42)"/>
+          <rect x="280" y="144" width="290" height="9" rx="4.5" fill="rgba(184,240,74,.28)"/>
+          <rect x="570" y="144" width="200" height="9" rx="4.5" fill="rgba(184,240,74,.16)"/>
+          <rect x="770" y="144" width="90" height="9" rx="4.5" fill="rgba(184,240,74,.07)"/>
+          <text class="m" x="40" y="176">OUR INVOLVEMENT, DESIGNED TO DECREASE — YOUR TEAM'S, TO INCREASE</text>
+        </svg>
+      </div>
+    </figure>
+
+    <div class="phases">
+      <div class="ph rv">
+        <div class="p-k">PHASE 0</div>
+        <div><h4>Alignment</h4><p>Your leadership and our team choose the enquiry worth answering first — usually one that crosses two or three departments and has defeated everyone who tried it.</p></div>
+        <div class="out"><div class="k">Your team leaves with</div><p>A knowledge map: what the institution holds, what it doesn't, and where the gap is costing you.</p></div>
+      </div>
+      <div class="ph rv">
+        <div class="p-k">PHASE 1</div>
+        <div><h4>Mission-driven ontology design</h4><p>Working sessions where your specialists make explicit what has always been implicit, and settle terminology departments have quietly disagreed on for decades.</p></div>
+        <div class="out"><div class="k">Your team leaves with</div><p>An ontology your institution authored and owns, aligned to your existing vocabularies, plus the governance to keep it alive.</p></div>
+      </div>
+      <div class="ph rv">
+        <div class="p-k">PHASE 2</div>
+        <div><h4>Graph &amp; first enquiry</h4><p>Our engineers pair with your systems staff to build the graph, connect the records that feed it, and answer the Phase 0 enquiry on top of it.</p></div>
+        <div class="out"><div class="k">Your team leaves with</div><p>A real answer with its evidence trail attached, and the know-how behind every design decision in it.</p></div>
+      </div>
+      <div class="ph rv">
+        <div class="p-k">PHASE 3</div>
+        <div><h4>Capability transfer</h4><p>Your team takes the next collection the whole way with us watching, then does the one after that alone. New collections attach to what exists rather than replacing it.</p></div>
+        <div class="out"><div class="k">Your team leaves with</div><p>A knowledge management capability of your own — not a dependency on an outside firm.</p></div>
+      </div>
+    </div>
+
+    <p class="note rv" style="margin-top:22px">
+      <b>How you know it worked:</b> your team models the next collection without us. That's the
+      deliverable — the graph is only the evidence that the capability transferred.
+    </p>
+
+    <h3 class="rv" style="margin-top:clamp(50px,6vw,78px);margin-bottom:6px">What changes for the institution</h3>
+    <div class="oc">
+      <div class="oc-row head rv"><div>Today</div><div>With a knowledge layer</div></div>
+      <div class="oc-row rv"><div>An enquiry is answered by whoever happens to know</div><div>Answered from the record, with the research trail attached</div></div>
+      <div class="oc-row rv"><div>A curator can only search what they can hold in their head</div><div>The collection proposes what's relevant, across every department</div></div>
+      <div class="oc-row rv"><div>Departments catalogue in vocabularies that don't reconcile</div><div>One model the whole institution shares, built from those vocabularies</div></div>
+      <div class="oc-row rv"><div>The reasoning behind an attribution retires with its author</div><div>The argument is captured, not just the conclusion</div></div>
+      <div class="oc-row rv"><div>Staff quietly paste collection material into public AI tools</div><div>A sanctioned path that keeps restricted material inside</div></div>
+      <div class="oc-row rv"><div>Most of the collection can't participate in a visit</div><div>Stored objects contribute to routes, programmes and enquiries</div></div>
+      <div class="oc-row rv"><div>Visitor questions evaporate at the end of each day</div><div>Unanswered questions accumulate as a ranked research agenda</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= PROOF ================= -->
+<section id="proof">
+  <div class="wrap">
+    <div class="eyebrow rv">06 — Proof</div>
+    <div class="grid-2">
+      <div class="rv">
+        <div class="case-tag">Reference implementation · our own collection</div>
+        <h2>We catalogued our own collection to your standards before advising anyone.</h2>
+      </div>
+      <div class="rv">
+        <p class="lede">
+          Every record held with its provenance. Every statement a claim until independently corroborated.
+          Commercial sources explicitly disqualified as witnesses. Every answer traceable.
+        </p>
+        <p class="lede" style="margin-top:16px">
+          We started with books because a barcode on a physical object gives ground truth you can hold in
+          your hand — the hardest available test bed. Objects, archives and people then attached to the same
+          graph without rebuilding what was already there.
+        </p>
+      </div>
+    </div>
+
+    <div class="app rv" role="img" aria-label="Mockup of a collection interface showing demonstration records with corroboration status">
+      <div class="app-bar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="app-url">collection knowledge graph — reference implementation</div>
+        <div class="badge">Demo data</div>
+      </div>
+      <div class="app-body">
+        <aside class="side">
+          <div class="grp">Records</div>
+          <a class="on" href="#proof" onclick="return false">All items <small>demo</small></a>
+          <a href="#proof" onclick="return false">Corroborated <small>demo</small></a>
+          <a href="#proof" onclick="return false">Claims <small>demo</small></a>
+          <a href="#proof" onclick="return false">Disputed <small>demo</small></a>
+          <div class="sep"></div>
+          <div class="grp">Domains</div>
+          <a class="on" href="#proof" onclick="return false">Books</a>
+          <a href="#proof" onclick="return false">Objects</a>
+          <a href="#proof" onclick="return false">Archives</a>
+          <a href="#proof" onclick="return false">People</a>
+        </aside>
+        <div class="main">
+          <div class="main-head">
+            <h5>Catalogue view</h5>
+            <div class="chips">
+              <span class="chip v">● corroborated</span>
+              <span class="chip c">● claim</span>
+              <span class="chip">provenance on</span>
+            </div>
+          </div>
+          <div class="books">
+            <div class="bk">
+              <div class="cover" style="background:linear-gradient(150deg,#1d2b1a,#3c4f2a)"><span>demo</span></div>
+              <div class="t">On the Origin of Species</div><div class="a">C. Darwin</div>
+              <div class="st v"><i></i>2 witnesses</div>
+            </div>
+            <div class="bk">
+              <div class="cover" style="background:linear-gradient(150deg,#2a2230,#453352)"><span>demo</span></div>
+              <div class="t">Meditations</div><div class="a">Marcus Aurelius</div>
+              <div class="st v"><i></i>3 witnesses</div>
+            </div>
+            <div class="bk">
+              <div class="cover" style="background:linear-gradient(150deg,#33261a,#5a3f24)"><span>demo</span></div>
+              <div class="t">The Wealth of Nations</div><div class="a">A. Smith</div>
+              <div class="st c"><i></i>1 witness</div>
+            </div>
+            <div class="bk">
+              <div class="cover" style="background:linear-gradient(150deg,#16292e,#1f4650)"><span>demo</span></div>
+              <div class="t">Walden</div><div class="a">H. D. Thoreau</div>
+              <div class="st v"><i></i>2 witnesses</div>
+            </div>
+          </div>
+          <div class="linkrow">
+            <b>Selected:</b> edition claim “1962” — corroborated by 2 independent sources<br>
+            <b>Rejected as witness:</b> 1 commercial listing · <b>Held as claim:</b> 1 model-generated summary
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="read rv" href="km-for-museums.html">
+      <div>
+        <div class="k">Long read · 12 minutes</div>
+        <h3>Modern Knowledge Management for Museums</h3>
+        <p>What changes for visitors, curators and repeat visitation when a collection can finally be asked a question — and why “we don't know” becomes the most valuable answer a museum can give.</p>
+      </div>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= HONESTY ================= -->
+<section id="honest">
+  <div class="wrap">
+    <div class="eyebrow rv">07 — Where we're honest with you</div>
+    <div class="grid-2">
+      <div class="rv"><h2>What this is not, and what it asks of your team.</h2></div>
+      <div class="rv"><p class="lede">We'd rather lose the engagement than have you discover this in month four.</p></div>
+    </div>
+    <div class="gaps">
+      <div class="gap rv"><div class="k">Needs your specialists</div><div><h4>Curatorial time is the real cost of the engagement</h4><p>Not our fees — their calendars. Expect senior specialists in working sessions on a regular rhythm. If that time can't be committed, the work will not hold.</p></div></div>
+      <div class="gap rv"><div class="k">Does not replace scholarship</div><div><h4>Only a curator promotes a claim to an established fact</h4><p>The system holds claims and their evidence. It never adjudicates. Anyone telling you a machine can do that research is selling you a liability.</p></div></div>
+      <div class="gap rv"><div class="k">Not a quick fix</div><div><h4>This is a design exercise before it is a technology one</h4><p>The hard part is getting departments to agree on terminology they have each held privately for decades. No product shortcuts that.</p></div></div>
+      <div class="gap rv"><div class="k">Not a body shop</div><div><h4>We won't run this as an outsourced digitisation project</h4><p>If you want a firm to go away and return with a finished knowledge graph, we're the wrong partner — and that deliverable tends to be abandoned within a year anyway.</p></div></div>
+      <div class="gap rv"><div class="k">Deliberately narrow</div><div><h4>We don't do institution-wide big-bang programmes</h4><p>One collection, one enquiry, end to end — then widen. Modelling everything at once is how these projects die.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= CTA ================= -->
+<section id="contact" class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <div class="eyebrow rv">08 — Start the conversation</div>
+    <h2 class="rv">Bring your curators and the enquiry you couldn't answer.</h2>
+    <p class="lede rv">
+      A 90-minute working session, not a sales pitch: your specialists and ours take one real exhibition
+      question, reference enquiry or provenance investigation and map what your institution would need to
+      know for it to be answerable. You keep that map whether or not we work together.
+    </p>
+    <form id="wl" class="rv" novalidate>
+      <div class="frow">
+        <input type="text" id="name" placeholder="Name" aria-label="Name" autocomplete="name">
+        <input type="text" id="org" placeholder="Institution" aria-label="Institution" autocomplete="organization">
+      </div>
+      <div class="frow">
+        <input type="email" id="email" placeholder="Work email" aria-label="Work email" autocomplete="email" required>
+      </div>
+      <button class="btn" type="submit">Request a briefing</button>
+    </form>
+    <div class="ok" id="ok">Received. We'll reply within two business days to find a time.</div>
+    <p class="form-note rv">Or write directly — hello@neogens.co</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-in">
+      <div>
+        <div class="f-brand">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="5" r="2.6" stroke="#B8F04A" stroke-width="1.5"/>
+            <circle cx="5" cy="18" r="2.6" stroke="#EDEBE6" stroke-width="1.5"/>
+            <circle cx="19" cy="18" r="2.6" stroke="#EDEBE6" stroke-width="1.5"/>
+            <path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="#6E757D" stroke-width="1.3"/>
+          </svg>
+          Neo Gens
+        </div>
+        <p class="f-tag">Don't ask AI what's true. Ask it what it has seen.</p>
+      </div>
+      <div class="f-cols">
+        <div class="f-col">
+          <div class="h">The practice</div>
+          <a href="#problem">The problem</a>
+          <a href="#what">What Modern KM is</a>
+              <a href="#services">What we do together</a>
+          <a href="#engagement">Engagement</a>
+          <a href="#honest">What we won't do</a>
+        </div>
+        <div class="f-col">
+          <div class="h">KM for Museums</div>
+          <a href="#visit">01 · Where it stands today</a>
+          <a href="#experience">02 · What changes for the visitor</a>
+          <a href="#museums">03 · What leadership looks like</a>
+          <a href="km-for-museums.html">Long read: KM for museums</a>
+          <a href="#proof">Reference implementation</a>
+        </div>
+        <div class="f-col">
+          <div class="h">Company</div>
+          <p>Neo Gens Co., Ltd.</p>
+          <a href="mailto:hello@neogens.co">hello@neogens.co</a>
+          <a href="th-index.html">ฉบับภาษาไทย</a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Neo Gens Co., Ltd.</span>
+      <span>We help you turn knowledge into wisdom.</span>
+    </div>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var s=function(){nav.classList.toggle('stuck',window.scrollY>8)};s();
+  window.addEventListener('scroll',s,{passive:true});
+
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -7% 0px',threshold:.05});
+    rvs.forEach(function(el){io.observe(el)});
+  } else { rvs.forEach(function(el){el.classList.add('in')}); }
+
+  // depth switcher
+  var DEPTHS=[
+    {
+      q:'“Why is this rock stripy?”',
+      a:'Every stripe is one flood. Mud settles, dries, and waits — then the next flood puts another layer on top. <b>Squeeze wet sand between your hands and let it dry.</b> Do it again tomorrow. That is the whole thing, only much slower.',
+      t:[
+        ['good','<b>Route taken:</b> straight to a physical analogy — no prerequisite chain, no history'],
+        ['good','<b>Nothing to read:</b> the explanation is something you do with your hands'],
+        ['good','<b>Leaves with:</b> one correct picture that later learning can attach to']
+      ]
+    },
+    {
+      q:'“Why is this rock stripy?”',
+      a:'Each band is a period of deposition, laid down and buried by the next. <b>People here have read riverbanks this way for a very long time</b> — knowing from the colour of a cut bank which season put it there, and whether the ground can be planted. The rock in this case is the same reading, over a far longer stretch of time.',
+      t:[
+        ['good','<b>Route taken:</b> the concept, then its counterpart in knowledge the visitor already holds'],
+        ['good','<b>Also offered:</b> the sample in this collection taken from a river the visitor knows'],
+        ['good','<b>Leaves with:</b> a bridge, not a correction']
+      ]
+    },
+    {
+      q:'“Why is this rock stripy?”',
+      a:'You know how bedding forms. <b>What this collection can show you is the argument</b> — the two datings of this formation that disagreed for a decade, the evidence that eventually settled it, and which of the original objections was never actually answered. There is also one sample in our store that does not fit the sequence at all.',
+      t:[
+        ['good','<b>Route taken:</b> skips the explanation entirely, goes to the history of the dispute'],
+        ['good','<b>Also offered:</b> the primary material, because this visitor will ask for it'],
+        ['good','<b>Leaves with:</b> something they did not already know — which is the whole job here']
+      ]
+    }
+  ];
+  var dq=document.getElementById('depthQ'), da=document.getElementById('depthA'), dt=document.getElementById('depthT');
+  var dbtns=[].slice.call(document.querySelectorAll('.switch button[data-d]'));
+  function paintDepth(i){
+    var d=DEPTHS[i];
+    dq.textContent=d.q;
+    da.innerHTML=d.a;
+    dt.innerHTML=d.t.map(function(x){return '<div class="tr '+x[0]+'"><i></i><span>'+x[1]+'</span></div>';}).join('');
+    dbtns.forEach(function(b,j){
+      b.classList.toggle('on',j===i);
+      b.setAttribute('aria-selected',j===i?'true':'false');
+    });
+  }
+  dbtns.forEach(function(b,j){b.addEventListener('click',function(){paintDepth(j)})});
+  if(dbtns.length) paintDepth(0);
+
+  var form=document.getElementById('wl');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=document.getElementById('email').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){document.getElementById('email').focus();return;}
+    form.style.display='none';
+    document.getElementById('ok').style.display='block';
+  });
+})();
+</script>
 </body>
 </html>
