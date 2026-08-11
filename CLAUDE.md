@@ -1,0 +1,29 @@
+# Neo Gens Website
+
+เว็บไซต์ neogens.co สำนักที่ปรึกษาด้าน Modern Knowledge Management สำหรับพิพิธภัณฑ์ ห้องสมุด และหอจดหมายเหตุ
+
+## ที่อยู่โปรเจกต์
+
+`/Users/noppadolweerakitti/projects/neogens-website` — โฟลเดอร์นี้คือ repo และคือตัวเว็บ ไม่มี build step
+
+## โครงสร้าง
+
+ไฟล์ HTML แบบ static ไฟล์เดียวจบต่อหนึ่งหน้า CSS และ JS อยู่ในไฟล์เดียวกัน
+
+หน้าภาษาอังกฤษอยู่ที่ราก เช่น `index.html`, `experience.html`
+หน้าภาษาไทยใช้คำนำหน้า `th-` เช่น `th-index.html`, `th-experience.html`
+
+**แก้ copy ที่ไหน ต้องแก้อีกภาษาให้ตรงกันเสมอ** และต้องเช็กว่าประโยคเดียวกันไปโผล่หน้าอื่นหรือไม่ ประโยคแกนหลายประโยคซ้ำอยู่หลายหน้า เช่น ประโยคเรื่อง visitor-facing AI อยู่ทั้ง `index.html`, `experience.html` และ `km-for-museums-and-libraries.html`
+
+ทุกครั้งที่แก้ copy ให้ตรวจ `<title>`, `meta name="description"`, `og:description`, `alt` และ `aria-label` ด้วย เป็นจุดที่ข้อความเก่าค้างบ่อย
+
+## Deploy
+
+Noppadol เป็นคน deploy เอง ผ่าน `publish.command` ที่ราก repo (โฮสต์บน GitHub Pages มี CNAME)
+Claude แก้ไฟล์อย่างเดียว ไม่ต้อง commit หรือ push ให้ นอกจากจะสั่ง
+
+## ภาษาไทย
+
+ใช้สกิล `neogens-thai-voice` ทุกครั้งที่เขียนหรือแก้ข้อความภาษาไทยของ Neo Gens
+
+กฎที่พลาดบ่อย ห้ามใช้ letter-spacing ค่าติดลบในกฎ CSS ที่มีข้อความไทย และ line-height ของไทยควรอยู่ที่ 1.75 ถึง 1.9
