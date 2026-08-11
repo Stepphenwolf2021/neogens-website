@@ -525,13 +525,13 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="wrap">
-    <div class="eyebrow">For museums, libraries and archives</div>
-    <h1 class="motto" id="ng-h1">People ask an AI before they come to you — and <em>the answer they get is not yours</em>.</h1>
-    <p class="hero-sub" id="ng-sub">The best answer is in your collection, in your primary sources, and in the head of a specialist who has spent a career with it. None of it was ever written down in a form a machine can read, so it is never counted, never cited, and never reaches the person asking. <strong style="color:var(--fg);font-weight:500">We help you build the layer that lets those answers leave the building.</strong></p>
+    <div class="eyebrow">Modern Knowledge Management for organisations whose knowledge is the asset</div>
+    <h1 class="motto" id="ng-h1">People ask an AI before they ask you — and <em>the answer they get is not yours</em>.</h1>
+    <p class="hero-sub" id="ng-sub">The best answer is inside your organisation: in your documents, in your records, and in the head of someone who has spent a career with the work. None of it was ever written down in a form a machine can read, so it is never counted, never cited, and never reaches the person asking. <strong style="color:var(--fg);font-weight:500">We help you build the layer that lets those answers reach people again.</strong></p>
 <script>
 /* หัวข้อสามแบบ สลับตอนเปิดหน้า ไม่ใช่ตัวจับเวลา — ไม่มีอะไรขยับระหว่างที่คนกำลังอ่าน */
 (function(){
-  var V = [["People ask an AI before they come to you — and <em>the answer they get is not yours</em>.", "The best answer is in your collection, in your primary sources, and in the head of a specialist who has spent a career with it. None of it was ever written down in a form a machine can read, so it is never counted, never cited, and never reaches the person asking. <strong style=\"color:var(--fg);font-weight:500\">We help you build the layer that lets those answers leave the building.</strong>"], ["You are sitting on knowledge nobody else in the world has — and <em>it cannot leave the building</em>.", "Real objects with documented provenance, primary sources, a century of scholarship, and the memory of people approaching retirement. All of it correct, all of it valuable, and all of it held in a shape people cannot find and machines cannot read. <strong style=\"color:var(--fg);font-weight:500\">We help you change the shape — and your institution keeps ownership of every part of it.</strong>"], ["The better AI gets, <em>the more your knowledge is worth</em> — if it can reach anyone.", "When public knowledge is equally available to everyone, the only thing that still makes a difference is the knowledge held inside your institution. It is still held in a shape today’s audiences cannot reach, and the machines now answering in your place cannot read. <strong style=\"color:var(--fg);font-weight:500\">We help you build the layer that lets what you already have reach people again.</strong>"]];
+  var V = [["People ask an AI before they ask you — and <em>the answer they get is not yours</em>.", "The best answer is inside your organisation: in your documents, in your records, and in the head of someone who has spent a career with the work. None of it was ever written down in a form a machine can read, so it is never counted, never cited, and never reaches the person asking. <strong style=\"color:var(--fg);font-weight:500\">We help you build the layer that lets those answers reach people again.</strong>"], ["You are sitting on knowledge nobody else has — and <em>it cannot leave the building</em>.", "Primary records, a decade of accumulated data, the lessons of the projects that worked and the ones that didn't, and the memory of people approaching retirement. All of it correct, all of it valuable, and all of it sitting in separate silos in a shape people cannot find and machines cannot read. <strong style=\"color:var(--fg);font-weight:500\">We help you change the shape — and you keep ownership of every part of it.</strong>"], ["The better AI gets, <em>the more your own knowledge is worth</em>.", "When public knowledge is equally available to everyone, the only thing that still sets one organisation apart is what it knows internally. That knowledge is still held in a shape the people asking cannot reach, and the machines now answering in your place cannot read. <strong style=\"color:var(--fg);font-weight:500\">We help you build the layer that lets what you already have reach people again.</strong>"]];
   try{
     var i = (parseInt(localStorage.getItem('ng-hero')||'0',10)+1) % V.length;
     localStorage.setItem('ng-hero', i);
@@ -541,7 +541,7 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
 })();
 </script>
     <div class="pull">
-      <b>Let an AI answer visitors in your name and one wrong answer shakes public trust in the institution. Field none at all, and the question becomes why the institution everyone expects to lead on knowledge has not moved.</b>
+      <b>Let an AI answer in your name and one wrong answer shakes public trust in the organisation. Field none at all, and the question becomes why the organisation everyone expects to lead on knowledge has not moved.</b>
       <span>Acting carries risk. So does standing still.</span>
     </div>
     <div class="hero-cta">
@@ -549,16 +549,56 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
       <a class="btn btn-ghost" href="problem.html">Start with the problem</a>
       <span class="hero-note">90 minutes, with your team in the room.</span>
     </div>
+  </div>
+</header>
 
-    <div class="practice">
+<section class="pband" id="why-now">
+  <div class="wrap">
+    <div class="pb-k">The big picture</div>
+    <div class="pb-t">Fasten the first button wrong,<br>and every button after it is wrong.</div>
+    <div class="pb-d">Every organisation is about to put AI to work. The question that decides the outcome is not which model you choose. It is what that model is standing on.</div>
+    <div class="cards2">
+      <div class="card rv">
+        <div class="k go">01</div>
+        <h3>Public knowledge has become a commodity</h3>
+        <p>AI now answers almost any general question. The day that became true, access to public knowledge stopped being an advantage. What still separates one organisation from another is what it knows internally — and nothing else.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">02</div>
+        <h3>Internal knowledge is an asset, not something to hand over</h3>
+        <p>Sending your internal records out to be trained on means handing the asset to somebody else. And most organisations have no team of AI engineers on staff to catch what a model learned wrong, the way the largest companies do.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">03</div>
+        <h3>The first button is preparing your own knowledge</h3>
+        <p>Establish how accurate the data in each silo really is and how the silos relate, then assemble that into a structure solid enough for AI to follow without wandering off. This part cannot be outsourced in full. It takes the people who know the work.</p>
+      </div>
+      <div class="card rv">
+        <div class="k go">04</div>
+        <h3>Knowledge managed well becomes value someone can use</h3>
+        <p>An organisation's future rests on what it can do with the knowledge it already holds — for its own people, its customers, its partners, its society, its country, and the world it operates in.</p>
+      </div>
+    </div>
+    <div class="pb-d" style="margin-top:34px">Neo Gens works at that first button, with a mission-driven ontology and knowledge graph: a structure that holds both what your organisation knows and how it came to know it.</div>
+    <div class="pb-nav">
+      <a href="what.html">What it is</a>
+      <a href="why.html">Why it works</a>
+      <a href="problem.html">Start with the problem</a>
+    </div>
+  </div>
+</section>
+
+<section id="first-practice">
+  <div class="wrap">
+    <div class="practice" style="margin-top:0">
       <span class="pk">First practice area</span>
       <span class="pt">Modern Knowledge Management for Museums &amp; Libraries</span>
-      <span class="pd">Museums, libraries and archives have practised this discipline longer than anyone. It's where the method proves itself first — and where the stakes of getting AI wrong are highest.</span>
+      <span class="pd">The method applies to any industry. We start with museums, libraries and archives because they have practised this discipline longer than anyone, because they set the standards the rest of the field borrows, and because that is where the cost of getting AI wrong is highest. Other practice areas follow.</span>
       <a class="btn btn-ghost" href="museums.html">See the practice</a>
     </div>
   </div>
-</header>
-<section class="hub"><div class="wrap"><div class="h" style="color:var(--mute)">Read in order, or jump to what you need.</div><div class="hg"><div class="h">The practice</div><div class="hub-cards"><a href="problem.html"><div class="n">The problem</div><div class="t">The institutions that invented knowledge management are being left behind by organisations…</div></a><a href="what.html"><div class="n">What it is</div><div class="t">The difference is one layer — and where you put it.</div></a><a href="why.html"><div class="n">Why it works</div><div class="t">Your knowledge exists. It just can&#x27;t be traversed.</div></a></div></div><div class="hg"><div class="h">KM for Museums & Libraries</div><div class="hub-cards"><a href="visit.html"><div class="n">01 · Where it stands today</div><div class="t">The institutions with the best knowledge in the room are losing the room.</div></a><a href="experience.html"><div class="n">02 · Visitors and readers</div><div class="t">The holdings don&#x27;t change. The paths through them do.</div></a><a href="museums.html"><div class="n">03 · What leadership looks like</div><div class="t">Leadership in this era means being upstream.</div></a></div></div><div class="hg"><div class="h">Working together</div><div class="hub-cards"><a href="services.html"><div class="n">What we do together</div><div class="t">We don&#x27;t build your knowledge layer for you. We build it with your specialists.</div></a><a href="engagement.html"><div class="n">Engagement</div><div class="t">A joint team of your specialists and ours, working on the enquiries your institution could not answer.</div></a><a href="proof.html"><div class="n">Reference implementation</div><div class="t">We catalogued our own collection to your standards before advising anyone.</div></a><a href="honest.html"><div class="n">What we won't do</div><div class="t">What this is not, and what it asks of your team.</div></a><a href="about.html"><div class="n">Who is behind this</div><div class="t">More than 35 years inside the institutions this work is for.</div></a></div></div></div></section>
+</section>
+<section class="hub"><div class="wrap"><div class="h" style="color:var(--mute)">Read in order, or jump to what you need.</div><div class="hg"><div class="h">The practice</div><div class="hub-cards"><a href="problem.html"><div class="n">The problem</div><div class="t">The institutions that invented knowledge management are being left behind by organisations…</div></a><a href="what.html"><div class="n">What it is</div><div class="t">The difference is one layer — and where you put it.</div></a><a href="why.html"><div class="n">Why it works</div><div class="t">Your knowledge exists. It just can&#x27;t be traversed.</div></a></div></div><div class="hg"><div class="h">First practice area · KM for Museums & Libraries</div><div class="hub-cards"><a href="visit.html"><div class="n">01 · Where it stands today</div><div class="t">The institutions with the best knowledge in the room are losing the room.</div></a><a href="experience.html"><div class="n">02 · Visitors and readers</div><div class="t">The holdings don&#x27;t change. The paths through them do.</div></a><a href="museums.html"><div class="n">03 · What leadership looks like</div><div class="t">Leadership in this era means being upstream.</div></a></div></div><div class="hg"><div class="h">Working together</div><div class="hub-cards"><a href="services.html"><div class="n">What we do together</div><div class="t">We don&#x27;t build your knowledge layer for you. We build it with your specialists.</div></a><a href="engagement.html"><div class="n">Engagement</div><div class="t">A joint team of your specialists and ours, working on the enquiries your institution could not answer.</div></a><a href="proof.html"><div class="n">Reference implementation</div><div class="t">We catalogued our own collection to your standards before advising anyone.</div></a><a href="honest.html"><div class="n">What we won't do</div><div class="t">What this is not, and what it asks of your team.</div></a><a href="about.html"><div class="n">Who is behind this</div><div class="t">More than 35 years inside the institutions this work is for.</div></a></div></div></div></section>
 <section id="contact" class="cta">
   <div class="cta-bg"></div>
   <div class="wrap">
