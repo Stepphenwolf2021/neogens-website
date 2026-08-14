@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="55mm" viewBox="0 0 900 550" role="img" aria-label="Neo Gens — Turn knowledge into value-creating assets">
+  <defs>
+    <pattern id="gridb" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glowb" cx="50%" cy="50%" r="66%">
+      <stop offset="0%" stop-color="#B8F04A" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#B8F04A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="550" fill="#08090A"/>
+  <rect width="900" height="550" fill="url(#gridb)"/>
+  <rect width="900" height="550" fill="url(#glowb)"/>
+
+  <g transform="translate(450,150)" fill="none">
+    <g transform="scale(2.4) translate(-12,-12)">
+      <circle cx="12" cy="5" r="2.6" stroke="#B8F04A" stroke-width="1.5"/>
+      <circle cx="5" cy="18" r="2.6" stroke="#EDEBE6" stroke-width="1.5"/>
+      <circle cx="19" cy="18" r="2.6" stroke="#EDEBE6" stroke-width="1.5"/>
+      <path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="#6E757D" stroke-width="1.3"/>
+    </g>
+  </g>
+
+  <g text-anchor="middle" font-family="IBM Plex Sans Thai, Inter, Helvetica Neue, Arial, sans-serif">
+    <text x="450" y="290" font-size="38" font-weight="600" fill="#EDEBE6" letter-spacing="-0.3">Turn knowledge into</text>
+    <text x="450" y="340" font-size="38" font-weight="600" fill="#B8F04A" letter-spacing="-0.3">value-creating assets.</text>
+  </g>
+
+  <line x1="370" y1="392" x2="530" y2="392" stroke="#B8F04A" stroke-opacity="0.45" stroke-width="1.5"/>
+
+  <text x="450" y="440" text-anchor="middle" font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="13.5" fill="#6E757D" letter-spacing="1.9">MODERN KNOWLEDGE MANAGEMENT</text>
+  <text x="450" y="472" text-anchor="middle" font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="14.5" fill="#A2A8AF" letter-spacing="0.6">www.neogens.co</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="55mm" viewBox="0 0 900 550" role="img" aria-label="Neo Gens — Turn knowledge into value-creating assets">
+  <defs>
+    <pattern id="gridb" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#15181C" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="550" fill="#FCFBF8"/>
+  <rect width="900" height="550" fill="url(#gridb)"/>
+
+  <g transform="translate(450,150)" fill="none">
+    <g transform="scale(2.4) translate(-12,-12)">
+      <circle cx="12" cy="5" r="2.6" stroke="#4C7A0B" stroke-width="1.5"/>
+      <circle cx="5" cy="18" r="2.6" stroke="#15181C" stroke-width="1.5"/>
+      <circle cx="19" cy="18" r="2.6" stroke="#15181C" stroke-width="1.5"/>
+      <path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="#79818A" stroke-width="1.3"/>
+    </g>
+  </g>
+
+  <g text-anchor="middle" font-family="IBM Plex Sans Thai, Inter, Helvetica Neue, Arial, sans-serif">
+    <text x="450" y="290" font-size="38" font-weight="600" fill="#15181C" letter-spacing="-0.3">Turn knowledge into</text>
+    <text x="450" y="340" font-size="38" font-weight="600" fill="#4C7A0B" letter-spacing="-0.3">value-creating assets.</text>
+  </g>
+
+  <line x1="370" y1="392" x2="530" y2="392" stroke="#4C7A0B" stroke-opacity="0.55" stroke-width="1.5"/>
+
+  <text x="450" y="440" text-anchor="middle" font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="13.5" fill="#79818A" letter-spacing="1.9">MODERN KNOWLEDGE MANAGEMENT</text>
+  <text x="450" y="472" text-anchor="middle" font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="14.5" fill="#4C535A" letter-spacing="0.6">www.neogens.co</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="55mm" viewBox="0 0 900 550" role="img" aria-label="Noppadol Weerakitti, CEO and Chief Knowledge Officer, Neo Gens Co., Ltd.">
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#15181C" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="550" fill="#FCFBF8"/>
+  <rect width="900" height="550" fill="url(#grid)"/>
+
+  <g transform="translate(690,275)" opacity="0.09" fill="none">
+    <g transform="scale(11) translate(-12,-12)">
+      <circle cx="12" cy="5" r="2.6" stroke="#4C7A0B" stroke-width="1.5"/>
+      <circle cx="5" cy="18" r="2.6" stroke="#15181C" stroke-width="1.5"/>
+      <circle cx="19" cy="18" r="2.6" stroke="#15181C" stroke-width="1.5"/>
+      <path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="#15181C" stroke-width="1.3"/>
+    </g>
+  </g>
+
+  <g transform="translate(64,58)">
+    <g transform="scale(2.05)" fill="none">
+      <circle cx="12" cy="5" r="2.6" stroke="#4C7A0B" stroke-width="1.5"/>
+      <circle cx="5" cy="18" r="2.6" stroke="#15181C" stroke-width="1.5"/>
+      <circle cx="19" cy="18" r="2.6" stroke="#15181C" stroke-width="1.5"/>
+      <path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="#79818A" stroke-width="1.3"/>
+    </g>
+    <text x="64" y="20" font-family="IBM Plex Sans Thai, Inter, Helvetica Neue, Arial, sans-serif" font-size="27" font-weight="600" fill="#15181C" letter-spacing="0.2">Neo Gens</text>
+    <text x="64" y="41" font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="12.5" fill="#79818A" letter-spacing="1.9">MODERN KNOWLEDGE MANAGEMENT</text>
+  </g>
+
+  <g transform="translate(64,280)">
+    <text x="0" y="0" font-family="Sukhumvit Set, Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Helvetica Neue, sans-serif" font-size="36" font-weight="600" fill="#15181C">นพดล วีรกิตติ</text>
+    <text x="0" y="38" font-family="IBM Plex Sans Thai, Inter, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="500" fill="#15181C" letter-spacing="-0.2">Noppadol Weerakitti</text>
+    <text x="0" y="72" font-family="IBM Plex Sans Thai, Inter, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="500" fill="#4C7A0B" letter-spacing="0.3">ceo &amp; chief knowledge officer</text>
+    <text x="0" y="98" font-family="IBM Plex Sans Thai, Inter, Helvetica Neue, Arial, sans-serif" font-size="17" fill="#4C535A">Neo Gens Co., Ltd.</text>
+  </g>
+
+  <line x1="64" y1="404" x2="836" y2="404" stroke="#15181C" stroke-opacity="0.14" stroke-width="1"/>
+
+  <g font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="15.5" fill="#4C535A">
+    <text x="64" y="447">noppadol@neogens.co</text>
+    <text x="64" y="477">+66 81 925 7748</text>
+    <text x="64" y="507" fill="#4C7A0B">www.neogens.co</text>
+  </g>
+
+  <g text-anchor="end" font-family="JetBrains Mono, IBM Plex Mono, Menlo, monospace" font-size="12.5" fill="#79818A">
+    <text x="836" y="479">437/8 Senanikom 1 Yak 17, Phaholyothin 32 Road</text>
+    <text x="836" y="503">Senanikom, Jatujak, Bangkok 10900, Thailand</text>
+  </g>
+</svg>
