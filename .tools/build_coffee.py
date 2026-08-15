@@ -1,0 +1,611 @@
+# -*- coding: utf-8 -*-
+"""Build coffee.html + th-coffee.html from Noppadol's uploaded article files.
+
+Rule: every sentence of the article is copied verbatim from the uploaded files.
+Nothing is reworded. Only structural wrappers are added.
+"""
+import io, os, re, sys
+
+UP = '/sessions/practical-pensive-rubin/mnt/uploads'
+OUT = '/sessions/practical-pensive-rubin/mnt/neogens-website'
+
+# ---------------------------------------------------------------- parse source
+
+def parse_body(path):
+    s = io.open(path, encoding='utf-8').read()
+    body = s.split('<article class="wrap">')[1].split('</article>')[0]
+    blocks = []
+    i = 0
+    n = len(body)
+    pat = re.compile(r'<(figure|blockquote|ul|h1|h2|h3|p|hr|div)\b')
+    while i < n:
+        m = pat.search(body, i)
+        if not m:
+            break
+        tag = m.group(1)
+        start = m.start()
+        if tag == 'hr':
+            end = body.index('>', start) + 1
+            blocks.append(('hr', ''))
+            i = end
+            continue
+        close = '</%s>' % tag
+        end = body.index(close, start) + len(close)
+        blocks.append((tag, body[start:end]))
+        i = end
+    return blocks
+
+
+def inner(html, tag):
+    m = re.match(r'<%s[^>]*>(.*)</%s>$' % (tag, tag), html, re.S)
+    return m.group(1).strip() if m else html
+
+
+def strip_tags(html):
+    return re.sub(r'<[^>]+>', '', html).strip()
+
+
+def slug(txt, i):
+    return 's%02d' % i
+
+# ------------------------------------------------------------- card detection
+
+LEAD = re.compile(r'^<p><strong>(.*?)</strong>\s*(.*)</p>$', re.S)
+
+
+def as_card(block):
+    if block[0] != 'p':
+        return None
+    m = LEAD.match(block[1].strip())
+    if not m:
+        return None
+    return m.group(1).strip(), m.group(2).strip()
+
+# ------------------------------------------------------------------ rendering
+
+def render(blocks, L):
+    out = []
+    toc = []
+    sec = 0
+    i = 0
+    figno = 0
+    first_para_done = False
+    in_sources = [False]
+    while i < len(blocks):
+        tag, html = blocks[i]
+
+        if tag == 'div':           # source eyebrow — replaced by our header
+            i += 1
+            continue
+        if tag == 'h1':            # title — moved into the page header
+            i += 1
+            continue
+        if tag == 'hr':
+            i += 1
+            continue
+
+        if tag == 'h2':
+            sec += 1
+            t = inner(html, 'h2')
+            sid = slug(t, sec)
+            toc.append((sid, sec, t))
+            out.append('<h2 class="rv" id="%s"><span class="sn">%02d</span>%s</h2>' % (sid, sec, t))
+            i += 1
+            continue
+
+        if tag == 'h3':
+            in_sources[0] = True          # the only h3 in the article is Sources
+            out.append('<h3 class="rv srcs-h">%s</h3>' % inner(html, 'h3'))
+            i += 1
+            continue
+
+        if tag == 'blockquote':
+            q = inner(html, 'blockquote')
+            out.append('<div class="pq rv"><blockquote>%s</blockquote></div>' % q)
+            i += 1
+            continue
+
+        if tag == 'figure':
+            figno += 1
+            svg = re.search(r'<svg.*?</svg>', html, re.S).group(0)
+            cap = re.search(r'<figcaption>(.*?)</figcaption>', html, re.S)
+            cap = cap.group(1).strip() if cap else ''
+            out.append(
+                '<figure class="figplate rv">'
+                '<div class="plate">%s</div>'
+                '<figcaption>%s</figcaption></figure>' % (svg, cap))
+            i += 1
+            continue
+
+        if tag == 'ul':
+            lis = re.findall(r'<li>(.*?)</li>', html, re.S)
+            cls = 'srcs-list' if in_sources[0] else 'body'
+            out.append('<ul class="%s rv">%s</ul>' %
+                       (cls, ''.join('<li>%s</li>' % x.strip() for x in lis)))
+            i += 1
+            continue
+
+        if tag == 'p':
+            # subtitle + byline belong to the page header, not the body
+            if html.startswith('<p class="sub">') or html.startswith('<p class="meta">'):
+                i += 1
+                continue
+            # run of lead-in paragraphs -> card grid
+            run = []
+            j = i
+            while j < len(blocks):
+                c = as_card(blocks[j])
+                if not c:
+                    break
+                run.append(c)
+                j += 1
+            if len(run) >= 3:
+                cols = 'three' if len(run) == 3 else 'two'
+                cards = ''.join(
+                    '<div class="pc"><h4>%s</h4><p>%s</p></div>' % (t, b) for t, b in run)
+                out.append('<div class="pcards %s rv">%s</div>' % (cols, cards))
+                i = j
+                continue
+
+            txt = inner(html, 'p')
+            plain = strip_tags(html)
+            cls = []
+            if not first_para_done:
+                cls.append('first drop')
+                first_para_done = True
+            # A short standalone line becomes a display line only when it stands
+            # on its own — not when it introduces a card grid or a list.
+            nxt = blocks[i + 1] if i + 1 < len(blocks) else ('', '')
+            leads_into_group = (nxt[0] == 'ul') or (as_card(nxt) is not None)
+            if len(plain) < 70 and '<a ' not in html and not leads_into_group:
+                out.append('<p class="beat rv">%s</p>' % txt)
+                i += 1
+                continue
+            if html.strip().startswith('<p><em>') and html.strip().endswith('</em></p>'):
+                out.append('<p class="colophon rv">%s</p>' % txt)
+                i += 1
+                continue
+            out.append('<p class="%s">%s</p>' % (' '.join(cls), txt))
+            i += 1
+            continue
+
+        i += 1
+    return '\n'.join(out), toc
+
+# --------------------------------------------------------------------- shells
+
+GA = '''<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TPBNZQKVWE');
+</script>'''
+
+THEME_BOOT = '<script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>'
+
+GLYPH = '<svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg>'
+
+TGL = '<button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>'
+
+BURGER = '<button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>'
+
+TAIL = '''<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog');
+  function onScroll(){
+    nav.classList.toggle('stuck',window.scrollY>8);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+    rvs.forEach(function(el){io.observe(el)});
+  } else { rvs.forEach(function(el){el.classList.add('in')}); }
+
+  var heads=[].slice.call(document.querySelectorAll('article h2[id]'));
+  var tocLinks={};
+  [].slice.call(document.querySelectorAll('.toc a')).forEach(function(a){ tocLinks[a.getAttribute('href').slice(1)]=a; });
+  if('IntersectionObserver' in window && heads.length){
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var a=tocLinks[e.target.id];
+        if(!a) return;
+        if(e.isIntersecting){
+          [].slice.call(document.querySelectorAll('.toc a.on')).forEach(function(x){x.classList.remove('on')});
+          a.classList.add('on');
+        }
+      });
+    },{rootMargin:'-70px 0px -75% 0px',threshold:0});
+    heads.forEach(function(h){spy.observe(h)});
+  }
+
+  function ngSetTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('ng-theme',t)}catch(e){}}
+  [].slice.call(document.querySelectorAll('.tgl')).forEach(function(b){
+    b.addEventListener('click',function(){
+      ngSetTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
+    });
+  });
+  var ngB=document.getElementById('burger'), ngD=document.getElementById('drawer');
+  if(ngB&&ngD){
+    ngB.addEventListener('click',function(){
+      var o=ngD.classList.toggle('open');
+      ngB.classList.toggle('x',o);
+      ngB.setAttribute('aria-expanded',o?'true':'false');
+    });
+    ngD.addEventListener('click',function(e){ if(e.target.tagName==='A'){ngD.classList.remove('open');ngB.classList.remove('x');ngB.setAttribute('aria-expanded','false');} });
+  }
+})();</script>
+</body>
+</html>'''
+
+
+def css(lang):
+    thai = lang == 'th'
+    sans = ("'IBM Plex Sans Thai','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+            if thai else "'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif")
+    mono = ("'IBM Plex Sans Thai','JetBrains Mono',ui-monospace,monospace"
+            if thai else "'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace")
+    serif = ("'IBM Plex Sans Thai',Georgia,serif" if thai else "'Instrument Serif',Georgia,serif")
+    lh = '1.9' if thai else '1.72'
+    lh_tight = '1.75' if thai else '1.6'
+    h_lh = '1.4' if thai else '1.12'
+    ls = '0' if thai else '-.03em'
+    ls_h1 = '0' if thai else '-.04em'
+    drop = '' if thai else '''
+.artbody > p.drop::first-letter{font-family:var(--serif);font-size:3.3em;line-height:.86;float:left;padding:8px 12px 0 0;color:var(--fg)}'''
+    # Thai needs room for tone marks: no tight tracking, no line-height below 1.75
+    btn_ls = '' if thai else 'letter-spacing:-.01em;'
+    btn_lh = 'line-height:1.75;' if thai else ''
+    bt_lh = '1.75' if thai else '1.1'
+    return '''<style>
+:root{ --go-rgb:184,240,74; --guess-rgb:232,163,61; --ask-rgb:127,199,232; --w-rgb:255,255,255;
+  --bg:#08090A; --bg-2:#0D0F11; --surface:#111417; --surface-2:#171B1F;
+  --line:rgba(var(--w-rgb),.09); --line-2:rgba(var(--w-rgb),.18);
+  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#6E757D;
+  --go:#B8F04A; --guess:#E8A33D; --ask:#7FC7E8;
+  --sans:%(sans)s;
+  --serif:%(serif)s;
+  --mono:%(mono)s;
+  --pad:clamp(20px,5vw,60px);
+  --measure:680px;
+  --on-go:#08090A;
+  --go-soft:rgba(var(--go-rgb),.09); --go-line:rgba(var(--go-rgb),.30);
+  --ask-soft:rgba(var(--ask-rgb),.07);
+  --glass:rgba(8,9,10,.74); --wash:rgba(var(--w-rgb),.055); --shadow:rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --go-rgb:76,122,11; --guess-rgb:149,89,10; --ask-rgb:27,100,137; --w-rgb:16,18,20;
+  --bg:#FCFBF8; --bg-2:#F3F1EA; --surface:#FFFFFF; --surface-2:#F6F4ED;
+  --line:rgba(16,18,20,.13); --line-2:rgba(16,18,20,.26);
+  --fg:#15181C; --dim:#4C535A; --mute:#79818A;
+  --go:#4C7A0B; --guess:#95590A; --ask:#1B6489;
+  --on-go:#FFFFFF;
+  --go-soft:rgba(76,122,11,.10); --go-line:rgba(76,122,11,.34);
+  --ask-soft:rgba(27,100,137,.08);
+  --glass:rgba(252,251,248,.82); --wash:rgba(16,18,20,.05); --shadow:rgba(16,18,20,.20);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:18px;line-height:%(lh)s;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--go);color:var(--on-go)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3,h4{letter-spacing:%(ls)s;line-height:%(h_lh)s;font-weight:600;text-wrap:balance}
+p{text-wrap:pretty}
+
+/* nav — scoped to #nav so the in-page contents <nav> is unaffected */
+#nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--glass);border-bottom:1px solid transparent;transition:border-color .3s}
+#nav.stuck{border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.02em;font-size:15.5px;text-decoration:none}
+.brand .bt{font-weight:600;letter-spacing:-.02em;font-size:16px;line-height:%(bt_lh)s}
+.brand .bs{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);display:block;margin-top:2px}
+.glyph{width:20px;height:20px;flex:none}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.on{color:var(--fg)}
+.lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;flex:none}
+.lang a{text-decoration:none;color:var(--mute);transition:color .2s}
+.lang a.on{color:var(--go);font-weight:500}
+.lang span{color:var(--line-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--go);color:var(--on-go);border:none;font-family:var(--sans);font-size:14px;font-weight:600;%(btn_ls)s%(btn_lh)spadding:10px 17px;border-radius:999px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(var(--go-rgb),.22)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
+.tgl{background:transparent;border:1px solid var(--line-2);border-radius:999px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex:none;padding:0;transition:color .2s,border-color .2s}
+.tgl:hover{color:var(--fg);border-color:var(--mute)}
+.tgl svg{width:15px;height:15px;display:block}
+html[data-theme="light"] .tgl .i-moon{display:none}
+html:not([data-theme="light"]) .tgl .i-sun{display:none}
+.nav-mob{display:none;align-items:center;gap:9px;flex:none}
+.burger{background:transparent;border:1px solid var(--line-2);border-radius:10px;width:38px;height:34px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.burger span{display:block;width:16px;height:1.5px;background:var(--fg);transition:transform .22s,opacity .18s}
+.burger.x span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--bg);max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.drawer.open{display:block}
+.drawer .dw{padding:6px var(--pad) 26px;margin:0 auto}
+.drawer .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:20px 0 2px}
+.drawer a{display:block;padding:13px 0;border-bottom:1px solid var(--line);color:var(--dim);text-decoration:none;font-size:16px;line-height:1.35}
+.drawer a.on{color:var(--go)}
+.drawer a.btn{display:flex;justify-content:center;margin-top:22px;padding:15px;border-bottom:none;font-size:15px;color:var(--on-go)}
+@media(min-width:1121px){.drawer{display:none!important}}
+@media(max-width:1120px){.nav-links{display:none!important}.nav-mob{display:flex}.nav-in{height:60px;gap:12px}.brand .bs{display:none}}
+
+/* progress */
+.prog{position:fixed;top:0;left:0;height:2px;background:var(--go);width:0;z-index:200;transition:width .1s linear}
+
+/* header */
+.head{padding:clamp(52px,7vw,88px) 0 clamp(30px,4vw,44px);position:relative;overflow:hidden}
+.head-bg{position:absolute;inset:-30%% -10%% auto -10%%;height:130%%;pointer-events:none;
+  background:radial-gradient(56%% 46%% at 20%% 8%%,var(--go-soft),transparent 66%%),radial-gradient(46%% 42%% at 84%% 22%%,var(--ask-soft),transparent 68%%);filter:blur(8px)}
+.head-grid{position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(64%% 50%% at 40%% 0%%,#000,transparent 78%%);mask-image:radial-gradient(64%% 50%% at 40%% 0%%,#000,transparent 78%%)}
+.head .wrap{position:relative}
+.head .inner{max-width:840px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:22px}
+h1{font-size:clamp(32px,5vw,56px);letter-spacing:%(ls_h1)s;max-width:22ch;margin-bottom:22px}
+.stand{font-size:clamp(18px,2.1vw,22px);line-height:%(lh_tight)s;color:var(--dim);max-width:60ch;font-family:var(--serif);font-weight:400}
+.meta{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:.04em}
+
+/* article grid: content column with wide breakout */
+article{padding:clamp(26px,4vw,44px) 0 clamp(56px,7vw,88px)}
+.artbody{display:grid;grid-template-columns:[full-start] minmax(0,1fr) [wide-start] minmax(0,1fr) [content-start] minmax(0,var(--measure)) [content-end] minmax(0,1fr) [wide-end] minmax(0,1fr) [full-end]}
+.artbody > *{grid-column:content}
+.artbody > .figplate,.artbody > .pq,.artbody > .pcards,.artbody > .toc{grid-column:wide}
+
+.artbody > p{color:var(--dim);margin-bottom:24px}
+.artbody > p.first{color:var(--fg)}%(drop)s
+.artbody strong{color:var(--fg);font-weight:600}
+.artbody em{font-style:italic}
+.artbody a{color:var(--go);text-decoration:none;border-bottom:1px solid rgba(var(--go-rgb),.35)}
+.artbody a:hover{border-bottom-color:var(--go)}
+.artbody h2{font-size:clamp(24px,3vw,33px);margin:clamp(52px,6vw,80px) 0 20px;position:relative;scroll-margin-top:84px}
+.artbody h2:first-of-type{margin-top:14px}
+.artbody h2 .sn{display:block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.16em;color:var(--go);margin-bottom:12px}
+.artbody h3{font-size:clamp(18px,2vw,21px);margin:44px 0 14px}
+.artbody h3.srcs-h{font-size:13px;font-family:var(--mono);font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:36px 0 18px}
+.artbody > p.beat{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);line-height:1.3;color:var(--fg);margin:34px 0 34px;padding-left:18px;border-left:2px solid var(--go)}
+.artbody > p.colophon{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:26px;margin-top:44px}
+
+/* table of contents */
+.toc{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:22px 24px;margin-bottom:clamp(30px,4vw,46px)}
+.toc .h{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px}
+@media(max-width:700px){.toc ol{grid-template-columns:1fr}}
+.toc a{display:flex;gap:11px;align-items:baseline;padding:7px 0;text-decoration:none;color:var(--dim);font-size:14.5px;line-height:1.5;border:0;transition:color .2s}
+.toc a:hover,.toc a.on{color:var(--fg)}
+.toc a i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--mute);flex:none;padding-top:2px}
+.toc a.on i{color:var(--go)}
+
+/* lists */
+ul.body{list-style:none;margin:4px 0 26px;display:flex;flex-direction:column;gap:13px}
+ul.body li{color:var(--dim);padding-left:20px;position:relative}
+ul.body li::before{content:'';position:absolute;left:0;top:%(bullettop)s;width:6px;height:6px;border-radius:50%%;background:var(--go);opacity:.6}
+ul.body li strong{color:var(--fg)}
+ul.srcs-list{list-style:none;margin:4px 0 26px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.65}
+ul.srcs-list li{color:var(--mute);padding-left:18px;position:relative}
+ul.srcs-list li::before{content:'';position:absolute;left:0;top:%(bullettop)s;width:5px;height:1px;background:var(--line-2)}
+ul.srcs-list a{color:var(--dim);border-bottom:1px solid var(--line)}
+ul.srcs-list a:hover{color:var(--go);border-bottom-color:var(--go-line)}
+
+/* pull quote */
+.pq{margin:clamp(40px,5vw,62px) 0}
+.pq blockquote{font-family:var(--serif);font-size:clamp(21px,2.8vw,31px);line-height:%(pqlh)s;color:var(--fg);border-left:2px solid var(--go);padding-left:clamp(20px,3vw,30px)}
+.pq blockquote p{margin:0}
+
+/* paragraph cards */
+.pcards{display:grid;gap:12px;margin:14px 0 30px}
+.pcards.two{grid-template-columns:1fr 1fr}
+.pcards.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.pcards.two,.pcards.three{grid-template-columns:1fr}}
+.pc{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:24px 22px}
+.pc h4{font-size:16.5px;margin-bottom:9px;line-height:1.35;color:var(--fg)}
+.pc p{font-size:15px;line-height:%(lh_tight)s;color:var(--dim);margin:0}
+
+/* figures */
+.figplate{margin:clamp(38px,5vw,60px) 0}
+.plate{background:#faf9f7;border:1px solid var(--line);border-radius:16px;padding:clamp(10px,1.6vw,18px);overflow:hidden}
+.plate svg{width:100%%;height:auto;display:block;max-width:100%%}
+.figplate figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--mute);margin-top:13px;max-width:66ch}
+
+/* closing band */
+.cta{border-top:1px solid var(--line);padding:clamp(52px,7vw,84px) 0;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(48%% 60%% at 50%% 100%%,var(--go-soft),transparent 70%%)}
+.cta .wrap{position:relative;text-align:center}
+.cta .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.cta .k{margin-bottom:26px}
+.cta-btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:44px 0 52px}
+.f-in{display:grid;grid-template-columns:1fr 2.4fr;gap:34px;margin-bottom:34px}
+.f-brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px}
+.f-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.f-col .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.f-col a,.f-col p{display:block;font-size:13.5px;color:var(--dim);text-decoration:none;margin-bottom:9px;line-height:1.5}
+.f-col a:hover{color:var(--fg)}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:900px){.f-in{grid-template-columns:1fr}.f-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-cols{grid-template-columns:1fr}.f-bot{flex-direction:column;gap:6px}}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>''' % dict(sans=sans, serif=serif, mono=mono, lh=lh, lh_tight=lh_tight,
+                   h_lh=h_lh, ls=ls, ls_h1=ls_h1, drop=drop,
+                   bullettop=('13px' if thai else '12px'),
+                   pqlh=('1.65' if thai else '1.25'),
+                   btn_ls=btn_ls, btn_lh=btn_lh, bt_lh=bt_lh)
+
+
+NAV_EN = '''<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html">%(glyph)s<span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
+    <div class="nav-links"><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="visit.html">MKM for Museums &amp; Libraries</a><a class="on" href="coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><span class="lang"><a class="on" href="coffee.html">EN</a><span>/</span><a href="th-coffee.html">TH</a></span>%(tgl)s<a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" href="coffee.html">EN</a><span>/</span><a href="th-coffee.html">TH</a></span>%(tgl)s%(burger)s</div>
+  </div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">The practice</div><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="why.html">Why it works</a><div class="h">Practice areas</div><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a class="on" href="coffee.html">MKM for Coffee</a><div class="h">Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="about.html">Who is behind this</a><div class="h">&nbsp;</div><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+</nav>''' % dict(glyph=GLYPH, tgl=TGL, burger=BURGER)
+
+NAV_TH = '''<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="th-index.html">%(glyph)s<span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
+    <div class="nav-links"><a href="th-problem.html">ปัญหา</a><a href="th-what.html">สิ่งนี้คืออะไร</a><a href="th-visit.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a class="on" href="th-coffee.html">MKM สำหรับกาแฟ</a><a href="th-engagement.html">รูปแบบการทำงาน</a><span class="lang"><a class="on" href="th-coffee.html">TH</a><span>/</span><a href="coffee.html">EN</a></span>%(tgl)s<a class="btn" href="th-contact.html">ขอ briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" href="th-coffee.html">TH</a><span>/</span><a href="coffee.html">EN</a></span>%(tgl)s%(burger)s</div>
+  </div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="th-index.html">สารบัญทั้งหมด</a><div class="h">หลักการ</div><a href="th-problem.html">ปัญหา</a><a href="th-what.html">สิ่งนี้คืออะไร</a><a href="th-why.html">ทำไมมันถึงได้ผล</a><div class="h">โดเมนที่ทำ</div><a href="th-visit.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="th-experience.html">02 · ผู้ชมและผู้อ่าน</a><a href="th-museums.html">03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a><a class="on" href="th-coffee.html">MKM สำหรับกาแฟ</a><div class="h">การทำงานร่วมกัน</div><a href="th-services.html">เราทำอะไรร่วมกัน</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-proof.html">งานอ้างอิงที่เราทำเอง</a><a href="th-honest.html">สิ่งที่เราไม่ทำ</a><a href="th-about.html">ใครอยู่เบื้องหลัง</a><div class="h">&nbsp;</div><a href="km-for-museums-and-libraries.html">บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a class="btn" href="th-contact.html">ขอ briefing</a></div></div>
+</nav>''' % dict(glyph=GLYPH, tgl=TGL, burger=BURGER)
+
+FOOT_EN = '''<footer>
+  <div class="wrap">
+    <div class="f-in">
+      <div><div class="f-brand">%(glyph)s Neo Gens</div></div>
+      <div class="f-cols"><div class="f-col"><div class="h">The practice</div><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="why.html">Why it works</a></div><div class="f-col"><div class="h">Practice areas</div><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a href="coffee.html">MKM for Coffee</a></div><div class="f-col"><div class="h">Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="about.html">Who is behind this</a></div><div class="f-col"><div class="h">Company</div><p>Neo Gens Co., Ltd.</p><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a href="th-coffee.html">ฉบับภาษาไทย</a></div></div>
+    </div>
+    <div class="f-bot"><span>© 2026 Neo Gens Co., Ltd.</span><span>We help you turn knowledge into value-creating assets.</span></div>
+  </div>
+</footer>''' % dict(glyph=GLYPH)
+
+FOOT_TH = '''<footer>
+  <div class="wrap">
+    <div class="f-in">
+      <div><div class="f-brand">%(glyph)s Neo Gens</div></div>
+      <div class="f-cols"><div class="f-col"><div class="h">หลักการ</div><a href="th-problem.html">ปัญหา</a><a href="th-what.html">สิ่งนี้คืออะไร</a><a href="th-why.html">ทำไมมันถึงได้ผล</a></div><div class="f-col"><div class="h">โดเมนที่ทำ</div><a href="th-visit.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="th-experience.html">02 · ผู้ชมและผู้อ่าน</a><a href="th-museums.html">03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a><a href="th-coffee.html">MKM สำหรับกาแฟ</a></div><div class="f-col"><div class="h">การทำงานร่วมกัน</div><a href="th-services.html">เราทำอะไรร่วมกัน</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-proof.html">งานอ้างอิงที่เราทำเอง</a><a href="th-honest.html">สิ่งที่เราไม่ทำ</a><a href="th-about.html">ใครอยู่เบื้องหลัง</a></div><div class="f-col"><div class="h">Company</div><p>Neo Gens Co., Ltd.</p><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="km-for-museums-and-libraries.html">บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="coffee.html">English edition</a></div></div>
+    </div>
+    <div class="f-bot"><span>© 2026 Neo Gens Co., Ltd.</span><span>เราช่วยเปลี่ยนความรู้ให้เป็นสินทรัพย์ที่สร้างมูลค่า</span></div>
+  </div>
+</footer>''' % dict(glyph=GLYPH)
+
+
+def build(lang):
+    src = 'article-modern-km-for-coffee.html' if lang == 'en' else 'article-modern-km-for-coffee-th.html'
+    raw = io.open(os.path.join(UP, src), encoding='utf-8').read()
+    blocks = parse_body(os.path.join(UP, src))
+    bodyhtml, toc = render(blocks, lang)
+
+    title = re.search(r'<h1>(.*?)</h1>', raw, re.S).group(1).strip()
+    sub = re.search(r'<p class="sub">(.*?)</p>', raw, re.S).group(1).strip()
+    desc = re.search(r'<meta name="description" content="(.*?)">', raw, re.S).group(1)
+    meta_line = re.search(r'<p class="meta">(.*?)</p>', raw, re.S).group(1).strip()
+
+    tochtml = ('<nav class="toc rv" aria-label="%s"><div class="h">%s</div><ol>%s</ol></nav>' % (
+        'Contents' if lang == 'en' else 'สารบัญ',
+        'Contents' if lang == 'en' else 'ในบทความนี้',
+        ''.join('<li><a href="#%s"><i>%02d</i><span>%s</span></a></li>' % (sid, n, t)
+                for sid, n, t in toc)))
+
+    if lang == 'en':
+        f = 'coffee.html'
+        alt = 'th-coffee.html'
+        htmllang = 'en'
+        fonts = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">'
+        kicker = 'Second practice area'
+        readtime = '13 min read'
+        nav, foot = NAV_EN, FOOT_EN
+        cta_k = 'Get in touch'
+        cta_p = 'The ontology, schema and vocabularies are published openly. To contribute, get in touch.'
+        cta_b1 = ('contact.html', 'Request a briefing')
+        cta_b2 = ('mailto:hello@neogens.co', 'hello@neogens.co')
+    else:
+        f = 'th-coffee.html'
+        alt = 'coffee.html'
+        htmllang = 'th'
+        fonts = '<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">'
+        kicker = 'โดเมนที่สอง'
+        readtime = 'อ่าน 13 นาที'
+        nav, foot = NAV_TH, FOOT_TH
+        cta_k = 'ติดต่อเรา'
+        cta_p = 'ทั้ง ontology, schema และคลังคำศัพท์เผยแพร่แบบเปิด ติดต่อเราได้ถ้าสนใจร่วมฝากความรู้'
+        cta_b1 = ('th-contact.html', 'ขอ briefing')
+        cta_b2 = ('mailto:hello@neogens.co', 'hello@neogens.co')
+
+    page = '''<!DOCTYPE html>
+<html lang="%(htmllang)s">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>%(title)s — Neo Gens</title>
+<meta name="description" content="%(desc)s">
+<meta property="og:title" content="%(title)s">
+<meta property="og:description" content="%(desc)s">
+<link rel="canonical" href="https://www.neogens.co/%(f)s">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Neo Gens">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Neo Gens">
+<meta property="og:url" content="https://www.neogens.co/%(f)s">
+<meta property="og:image" content="https://www.neogens.co/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08090A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+%(ga)s
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+%(fonts)s
+%(css)s
+%(boot)s
+</head>
+<body>
+<div class="prog" id="prog"></div>
+%(nav)s
+
+<header class="head">
+  <div class="head-bg"></div><div class="head-grid"></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="kicker">%(kicker)s</div>
+      <h1>%(title)s</h1>
+      <p class="stand">%(sub)s</p>
+      <div class="meta"><span>%(meta_line)s</span><span>%(readtime)s</span></div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="artbody">
+%(toc)s
+%(body)s
+    </div>
+  </div>
+</article>
+
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <div class="k">%(cta_k)s</div>
+    <div class="cta-btns"><a class="btn" href="%(b1h)s">%(b1t)s</a><a class="btn btn-ghost" href="%(b2h)s">%(b2t)s</a></div>
+  </div>
+</section>
+
+%(foot)s
+
+%(tail)s''' % dict(htmllang=htmllang, title=title, desc=desc, f=f, ga=GA, fonts=fonts,
+                   css=css(lang), boot=THEME_BOOT, nav=nav, kicker=kicker, sub=sub,
+                   meta_line=meta_line, readtime=readtime, toc=tochtml, body=bodyhtml,
+                   cta_k=cta_k, cta_p=cta_p, b1h=cta_b1[0], b1t=cta_b1[1],
+                   b2h=cta_b2[0], b2t=cta_b2[1], foot=foot, tail=TAIL)
+
+    io.open(os.path.join(OUT, f), 'w', encoding='utf-8').write(page)
+    print('wrote', f, len(page), 'bytes ·', len(toc), 'sections')
+
+
+build('en')
+build('th')

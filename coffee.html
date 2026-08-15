@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turning Coffee Data into Coffee Knowledge — Neo Gens</title>
+<meta name="description" content="The coffee industry has never collected more data, and has never been worse at compounding it. An invitation to build a shared, public Coffee Knowledge Vault — and an account of the value it creates for every stakeholder who deposits into it.">
+<meta property="og:title" content="Turning Coffee Data into Coffee Knowledge">
+<meta property="og:description" content="The coffee industry has never collected more data, and has never been worse at compounding it. An invitation to build a shared, public Coffee Knowledge Vault — and an account of the value it creates for every stakeholder who deposits into it.">
+<link rel="canonical" href="https://www.neogens.co/coffee.html">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Neo Gens">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Neo Gens">
+<meta property="og:url" content="https://www.neogens.co/coffee.html">
+<meta property="og:image" content="https://www.neogens.co/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08090A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TPBNZQKVWE');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{ --go-rgb:184,240,74; --guess-rgb:232,163,61; --ask-rgb:127,199,232; --w-rgb:255,255,255;
+  --bg:#08090A; --bg-2:#0D0F11; --surface:#111417; --surface-2:#171B1F;
+  --line:rgba(var(--w-rgb),.09); --line-2:rgba(var(--w-rgb),.18);
+  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#6E757D;
+  --go:#B8F04A; --guess:#E8A33D; --ask:#7FC7E8;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --pad:clamp(20px,5vw,60px);
+  --measure:680px;
+  --on-go:#08090A;
+  --go-soft:rgba(var(--go-rgb),.09); --go-line:rgba(var(--go-rgb),.30);
+  --ask-soft:rgba(var(--ask-rgb),.07);
+  --glass:rgba(8,9,10,.74); --wash:rgba(var(--w-rgb),.055); --shadow:rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --go-rgb:76,122,11; --guess-rgb:149,89,10; --ask-rgb:27,100,137; --w-rgb:16,18,20;
+  --bg:#FCFBF8; --bg-2:#F3F1EA; --surface:#FFFFFF; --surface-2:#F6F4ED;
+  --line:rgba(16,18,20,.13); --line-2:rgba(16,18,20,.26);
+  --fg:#15181C; --dim:#4C535A; --mute:#79818A;
+  --go:#4C7A0B; --guess:#95590A; --ask:#1B6489;
+  --on-go:#FFFFFF;
+  --go-soft:rgba(76,122,11,.10); --go-line:rgba(76,122,11,.34);
+  --ask-soft:rgba(27,100,137,.08);
+  --glass:rgba(252,251,248,.82); --wash:rgba(16,18,20,.05); --shadow:rgba(16,18,20,.20);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:18px;line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--go);color:var(--on-go)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3,h4{letter-spacing:-.03em;line-height:1.12;font-weight:600;text-wrap:balance}
+p{text-wrap:pretty}
+
+/* nav — scoped to #nav so the in-page contents <nav> is unaffected */
+#nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--glass);border-bottom:1px solid transparent;transition:border-color .3s}
+#nav.stuck{border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.02em;font-size:15.5px;text-decoration:none}
+.brand .bt{font-weight:600;letter-spacing:-.02em;font-size:16px;line-height:1.1}
+.brand .bs{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);display:block;margin-top:2px}
+.glyph{width:20px;height:20px;flex:none}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.on{color:var(--fg)}
+.lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;flex:none}
+.lang a{text-decoration:none;color:var(--mute);transition:color .2s}
+.lang a.on{color:var(--go);font-weight:500}
+.lang span{color:var(--line-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--go);color:var(--on-go);border:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em;padding:10px 17px;border-radius:999px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(var(--go-rgb),.22)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
+.tgl{background:transparent;border:1px solid var(--line-2);border-radius:999px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex:none;padding:0;transition:color .2s,border-color .2s}
+.tgl:hover{color:var(--fg);border-color:var(--mute)}
+.tgl svg{width:15px;height:15px;display:block}
+html[data-theme="light"] .tgl .i-moon{display:none}
+html:not([data-theme="light"]) .tgl .i-sun{display:none}
+.nav-mob{display:none;align-items:center;gap:9px;flex:none}
+.burger{background:transparent;border:1px solid var(--line-2);border-radius:10px;width:38px;height:34px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.burger span{display:block;width:16px;height:1.5px;background:var(--fg);transition:transform .22s,opacity .18s}
+.burger.x span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--bg);max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.drawer.open{display:block}
+.drawer .dw{padding:6px var(--pad) 26px;margin:0 auto}
+.drawer .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:20px 0 2px}
+.drawer a{display:block;padding:13px 0;border-bottom:1px solid var(--line);color:var(--dim);text-decoration:none;font-size:16px;line-height:1.35}
+.drawer a.on{color:var(--go)}
+.drawer a.btn{display:flex;justify-content:center;margin-top:22px;padding:15px;border-bottom:none;font-size:15px;color:var(--on-go)}
+@media(min-width:1121px){.drawer{display:none!important}}
+@media(max-width:1120px){.nav-links{display:none!important}.nav-mob{display:flex}.nav-in{height:60px;gap:12px}.brand .bs{display:none}}
+
+/* progress */
+.prog{position:fixed;top:0;left:0;height:2px;background:var(--go);width:0;z-index:200;transition:width .1s linear}
+
+/* header */
+.head{padding:clamp(52px,7vw,88px) 0 clamp(30px,4vw,44px);position:relative;overflow:hidden}
+.head-bg{position:absolute;inset:-30% -10% auto -10%;height:130%;pointer-events:none;
+  background:radial-gradient(56% 46% at 20% 8%,var(--go-soft),transparent 66%),radial-gradient(46% 42% at 84% 22%,var(--ask-soft),transparent 68%);filter:blur(8px)}
+.head-grid{position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(64% 50% at 40% 0%,#000,transparent 78%);mask-image:radial-gradient(64% 50% at 40% 0%,#000,transparent 78%)}
+.head .wrap{position:relative}
+.head .inner{max-width:840px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:22px}
+h1{font-size:clamp(32px,5vw,56px);letter-spacing:-.04em;max-width:22ch;margin-bottom:22px}
+.stand{font-size:clamp(18px,2.1vw,22px);line-height:1.6;color:var(--dim);max-width:60ch;font-family:var(--serif);font-weight:400}
+.meta{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:.04em}
+
+/* article grid: content column with wide breakout */
+article{padding:clamp(26px,4vw,44px) 0 clamp(56px,7vw,88px)}
+.artbody{display:grid;grid-template-columns:[full-start] minmax(0,1fr) [wide-start] minmax(0,1fr) [content-start] minmax(0,var(--measure)) [content-end] minmax(0,1fr) [wide-end] minmax(0,1fr) [full-end]}
+.artbody > *{grid-column:content}
+.artbody > .figplate,.artbody > .pq,.artbody > .pcards,.artbody > .toc{grid-column:wide}
+
+.artbody > p{color:var(--dim);margin-bottom:24px}
+.artbody > p.first{color:var(--fg)}
+.artbody > p.drop::first-letter{font-family:var(--serif);font-size:3.3em;line-height:.86;float:left;padding:8px 12px 0 0;color:var(--fg)}
+.artbody strong{color:var(--fg);font-weight:600}
+.artbody em{font-style:italic}
+.artbody a{color:var(--go);text-decoration:none;border-bottom:1px solid rgba(var(--go-rgb),.35)}
+.artbody a:hover{border-bottom-color:var(--go)}
+.artbody h2{font-size:clamp(24px,3vw,33px);margin:clamp(52px,6vw,80px) 0 20px;position:relative;scroll-margin-top:84px}
+.artbody h2:first-of-type{margin-top:14px}
+.artbody h2 .sn{display:block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.16em;color:var(--go);margin-bottom:12px}
+.artbody h3{font-size:clamp(18px,2vw,21px);margin:44px 0 14px}
+.artbody h3.srcs-h{font-size:13px;font-family:var(--mono);font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:36px 0 18px}
+.artbody > p.beat{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);line-height:1.3;color:var(--fg);margin:34px 0 34px;padding-left:18px;border-left:2px solid var(--go)}
+.artbody > p.colophon{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:26px;margin-top:44px}
+
+/* table of contents */
+.toc{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:22px 24px;margin-bottom:clamp(30px,4vw,46px)}
+.toc .h{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px}
+@media(max-width:700px){.toc ol{grid-template-columns:1fr}}
+.toc a{display:flex;gap:11px;align-items:baseline;padding:7px 0;text-decoration:none;color:var(--dim);font-size:14.5px;line-height:1.5;border:0;transition:color .2s}
+.toc a:hover,.toc a.on{color:var(--fg)}
+.toc a i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--mute);flex:none;padding-top:2px}
+.toc a.on i{color:var(--go)}
+
+/* lists */
+ul.body{list-style:none;margin:4px 0 26px;display:flex;flex-direction:column;gap:13px}
+ul.body li{color:var(--dim);padding-left:20px;position:relative}
+ul.body li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--go);opacity:.6}
+ul.body li strong{color:var(--fg)}
+ul.srcs-list{list-style:none;margin:4px 0 26px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.65}
+ul.srcs-list li{color:var(--mute);padding-left:18px;position:relative}
+ul.srcs-list li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:1px;background:var(--line-2)}
+ul.srcs-list a{color:var(--dim);border-bottom:1px solid var(--line)}
+ul.srcs-list a:hover{color:var(--go);border-bottom-color:var(--go-line)}
+
+/* pull quote */
+.pq{margin:clamp(40px,5vw,62px) 0}
+.pq blockquote{font-family:var(--serif);font-size:clamp(21px,2.8vw,31px);line-height:1.25;color:var(--fg);border-left:2px solid var(--go);padding-left:clamp(20px,3vw,30px)}
+.pq blockquote p{margin:0}
+
+/* paragraph cards */
+.pcards{display:grid;gap:12px;margin:14px 0 30px}
+.pcards.two{grid-template-columns:1fr 1fr}
+.pcards.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.pcards.two,.pcards.three{grid-template-columns:1fr}}
+.pc{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:24px 22px}
+.pc h4{font-size:16.5px;margin-bottom:9px;line-height:1.35;color:var(--fg)}
+.pc p{font-size:15px;line-height:1.6;color:var(--dim);margin:0}
+
+/* figures */
+.figplate{margin:clamp(38px,5vw,60px) 0}
+.plate{background:#faf9f7;border:1px solid var(--line);border-radius:16px;padding:clamp(10px,1.6vw,18px);overflow:hidden}
+.plate svg{width:100%;height:auto;display:block;max-width:100%}
+.figplate figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--mute);margin-top:13px;max-width:66ch}
+
+/* closing band */
+.cta{border-top:1px solid var(--line);padding:clamp(52px,7vw,84px) 0;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(48% 60% at 50% 100%,var(--go-soft),transparent 70%)}
+.cta .wrap{position:relative;text-align:center}
+.cta .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.cta .k{margin-bottom:26px}
+.cta-btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:44px 0 52px}
+.f-in{display:grid;grid-template-columns:1fr 2.4fr;gap:34px;margin-bottom:34px}
+.f-brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px}
+.f-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.f-col .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.f-col a,.f-col p{display:block;font-size:13.5px;color:var(--dim);text-decoration:none;margin-bottom:9px;line-height:1.5}
+.f-col a:hover{color:var(--fg)}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:900px){.f-in{grid-template-columns:1fr}.f-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-cols{grid-template-columns:1fr}.f-bot{flex-direction:column;gap:6px}}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+<script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
+    <div class="nav-links"><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="visit.html">MKM for Museums &amp; Libraries</a><a class="on" href="coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><span class="lang"><a class="on" href="coffee.html">EN</a><span>/</span><a href="th-coffee.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" href="coffee.html">EN</a><span>/</span><a href="th-coffee.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">The practice</div><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="why.html">Why it works</a><div class="h">Practice areas</div><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a class="on" href="coffee.html">MKM for Coffee</a><div class="h">Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="about.html">Who is behind this</a><div class="h">&nbsp;</div><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+</nav>
+
+<header class="head">
+  <div class="head-bg"></div><div class="head-grid"></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="kicker">Second practice area</div>
+      <h1>Turning Coffee Data into Coffee Knowledge</h1>
+      <p class="stand">An invitation to build a public Coffee Knowledge Vault on ontology, knowledge graphs and AI</p>
+      <div class="meta"><span>Neo Gens · August 2026</span><span>13 min read</span></div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="artbody">
+<nav class="toc rv" aria-label="Contents"><div class="h">Contents</div><ol><li><a href="#s01"><i>01</i><span>The industry is drowning in data and starving for knowledge</span></a></li><li><a href="#s02"><i>02</i><span>Why the value is trapped</span></a></li><li><a href="#s03"><i>03</i><span>What a Coffee Knowledge Vault is</span></a></li><li><a href="#s04"><i>04</i><span>Why this is possible now and was not before</span></a></li><li><a href="#s05"><i>05</i><span>What each participant deposits, and what each one withdraws</span></a></li><li><a href="#s06"><i>06</i><span>Trust is what makes deposits from strangers usable</span></a></li><li><a href="#s07"><i>07</i><span>Vocabulary is a contribution, not a constraint</span></a></li><li><a href="#s08"><i>08</i><span>How a commons stays a commons</span></a></li><li><a href="#s09"><i>09</i><span>Proof: the first deposits</span></a></li><li><a href="#s10"><i>10</i><span>An invitation</span></a></li></ol></nav>
+<h2 class="rv" id="s01"><span class="sn">01</span>The industry is drowning in data and starving for knowledge</h2>
+<p class="first drop">Somewhere in Honduras, a coffee farm has been surveyed three times in two seasons. An exporter's agronomist walked the plot boundaries and logged them. A certifier came later and recorded the same boundaries again for a different form. A buyer's sustainability team asked for the altitude, the cultivars, the shade trees and the number of harvest workers — all of which had already been written down twice.</p>
+<p class="beat rv">Three visits. Three datasets. Zero compounding.</p>
+<p class="">Each of those records sits in a separate system, in a separate format, owned by a separate company, answering a separate question. The farmer cannot see most of it. The exporter cannot use the certifier's version. The roaster who eventually buys the coffee gets a one-line origin description and writes a story around it. And when that farmer sells to a different buyer next season, the whole exercise starts again from zero.</p>
+<p class="">This is the actual condition of coffee knowledge in 2026. Not scarcity — the industry collects an enormous amount. The problem is that almost none of it accumulates. Every actor pays to gather facts that someone else already gathered, stores them where no one else can reach them, and derives from them a fraction of the value they contain.</p>
+<p class="">The European Union's Deforestation Regulation is about to make this much more expensive. It applies from 30 December 2026 for large and medium operators, with small and micro enterprises given until 30 June 2027, and it requires tracing coffee back to the plot where it grew. Every operator in the chain is now building a private version of the same map. The duplication is not a side effect. It is the design.</p>
+<p class="">We think there is a better structure available, and it is not another platform. It is a <strong>Coffee Knowledge Vault</strong>: a shared, public, machine-readable base of coffee knowledge that many parties deposit into and everyone can draw on. This article is an argument for why the industry needs one, an account of what each participant gets out of it, and an invitation to help build the first version.</p>
+<h2 class="rv" id="s02"><span class="sn">02</span>Why the value is trapped</h2>
+<p class="">The 2026 Coffee Barometer, published in June, is the most useful reality check available right now. Its argument is that the recent price boom exposed coffee's structural problems rather than solving them.</p>
+<p class="">The dependence on smallholders is not in dispute. Roughly 12.5 million coffee-growing households supply the world. About 95% farm plots smaller than five hectares. Farms under two hectares are around 80% of all coffee farms and produce roughly 60% of global supply. Yet in eight of the ten largest producing countries, the average coffee-farming household still earns below a living income.</p>
+<p class="">Prices did not fix that. Arabica futures hit an all-time high near $4.40 per pound in February 2025, and the Barometer records the ICO composite indicator setting a record monthly average of 354.52 cents. By March 2026 that indicator had fallen to 273.70 cents, more than 22% off the peak; as of mid-August 2026 arabica trades around $3.17 per pound. Farmgate prices rise more slowly than retail prices and fall more sharply when the market turns. Producers absorb the volatility; everyone downstream is better positioned to hold a margin.</p>
+<p class="">Sjoerd Panhuysen, one of the Barometer's authors, put a warning on the table that anyone building technology for this sector should sit with:</p>
+<div class="pq rv"><blockquote><p>"Technical solutions are almost always easier than political or economic ones. It is far simpler to improve traceability, train farmers or design a certification scheme than it is to change how value, risk and power are distributed across the chain."</p></blockquote></div>
+<p class="">He is right, and we are not claiming a knowledge vault fixes prices. What it does address is a different and genuinely tractable problem: an enormous amount of value in this industry is currently destroyed by fragmentation rather than captured by anyone. The roaster who cannot find a lot matching a flavour profile, the farmer who cannot learn what worked on the next ridge, the cooperative that cannot prove its quality improvement, the researcher who cannot get a dataset, the importer paying to re-document a farm already documented — none of those losses show up on anyone's balance sheet as a loss. They just quietly reduce what the whole sector is worth.</p>
+<p class="">That is the value a shared knowledge base creates. Not by redistributing an existing pie, but by making knowledge compound instead of evaporate.</p>
+<h2 class="rv" id="s03"><span class="sn">03</span>What a Coffee Knowledge Vault is</h2>
+<p class="">A vault, in the sense we mean it, is a knowledge commons: a structured, verifiable, openly governed body of knowledge that many parties contribute to and all can query.</p>
+<p class="">The idea is not new outside coffee. Genetics has GenBank. Geography has OpenStreetMap. Chemistry, astronomy, and structural biology all run on shared reference bases that no single company owns and that made entire fields dramatically more productive. In each case the same thing happened: once the shared layer existed, competition moved up the stack. Nobody competes on whether a gene sequence is correct. They compete on what they do with it.</p>
+<p class="">Coffee has no such layer. It has certifications, private traceability systems, trade statistics, academic papers and an enormous amount of undocumented expertise sitting in the heads of farmers, millers and roasters. None of it is connected.</p>
+<p class="">A Coffee Knowledge Vault would hold, in one connected structure:</p>
+<ul class="body rv"><li><strong>Farms and farmers</strong> — location, area, altitude, coordinates, cultivars, ownership, the cooperative or group</li><li><strong>Lots</strong> — each harvest batch, linked to the plot it came from</li><li><strong>Practice</strong> — processing method, fermentation parameters, drying, who milled it</li><li><strong>Quality</strong> — cupping scores, physical and chemical measurements, defects</li><li><strong>Sensory vocabulary</strong> — flavour descriptors from published wheels, including regional ones, mapped to each other</li><li><strong>Movement</strong> — collection, storage, shipping, roasting, the chain from plot to cup</li><li><strong>Evidence</strong> — the sensor readings, lab results and documents that back the claims above</li><li><strong>Reference knowledge</strong> — the agronomic and coffee-science layer that gives all of the above meaning</li></ul>
+<p class="">The first deposits are the simplest ones: a farmer registering their own farm. Name, farm name, where it is, how big, how high, what is planted, who processes the cherry. Every other layer in the vault attaches to that record. It is the foundation not because it is the most sophisticated data but because everything else is meaningless without it.</p>
+<h2 class="rv" id="s04"><span class="sn">04</span>Why this is possible now and was not before</h2>
+<p class="">Shared reference bases used to take a decade to negotiate. A standards committee argued about field definitions, published a specification, and then discovered that nobody in the field could be bothered to fill in the forms.</p>
+<p class="">Three things changed.</p>
+<div class="pcards three rv"><div class="pc"><h4>Ontology engineering matured.</h4><p>We now know how to build a formal model of a domain that is rigorous enough for machines and extensible without breaking what came before. Adding a new stakeholder or a new concept no longer means renegotiating the whole schema.</p></div><div class="pc"><h4>Graph databases made relationships first-class.</h4><p>In a property graph, the connection between a farm's altitude and a lot's cupping score is not something you reconstruct in a query. It is stored, traversable, and cheap to follow.</p></div><div class="pc"><h4>LLMs removed the data-entry barrier.</h4><p>This is the decisive one. The reason old knowledge bases failed was that contributing to them was miserable work, and the evidence on that is brutal: only about 10% of small farmers use agricultural apps <em>even when they are free</em>. The reasons are mundane and instructive — shared phones, changing SIM cards, information delivered once in language that is hard to parse. A farmer will not fill in a forty-field form, and no amount of good intention changes that. A farmer will type or say a sentence about what they did today, in their own language, and a capable model will turn that sentence into structured knowledge that lands correctly in the graph.</p></div></div>
+<p class="">That finding shaped our architecture more than any other. The entry point is a messaging app people already use daily, not an application to download. Input is free-form text or voice, not a form. When the system is unsure it asks one short question rather than silently guessing. And the original message is preserved before anything is interpreted.</p>
+<p class="">Structure used to be cheap and contribution expensive. That has inverted. Contribution is now easy; getting the structure right is the hard and valuable part.</p>
+<figure class="figplate rv"><div class="plate"><svg preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 668" width="100%" role="img" aria-label="Figure 1 — What a knowledge graph actually stores">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#c4bcae"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#c9a227"/></marker></defs>
+<rect width="1140" height="668" fill="#faf9f7"/>
+<text x="40" y="46" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="21" font-weight="700" fill="#1c1a17">Figure 1 — What a knowledge graph actually stores</text>
+<text x="40" y="76" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15" fill="#8a7f70">Nodes are things. Lines are named, directional relationships. The meaning lives in the lines.</text>
+<line x1="260.2" y1="173.0" x2="323.7" y2="201.0" stroke="#c4bcae" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="267.9" y="176.0" width="48.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c4bcae" stroke-width="0.9"/>
+<text x="291.9" y="191.0" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#8a7f70">OWNS</text>
+<line x1="174.0" y1="173.0" x2="174.0" y2="337.0" stroke="#c4bcae" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="132.5" y="244.0" width="83.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c4bcae" stroke-width="0.9"/>
+<text x="174.0" y="259.0" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#8a7f70">MEMBER_OF</text>
+<line x1="563.0" y1="341.0" x2="494.0" y2="293.0" stroke="#c9a227" stroke-width="2.4" marker-end="url(#arg)"/>
+<rect x="472.3" y="307.9" width="118.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="531.3" y="322.9" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">HARVESTED_FROM</text>
+<line x1="627.5" y1="341.0" x2="622.3" y2="185.0" stroke="#c9a227" stroke-width="2.4" marker-end="url(#arg)"/>
+<rect x="572.9" y="252.0" width="104.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="624.9" y="267.0" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">PROCESSED_BY</text>
+<line x1="729.0" y1="341.7" x2="788.1" y2="315.0" stroke="#c9a227" stroke-width="2.4" marker-end="url(#arg)"/>
+<rect x="690.2" y="316.8" width="139.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="759.7" y="331.8" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">HAS_CUPPING_SCORE</text>
+<line x1="909.0" y1="239.0" x2="981.0" y2="165.0" stroke="#c4bcae" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="907.0" y="191.0" width="76.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c4bcae" stroke-width="0.9"/>
+<text x="945.0" y="206.0" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#8a7f70">HAS_NOTE</text>
+<line x1="729.0" y1="427.7" x2="815.7" y2="463.0" stroke="#c4bcae" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="737.8" y="434.4" width="69.0" height="21" rx="10.5" fill="#faf9f7" stroke="#c4bcae" stroke-width="0.9"/>
+<text x="772.3" y="449.4" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#8a7f70">SOLD_TO</text>
+<rect x="86" y="104" width="176" height="62" rx="10" fill="#eef2f5" stroke="#4a5f6b" stroke-width="1.4"/>
+<text x="174.0" y="126" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#4a5f6b">PERSON : FARMER</text>
+<text x="174.0" y="150" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Somchai</text>
+<rect x="86" y="344" width="176" height="62" rx="10" fill="#eef2f5" stroke="#4a5f6b" stroke-width="1.4"/>
+<text x="174.0" y="366" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#4a5f6b">ORG : COOPERATIVE</text>
+<text x="174.0" y="390" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Doi Chang Co-op</text>
+<rect x="330" y="208" width="196" height="78" rx="10" fill="#eaf1ea" stroke="#4a6b52" stroke-width="1.4"/>
+<text x="428.0" y="230" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#4a6b52">PLACE : FARM</text>
+<text x="428.0" y="254" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Mae Salong Farm</text>
+<text x="428.0" y="274" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#8a7f70">1,240 m · loam</text>
+<rect x="536" y="348" width="186" height="78" rx="10" fill="#faf2dd" stroke="#8a6d1f" stroke-width="2.4"/>
+<text x="629.0" y="370" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#8a6d1f">ARTIFACT : LOT</text>
+<text x="629.0" y="394" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="16.5" font-weight="700" fill="#1c1a17">LOT-2026-001</text>
+<text x="629.0" y="414" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#8a7f70">the linking entity</text>
+<rect x="528" y="116" width="186" height="62" rx="10" fill="#f8ece6" stroke="#b5603a" stroke-width="1.4"/>
+<text x="621.0" y="138" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#b5603a">ACTIVITY : PROCESSING</text>
+<text x="621.0" y="162" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Honey process</text>
+<rect x="784" y="246" width="176" height="62" rx="10" fill="#f3eef4" stroke="#6b4a5f" stroke-width="1.4"/>
+<text x="872.0" y="268" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#6b4a5f">MEASUREMENT</text>
+<text x="872.0" y="292" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Cupping 86.5</text>
+<rect x="930" y="96" width="176" height="62" rx="10" fill="#f3eef4" stroke="#6b4a5f" stroke-width="1.4"/>
+<text x="1018.0" y="118" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#6b4a5f">CONCEPT : FLAVOUR</text>
+<text x="1018.0" y="142" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Longan</text>
+<rect x="816" y="470" width="186" height="62" rx="10" fill="#eef2f5" stroke="#4a5f6b" stroke-width="1.4"/>
+<text x="909.0" y="492" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9.5" letter-spacing="0.1em" fill="#4a5f6b">ORG : BUYER</text>
+<text x="909.0" y="516" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">Bangkok roastery</text>
+<rect x="40" y="566" width="612" height="72" rx="10" fill="#fdf8e8" stroke="#c9a227" stroke-width="1.2"/>
+<text x="62" y="596" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15.5" font-weight="700" fill="#1c1a17">“Farms like mine — which processing scored highest?”</text>
+<text x="62" y="621" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="13" fill="#8a7f70">The answer is a walk along the gold path. Three hops, no searching and no guessing.</text>
+<text x="692" y="574" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" letter-spacing="0.05em" fill="#8a7f70">Core types</text>
+<rect x="692" y="588" width="13" height="13" rx="3" fill="#eef2f5" stroke="#4a5f6b" stroke-width="1.3"/>
+<text x="713" y="599" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Person / Organization</text>
+<rect x="908" y="588" width="13" height="13" rx="3" fill="#eaf1ea" stroke="#4a6b52" stroke-width="1.3"/>
+<text x="929" y="599" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Place</text>
+<rect x="692" y="611" width="13" height="13" rx="3" fill="#faf2dd" stroke="#8a6d1f" stroke-width="1.3"/>
+<text x="713" y="622" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Artifact</text>
+<rect x="908" y="611" width="13" height="13" rx="3" fill="#f8ece6" stroke="#b5603a" stroke-width="1.3"/>
+<text x="929" y="622" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Activity</text>
+<rect x="692" y="634" width="13" height="13" rx="3" fill="#f3eef4" stroke="#6b4a5f" stroke-width="1.3"/>
+<text x="713" y="645" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Concept / Measurement</text>
+</svg></div><figcaption>Figure 1 — What a knowledge graph actually stores</figcaption></figure>
+<p class="">The picture above is the whole idea in one frame. Every box is a thing that exists — a person, a place, a batch of coffee, a measurement, a term from a controlled vocabulary. Every line has a name and a direction. A conventional database would store the farm's altitude in one column and the cupping score in another table, and the connection between them would live only in whatever query someone happened to write. Here the connection <em>is</em> the data.</p>
+<p class="">That is what makes a question like <em>"farms at a similar altitude and soil to mine — which processing method gave the highest cupping scores?"</em> answerable at all. To answer it a system walks from a farm to its conditions, out to comparable farms, from those farms to their lots, from each lot to its processing method and its score, and back with a ranking. That is a multi-hop relational query. Keyword search cannot do it. Vector similarity cannot do it reliably either, because retrieving passages that <em>sound</em> related is a different operation from following a verified chain of relationships.</p>
+<p class="">We call this approach <strong>mission-driven ontology design</strong>, and it has one governing rule: nothing enters the schema without a competency question behind it — a real question a real participant needs answered. If no one is asking it, we do not model it. That rule is what keeps a knowledge base from becoming an elegant, expensive, unused taxonomy, which is how most of them have died.</p>
+<p class="">There is a practical note for anyone worried about cost. In a property graph, query cost comes from the volume of instance data and the depth of traversal, not from how rich the schema is. A broad, well-designed structure with a modest amount of data is fast and cheap to run. You can be generous with structure and disciplined with data at the same time.</p>
+<h2 class="rv" id="s05"><span class="sn">05</span>What each participant deposits, and what each one withdraws</h2>
+<p class="">A commons only works if the exchange is real for everyone in it. Here is our account of it, stated plainly enough to be argued with.</p>
+<div class="pcards two rv"><div class="pc"><h4>Farmers</h4><p>deposit their farm record and what they actually do each season — processing choices, fermentation times, drying, harvest notes. They withdraw comparison against farms with conditions like theirs, which is the single most valuable thing a smallholder cannot get today; a documented quality history; and a provenance profile that lets them ask a higher price with evidence behind it.</p></div><div class="pc"><h4>Cooperatives</h4><p>deposit aggregation and quality-control data from the collection point. They withdraw a quality dashboard across members, the ability to demonstrate improvement over seasons, and a stronger position in negotiation because their claims are backed rather than asserted.</p></div><div class="pc"><h4>Processors and mills</h4><p>deposit processing parameters and what happened to each batch. They withdraw the evidence base that connects process to outcome — the thing that turns a mill's craft from an unprovable claim into a demonstrable competence.</p></div><div class="pc"><h4>Roasters</h4><p>deposit cupping results and sourcing outcomes. They withdraw verified lot profiles for the coffee they buy, the ability to search for lots by flavour profile or farm condition rather than by broker relationship, and a story for their customers that is true and checkable.</p></div><div class="pc"><h4>Cafés and consumers</h4><p>deposit attention and, sometimes, sensory feedback. They withdraw traceability that is real rather than decorative, and the ability to follow a specific bag back to a specific plot and person.</p></div><div class="pc"><h4>Exporters and importers</h4><p>deposit logistics and compliance events. They withdraw the plot-level data EUDR requires, collected once by the farmer with consent instead of re-collected by every buyer in the chain — which converts a recurring compliance cost into a one-time contribution.</p></div><div class="pc"><h4>Researchers and institutions</h4><p>deposit agronomic science, reference vocabularies and published findings. They withdraw a real-world, structured, consented dataset of smallholder practice and outcomes that does not currently exist in any open form anywhere.</p></div></div>
+<p class="">And everyone withdraws the compounding. The tenth roaster's cupping data makes the first farmer's benchmark better. The hundredth farm record makes every altitude comparison sharper. This is the property that makes a commons worth building rather than a product worth buying: the value of your deposit grows because of deposits other people make.</p>
+<h2 class="rv" id="s06"><span class="sn">06</span>Trust is what makes deposits from strangers usable</h2>
+<p class="">A shared vault has a problem a private database does not. If contributions come from many parties with different interests, why should anyone believe what is in it?</p>
+<p class="">The answer is not to trust contributors more. It is to record how we know each thing.</p>
+<p class="">A statement from a person is a <strong>claim</strong>, stored with its provenance: who said it, when, extracted from which original message, by which model, at what confidence. The original message is stored <em>before</em> extraction, always. If the model misread it, or the extraction improves later, the contributor's actual words are still there and can be reprocessed. Nothing anyone contributed is lost to a parsing error.</p>
+<p class="">A sensor reading — near-infrared moisture at a collection point, satellite deforestation monitoring — is <strong>evidence</strong>. Its interpretation is a separate observation claim.</p>
+<p class="">When claim and evidence agree, the claim is promoted from <em>asserted</em> to <em>verified</em>. When they conflict, it is flagged as <em>contradicted</em>, and nothing is deleted. A flag does not mean someone lied. Instruments drift and processes vary. The system marks an inconsistency for a human to look at; it does not pass judgment.</p>
+<p class="">This is the mechanism that makes an open vault usable commercially. A roaster does not have to trust a farmer they have never met. They can see that a claim about honey processing was corroborated by a moisture reading, and decide accordingly. Verification, not credulity, is what lets strangers transact on shared knowledge.</p>
+<p class="">We also make a deliberate choice about instruments. Not on every plot. Sensors belong at bottlenecks — the cooperative's collection point, the satellite pass — where one device validates hundreds of claims. Per-farm sensor deployment has never made economic sense for smallholder agriculture and still does not.</p>
+<h2 class="rv" id="s07"><span class="sn">07</span>Vocabulary is a contribution, not a constraint</h2>
+<p class="">One design decision looks small and turns out to matter a great deal for a commons.</p>
+<p class="">The standard flavour wheel is built on reference fruits that make sense to a North American or European palate: blueberry, blackcurrant, cranberry. Ask a farmer at 1,200 metres in Chiang Rai to describe her coffee in those terms and you have asked her to describe her own crop in a language borrowed from a place she has never been.</p>
+<p class="">So the vault supports pluggable, versioned flavour schemes with curated mappings between them. A Thai farmer describes her coffee in lychee, longan, mango, tamarind and roselle; a buyer who needs the international vocabulary reads it in mapped equivalents. Both are correct. Neither loses precision.</p>
+<p class="">Framed as a commons, this stops being a local accommodation and becomes a contribution. A Thai or Asian flavour scheme is a piece of sensory knowledge the coffee world does not currently have in structured form. So is an Ethiopian one, and a Colombian one. Every origin that describes its coffee in its own terms and maps those terms into the shared structure makes the whole vault more expressive.</p>
+<p class="">The general principle runs well beyond flavour: <strong>a knowledge system that forces people to describe their world in someone else's vocabulary collects worse knowledge.</strong> That is not a cultural nicety. It is a data quality argument.</p>
+<figure class="figplate rv"><div class="plate"><svg preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 700" width="100%" role="img" aria-label="Figure 2 — The same map, with the knowledge layer switched on">
+<defs><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#c9a227"/></marker><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><clipPath id="mapclip"><rect x="40" y="96" width="1060" height="470" rx="12"/></clipPath></defs>
+<rect width="1140" height="700" fill="#faf9f7"/>
+<text x="40" y="46" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="21" font-weight="700" fill="#1c1a17">Figure 2 — The same map, with the knowledge layer switched on</text>
+<text x="40" y="76" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="15" fill="#8a7f70">A map shows where things are. The graph layer shows how they connect, and lets you walk the chain in either direction.</text>
+<g clip-path="url(#mapclip)">
+<rect x="40" y="96" width="1060" height="470" fill="#f2f0ea"/>
+<g opacity="0.85">
+<path d="M40 96 L470 96 L520 200 L430 330 L300 430 L120 470 L40 420 Z" fill="#e2e9dd"/>
+<path d="M120 130 L400 110 L440 210 L330 320 L170 350 L100 260 Z" fill="#d6e0cf"/>
+<path d="M180 165 L360 150 L385 220 L300 285 L205 290 Z" fill="#c9d7c1"/>
+<rect x="700" y="96" width="400" height="470" fill="#ecebe4"/>
+<rect x="730" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="730" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="730" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="730" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="730" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="778" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="778" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="778" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="778" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="778" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="826" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="826" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="826" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="826" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="826" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="874" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="874" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="874" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="874" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="874" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="922" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="922" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="922" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="922" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="922" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="970" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="970" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="970" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="970" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="970" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="1018" y="150" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="1018" y="224" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="1018" y="298" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="1018" y="372" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<rect x="1018" y="446" width="34" height="46" rx="3" fill="#e2e0d7"/>
+<path d="M60 500 C 260 470, 300 380, 470 380 S 700 470, 900 430 S 1080 400, 1100 396" fill="none" stroke="#cfe0e6" stroke-width="9" stroke-linecap="round"/>
+<path d="M150 470 C 330 420, 420 330, 560 330 S 760 300, 1100 250" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M700 96 L740 566" fill="none" stroke="#ffffff" stroke-width="5"/>
+</g>
+<text x="64" y="130" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="13" fill="#8f9a86" letter-spacing="0.05em">Highlands · 1,100–1,400 m</text>
+<text x="470" y="530" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="13" fill="#a09a8c" letter-spacing="0.05em">Provincial town</text>
+<text x="952" y="140" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="13" fill="#a09a8c" letter-spacing="0.05em">City</text>
+<path d="M168 232 Q 288.0 222.0 408 244" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M168 232 Q 288.0 222.0 408 244" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<rect x="259" y="220" width="97" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="307" y="235" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">DELIVERS_TO</text>
+<path d="M262 158 Q 335.0 185.0 408 244" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M262 158 Q 335.0 185.0 408 244" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<path d="M248 316 Q 328.0 264.0 408 244" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M248 316 Q 328.0 264.0 408 244" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<path d="M408 244 Q 458.0 294.0 508 376" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M408 244 Q 458.0 294.0 508 376" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<rect x="418" y="307" width="104" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="470" y="322" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">PROCESSED_AT</text>
+<path d="M508 376 Q 597.0 295.0 686 246" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M508 376 Q 597.0 295.0 686 246" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<rect x="541" y="303" width="83" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="583" y="318" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">STORED_AT</text>
+<path d="M686 246 Q 769.0 202.0 852 190" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M686 246 Q 769.0 202.0 852 190" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<rect x="704" y="206" width="90" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="749" y="221" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">SHIPPED_TO</text>
+<path d="M686 246 Q 764.0 306.0 842 398" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M686 246 Q 764.0 306.0 842 398" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<path d="M852 190 Q 927.0 229.0 1002 300" fill="none" stroke="#c9a227" stroke-width="4" opacity="0.18" filter="url(#glow)"/>
+<path d="M852 190 Q 927.0 229.0 1002 300" fill="none" stroke="#c9a227" stroke-width="1.8" marker-end="url(#m2)"/>
+<rect x="886" y="226" width="83" height="21" rx="10.5" fill="#faf9f7" stroke="#c9a227" stroke-width="0.9"/>
+<text x="927" y="241" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="0.05em" fill="#a8871f">SERVED_AT</text>
+<circle cx="168" cy="232" r="22" fill="#4a6b52" opacity="0.13"/>
+<circle cx="168" cy="232" r="15" fill="#eaf1ea" stroke="#4a6b52" stroke-width="2.4"/>
+<circle cx="168" cy="232" r="4.2" fill="#4a6b52"/>
+<text x="168" y="267" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Mae Salong Farm</text>
+<circle cx="262" cy="158" r="22" fill="#4a6b52" opacity="0.13"/>
+<circle cx="262" cy="158" r="15" fill="#eaf1ea" stroke="#4a6b52" stroke-width="2.4"/>
+<circle cx="262" cy="158" r="4.2" fill="#4a6b52"/>
+<text x="262" y="193" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Huai Kang Farm</text>
+<circle cx="248" cy="316" r="22" fill="#4a6b52" opacity="0.13"/>
+<circle cx="248" cy="316" r="15" fill="#eaf1ea" stroke="#4a6b52" stroke-width="2.4"/>
+<circle cx="248" cy="316" r="4.2" fill="#4a6b52"/>
+<text x="248" y="351" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Pa Miang Farm</text>
+<circle cx="408" cy="244" r="21" fill="#4a5f6b" opacity="0.13"/>
+<circle cx="408" cy="244" r="14" fill="#eef2f5" stroke="#4a5f6b" stroke-width="2.4"/>
+<circle cx="408" cy="244" r="4.2" fill="#4a5f6b"/>
+<text x="408" y="278" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Doi Chang Co-op</text>
+<text x="408" y="295" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="400" fill="#8a7f70">collection point</text>
+<circle cx="508" cy="376" r="21" fill="#b5603a" opacity="0.13"/>
+<circle cx="508" cy="376" r="14" fill="#f8ece6" stroke="#b5603a" stroke-width="2.4"/>
+<circle cx="508" cy="376" r="4.2" fill="#b5603a"/>
+<text x="508" y="410" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Washing station</text>
+<text x="508" y="427" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="400" fill="#8a7f70">+ NIR sensor</text>
+<circle cx="686" cy="246" r="21" fill="#8a6d1f" opacity="0.13"/>
+<circle cx="686" cy="246" r="14" fill="#faf2dd" stroke="#8a6d1f" stroke-width="2.4"/>
+<circle cx="686" cy="246" r="4.2" fill="#8a6d1f"/>
+<text x="686" y="280" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Green coffee</text>
+<text x="686" y="297" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="400" fill="#8a7f70">warehouse</text>
+<circle cx="852" cy="190" r="22" fill="#8a3a2f" opacity="0.13"/>
+<circle cx="852" cy="190" r="15" fill="#f9e9e5" stroke="#8a3a2f" stroke-width="2.4"/>
+<circle cx="852" cy="190" r="4.2" fill="#8a3a2f"/>
+<text x="852" y="161" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Bangkok roastery</text>
+<circle cx="842" cy="398" r="22" fill="#8a3a2f" opacity="0.13"/>
+<circle cx="842" cy="398" r="15" fill="#f9e9e5" stroke="#8a3a2f" stroke-width="2.4"/>
+<circle cx="842" cy="398" r="4.2" fill="#8a3a2f"/>
+<text x="842" y="433" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Chiang Mai roastery</text>
+<circle cx="1002" cy="300" r="21" fill="#6b4a5f" opacity="0.13"/>
+<circle cx="1002" cy="300" r="14" fill="#f3eef4" stroke="#6b4a5f" stroke-width="2.4"/>
+<circle cx="1002" cy="300" r="4.2" fill="#6b4a5f"/>
+<text x="1002" y="334" text-anchor="middle" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Café</text>
+</g>
+<rect x="40" y="96" width="1060" height="470" rx="12" fill="none" stroke="#c4bcae" stroke-width="1.2"/>
+<rect x="890" y="458" width="196" height="88" rx="9" fill="#ffffff" opacity="0.96" stroke="#c4bcae" stroke-width="1"/>
+<text x="904" y="481" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="11.5" letter-spacing="0.09em" fill="#8a7f70">LAYERS</text>
+<rect x="904" y="491" width="13" height="13" rx="3" fill="#dfdcd2" stroke="#8a7f70" stroke-width="1"/>
+<path d="M907 497.5 l3 3.5 l5.5 -6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+<text x="925" y="502" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Base map</text>
+<rect x="904" y="518" width="13" height="13" rx="3" fill="#c9a227" stroke="#a8871f" stroke-width="1"/>
+<path d="M907 524.5 l3 3.5 l5.5 -6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+<text x="925" y="529" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#1c1a17">Coffee Knowledge Vault</text>
+<path d="M144 392 C 154 362, 220 350, 248 331" stroke="#c9a227" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
+<rect x="74" y="392" width="266" height="120" rx="10" fill="#ffffff" opacity="0.97" stroke="#c9a227" stroke-width="1.4"/>
+<text x="90" y="419" font-family="'Helvetica Neue',Arial,sans-serif" font-size="12" letter-spacing="0.06em" font-weight="700" fill="#8a6d1f">LOT-2026-001</text>
+<text x="90" y="443" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Honey process · 86.5 cupping</text>
+<text x="90" y="462" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Flavour: longan, tamarind</text>
+<text x="90" y="481" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#8a7f70">Farmer: Somchai · verified by NIR</text>
+<text x="90" y="499" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" font-weight="700" fill="#a8871f">Traceable to plot in 5 hops</text>
+<text x="40" y="604" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" letter-spacing="0.05em" fill="#8a7f70">Nodes on the map</text>
+<circle cx="48" cy="629" r="7" fill="#eaf1ea" stroke="#4a6b52" stroke-width="2"/>
+<text x="62" y="633" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Farm</text>
+<circle cx="126.8" cy="629" r="7" fill="#eef2f5" stroke="#4a5f6b" stroke-width="2"/>
+<text x="140.8" y="633" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Collection point</text>
+<circle cx="286.0" cy="629" r="7" fill="#f8ece6" stroke="#b5603a" stroke-width="2"/>
+<text x="300.0" y="633" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Processor</text>
+<circle cx="398.3" cy="629" r="7" fill="#faf2dd" stroke="#8a6d1f" stroke-width="2"/>
+<text x="412.3" y="633" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Warehouse</text>
+<circle cx="510.6" cy="629" r="7" fill="#f9e9e5" stroke="#8a3a2f" stroke-width="2"/>
+<text x="524.6" y="633" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Roastery</text>
+<circle cx="616.2" cy="629" r="7" fill="#f3eef4" stroke="#6b4a5f" stroke-width="2"/>
+<text x="630.2" y="633" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="12.5" fill="#1c1a17">Café</text>
+<text x="40" y="668" font-family="'Charter','Iowan Old Style',Georgia,serif" font-size="13" fill="#8a7f70">Every pin is a node someone deposited into the vault. Every line is a relationship carrying a date, a quantity and a verifiable source.</text>
+</svg></div><figcaption>Figure 2 — The same map, with the knowledge layer switched on</figcaption></figure>
+<p class="">It helps to picture the vault geographically. Any mapping tool can already show where a farm, a washing station, a warehouse and a roastery sit. What it cannot show is that <em>this</em> sack in <em>that</em> warehouse came from <em>those</em> three plots, was processed on a particular day, and carries a moisture reading consistent with what the miller recorded. Switch the knowledge layer on and the pins stop being pins. They become a chain anyone can walk in either direction — forward from a plot to the café that poured it, or backward from a bag on a shelf to the farm and the person.</p>
+<p class="">Every new participant is a new node type attaching to a <code>Lot</code> that is already in the graph. That is the payoff of designing the ontology properly: the second stakeholder is far cheaper to add than the first, and the tenth is nearly free.</p>
+<h2 class="rv" id="s08"><span class="sn">08</span>How a commons stays a commons</h2>
+<p class="">Knowledge commons fail in predictable ways. They get captured by one large contributor, or they fragment into incompatible forks, or they fill with unverifiable junk, or the stewarding organisation quietly turns them into a product. Any serious proposal has to say how it intends not to do that.</p>
+<p class="">Our commitments are four.</p>
+<div class="pcards two rv"><div class="pc"><h4>The structure is open.</h4><p>The ontology, the schema and the reference vocabularies are published. Anyone can implement against them, extend them, or argue with them. A commons whose structure is proprietary is not a commons.</p></div><div class="pc"><h4>Contributors keep rights over their own records.</h4><p>A farmer's farm record is theirs: portable, exportable, shareable with the buyers they choose, revocable from the ones they do not. This is where the ownership question belongs — as a governance rule that keeps participation voluntary and keeps the vault honest, rather than as the headline argument.</p></div><div class="pc"><h4>Provenance is mandatory, everywhere.</h4><p>Every fact in the vault carries its source and its verification status. That is what prevents both capture and junk: a large contributor cannot overwrite the record, they can only add claims that stand or fall on their evidence.</p></div><div class="pc"><h4>Stewardship is separated from ownership.</h4><p>Neo Gens funds and maintains the work. Neo Gens does not own the knowledge, and the design is deliberately unattractive to acquire, because the valuable part is published.</p></div></div>
+<p class="">None of this is charity, and we should be plain about it. We think a functioning knowledge commons makes the whole specialty coffee sector more productive, and organisations that know how to build and use structured knowledge will do well in that world. That is the business we are in. But the vault itself has to be a public good, because a vault that one company owns is just a database with better marketing, and nobody should deposit into it.</p>
+<h2 class="rv" id="s09"><span class="sn">09</span>Proof: the first deposits</h2>
+<p class="">Global ambitions deserve local evidence, so here is an honest account of where the work stands.</p>
+<p class="">We chose Thailand for the first deposits for a reason that surprised us. Thailand grows roughly 16,000 tonnes of coffee a year and drinks around 95,500 — it imported about 80,000 tonnes in 2025 and exported some $9.2 million worth of green and roasted coffee in 2024, ranking 87th in the world. Thai smallholders sell domestically, into a market that wants six times what the country produces. EUDR compliance is not their problem.</p>
+<p class="">That made Thailand a better test, not a worse one. If a knowledge vault only attracts contributions when a regulation forces them, it is a compliance product. In Thailand the only reason anyone would contribute is that the vault gives back more than it takes. That is a much harder bar and a much more honest one.</p>
+<p class="">What exists today: a formal domain ontology built on published academic work on Thai coffee knowledge and extended with supply-chain and data-integrity modules; a Neo4j schema with <code>Lot</code> as the central linking entity; two flavour vocabularies — the international wheel and a Thai/Asian wheel — connected by curated mappings; an eight-stage capture pipeline design from a messaging app to a validated graph write; the claim-and-evidence provenance layer described above; and a competency-question register in which six priority questions are implemented as queries and pass their evaluation tests against a demonstration dataset. The first tangible output, a one-page lot profile for a roaster, has been generated end to end. The ontology is built federation-ready, so a farm registered in Colombia, Ethiopia or Honduras joins the same structure as one in Chiang Rai.</p>
+<p class="">What does not exist yet: contributors. The pilot cooperative, the field interviews that will test our competency questions against what growers actually ask, and the cupping sessions that will validate the Asian flavour wheel are the next phase, not a completed one. Every question in the register is still marked <em>draft</em>, precisely because it came from research rather than from a farmer's mouth. We are not promoting any of them until we have sat with people who grow coffee.</p>
+<p class="">We would rather publish that distinction clearly than round it up. The sector has enough pilots described in the past tense.</p>
+<h2 class="rv" id="s10"><span class="sn">10</span>An invitation</h2>
+<p class="">A vault with one contributor is a database. What we are asking for is the first cohort.</p>
+<ul class="body rv"><li><strong>Cooperatives and producer organisations</strong> willing to make the first deposits in a second origin, and to tell us what the structure gets wrong about how coffee actually works where they are</li><li><strong>Roasters</strong> who will contribute cupping data and use farmer-sourced profiles in real sourcing decisions — and say plainly when the profiles are not good enough to use</li><li><strong>Mills and exporters</strong> who see the case for depositing processing and compliance data once instead of documenting the same farms every season</li><li><strong>Researchers, institutes and origin bodies</strong> with agronomic knowledge or a regional flavour vocabulary that belongs in a shared structure rather than in a PDF</li><li><strong>Development organisations and funders</strong> interested in knowledge infrastructure as a complement to the harder work on prices and contracts, not a substitute for it</li><li><strong>Ontology and knowledge-graph practitioners</strong> willing to read the schema and argue with it</li></ul>
+<p class="">The coffee industry already pays for all of this knowledge. It pays several times over, in duplicated surveys, unprovable quality claims, sourcing decisions made on thin information, and expertise that retires with the person who held it. The only thing missing is a shared place to put it and a structure that makes it compound.</p>
+<p class="">That is a thing a group of people can decide to build. We would like to help build it, and we would like company.</p>
+<p class="colophon rv"><em>Coffee KM is a public-goods project stewarded by <a href="https://neogens.co">Neo Gens</a>, a Modern Knowledge Management practice. The ontology, schema and vocabularies are published openly. To contribute, get in touch.</em></p>
+<h3 class="rv srcs-h">Sources</h3>
+<ul class="srcs-list rv"><li><a href="https://dailycoffeenews.com/2026/07/02/inside-the-coffee-barometer-part-1-prices-swing-structures-dont/">Inside the 2026 Coffee Barometer, Part 1: Prices Swing, Structures Don't</a> — Daily Coffee News, July 2026</li><li><a href="https://coffeebarometer.org/explore-coffee-barometer-2026/">2026 Coffee Barometer</a> — Ethos Agriculture et al., June 2026</li><li><a href="https://dailycoffeenews.com/2026/07/29/eudr-is-accelerating-farm-modernization-but-threats-to-smallholders-remain/">EUDR is Accelerating Farm Modernization, But Threats to Smallholders Remain</a> — Daily Coffee News / Mongabay, July 2026</li><li><a href="https://psqr.eu/publications-resources/eu-deforestation-regulation-eudr-2026-update-new-deadlines-for-companies/">EU Deforestation Regulation 2026 Update: New Deadlines for Companies</a> — PSQR</li><li><a href="https://www.foodnavigator.com/Article/2026/04/17/eudr-how-ready-is-coffee/">Is coffee ready for the EUDR?</a> — FoodNavigator, April 2026</li><li><a href="https://cgspace.cgiar.org/items/87ca1211-1bb5-4dd0-be12-58dbc8e2cfb9">"Error 404 farmers not found"</a> — Berta Ortiz, Alliance of Bioversity International and CIAT</li><li>Lertkrai, Kaewboonma &amp; Wathanti (2023). <em>Developing an Ontology for Thai Coffee Knowledge</em></li><li>Phaekhiao, Khankasikam &amp; Nuntawong (2025). <em>A Comparison of the Effectiveness of Ontology-Driven Information System Development Tools</em>, ICIC Express Letters 19(2), 221–230</li><li><a href="https://oec.world/en/profile/bilateral-product/coffee/reporter/tha">Coffee trade data — Thailand</a> — OEC</li></ul>
+    </div>
+  </div>
+</article>
+
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <div class="k">Get in touch</div>
+    <div class="cta-btns"><a class="btn" href="contact.html">Request a briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-in">
+      <div><div class="f-brand"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg> Neo Gens</div></div>
+      <div class="f-cols"><div class="f-col"><div class="h">The practice</div><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="why.html">Why it works</a></div><div class="f-col"><div class="h">Practice areas</div><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a href="coffee.html">MKM for Coffee</a></div><div class="f-col"><div class="h">Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="about.html">Who is behind this</a></div><div class="f-col"><div class="h">Company</div><p>Neo Gens Co., Ltd.</p><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a href="th-coffee.html">ฉบับภาษาไทย</a></div></div>
+    </div>
+    <div class="f-bot"><span>© 2026 Neo Gens Co., Ltd.</span><span>We help you turn knowledge into value-creating assets.</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog');
+  function onScroll(){
+    nav.classList.toggle('stuck',window.scrollY>8);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+    rvs.forEach(function(el){io.observe(el)});
+  } else { rvs.forEach(function(el){el.classList.add('in')}); }
+
+  var heads=[].slice.call(document.querySelectorAll('article h2[id]'));
+  var tocLinks={};
+  [].slice.call(document.querySelectorAll('.toc a')).forEach(function(a){ tocLinks[a.getAttribute('href').slice(1)]=a; });
+  if('IntersectionObserver' in window && heads.length){
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var a=tocLinks[e.target.id];
+        if(!a) return;
+        if(e.isIntersecting){
+          [].slice.call(document.querySelectorAll('.toc a.on')).forEach(function(x){x.classList.remove('on')});
+          a.classList.add('on');
+        }
+      });
+    },{rootMargin:'-70px 0px -75% 0px',threshold:0});
+    heads.forEach(function(h){spy.observe(h)});
+  }
+
+  function ngSetTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('ng-theme',t)}catch(e){}}
+  [].slice.call(document.querySelectorAll('.tgl')).forEach(function(b){
+    b.addEventListener('click',function(){
+      ngSetTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
+    });
+  });
+  var ngB=document.getElementById('burger'), ngD=document.getElementById('drawer');
+  if(ngB&&ngD){
+    ngB.addEventListener('click',function(){
+      var o=ngD.classList.toggle('open');
+      ngB.classList.toggle('x',o);
+      ngB.setAttribute('aria-expanded',o?'true':'false');
+    });
+    ngD.addEventListener('click',function(e){ if(e.target.tagName==='A'){ngD.classList.remove('open');ngB.classList.remove('x');ngB.setAttribute('aria-expanded','false');} });
+  }
+})();</script>
+</body>
+</html>
