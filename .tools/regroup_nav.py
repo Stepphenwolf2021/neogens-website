@@ -15,7 +15,7 @@ EN = dict(
          ('visit.html', 'MKM for Museums &amp; Libraries'),
          ('coffee.html', 'MKM for Coffee'),
          ('engagement.html', 'Engagement'),
-         ('about.html', 'Who is behind this')],
+         ('about.html', 'Who we are')],
     all_label='All sections',
     groups=[
         ('Part 1 · The idea', [
@@ -35,9 +35,10 @@ EN = dict(
             ('honest.html', "What we won't do"),
             ('km-for-museums-and-libraries.html', 'Long read: MKM for museums &amp; libraries')]),
         ('Part 3 · Public goods', [
-            ('coffee.html', 'MKM for Coffee')]),
+            ('coffee.html', 'MKM for Coffee'),
+            ('coffee-farmer.html', 'For coffee farmers')]),
         ('&nbsp;', [
-            ('about.html', 'Who is behind this')]),
+            ('about.html', 'Who we are')]),
     ],
     fcols=[
         ('Part 1 · The idea', [('problem.html', 'The problem'), ('what.html', 'What it is'),
@@ -52,7 +53,8 @@ EN = dict(
                                        ('proof.html', 'Reference implementation'),
                                        ('honest.html', "What we won't do")]),
         ('Part 3 &amp; company', [('coffee.html', 'MKM for Coffee'),
-                                  ('about.html', 'Who is behind this'),
+                                  ('coffee-farmer.html', 'For coffee farmers'),
+                                  ('about.html', 'Who we are'),
                                   ('mailto:hello@neogens.co', 'hello@neogens.co'),
                                   ('km-for-museums-and-libraries.html', 'Long read: MKM for museums &amp; libraries'),
                                   ('th-index.html', 'ฉบับภาษาไทย')]),
@@ -66,7 +68,7 @@ TH = dict(
          ('th-visit.html', 'MKM สำหรับพิพิธภัณฑ์และห้องสมุด'),
          ('th-coffee.html', 'MKM สำหรับกาแฟ'),
          ('th-engagement.html', 'รูปแบบการทำงาน'),
-         ('th-about.html', 'ใครอยู่เบื้องหลัง')],
+         ('th-about.html', 'เราคือใคร')],
     all_label='สารบัญทั้งหมด',
     groups=[
         ('ภาค 1 · แนวคิด', [
@@ -86,9 +88,10 @@ TH = dict(
             ('th-honest.html', 'สิ่งที่เราไม่ทำ'),
             ('km-for-museums-and-libraries.html', 'บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด')]),
         ('ภาค 3 · โครงการเพื่อสาธารณะ', [
-            ('th-coffee.html', 'MKM สำหรับกาแฟ')]),
+            ('th-coffee.html', 'MKM สำหรับกาแฟ'),
+            ('th-coffee-farmer.html', 'สำหรับคนปลูกกาแฟ')]),
         ('&nbsp;', [
-            ('th-about.html', 'ใครอยู่เบื้องหลัง')]),
+            ('th-about.html', 'เราคือใคร')]),
     ],
     fcols=[
         ('ภาค 1 · แนวคิด', [('th-problem.html', 'ปัญหา'), ('th-what.html', 'สิ่งนี้คืออะไร'),
@@ -103,7 +106,8 @@ TH = dict(
                                     ('th-proof.html', 'งานอ้างอิงที่เราทำเอง'),
                                     ('th-honest.html', 'สิ่งที่เราไม่ทำ')]),
         ('ภาค 3 และบริษัท', [('th-coffee.html', 'MKM สำหรับกาแฟ'),
-                            ('th-about.html', 'ใครอยู่เบื้องหลัง'),
+                            ('th-coffee-farmer.html', 'สำหรับคนปลูกกาแฟ'),
+                            ('th-about.html', 'เราคือใคร'),
                             ('mailto:hello@neogens.co', 'hello@neogens.co'),
                             ('km-for-museums-and-libraries.html', 'บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด'),
                             ('index.html', 'English edition')]),
