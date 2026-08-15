@@ -5,7 +5,7 @@ Only navigation labels and links change. No prose is touched.
 """
 import glob, io, re, os
 
-W = '/sessions/practical-pensive-rubin/mnt/neogens-website'
+W = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {'404.html', 'km-for-museums.html'}
 
 EN = dict(
@@ -14,7 +14,8 @@ EN = dict(
     top=[('problem.html', 'The idea'),
          ('visit.html', 'MKM for Museums &amp; Libraries'),
          ('coffee.html', 'MKM for Coffee'),
-         ('engagement.html', 'Engagement')],
+         ('engagement.html', 'Engagement'),
+         ('about.html', 'Who is behind this')],
     all_label='All sections',
     groups=[
         ('Part 1 · The idea', [
@@ -64,7 +65,8 @@ TH = dict(
     top=[('th-problem.html', 'แนวคิด'),
          ('th-visit.html', 'MKM สำหรับพิพิธภัณฑ์และห้องสมุด'),
          ('th-coffee.html', 'MKM สำหรับกาแฟ'),
-         ('th-engagement.html', 'รูปแบบการทำงาน')],
+         ('th-engagement.html', 'รูปแบบการทำงาน'),
+         ('th-about.html', 'ใครอยู่เบื้องหลัง')],
     all_label='สารบัญทั้งหมด',
     groups=[
         ('ภาค 1 · แนวคิด', [
