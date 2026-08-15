@@ -209,6 +209,8 @@ FORM = {
               '<b>hello@neogens.co</b> so we are certain to see it.',
         err="That did not send, and nothing was recorded. Please write directly to "
             "<b>hello@neogens.co</b> — we would rather tell you than show a message that isn't true.",
+        err429='Too many submissions from your network in the last hour, so this one was not '
+               'recorded. Try again later, or write directly to <b>hello@neogens.co</b>.',
     ),
     'th': dict(
         k='ร่วมเป็นคนฝากรุ่นแรก',
@@ -223,6 +225,8 @@ FORM = {
               '<b>hello@neogens.co</b> อีกทางหนึ่ง เพื่อให้แน่ใจว่าเราได้รับ',
         err='ส่งไม่สำเร็จ และไม่มีการบันทึกใด ๆ กรุณาติดต่อโดยตรงที่ <b>hello@neogens.co</b> '
             '— เราเลือกแจ้งตามจริง มากกว่าแสดงข้อความที่ไม่เป็นความจริง',
+        err429='ชั่วโมงนี้มีการส่งจากเครือข่ายเดียวกับคุณมากเกินกำหนด รายการนี้จึงยังไม่ถูกบันทึก '
+               'ลองใหม่ภายหลัง หรือเขียนตรงมาที่ <b>hello@neogens.co</b> ได้เลย',
     ),
 }
 
@@ -279,9 +283,10 @@ TAIL_FORM = '''
     })}).then(function(res){
       if(res.status===200){form.style.display='none';okEl.style.display='block';return;}
       if(res.status===202){form.style.display='none';okEl.innerHTML=%(ok202)s;okEl.style.display='block';return;}
+      if(res.status===429){var e=new Error('rate_limited');e.rate=true;throw e;}
       throw new Error('http_'+res.status);
-    }).catch(function(){
-      if(errEl){errEl.innerHTML=%(err)s;errEl.style.display='block';}
+    }).catch(function(e){
+      if(errEl){errEl.innerHTML=(e&&e.rate)?%(err429)s:%(err)s;errEl.style.display='block';}
       btn.disabled=false; btn.textContent=label;
     });
   });
@@ -296,6 +301,7 @@ def form_js(lang):
         lang=_json.dumps(lang),
         ok202=_json.dumps(f['ok202'], ensure_ascii=False),
         err=_json.dumps(f['err'], ensure_ascii=False),
+        err429=_json.dumps(f['err429'], ensure_ascii=False),
     )
 
 
