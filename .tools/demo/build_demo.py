@@ -265,8 +265,11 @@ def main():
         f'<span><a href="coffee.html">The full argument</a></span></div>\n'
         f'    </div>\n  </div>\n</header>') + s[m.end():]
 
-    # CSS
-    s = s.replace("\n.dlab{", "\n" + CSS + ".dlab{")
+    # CSS — แทรกก่อนปิดบล็อก style ของแม่แบบ
+    # ทุกการแทรกในสคริปต์นี้ต้องพิสูจน์ว่าเกิดขึ้นจริง ไม่ใช่ replace แล้วเชื่อว่าสำเร็จ
+    if s.count("</style>") != 1:
+        sys.exit(f"[abort] แม่แบบมี </style> {s.count('</style>')} จุด คาดว่าต้องมีจุดเดียว")
+    s = s.replace("</style>", "\n/* ===== demo dashboard ===== */\n" + CSS + "</style>", 1)
 
     # เนื้อหา
     i, j = s.index("<article>"), s.index("</article>") + len("</article>")
@@ -288,9 +291,24 @@ def main():
                ";</script>\n<script>\n" + JS + "</script>\n")
     s = s.replace("</body>", payload + "</body>")
 
+    # ---- ด่านสุดท้าย ทุกชิ้นต้องอยู่ในไฟล์จริง ----
+    checks = {
+        "กฎ CSS ของแดชบอร์ด": s.count(".dm-stat{") == 1 and s.count(".dm-panel{") == 1,
+        "CSS อยู่ในบล็อก style": s.index(".dm-stat{") < s.index("</style>"),
+        "ข้อมูลจำลอง": "__VAULT_DEMO__" in s,
+        "สคริปต์แดชบอร์ด": "dm-node" in s and "function setLayer" in s,
+        "แผนที่": 'id="dm-map"' in s and len(LAND) > 10000,
+        "แผงรายละเอียด": 'id="dm-panel"' in s,
+        "ป้ายบอกว่าเป็นข้อมูลจำลอง": 'name="ng-data"' in s and "Simulated" in s,
+    }
+    bad = [k for k, ok in checks.items() if not ok]
+    if bad:
+        sys.exit("[abort] ชิ้นส่วนที่ไม่เข้าไฟล์: " + ", ".join(bad))
+
     OUT.write_text(s, encoding="utf-8")
     print(f"  สร้าง {OUT.name} · {len(s.encode()) // 1024} KB · "
           f"{DATA['grand']:,} ราย · {len(DATA['places'])} จุดบนแผนที่")
+    print("  ตรวจชิ้นส่วนครบทั้ง %d ข้อ" % len(checks))
 
 
 if __name__ == "__main__":
