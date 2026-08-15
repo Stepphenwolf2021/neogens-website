@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A joint team of your specialists and ours, working on the enquiries your institution could not answer. — Neo Gens</title>
-<meta name="description" content="We start narrow and deliberately: one exhibition question, reference enquiry or provenance investigation that a specialist genuinely tried and abandoned. Your people…">
-<meta property="og:title" content="A joint team of your specialists and ours, working on the enquiries your institution could not answer. — Neo Gens">
-<meta property="og:description" content="We start narrow and deliberately: one exhibition question, reference enquiry or provenance investigation that a specialist genuinely tried and abandoned. Your people…">
-<link rel="canonical" href="https://www.neogens.co/engagement.html">
-<link rel="alternate" hreflang="en" href="https://www.neogens.co/engagement.html">
-<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-engagement.html">
-<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/engagement.html">
+<title>What an ontology and a knowledge graph actually are — Neo Gens</title>
+<meta name="description" content="Two words appear on nearly every page of this site. This page explains them once, in plain language, with examples from real work.">
+<meta property="og:title" content="What an ontology and a knowledge graph actually are">
+<meta property="og:description" content="Two words appear on nearly every page of this site. This page explains them once, in plain language, with examples from real work.">
+<link rel="canonical" href="https://www.neogens.co/layer.html">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/layer.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-layer.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/layer.html">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Neo Gens">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Neo Gens">
-<meta property="og:url" content="https://www.neogens.co/engagement.html">
+<meta property="og:url" content="https://www.neogens.co/layer.html">
 <meta property="og:image" content="https://www.neogens.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -494,6 +494,19 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
 
 section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 .pband h2.pb-t{font-size:clamp(32px,5.4vw,64px)}
+
+/* section pages (added) */
+.blks{display:grid;gap:12px;margin-top:clamp(30px,4vw,46px)}
+.blk{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:clamp(22px,3vw,30px)}
+.blk .n{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--go);margin-bottom:12px}
+.blk h3{font-size:clamp(17px,2.1vw,21px);line-height:1.35;margin-bottom:10px;color:var(--fg)}
+.blk p{font-size:15.5px;color:var(--dim);margin:0}
+.blk p+p{margin-top:12px}
+.blks.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.blks.three{grid-template-columns:1fr}}
+.creed{margin-top:clamp(34px,4.5vw,52px);border-left:2px solid var(--go);padding:6px 0 6px clamp(20px,3vw,30px)}
+.creed p{font-family:var(--serif);font-size:clamp(20px,2.6vw,28px);line-height:1.35;color:var(--fg);margin:0}
+.closer{margin-top:clamp(28px,3.5vw,40px);font-size:16.5px;color:var(--dim);max-width:64ch}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 </head>
@@ -511,97 +524,21 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><a href="problem.html">The idea</a><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="coffee.html">MKM for Coffee</a><a class="on" href="engagement.html">Engagement</a><span class="lang"><a class="on" href="engagement.html">EN</a><span>/</span><a href="th-engagement.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-links"><a href="problem.html">The idea</a><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><span class="lang"><a class="on" href="layer.html">EN</a><span>/</span><a href="th-layer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
     <div class="nav-mob"><span class="lang"><a class="on" href="index.html">EN</a><span>/</span><a href="th-index.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="problem.html">01 · The problem</a><a href="what.html">02 · What it is</a><a href="why.html">03 · Why it works</a><a href="layer.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="advantage.html">What you are holding</a><a href="visit.html">01 · Where things stand</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a class="on" href="engagement.html">Engagement</a><a href="sovereignty.html">Your data · AI sovereignty</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="coffee.html">MKM for Coffee</a><div class="h">&nbsp;</div><a href="about.html">Who is behind this</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="problem.html">01 · The problem</a><a href="what.html">02 · What it is</a><a href="why.html">03 · Why it works</a><a class="on" href="layer.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="advantage.html">What you are holding</a><a href="visit.html">01 · Where things stand</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="sovereignty.html">Your data · AI sovereignty</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="coffee.html">MKM for Coffee</a><div class="h">&nbsp;</div><a href="about.html">Who is behind this</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
 </nav>
-<section id="engagement">
+<section id="sec">
   <div class="wrap">
-    <div class="eyebrow rv">05 — How an engagement runs</div>
+    <div class="eyebrow rv">Part 1 · The idea — 04 Two words</div>
     <div class="grid-2">
-      <div class="rv"><h1>A joint team of your specialists and ours, working on the enquiries your institution could not answer.</h1></div>
-      <div class="rv"><p class="lede">
-        We start narrow and deliberately: one exhibition question, reference enquiry or provenance
-        investigation that a specialist genuinely tried and abandoned. Your people are in every session,
-        not briefed afterwards. Durations are the typical shape and are scoped per institution.
-      </p></div>
+      <div class="rv"><h1>What an ontology and a knowledge graph actually are</h1></div>
+      <div class="rv"><p class="lede">Two words appear on nearly every page of this site. This page explains them once, in plain language, and adds no further jargon.</p></div>
     </div>
-
-    <figure class="rv">
-      <div class="dbox">
-        <svg class="dsvg" viewBox="0 0 900 190" role="img" aria-label="Timeline of four engagement phases with what the client team leaves with at each stage, and Neo Gens involvement decreasing over time">
-          <line class="ln" x1="40" y1="70" x2="860" y2="70"/>
-          <circle cx="90" cy="70" r="6" fill="var(--go)"/>
-          <circle cx="320" cy="70" r="6" fill="var(--go)"/>
-          <circle cx="550" cy="70" r="6" fill="var(--go)"/>
-          <circle cx="800" cy="70" r="6" fill="var(--go)"/>
-
-          <text class="m-go" x="90" y="48" text-anchor="middle">PHASE 0</text>
-          <text class="m-go" x="320" y="48" text-anchor="middle">PHASE 1</text>
-          <text class="m-go" x="550" y="48" text-anchor="middle">PHASE 2</text>
-          <text class="m-go" x="800" y="48" text-anchor="middle">PHASE 3</text>
-
-          <text class="t" x="90" y="96" text-anchor="middle">Alignment</text>
-          <text class="t" x="320" y="96" text-anchor="middle">Ontology design</text>
-          <text class="t" x="550" y="96" text-anchor="middle">Graph &amp; first enquiry</text>
-          <text class="t" x="800" y="96" text-anchor="middle">Capability transfer</text>
-
-          <text class="t-s" x="90" y="116" text-anchor="middle">a knowledge map</text>
-          <text class="t-s" x="320" y="116" text-anchor="middle">an ontology you authored</text>
-          <text class="t-s" x="550" y="116" text-anchor="middle">a real, evidenced answer</text>
-          <text class="t-s" x="800" y="116" text-anchor="middle">your team, working alone</text>
-
-          <path class="ln-gh" d="M40 152 L860 152"/>
-          <path d="M40 152 C 300 152, 520 152, 860 152" fill="none" stroke="rgba(var(--go-rgb),.35)" stroke-width="0"/>
-          <rect x="40" y="144" width="240" height="9" rx="4.5" fill="rgba(var(--go-rgb),.42)"/>
-          <rect x="280" y="144" width="290" height="9" rx="4.5" fill="rgba(var(--go-rgb),.28)"/>
-          <rect x="570" y="144" width="200" height="9" rx="4.5" fill="rgba(var(--go-rgb),.16)"/>
-          <rect x="770" y="144" width="90" height="9" rx="4.5" fill="rgba(var(--go-rgb),.07)"/>
-          <text class="m" x="40" y="176">OUR INVOLVEMENT, DESIGNED TO DECREASE — YOUR TEAM'S, TO INCREASE</text>
-        </svg>
-      </div>
-    </figure>
-
-    <div class="phases">
-      <div class="ph rv">
-        <div class="p-k">PHASE 0</div>
-        <div><h4>Alignment</h4><p>Your leadership and our team choose the enquiry worth answering first — usually one that crosses two or three departments and has defeated everyone who tried it.</p></div>
-        <div class="out"><div class="k">Your team leaves with</div><p>A knowledge map: what the institution holds, what it doesn't, and where the gap is costing you.</p></div>
-      </div>
-      <div class="ph rv">
-        <div class="p-k">PHASE 1</div>
-        <div><h4>Mission-driven ontology design</h4><p>Working sessions where your specialists make explicit what has always been implicit, and settle terminology departments have quietly disagreed on for decades.</p></div>
-        <div class="out"><div class="k">Your team leaves with</div><p>An ontology your institution authored and owns, aligned to your existing vocabularies, plus the governance to keep it alive.</p></div>
-      </div>
-      <div class="ph rv">
-        <div class="p-k">PHASE 2</div>
-        <div><h4>Graph &amp; first enquiry</h4><p>Our engineers pair with your systems staff to build the graph, connect the records that feed it, and answer the Phase 0 enquiry on top of it.</p></div>
-        <div class="out"><div class="k">Your team leaves with</div><p>A real answer with its evidence trail attached, and the know-how behind every design decision in it.</p></div>
-      </div>
-      <div class="ph rv">
-        <div class="p-k">PHASE 3</div>
-        <div><h4>Capability transfer</h4><p>Your team takes the next collection the whole way with us watching, then does the one after that alone. New collections attach to what exists rather than replacing it.</p></div>
-        <div class="out"><div class="k">Your team leaves with</div><p>A knowledge management capability of your own — not a dependency on an outside firm.</p></div>
-      </div>
-    </div>
-
-    <p class="note rv" style="margin-top:22px">
-      <b>How you know it worked:</b> your team models the next collection without us. That's the
-      deliverable — the graph is only the evidence that the capability transferred.
-    </p>
-
-    <h3 class="rv" style="margin-top:clamp(50px,6vw,78px);margin-bottom:6px">What changes for the institution</h3>
-    <div class="oc">
-      <div class="oc-row head rv"><div>Today</div><div>With a knowledge layer</div></div>
-      <div class="oc-row rv"><div>An enquiry is answered by whoever happens to know</div><div>Answered from the record, with the research trail attached</div></div>
-      <div class="oc-row rv"><div>A curator can only search what they can hold in their head</div><div>The collection proposes what's relevant, across every department</div></div>
-      <div class="oc-row rv"><div>Departments catalogue in vocabularies that don't reconcile</div><div>One model the whole institution shares, built from those vocabularies</div></div>
-      <div class="oc-row rv"><div>The reasoning behind an attribution retires with its author</div><div>The argument is captured, not just the conclusion</div></div>
-      <div class="oc-row rv"><div>Staff quietly paste collection material into public AI tools</div><div>A sanctioned path that keeps restricted material inside</div></div>
-      <div class="oc-row rv"><div>Most of the collection can't participate in a visit</div><div>Stored objects contribute to routes, programmes and enquiries</div></div>
-      <div class="oc-row rv"><div>Visitor questions evaporate at the end of each day</div><div>Unanswered questions accumulate as a ranked research agenda</div></div>
-    </div>
+    <div class="blks "><div class="blk rv"><div class="n">01</div><h3>An ontology is an agreement about what you call things, and what relates to what</h3><p>A curator calls it an object. A conservator calls it a piece. The archive calls it an item. The ontology is the document that says all three mean the same thing — that this thing has a maker, a findspot, a previous owner, and what each of those relationships means.</p><p>Written once. Used across the whole organisation.</p></div><div class="blk rv"><div class="n">02</div><h3>A knowledge graph is the real thing built to that ontology</h3><p>The ontology is the drawing. The graph is the building.</p><p>In a graph the connection between two things is not something you reconstruct in every query. It is stored, it has a name and a direction, and it can be walked.</p></div><div class="blk rv"><div class="n">03</div><h3>Mission-driven — two organisations in the same field should not share one ontology</h3><p>Two museums can hold the same kinds of objects. But if one exists to teach and the other exists to research, the lines worth drawing are different.</p><p>An off-the-shelf ontology therefore serves neither. We design from the organisation's mission, not from an industry template.</p></div><div class="blk rv"><div class="n">04</div><h3>AI-friendly — it tells the AI what your organisation is for</h3><p>A general AI guesses from the shape of sentences. An AI working on your knowledge graph follows the lines your own people drew.</p><p>So answers trace back to evidence, the same question returns the same answer, and nothing is claimed beyond what the organisation stands behind.</p></div></div>
+    <div class="creed rv"><p>An ontology that matches the mission is what lets AI work for the organisation, rather than in place of it.</p></div>
+    <p class="closer rv">Which makes the hard part of this work not technical. It is getting departments to agree on what things are — and only your own people can do that.</p>
   </div>
 </section>
 <section id="contact" class="cta">
@@ -629,7 +566,7 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
     <p class="form-note rv">Or write directly — hello@neogens.co</p>
   </div>
 </section>
-<div class="pn"><div class="pn-in"><a class="pv" href="services.html"><div class="k">Previous</div><div class="t">What we do together</div></a><a class="nx" href="proof.html"><div class="k">Next</div><div class="t">Reference implementation</div></a></div></div>
+<div class="pn"><div class="pn-in"><a class="pv" href="what.html"><div class="k">Previous</div><div class="t">What it is</div></a><a class="nx" href="visit.html"><div class="k">Next</div><div class="t">MKM for Museums &amp; Libraries</div></a></div></div>
 <footer>
   <div class="wrap">
     <div class="f-in">

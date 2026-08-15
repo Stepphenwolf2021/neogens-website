@@ -227,4 +227,52 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee.html"/>
   </url>
+  <url>
+    <loc>https://www.neogens.co/advantage.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/advantage.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-advantage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/advantage.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/th-advantage.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/advantage.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-advantage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/advantage.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/layer.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/layer.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-layer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/layer.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/th-layer.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/layer.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-layer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/layer.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/sovereignty.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/sovereignty.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/th-sovereignty.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/sovereignty.html"/>
+  </url>
 </urlset>
