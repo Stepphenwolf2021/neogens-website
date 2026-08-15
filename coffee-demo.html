@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What 5,000 contributors would look like — Neo Gens</title>
+<meta name="description" content="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, a knowledge graph laid over the world map, and what a farmer or a roaster would actually ask it.">
+<meta property="og:title" content="What 5,000 contributors would look like">
+<meta property="og:description" content="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, a knowledge graph laid over the world map, and what a farmer or a roaster would actually ask it.">
+<link rel="canonical" href="https://www.neogens.co/coffee-demo.html">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee-demo.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/coffee-demo.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee-demo.html">
+<meta name="ng-data" content="simulated">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Neo Gens">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Neo Gens">
+<meta property="og:url" content="https://www.neogens.co/coffee-demo.html">
+<meta property="og:image" content="https://www.neogens.co/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08090A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TPBNZQKVWE');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{ --go-rgb:184,240,74; --guess-rgb:232,163,61; --ask-rgb:127,199,232; --w-rgb:255,255,255;
+  --bg:#08090A; --bg-2:#0D0F11; --surface:#111417; --surface-2:#171B1F;
+  --line:rgba(var(--w-rgb),.09); --line-2:rgba(var(--w-rgb),.18);
+  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#6E757D;
+  --go:#B8F04A; --guess:#E8A33D; --ask:#7FC7E8;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --pad:clamp(20px,5vw,60px);
+  --measure:680px;
+  --on-go:#08090A;
+  --go-soft:rgba(var(--go-rgb),.09); --go-line:rgba(var(--go-rgb),.30);
+  --ask-soft:rgba(var(--ask-rgb),.07);
+  --glass:rgba(8,9,10,.74); --wash:rgba(var(--w-rgb),.055); --shadow:rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --go-rgb:76,122,11; --guess-rgb:149,89,10; --ask-rgb:27,100,137; --w-rgb:16,18,20;
+  --bg:#FCFBF8; --bg-2:#F3F1EA; --surface:#FFFFFF; --surface-2:#F6F4ED;
+  --line:rgba(16,18,20,.13); --line-2:rgba(16,18,20,.26);
+  --fg:#15181C; --dim:#4C535A; --mute:#79818A;
+  --go:#4C7A0B; --guess:#95590A; --ask:#1B6489;
+  --on-go:#FFFFFF;
+  --go-soft:rgba(76,122,11,.10); --go-line:rgba(76,122,11,.34);
+  --ask-soft:rgba(27,100,137,.08);
+  --glass:rgba(252,251,248,.82); --wash:rgba(16,18,20,.05); --shadow:rgba(16,18,20,.20);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:18px;line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--go);color:var(--on-go)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3,h4{letter-spacing:-.03em;line-height:1.12;font-weight:600;text-wrap:balance}
+p{text-wrap:pretty}
+
+/* nav — scoped to #nav so the in-page contents <nav> is unaffected */
+#nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--glass);border-bottom:1px solid transparent;transition:border-color .3s}
+#nav.stuck{border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.02em;font-size:15.5px;text-decoration:none}
+.brand .bt{font-weight:600;letter-spacing:-.02em;font-size:16px;line-height:1.1}
+.brand .bs{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);display:block;margin-top:2px}
+.glyph{width:20px;height:20px;flex:none}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.on{color:var(--fg)}
+.lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;flex:none}
+.lang a{text-decoration:none;color:var(--mute);transition:color .2s}
+.lang a.on{color:var(--go);font-weight:500}
+.lang span{color:var(--line-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--go);color:var(--on-go);border:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em;padding:10px 17px;border-radius:999px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(var(--go-rgb),.22)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
+.tgl{background:transparent;border:1px solid var(--line-2);border-radius:999px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex:none;padding:0;transition:color .2s,border-color .2s}
+.tgl:hover{color:var(--fg);border-color:var(--mute)}
+.tgl svg{width:15px;height:15px;display:block}
+html[data-theme="light"] .tgl .i-moon{display:none}
+html:not([data-theme="light"]) .tgl .i-sun{display:none}
+.nav-mob{display:none;align-items:center;gap:9px;flex:none}
+.burger{background:transparent;border:1px solid var(--line-2);border-radius:10px;width:38px;height:34px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.burger span{display:block;width:16px;height:1.5px;background:var(--fg);transition:transform .22s,opacity .18s}
+.burger.x span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--bg);max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.drawer.open{display:block}
+.drawer .dw{padding:6px var(--pad) 26px;margin:0 auto}
+.drawer .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:20px 0 2px}
+.drawer a{display:block;padding:13px 0;border-bottom:1px solid var(--line);color:var(--dim);text-decoration:none;font-size:16px;line-height:1.35}
+.drawer a.on{color:var(--go)}
+.drawer a.btn{display:flex;justify-content:center;margin-top:22px;padding:15px;border-bottom:none;font-size:15px;color:var(--on-go)}
+@media(min-width:1301px){.drawer{display:none!important}}
+@media(max-width:1300px){.nav-links{display:none!important}.nav-mob{display:flex}.nav-in{height:60px;gap:12px}.brand .bs{display:none}}
+
+/* progress */
+.prog{position:fixed;top:0;left:0;height:2px;background:var(--go);width:0;z-index:200;transition:width .1s linear}
+
+/* header */
+.head{padding:clamp(52px,7vw,88px) 0 clamp(30px,4vw,44px);position:relative;overflow:hidden}
+.head-bg{position:absolute;inset:-30% -10% auto -10%;height:130%;pointer-events:none;
+  background:radial-gradient(56% 46% at 20% 8%,var(--go-soft),transparent 66%),radial-gradient(46% 42% at 84% 22%,var(--ask-soft),transparent 68%);filter:blur(8px)}
+.head-grid{position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(64% 50% at 40% 0%,#000,transparent 78%);mask-image:radial-gradient(64% 50% at 40% 0%,#000,transparent 78%)}
+.head .wrap{position:relative}
+.head .inner{max-width:840px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:22px}
+h1{font-size:clamp(32px,5vw,56px);letter-spacing:-.04em;max-width:22ch;margin-bottom:22px}
+.stand{font-size:clamp(18px,2.1vw,22px);line-height:1.6;color:var(--dim);max-width:60ch;font-family:var(--serif);font-weight:400}
+.meta{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:.04em}
+
+/* article grid: content column with wide breakout */
+article{padding:clamp(26px,4vw,44px) 0 clamp(56px,7vw,88px)}
+.artbody{display:grid;grid-template-columns:[full-start] minmax(0,1fr) [wide-start] minmax(0,1fr) [content-start] minmax(0,var(--measure)) [content-end] minmax(0,1fr) [wide-end] minmax(0,1fr) [full-end]}
+.artbody > *{grid-column:content}
+.artbody > .figplate,.artbody > .pq,.artbody > .pcards,.artbody > .toc{grid-column:wide}
+
+.artbody > p{color:var(--dim);margin-bottom:24px}
+.artbody > p.first{color:var(--fg)}
+.artbody > p.drop::first-letter{font-family:var(--serif);font-size:3.3em;line-height:.86;float:left;padding:8px 12px 0 0;color:var(--fg)}
+.artbody strong{color:var(--fg);font-weight:600}
+.artbody em{font-style:italic}
+.artbody a{color:var(--go);text-decoration:none;border-bottom:1px solid rgba(var(--go-rgb),.35)}
+.artbody a:hover{border-bottom-color:var(--go)}
+.artbody h2{font-size:clamp(24px,3vw,33px);margin:clamp(52px,6vw,80px) 0 20px;position:relative;scroll-margin-top:84px}
+.artbody h2:first-of-type{margin-top:14px}
+.artbody h2 .sn{display:block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.16em;color:var(--go);margin-bottom:12px}
+.artbody h3{font-size:clamp(18px,2vw,21px);margin:44px 0 14px}
+.artbody h3.srcs-h{font-size:13px;font-family:var(--mono);font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:36px 0 18px}
+.artbody > p.beat{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);line-height:1.3;color:var(--fg);margin:34px 0 34px;padding-left:18px;border-left:2px solid var(--go)}
+.artbody > p.colophon{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:26px;margin-top:44px}
+
+/* table of contents */
+.toc{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:22px 24px;margin-bottom:clamp(30px,4vw,46px)}
+.toc .h{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px}
+@media(max-width:700px){.toc ol{grid-template-columns:1fr}}
+.toc a{display:flex;gap:11px;align-items:baseline;padding:7px 0;text-decoration:none;color:var(--dim);font-size:14.5px;line-height:1.5;border:0;transition:color .2s}
+.toc a:hover,.toc a.on{color:var(--fg)}
+.toc a i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--mute);flex:none;padding-top:2px}
+.toc a.on i{color:var(--go)}
+
+/* lists */
+ul.body{list-style:none;margin:4px 0 26px;display:flex;flex-direction:column;gap:13px}
+ul.body li{color:var(--dim);padding-left:20px;position:relative}
+ul.body li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--go);opacity:.6}
+ul.body li strong{color:var(--fg)}
+ul.srcs-list{list-style:none;margin:4px 0 26px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.65}
+ul.srcs-list li{color:var(--mute);padding-left:18px;position:relative}
+ul.srcs-list li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:1px;background:var(--line-2)}
+ul.srcs-list a{color:var(--dim);border-bottom:1px solid var(--line)}
+ul.srcs-list a:hover{color:var(--go);border-bottom-color:var(--go-line)}
+
+/* pull quote */
+.pq{margin:clamp(40px,5vw,62px) 0}
+.pq blockquote{font-family:var(--serif);font-size:clamp(21px,2.8vw,31px);line-height:1.25;color:var(--fg);border-left:2px solid var(--go);padding-left:clamp(20px,3vw,30px)}
+.pq blockquote p{margin:0}
+
+/* paragraph cards */
+.pcards{display:grid;gap:12px;margin:14px 0 30px}
+.pcards.two{grid-template-columns:1fr 1fr}
+.pcards.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.pcards.two,.pcards.three{grid-template-columns:1fr}}
+.pc{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:24px 22px}
+.pc h4{font-size:16.5px;margin-bottom:9px;line-height:1.35;color:var(--fg)}
+.pc p{font-size:15px;line-height:1.6;color:var(--dim);margin:0}
+
+/* figures */
+.figplate{margin:clamp(38px,5vw,60px) 0}
+.plate{background:#faf9f7;border:1px solid var(--line);border-radius:16px;padding:clamp(10px,1.6vw,18px);overflow:hidden}
+.plate svg{width:100%;height:auto;display:block;max-width:100%}
+.figplate figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--mute);margin-top:13px;max-width:66ch}
+
+/* closing band */
+.cta{border-top:1px solid var(--line);padding:clamp(52px,7vw,84px) 0;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(48% 60% at 50% 100%,var(--go-soft),transparent 70%)}
+.cta .wrap{position:relative;text-align:center}
+.cta .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.cta .k{margin-bottom:26px}
+.cta-btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:44px 0 52px}
+.f-in{display:grid;grid-template-columns:1fr 2.4fr;gap:34px;margin-bottom:34px}
+.f-brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px}
+.f-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.f-col .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.f-col a,.f-col p{display:block;font-size:13.5px;color:var(--dim);text-decoration:none;margin-bottom:9px;line-height:1.5}
+.f-col a:hover{color:var(--fg)}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:900px){.f-in{grid-template-columns:1fr}.f-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-cols{grid-template-columns:1fr}.f-bot{flex-direction:column;gap:6px}}
+
+/* hero map */
+.hero-map{margin:0 0 clamp(10px,2vw,20px)}
+
+/* sign-up form */
+.join{border-top:1px solid var(--line);padding:clamp(52px,7vw,84px) 0;position:relative;overflow:hidden}
+.join-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(50% 62% at 50% 100%,var(--go-soft),transparent 70%)}
+.join .wrap{position:relative}
+.join .inner{max-width:560px;margin:0 auto;text-align:center}
+.join .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:16px}
+.join h2{font-size:clamp(23px,3vw,32px);margin-bottom:16px}
+.join .lead{color:var(--dim);font-size:16.5px;margin-bottom:30px}
+form{display:flex;flex-direction:column;gap:9px}
+.frow{display:flex;gap:9px}
+@media(max-width:560px){.frow{flex-direction:column}}
+form input{flex:1;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;padding:13px 20px;min-width:0;transition:border-color .22s}
+form input::placeholder{color:var(--mute)}
+form input:focus{border-color:rgba(var(--go-rgb),.5)}
+form button{justify-content:center;padding:14px 22px;margin-top:5px}
+.form-note{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.ok{margin:30px auto 0;max-width:520px;padding:18px;border-radius:14px;border:1px solid rgba(var(--go-rgb),.35);background:rgba(var(--go-rgb),.06);font-family:var(--mono);font-size:13.5px;color:var(--go);display:none;line-height:1.72}
+.err{margin:30px auto 0;max-width:520px;padding:18px;border-radius:14px;border:1px solid rgba(var(--guess-rgb),.35);background:rgba(var(--guess-rgb),.06);font-family:var(--mono);font-size:13.5px;color:var(--guess);display:none;line-height:1.72}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+<script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
+    <div class="nav-links"><a href="problem.html">The idea</a><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" href="coffee-demo.html">EN</a><span>/</span><a href="th-index.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" href="coffee.html">EN</a><span>/</span><a href="th-coffee.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="problem.html">01 · The problem</a><a href="what.html">02 · What it is</a><a href="why.html">03 · Why it works</a><a href="layer.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="advantage.html">What you are holding</a><a href="visit.html">01 · Where things stand</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="sovereignty.html">Your data · AI sovereignty</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a class="on" href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+</nav>
+
+<header class="head">
+  <div class="head-bg"></div><div class="head-grid"></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="kicker">MKM for Coffee · demo</div>
+      <h1>What the vault looks like with 5,000 people in it</h1>
+      <p class="stand">A simulated view of the Coffee Knowledge Vault — every origin, every market, and the routes already carrying verified lots between them. Click any point.</p>
+      <div class="meta"><span>Neo Gens</span><span>interactive demo</span><span><a href="coffee.html">The full argument</a></span></div>
+    </div>
+  </div>
+</header>
+
+
+
+<article>
+  <div class="wrap">
+    <div class="dm-warn"><b>Simulated</b><p>Nothing on this page is real data. It is a working sketch of what the Coffee Knowledge Vault looks like once 5,000 people along the chain have contributed to it. No one has contributed yet — that is the phase we are in.</p></div>
+    <div class="dm-stats"><div class="dm-stat"><div class="v">5,000</div><div class="l">Contributors</div><div class="p">43 origins and markets</div></div><div class="dm-stat" data-role="farmers" tabindex="0"><div class="v">4,000</div><div class="l">Farmers</div><div class="p">80% of the vault</div></div><div class="dm-stat" data-role="roasters" tabindex="0"><div class="v">500</div><div class="l">Roasters</div><div class="p">10%</div></div><div class="dm-stat" data-role="coops" tabindex="0"><div class="v">270</div><div class="l">Co-ops &amp; mills</div><div class="p">the collection layer</div></div><div class="dm-stat" data-role="exporters" tabindex="0"><div class="v">90</div><div class="l">Exporters &amp; importers</div><div class="p">compliance and shipping</div></div><div class="dm-stat" data-role="cafes" tabindex="0"><div class="v">70</div><div class="l">Cafés</div><div class="p">the last mile</div></div><div class="dm-stat" data-role="researchers" tabindex="0"><div class="v">40</div><div class="l">Researchers</div><div class="p">agronomy and sensory</div></div><div class="dm-stat" data-role="certifiers" tabindex="0"><div class="v">30</div><div class="l">Certifiers</div><div class="p">independent verification</div></div></div>
+    <div class="dm-wrap">
+      <div class="dm-mapbox">
+      <svg id="dm-map" class="dm-map" viewBox="0 0 960 293" role="img"
+           aria-label="World map with the coffee belt shaded, showing 43 points where contributors have registered, and curved lines linking each origin to the markets that buy from it">
+        <rect class="dm-belt" x="0" y="102.7" width="960" height="125.3"/>
+        <path class="dm-land" d="M867.5,274L870.5,275L872,274.5L874,274L875.5,274.5L875.5,277.5L874.5,278.5L874.5,280.5L873.5,280L871.5,281.5L871,281.5L869.5,281.5L868,279L867.5,277.5L866,275L866,274ZM941.5,274.5L942,275.5L944,274.5L944.5,275.5L944.5,276.5L943.5,278L942,280L940.5,281L941.5,282.5L939.5,282.5L937,283.5L936.5,285L935,288L933,289L931.5,289.5L929,289.5L927.5,289L924.5,288.5L924,287.5L925.5,285.5L929,283L930.5,282.5L932.5,281.5L934.5,280L936.5,278.5L937.5,276.5L938.5,276L939,274.5L941,273.5ZM945.5,261.5L947.5,264.5L947.5,262.5L949,263.5L949,265.5L951.5,266.5L953,266.5L954.5,265.5L956,266L955.5,268L954.5,270L952.5,269.5L952,270.5L952,271.5L951.5,272L950.5,273.5L949.5,275.5L947.5,276.5L947,276L945.5,275.5L947.5,273L946.5,272L943.5,270.5L943.5,269.5L945.5,269L946,266.5L946,265L945,263L945,263L943.5,261.5L941.5,259.5L940.5,257.5L941.5,257L943,258.5L945,259.5ZM925.5,224.5L924.5,225L923,224.5L921.5,223L919.5,221.5L918,220L917.5,219L918.5,219L920,220L921,221L922,221.5L924.5,223ZM955.5,211.5L956.5,212.5L956,213.5L954.5,214L953,214L953,212.5L954,211.5L955,212ZM960,209.5L958.5,210L956.5,210.5L956.5,209.5L957.5,209L958.5,209L960,208L960,209.5ZM0,208L0,208L0.5,208L0,209.5L0,209.5L0,209.5L0,209.5L0,208ZM927.5,209L926.5,209.5L926,208.5L926,207.5ZM925.5,205L926,207.5L925.5,207L925,207L924.5,206.5L924.5,204.5ZM613.5,201.5L614,204.5L614.5,206L614.5,207L614,208L613,206.5L612.5,207L613,209L612.5,210.5L612,211L612,213L611,216.5L609.5,220L608,225L607,229L605.5,232L603.5,232.5L601,233.5L599.5,233L597.5,232L596.5,230.5L596.5,228L595.5,226L595.5,224L596,222L597,222L597,221L598.5,219L598.5,217L598,216L597.5,214L597,212L598,210.5L598.5,208.5L600,208.5L601.5,208L602.5,207.5L603.5,207.5L605,206L607,204.5L608,203L607.5,202L609,202L610,200L610.5,198.5L611,197.5L612,198.5L613,199.5ZM863,202L864,204L865.5,203L866.5,204.5L867.5,205.5L867.5,206.5L868,209L868.5,210L869,210.5L870,212.5L869.5,214L870.5,216L873.5,217.5L875,218.5L877,219.5L876.5,220.5L878,222L879,225L880,224.5L881.5,225.5L882,225L882.5,228L884.5,229.5L885.5,230.5L887.5,232.5L888.5,235L888.5,236.5L888,238L889.5,240.5L889.5,242.5L889,244L888,246.5L888,248L887.5,249.5L886.5,252L884.5,253.5L883.5,255.5L882.5,257L882,259L881,260.5L880,262.5L880,264.5L880,265L878.5,266L875.5,266L873,267.5L872,268.5L870,269.5L868,268L866.5,268L867,266.5L865.5,267L863,269L860.5,268L859,267.5L857.5,267.5L855,266.5L853.5,265L853,263L852,261.5L851,260.5L848.5,260.5L849,259L848.5,257L847,259L845,259.5L846.5,258L846.5,256.5L847.5,255L847.5,253L845.5,255.5L843.5,256.5L842.5,258.5L840.5,257.5L840.5,256L839,254L837.5,253L838,252.5L834.5,250.5L833,250.5L830,249.5L825.5,249.5L822,250.5L819,251.5L816.5,251L813.5,252.5L811.5,253L810.5,254.5L810,255.5L807.5,256L806,256L803.5,255.5L801.5,256L799.5,256L798,257.5L797.5,257L796,258L794.5,259L793,258.5L791,258.5L788,257L786.5,256.5L787,255L788,254.5L788.5,254L788.5,253L789,251L788.5,249.5L787,247L786.5,245.5L787,244L785.5,242L785.5,241.5L784.5,240.5L784,238L782.5,236L782,235L783.5,236L782.5,233.5L784,234.5L784.5,235.5L784.5,234L783.5,232L783,231L782.5,230.5L782.5,229L783,228L783.5,227L783.5,225.5L784.5,223.5L784.5,225.5L785.5,223.5L788,222.5L789,221.5L791,220.5L792.5,220.5L793,220.5L795.5,219.5L797,219.5L797.5,219L798,218.5L799.5,218.5L802.5,218L803.5,216.5L804.5,215L806,214L806,213L806,211.5L808,209L809,211.5L810.5,211L809.5,209.5L810,208.5L811.5,209L811.5,207L813,205.5L814,204.5L815,204L815,203.5L816.5,203.5L816.5,203L817.5,202.5L819,202L821,203.5L822.5,205L824,205L825.5,205.5L825,204L826.5,201.5L827.5,201L827,200.5L828.5,199L830,198L831.5,198L833.5,197.5L833.5,196.5L831.5,195.5L833,195L834.5,195.5L836,197L838.5,197.5L839,197L841,198L842.5,197L843.5,197.5L844,197L845,198.5L844.5,199.5L843.5,201L842.5,201L843,202L842,203.5L841,204.5L841.5,205.5L843.5,207L845.5,207.5L847,208.5L849,210L849.5,210L851,211L851.5,211.5L854,212.5L855.5,211.5L856,210L856.5,209L857,207.5L858,205.5L857.5,204L857.5,203.5L857.5,202L857.5,200L858,199.5L858,198.5L858.5,197L859,195.5L859,195L860,194L861,195L861,197L861.5,197L862,198L862.5,199.5L863,201ZM912.5,193.5L913,194L911,194L910,192.5L912,193ZM802,192.5L801,192.5L797.5,191L799.5,190.5L801,191L802,192ZM909,191.5L908,191.5L906.5,191.5L905.5,191L906,190L907.5,190.5L908.5,191ZM911,191L910.5,191.5L909,189L908,187.5L909,187.5L910,189.5ZM812,192.5L809.5,193L809,192.5L809.5,191.5L810.5,190L813.5,189L813.5,188.5L816,188L817.5,187.5L818.5,187.5L819.5,187.5L818.5,188.5L816,189.5L813.5,190.5ZM794.5,187L795.5,187.5L797,187.5L797.5,188.5L794.5,189L792.5,189.5L791.5,189.5L792,188L793.5,188ZM807.5,187L807.5,188.5L803.5,189L800,189L800,188L802,187.5L803.5,188L805.5,188ZM906.5,187.5L906.5,188L904.5,187L903,186L902,185L902.5,185L903.5,185.5L905.5,186.5ZM900,185L899.5,185L898.5,184.5L897.5,183.5L897.5,183L899,184ZM769.5,183.5L775,183.5L775.5,182.5L780.5,184L781.5,185.5L785.5,186L788.5,187.5L785.5,188.5L782.5,187.5L780,187.5L777.5,187.5L775,187L772,186L770,185.5L768.5,186L764,185L763.5,184L761,183.5L763,181L766,181L768,182.5L769.5,182.5ZM839.5,182L838,183.5L837.5,181.5L838,181L838.5,180L839.5,180.5ZM895.5,183.5L895,184L894,183L892.5,181L892,179L892.5,179L892.5,179.5L893.5,180L895,182L896,183ZM885.5,180L884,180L883.5,181L882,181.5L880.5,182L879,182L877,181.5L875.5,180.5L875.5,180L878,180L879.5,180L880,178.5L880.5,178.5L880.5,180L882,180L883,179L884.5,178L884,176.5L885.5,176.5L886,177L886,178.5ZM819.5,174.5L818.5,175.5L816.5,175L816,174L818.5,173.5ZM828,173.5L829,175.5L826.5,174.5L824.5,174.5L823,174.5L821,174.5L821.5,173L825,173ZM888.5,177.5L887.5,178L887,176.5L886.5,175.5L885,174.5L883.5,173.5L882,172.5L882.5,172L884,172.5L885,173.5L886,174L887,175L888,176ZM837.5,168.5L838.5,172.5L841,174.5L843.5,171.5L846.5,170L849,170L851,171L853,172L856,172.5L860.5,174L865.5,175.5L867.5,177L869,178.5L869.5,180L873.5,181.5L874.5,183L872,183.5L872.5,185L875,187L876.5,189.5L878,189.5L878,190.5L880,191L879.5,191.5L882,193L882,193.5L880,193.5L879.5,193L877,193L874.5,192.5L872.5,190.5L871,189L869.5,187L866,185.5L863.5,186.5L862,187.5L862.5,189.5L860.5,190L859,190L856,189.5L853.5,187.5L851,187L850.5,187.5L847,188L848,185.5L850,185L849,182L848,179.5L842.5,177.5L840.5,177L836.5,175L835.5,176L834.5,176.5L834,175.5L834,174L832,173L835,172L836.5,172L836.5,171L832.5,171L831.5,169.5L829,169L828,168L831.5,167L833,166.5L837.5,167.5ZM814,161.5L812,164L810,164.5L807.5,164L803,164.5L800.5,164.5L800,166.5L802.5,169L804,168L809,167L808.5,168L807.5,168L806.5,169.5L804,170.5L806.5,174L806,174.5L808.5,178L808.5,179.5L807,180.5L806,179.5L807.5,177L804.5,178.5L804,177.5L804.5,176.5L802.5,175L802.5,172.5L801,173L801,176.5L801,180L799.5,180.5L798.5,179.5L799,177L798.5,174.5L797.5,174.5L796.5,173L798,171L798,169L799.5,165L800,164L802.5,162L804.5,162.5L808,163L811,163L813.5,161ZM823,162.5L823,164.5L821.5,164.5L821.5,166L822.5,167.5L821.5,167.5L820.5,166L819.5,162.5L820.5,160.5L821,159.5L821.5,161L823,161ZM762,181L759,181L757,179L753.5,176.5L752.5,175L750.5,173L749,171L747,167L744.5,165L744,162.5L743,160.5L740.5,159L739,156.5L737,155L734.5,152L734,150.5L736,151L740,151.5L742.5,154L744.5,156L746,157L748.5,159.5L751,160L753.5,161.5L755,164L757,165L756,167L757.5,168L758.5,168L759,170L759.5,171.5L761.5,172L763,173.5L762.5,177ZM794.5,160.5L797.5,163L794,163L793.5,165L793.5,167.5L791,169.5L791,172L789.5,176L789.5,175L786.5,176.5L785,174.5L783.5,174.5L782,173.5L779,174.5L778,173.5L776,173.5L774,173L773.5,169.5L772,169L771,166.5L770.5,164L771,162L772.5,160L774.5,161L776.5,160.5L777,158L778,157.5L781.5,157L783,155L784.5,153.5L785.5,152.5L788,151L790,149L791.5,147L792.5,147L793.5,148L794,149.5L795.5,150L798,151L797.5,152L796,152L796.5,153.5L794.5,154.5L793,156.5L795,159ZM817,143L817.5,144.5L817.5,146L816.5,148.5L815.5,146L814.5,147L815,149L814.5,150.5L811.5,149L810.5,147L811.5,145.5L809.5,144.5L809,145.5L807.5,145.5L805.5,147L805,146L806,144L808,143L809.5,142L810,143.5L812.5,142.5L812.5,141.5L814.5,141.5L814.5,139.5L816.5,140.5L817,142ZM696.5,149L694.5,149.5L693,147.5L692.5,143.5L693.5,139L695.5,140.5L697,142.5L698,145.5L697.5,148ZM317.5,138.5L315.5,138.5L315,138.5L315.5,137.5L315.5,136.5L317,136.5L317.5,136.5ZM810.5,138L809.5,139L809,140.5L808,141.5L806.5,139.5L807,138.5L807.5,138L808,136.5L809.5,136L809,138L811,135.5ZM796,140.5L792.5,143L794,141L795.5,139.5L797.5,137.5L798.5,135L799,137L797.5,138.5ZM805,133.5L806.5,134.5L808.5,134.5L808.5,135.5L807,136.5L805.5,137.5L805,136.5L805.5,135ZM814.5,133L815.5,136L813.5,135L813.5,136L814,137.5L813,138.5L812.5,136.5L812,136.5L811.5,134.5L813,135L813,134L811.5,132L814,132ZM804,130.5L803.5,133L802,131.5L801,129.5L803,129.5ZM803.5,116L805,116.5L806,116L806,116.5L806,118L806.5,120L806,122L804.5,123L804,125L804.5,127L806,127.5L807,127L810.5,128.5L810.5,130L811,130.5L811,132L809,130.5L808,129L807,130L805.5,128.5L803,129L801.5,128.5L802,127.5L802.5,126.5L802,126L801.5,127L800,125.5L800,124.5L799.5,121.5L801,122.5L801,118.5L802,116ZM305,116.5L304.5,117.5L302.5,117.5L301,117.5L300.5,116.5L301,116L303,116L304.5,116ZM275,117.5L274,118L272.5,117.5L271,116.5L271.5,116L272.5,116L273,116L275,116.5L276.5,117L277,117.5ZM286.5,112.5L289,113L289,112.5L291,112.5L293,113L293.5,113L294,114L295.5,114L295.5,114.5L296.5,114.5L298,115.5L297,117L295.5,116L294.5,116.5L293.5,116L293,116.5L292,117L291.5,116L290.5,116.5L289.5,118.5L289,118L289,117L287,117L285.5,117L284,117L283,117.5L281.5,116.5L281.5,115.5L284,116L286,116L287,115.5L286,114.5L286,113.5L284,113L285,112ZM774,115.5L772,117L769.5,116L769.5,113.5L771,112.5L774,111.5L775.5,112L776,113L775,114ZM65,114.5L65,115L64,114.5L64,114L64,113L64,112.5L64.5,112L64,111.5L64.5,111.5L64.5,111.5L65.5,112L66,112L66.5,112.5L67,113.5L67,113.5L66,114ZM64,110.5L63,110.5L62.5,110L62,109.5L62,109.5L62.5,109.5L63.5,109.5L64,110ZM62,109L62,109L60.5,109L60.5,108.5ZM59.5,108.5L59.5,108.5L59.5,108.5L58.5,108.5L58,108L58,108L58.5,107.5L59,107.5ZM55,106.5L55,107L54,106.5L54,106.5L54.5,106L55,106ZM267.5,104.5L268.5,105.5L271,105.5L272,106L274.5,107.5L276,109L277,108.5L278.5,109.5L278,110L280,110L282,111L282,112L280,112L278.5,112.5L276.5,112L272.5,112.5L274.5,111L273.5,110L271.5,110L270.5,109.5L270,107.5L268.5,108L266,107L265.5,106.5L262,106L261,105.5L262,105L259.5,105L257.5,106L256,106.5L256,107L254.5,107L253.5,107L255,106L255.5,105L256.5,104.5L258,104L260,104L260.5,103.5L263,103.5L265,103.5ZM273,102L272.5,102L272,100.5L271,100L271.5,98L272.5,98L273,100.5ZM803,104.5L802,106.5L800.5,104.5L800.5,102.5L802,100L804,98L805,98.5L804.5,100.5ZM272.5,94.5L269.5,95L269.5,94L270.5,93.5L272.5,94ZM274.5,94.5L274,96.5L273.5,96L274,94.5L272.5,93.5L272.5,93ZM839,74.5L839.5,75L838,77L837,76L835.5,76.5L834.5,78L833,77.5L833,76L834.5,74.5L836,75L837,73.5ZM572,70L570.5,71.5L570.5,72L570.5,72L568,73L566.5,73L566,71.5L567.5,71.5L567.5,71.5L568,71L570,71ZM543,70L544.5,71L546.5,71L548.5,71L548.5,71.5L550,71L550,72L546,72L546,72L542.5,71.5ZM521.5,63.5L520.5,65.5L521,66.5L520.5,67.5L518,66.5L517,66.5L513,65L513.5,63.5L516.5,64L519.5,63.5ZM504.5,55.5L506,57.5L506,61L504.5,60.5L503.5,61.5L502.5,61L502.5,57.5L502,56L503,56.5ZM856,66.5L855,68.5L855.5,70L854,71.5L850.5,73L846,73L842,76L840.5,75L840,73L835.5,73.5L832.5,75L829.5,75L832,77L830,81.5L828.5,82.5L827,81.5L828,79L826,78.5L825,76.5L827.5,75.5L829,74L831.5,72.5L833.5,71L839,70L842,70.5L844.5,66L846.5,67L850.5,64.5L852,63.5L853.5,60L853,57L854,55.5L857,55L858.5,58.5L858.5,61L856,63.5ZM505.5,53L504.5,55L503.5,54.5L503,52.5L503.5,51.5L505,50.5ZM864,47.5L865.5,48L867.5,47L868,50L864,50.5L862,53.5L857.5,51.5L856,54.5L853,54.5L853,52L854,50L857,49.5L858,46L858.5,44L861.5,46.5ZM310,41L312,41.5L314.5,41.5L313.5,42.5L312.5,43L309,41.5L308.5,40.5L309.5,40ZM315,34.5L314,34.5L310.5,33.5L308,32.5L309,32L312.5,33L315,34ZM150.5,36L149.5,36.5L145,35L144,34L141.5,33.5L141.5,32.5L138.5,32L137.5,30.5L137.5,30L140.5,30.5L142,31L144.5,31L145.5,32L147,33.5L149.5,34.5ZM330.5,30L328.5,32.5L330.5,31.5L332,32L331,33L333.5,34L334.5,33L337.5,34L336.5,36L338.5,35.5L339,37L339.5,38.5L338.5,41L337.5,41L335.5,40.5L336,38.5L335.5,38L332.5,40.5L330.5,40L332.5,39L330,38.5L327,38.5L322,38.5L321.5,37.5L323,36.5L322,36L324.5,34.5L327,30L328.5,28.5L331,27.5L332.5,28L331.5,28.5ZM126,21L128.5,21L128,24L130,26L129,26L127.5,25L126.5,23.5L125,23L124.5,21.5L125,21ZM863,30L865.5,34.5L862,34L860,37.5L863,40.5L862.5,42.5L860.5,40.5L859,43L858.5,40.5L858.5,38L858.5,35L859,33L859,29.5L857.5,27L858,23L860.5,22L859,20.5L860.5,20.5L861,22L862,24.5L862,27.5ZM462,26L457,27.5L453.5,27L455.5,24.5L454,21.5L458,19.5L460,18.5L462,18L465,20L463.5,21.5L464,23.5ZM514,17L512,19L509.5,17.5L509,16.5L513,15.5ZM72,13L69.5,14L68,13.5L67.5,12L70,11L71.5,10.5L73,11L74.5,12ZM472,9L469,12L472,11.5L475,11.5L474,13.5L471.5,16L474.5,16L477,19.5L479,20L480.5,23L481.5,24L484.5,24.5L484,26.5L483,27L484,28.5L481.5,30L478,30L473.5,30.5L472,30L470.5,31.5L468,31L466,32L464.5,31.5L468.5,29L471,28L466.5,28L466,26.5L468.5,26L467.5,24.5L468,22.5L472,23L472,21.5L470.5,19.5L467,19L466.5,18.5L467.5,17.5L466.5,16.5L465,18L465,15.5L463.5,14L464.5,11L466.5,9L469,9ZM38.5,5.5L37,6L35,5.5L33.5,5L36,4.5L38,4.5ZM268.5,0L267.5,1L266.5,1L265.5,0L268.5,0ZM611,55L612.5,57L613.5,57.5L614.5,58L612,58L611.5,60.5L611.5,61L610.5,62L610.5,63L611,65L613.5,65.5L615.5,67L619.5,67.5L623.5,67L624,66L623.5,64.5L623.5,61.5L621.5,60.5L622.5,58.5L620.5,58.5L621,56.5L623.5,57L626,56L624,54.5L623.5,53L621,53.5L621,55.5L620,54L620,53.5L620.5,52L620,51L617,50.5L615.5,48L614,47L614,46.5L616.5,46.5L617,44.5L619,44L621.5,44.5L622,42L621.5,40.5L619,40.5L616.5,40L613.5,41L611,41.5L609.5,43L607,43.5L604.5,46.5L607,49L606.5,50.5L609.5,54ZM948,0L945.5,0.5L943,1L939,3L935,4.5L934,5.5L930.5,4L923.5,6L922,5L919.5,6L916,5.5L915,7.5L912,10L912,11L915,11.5L915,15.5L912.5,15.5L911,18L912.5,19L907.5,20.5L906.5,23.5L902.5,24L902,27L898,29.5L897,27.5L896,23.5L894.5,17.5L896,14L898,12.5L898,11L902.5,10.5L907,7L911.5,4.5L916.5,2.5L918,0L948,0ZM914.5,0L914,1L907,4L905,0.5L898,1.5L891,6L893.5,7.5L887.5,8.5L883.5,8.5L883.5,6.5L879.5,6L876,7.5L868,7L859,8L850.5,13L840.5,19.5L844.5,19.5L846,21.5L848.5,22L850,20.5L853,21L857,24L857,26L855,28.5L854.5,32L853.5,36L849.5,40L848.5,42L845,45L841.5,48L839.5,49.5L836,51L834.5,51L832.5,50L829,52L828.5,52.5L827.5,52.5L826.5,53.5L826,54.5L826,56.5L824.5,57L824,57.5L823,58L821.5,58.5L820,59.5L820,60.5L819.5,61L821,61L822.5,62.5L824.5,65.5L825,67L825.5,70.5L824,72L822,72.5L819.5,73.5L817.5,73.5L817,72L817.5,70L816.5,67.5L818.5,67L816.5,64.5L815,64L815,64.5L814,65L814,64.5L813.5,64L812.5,63.5L813.5,62.5L814,62L813.5,61.5L814.5,60.5L814,60L812.5,59.5L811.5,59L807.5,59.5L805.5,61L803,61.5L804,60.5L803.5,59.5L806,57.5L804.5,56L802,57L799,59L797.5,60.5L795,61L793.5,62L795,64L797,64.5L797,65.5L799,66L802,64.5L804.5,65.5L806.5,65.5L806.5,67L803,67.5L801.5,69L799,70.5L797.5,72L800.5,73.5L801.5,76.5L803.5,79L805,81L805,83L803.5,83.5L804,85L805.5,86L805,88L804.5,90L803,90.5L801,93L799,96.5L796.5,100L792.5,102.5L789,104.5L786,105L784.5,106L783.5,105L782,106.5L778.5,108L775.5,108.5L774.5,111L773,111L772.5,109.5L773,108.5L769.5,107.5L768,108L764.5,110L762.5,112.5L762,114.5L764,117.5L766.5,121L768.5,122.5L770.5,124.5L771.5,129.5L771,134L769,136L766,137.5L763.5,140L760.5,142.5L759.5,140.5L760,139L758,137.5L756,137L755,135.5L753.5,133L751,131.5L749,131.5L749.5,129.5L747,129.5L746.5,132.5L745.5,136.5L744.5,139L744.5,140.5L746.5,141L747.5,143L748,145.5L749.5,147L751,147.5L752.5,148.5L753,149L754.5,150.5L755.5,152.5L756,154L755.5,155.5L756,156.5L756,158L757,158.5L758,161L758,162L756,162L753.5,160L750.5,158L750,156.5L748.5,155L748,152.5L747,151L747.5,149L747,148L746,147L745.5,146L744,144L742.5,143L742,144.5L741.5,143L742,141.5L743,139L742.5,137L743.5,135L742.5,133L742.5,130.5L741.5,129L740.5,126L740.5,122.5L739,120L737.5,121.5L734.5,123.5L733,123L731,122.5L732,119.5L731.5,117L729.5,113.5L730,112.5L728,112.5L726.5,110L725.5,109L725.5,107.5L725,106L724,104.5L721.5,104.5L721.5,105.5L720.5,107L719.5,106.5L719,107L718.5,107L717.5,106.5L717,107.5L715,107.5L712,108L712,110L710.5,111.5L707,113.5L704,116.5L702,118L699,120L699,121L698,122L695.5,123L694,123L693.5,125L694,128.5L694,130.5L693,133L693,137.5L691.5,138L690.5,140L691,141L688.5,141.5L688,143.5L687,144L684,141.5L683,138L682,135L681,134L679.5,131.5L679,128L678.5,126.5L676,122.5L675,117.5L674,114L674,111L673.5,108.5L670,110L668,109.5L664.5,106.5L665.5,105.5L665,104.5L662,102L660,101.5L659,99.5L657,97.5L652,98L647.5,98L644,98.5L639,97.5L636,97L633,96.5L632,93.5L630.5,93L628.5,93.5L626,94.5L622.5,94L620,92L617.5,91L615.5,88.5L613.5,85L612,85.5L610.5,84.5L609.5,85.5L608,85.5L608.5,86.5L608.5,87L609,89L610,91.5L611.5,92L612,93L613.5,94L614,95.5L613.5,96L614,97L614.5,98L615,98.5L615.5,99.5L615.5,97.5L616,96L617,95.5L617.5,96.5L617.5,98L617,99.5L617.5,100.5L618,100.5L618,101.5L620,101L622.5,101L624,101L626,99L628,97.5L629.5,96L630.5,95L630.5,95L630.5,96.5L630,97L630.5,99L631.5,100.5L633,101.5L635,102L636.5,102.5L638,104L638.5,105L639.5,105L639.5,106L638.5,107.5L638,108L637,109L636,111L635,110.5L634,111.5L634,112.5L634,114.5L634,115L632.5,115L631,116L630.5,117L630,117.5L628.5,117.5L627.5,118.5L627.5,119.5L626,120L624.5,120L623,121L621.5,121L619.5,121.5L619,123L619,123.5L616.5,125L612,126L610,128L608.5,128L608,128L606.5,129L604.5,129.5L602.5,129.5L601.5,130L601,130.5L600.5,131L600,131.5L598.5,131.5L598,132L596,131.5L595.5,130L595.5,128.5L595,128L594.5,126L593.5,125L594,124.5L594,123.5L594,123L594,121.5L593.5,120.5L593,120L592.5,118.5L591.5,118L590,115.5L589,113.5L587.5,111.5L586,111L584.5,108.5L584,106.5L584,105L582.5,102L581.5,101L580,100.5L579,99L579,98.5L578.5,97L577.5,96.5L576.5,94.5L575,92.5L573.5,90.5L572.5,90.5L573,89L573,88L573,87L573,86.5L572.5,87.5L572,89.5L571,91L570.5,91.5L569.5,90.5L568.5,89.5L566.5,85.5L566,86L567.5,89L569,91.5L571,95.5L572,97L573,98.5L575,101.5L574.5,102L574.5,103.5L578,106L578.5,106.5L579,109.5L578.5,110L579,112.5L580,115.5L581,116.5L582.5,117.5L584,120.5L584.5,123L586,124L590,126.5L591.5,128L592.5,129.5L593.5,130.5L595,131.5L595.5,132.5L595.5,133.5L594,134L595,135L596,135.5L596.5,136.5L597.5,137.5L599,137.5L601.5,137L604.5,136.5L606.5,135.5L608,135.5L609,135L610.5,135L611.5,135L612.5,134.5L614,134L615.5,133.5L616.5,133.5L616.5,134L616,135.5L616,137L615.5,138L615,141L613.5,144L612,147L609.5,151L607.5,154L604,157.5L601.5,160L597.5,162.5L595,164.5L592,168L591.5,169L591,170L589,171L588.5,172L587.5,172L587,174L586,175L585.5,177L584.5,178L583.5,181L583.5,182.5L585,183.5L585.5,184.5L584.5,186L584.5,186.5L584.5,188L585.5,189.5L586.5,192.5L587.5,193L588,194L588,196.5L588,199L588.5,203L588.5,204.5L588,206.5L587,208.5L585,210L583,211L580,212L577,215L575.5,215.5L574,217.5L573,218L572.5,220L574,222L574.5,223.5L574.5,224.5L575,224L575,227L574.5,228L575,228.5L574.5,229.5L573.5,230.5L571,231.5L568,233L567,234L567,235L568,235L567.5,236.5L567,238.5L566.5,241L566,242L564,243.5L563.5,243.5L562.5,245L561.5,246.5L560,248.5L557,251L555.5,252.5L553,254L550.5,255L549,255L549,256L547,255.5L546,256L543,255.5L541.5,256L540,255.5L537.5,256.5L535,257L533.5,258L532.5,258L531,257L530.5,257L529,256L529,256.5L528.5,255.5L528.5,254L528,252.5L528.5,252L528.5,250L527,247.5L525.5,245L525.5,245L523.5,241.5L521.5,239.5L520.5,237.5L520,235L519.5,233L518.5,229L518.5,225.5L518,224.5L517,223L515.5,221L514,218L513.5,216L511.5,213.5L511.5,211.5L511,210L511.5,207.5L512.5,205L512.5,204L513.5,201.5L514,200.5L515.5,198.5L516.5,197.5L516.5,195.5L516.5,194L515.5,193L515,191.5L514.5,190L514.5,189L515.5,188L514.5,185.5L514,184L512.5,182L513,181.5L512.5,181L512,179L509.5,176L507,173.5L505,171L503.5,168.5L503.5,167.5L504,166.5L505,164.5L505.5,162.5L505,162L505.5,159L506,157L505,155.5L504,155L503.5,153.5L502.5,153.5L502.5,152.5L500,153.5L499,153.5L498,154L495.5,154L494.5,152.5L493.5,150.5L491.5,148.5L489.5,148.5L487,148.5L485,149L483,149.5L478.5,151L477,152L475,153L472.5,152L471,152L469.5,151.5L467.5,151.5L464.5,152L462.5,153L460,154L459.5,153.5L458.5,153.5L456,152.5L453.5,150.5L451.5,149L449.5,147L449,147L447,146L445.5,144.5L445,143.5L444.5,141.5L443.5,140L442.5,139L442,138.5L441,138L441,137L440.5,136.5L439.5,136L438,135L437,134.5L436.5,134L436.5,133.5L435.5,133L435.5,132.5L435,130.5L435.5,129L434.5,127L433,126L434,125.5L435.5,123.5L436,122.5L436,121L436.5,119.5L437,117L436.5,114.5L436.5,113L436.5,112L436,110.5L434.5,109.5L434.5,108L434.5,107L436,106L436.5,105L436.5,104L437.5,102L439,100.5L440,100L440.5,98.5L440.5,97L441.5,95.5L443.5,94.5L445,91.5L446.5,90.5L449,90.5L451,88.5L452.5,87.5L454.5,85.5L454,82L455,80L455,78.5L457,76.5L459.5,75.5L461.5,74.5L463.5,71.5L464,70L466,70L468,71L470.5,71L473,71.5L474,71.5L477,70L479.5,69.5L481.5,68.5L484,67.5L488.5,67L493,67L494,67.5L496.5,66.5L499.5,66.5L500.5,67L502.5,67L505.5,65.5L507,66L507,67.5L509.5,66.5L509.5,67L508.5,68L508,69.5L509,70L509,72.5L507,74L507.5,75L509,75.5L509.5,76.5L510.5,77L514,78L515,77.5L517,78L520.5,79.5L522,81.5L524.5,82L528,83.5L531,84.5L532,84L533.5,82.5L533,80.5L533.5,79.5L535.5,78L537.5,78L541,78.5L542,79.5L543,79.5L544,80L546.5,80.5L547,81L550.5,81L553,82L556,82.5L557,83L559,82L560.5,81.5L562.5,81L564.5,81.5L565,83L566,82L568,82.5L570,83L571.5,82L572,81L572,81L572.5,80L573,78L573.5,77L573.5,77L574.5,75L576,73L576,73L575.5,71L576.5,70L575.5,68.5L576.5,67.5L575,68L572.5,67L570.5,68.5L566.5,69L564.5,67.5L561.5,67.5L561,68.5L559,69L556.5,67.5L553.5,67.5L552,65L550,63.5L551.5,61.5L550,60L552.5,57.5L557,57.5L558,55.5L563,56L566.5,54L569.5,53.5L574,53L578.5,55L582.5,56L585.5,55.5L587.5,56L591,54.5L591,53.5L590.5,51.5L589,50.5L587.5,50.5L586.5,49.5L583,47.5L580,46L578,44.5L579.5,44.5L582,42L580.5,41L584.5,40L584.5,39.5L582,39.5L580,40L578,41L575.5,41L573,42L573.5,43.5L574.5,44L577.5,44L577,45L574,45.5L570.5,47L569,46.5L569.5,45L566.5,44.5L567,44L569.5,43L569,42.5L564.5,42L564.5,41L562,41L561,42.5L559,44.5L559,45L557.5,46L557,45.5L556,49L555,50L554,52L554.5,53.5L555,54.5L557.5,55L557,56L553.5,56L552.5,57L550.5,58.5L549.5,57L549.5,56.5L548,56.5L546.5,56L543,57L545,58.5L543.5,59L542.5,59L541,57.5L540.5,58L541,59.5L542.5,61L541.5,61.5L543,62.5L544,63.5L544,65L541.5,64L542.5,65.5L540.5,66L541.5,68L540,68L538,67L537,65L536.5,63L535.5,62L534,60.5L533.5,59.5L533.5,59.5L533,59L531.5,58L531.5,56.5L531.5,55L532,54L531.5,53.5L531,53.5L530.5,52.5L529,52L526.5,51L525,50L522.5,49.5L520.5,47.5L521,47L520,46L519.5,45L518,44.5L517,46L516.5,45L516.5,44L516.5,44L517,44L515,43.5L513,44.5L513,45.5L512.5,46.5L513.5,48L516,49L517.5,51.5L520.5,53.5L522.5,53.5L523,54L522.5,54.5L525,55.5L526.5,56.5L529,57.5L529.5,58L529,59L527.5,58L525,57.5L524,59L526,60L525.5,61.5L524.5,62L523,64L522,64L522,63.5L522.5,62L523,61.5L522,60L521,58.5L520,58L519,57L517.5,56.5L516.5,55.5L514.5,55.5L512.5,54L510,52.5L508,51L507,48L506,48L503.5,47L502.5,47.5L501,48.5L500,49L497.5,50.5L492,49.5L488.5,50.5L488,52L488,53.5L485.5,55.5L482,56L482,57L480.5,58.5L479.5,60.5L480.5,62L479,63L478,65L476,65.5L474.5,67.5L471,67.5L468.5,67.5L466.5,68.5L465.5,69.5L464.5,69.5L463.5,68.5L462.5,67L460,66.5L459,67L457.5,66.5L456.5,67L456.5,65L456.5,63.5L455,63L454.5,62L455,60.5L456,59.5L456,58L456.5,56.5L456.5,55.5L456,54.5L456,53.5L456,52L455,50.5L458.5,48.5L462,49L465.5,49L468.5,49.5L470.5,49.5L475,49.5L476.5,48L477,42.5L474,40L472,38.5L468,37.5L468,35.5L471,35L475.5,35.5L475,32.5L477.5,33.5L483.5,31.5L484.5,29.5L486.5,29L489,28.5L490,27.5L492.5,24L496,22.5L498.5,22.5L499,22L501,22L501.5,22.5L503.5,21.5L503,20.5L502.5,19L501.5,17.5L501.5,14.5L502,14L503,13L505,13L506,12L508,11.5L508,13L507.5,13.5L507.5,14.5L509,15L508.5,16L507.5,15.5L505.5,17.5L506.5,18.5L506.5,19.5L509,20.5L509,21.5L512,21L513.5,20L516.5,21L517.5,22L519.5,21L523.5,20L527,19L529.5,19.5L530,20L532.5,20L533,19L536.5,18L536,16L536,14L537.5,12L540,11.5L542,13.5L544.5,13.5L545,11L545,9.5L544,10L542.5,9L542,7.5L545.5,7L549,6.5L552,7L554.5,6.5L557.5,5.5L555,4L550,4L545.5,5L541,5.5L539.5,4.5L537,3.5L537.5,1L537,0L914.5,0ZM526.5,0L525.5,2L527.5,3.5L530,5L527.5,8L525,8.5L524,13L522.5,15.5L519,15.5L517.5,17.5L514.5,17.5L513.5,15L511.5,12L509.5,8.5L507.5,6.5L502.5,10L499,10.5L495,9L494,6L493.5,0L493.5,0L526.5,0ZM231.5,0L228.5,3L227.5,5L227.5,8L231.5,8.5L232.5,11L234,13L237.5,12.5L242.5,13.5L245,14.5L247,16L250.5,16.5L253.5,18L257.5,18L260.5,18.5L260,20.5L261,23.5L263,26L267,29L269,28L270.5,25L269,21L267,19.5L271.5,18.5L274.5,16.5L276,14.5L275.5,13L274,10.5L270.5,8.5L274,5.5L272.5,3.5L272,0L286,0L286,0L289,1.5L289.5,2.5L294.5,2.5L294.5,4.5L295,8L297.5,8.5L299.5,10L303.5,8.5L306,5.5L308,4.5L310,7L313.5,10L316.5,13.5L315,15L319,16.5L321,18L325.5,19L327,19.5L328,22L330,22.5L331.5,23.5L331.5,26.5L329.5,27.5L327.5,28L323.5,29L320,31.5L315.5,32L309.5,31L305.5,31L303,31.5L300.5,33.5L297.5,34.5L293.5,38L290.5,40.5L292.5,40L297,36.5L302.5,34.5L306.5,34L309,35.5L306.5,37L307,40L308,42L311.5,43.5L316,43L318.5,40L319,42L320.5,43L317,44.5L311.5,46L308.5,47.5L305.5,49L303.5,49L303.5,47L308,44.5L304,44.5L301,45L301.5,46L298.5,47L296,48L293,49L291.5,50.5L291,51L291,52.5L292,54L293,54L293,53L293.5,53.5L293.5,54.5L291.5,54.5L290.5,54.5L288.5,55L287,55.5L285.5,55.5L283.5,56L287.5,55.5L288,56L284.5,57L282.5,57L283,56.5L282,57.5L283,57.5L282,59.5L280,61.5L280,61L279.5,60.5L278.5,60L279,61.5L280,62L280,63L279,64L277.5,66L277.5,66L278,64L276.5,63L276.5,61L276,62L276.5,64L275,63.5L276.5,64L276.5,67L277.5,67L277.5,68L278,70.5L276.5,72.5L273.5,73.5L272,75L270.5,75L269,76L269,77L266,78.5L264.5,80L263,81.5L262.5,83.5L263,85L264,87.5L265,89.5L265.5,90.5L266.5,93.5L266.5,95.5L266.5,96.5L265.5,98L265,98.5L263.5,98L263,97L262,96.5L260.5,94L259.5,92L259,91L259.5,89L259,87.5L257,85.5L255.5,85L253,86.5L252.5,86L251.5,85L249.5,84.5L246.5,84.5L244,84.5L242,84.5L241,85L241.5,85.5L241.5,86.5L242,87L241.5,87.5L240.5,87L239.5,87.5L237.5,87.5L235.5,86L233.5,86.5L231.5,86L229.5,86L227.5,86.5L225,88.5L222.5,90L221,91L220.5,92.5L220.5,94L220.5,95.5L221,96.5L221,96.5L221,96.5L220,98.5L219.5,100.5L219.5,104L219,105.5L219.5,107L220.5,108L221,110.5L222.5,112.5L223,114L224.5,115L227,116L228,117L230.5,116L232.5,116L234.5,115.5L236,115L238,114L238.5,112.5L239,110L239.5,109.5L241,108.5L244,108L246,108L248,108L248.5,108.5L248.5,109.5L247,111.5L246.5,113L247,113.5L246.5,114.5L246,116.5L245,116L244.5,116L244.5,116.5L245,116.5L245,117L244.5,118.5L245,118.5L244.5,119.5L244.5,120L244.5,121.5L244,122L243.5,122L243,123L243.5,123.5L244,123L244.5,123.5L245,123.5L245.5,123L246.5,123L246.5,123L247,123L248.5,123.5L249.5,123L250.5,123L250.5,122.5L251.5,123L252,123L253,123L253.5,122.5L254.5,123L255,123L256,123.5L256.5,124L257.5,124.5L258.5,125.5L258,125.5L258,126L258,127L257.5,128L257.5,129L257,130.5L257.5,131L257.5,132L257,132.5L256.5,133.5L257,134.5L256.5,135L256.5,135.5L257,136L257.5,137.5L258.5,138.5L260,140L261,141L261,141.5L262,141.5L262,141L263,142L264,141.5L265.5,141L267,140.5L268,139.5L269.5,140L269,140L270.5,140L272,140.5L272.5,141.5L273.5,142L275,142.5L277,140.5L278,140L278,139.5L278.5,137L280,136L282,135.5L282,135L284,135.5L286.5,134L287.5,133.5L288.5,132L289.5,132.5L290.5,133L290,134L289.5,134.5L288,135L289,136L289,137.5L288,139L289,141L290,141L290.5,139L289.5,138L289.5,136L293,135L292.5,133.5L293.5,133L294.5,135L296.5,135L298,136.5L298,137L300.5,137L303.5,137L305,138L307,138.5L308.5,137.5L308.5,137L312,137L315,137L312.5,137.5L313.5,139L316,139L318,140.5L318,142.5L319.5,142.5L320.5,143L322.5,144L324,145.5L324,147L325,147L326.5,148.5L327.5,149.5L331,150L331,149.5L333,149.5L336,150L337,150.5L339,151L342,153L342,154.5L343,154L344,155.5L345.5,160.5L346.5,160.5L347,162.5L345,164.5L345.5,165.5L350.5,166L350.5,168.5L352.5,167L356,168L360.5,169.5L361.5,171L361,172.5L364,171.5L369.5,173L373.5,173L377.5,175L380.5,178L383,179L385,179L386,180L387,183.5L387.5,185L386.5,189.5L385,191L381,195L379.5,198L377.5,200L377,200L376,202L376.5,207L375.5,211L375.5,213L374.5,214L374,217.5L371.5,221L371,224L368.5,225L368,226.5L365,226.5L361,227.5L359,229L356,229.5L353,231.5L350.5,234.5L350.5,236.5L350.5,238L350,240.5L349.5,242L348,243.5L345,248L342.5,250L340.5,251.5L339.5,254L337.5,255.5L336.5,257L333.5,258.5L331.5,258L330,258.5L327.5,257L326,257L324,256L324,257L327.5,259.5L327,261.5L328.5,262.5L328.5,263.5L326,267L322,268.5L316.5,269L314,269L314.5,270.5L314,272.5L314.5,274L312.5,274.5L310,275L307.5,274L306.5,275L306.5,277.5L308.5,278.5L310,277.5L311,279L308.5,279.5L306,281.5L306,284L305,285.5L302.5,285.5L300.5,287L300,289L302.5,291L305,291.5L304.5,293L279.5,293L279.5,293L279.5,292.5L282.5,290.5L278.5,289.5L281,287.5L281.5,283L284.5,284L286,278.5L284.5,277.5L283.5,281L282,280.5L282.5,277L283.5,272L284.5,270L284,267.5L284,264.5L285,264.5L286.5,260L288.5,256L289.5,252L289,248L289.5,245.5L289.5,242.5L291,239L291.5,234L292.5,228.5L293,222.5L293,218L292.5,214.5L289.5,212.5L289.5,211.5L284,209L279.5,206L277.5,204.5L276,202L276.5,201.5L274.5,198L272,193L269,187.5L268,186.5L267.5,184.5L265,183L263.5,181.5L264,180.5L263,178L263.5,176L266,174.5L267.5,172.5L266.5,171.5L265.5,172.5L264,171.5L264.5,170.5L264,168L265,168L265.5,166L266.5,164.5L266.5,163.5L268,162.5L269.5,161.5L269.5,161L270.5,160.5L270,159.5L271,158.5L272,158L273.5,156.5L274.5,155L273.5,154.5L274,153L273,150.5L274,149.5L273.5,147.5L272.5,146L271.5,145.5L271,144L271.5,143L271,143L270.5,142L269,141.5L268,141.5L267.5,142.5L266,143L265.5,143L265.5,144L266.5,145L266,145.5L265.5,146L264.5,146L264,144.5L263.5,145L262.5,145L262,143.5L261,143.5L260.5,143L259,143L259,144L259,143.5L257.5,143L257,142.5L257,142L257,141L256,140.5L255,140L254.5,139.5L254,139L253.5,138.5L253.5,139L253,140L252.5,139L251.5,139L251,138.5L251,137.5L251.5,136.5L251,136.5L251.5,136L250.5,135L249.5,134L248.5,133L247.5,132L246,131L246.5,130.5L247,131L247,130.5L246.5,130L246,129.5L245.5,130.5L244,130L243,130L242,129.5L240.5,129.5L239.5,128.5L238.5,128L236.5,128L235.5,127.5L234,126.5L231,123.5L229.5,123L227.5,122L226,122.5L224,123.5L222.5,123.5L220.5,123L218.5,122.5L216,121L214,121L211,119.5L209,118.5L208,117.5L206.5,117.5L204,116.5L203,115.5L200,114L198.5,112L198,111L199,110.5L198.5,110L199.5,109L199.5,108L198.5,107L198,106L197.5,104.5L195,102L192,100L191,98L188.5,97L188,96.5L188.5,95L187,94L185.5,93L185,91L183.5,91L182,89.5L180.5,88L180.5,87.5L179,85.5L178,83L178.5,82L176.5,81L175.5,81.5L174,80.5L173.5,81.5L174,83L174,85L175,86L177,88L177.5,88.5L178,88.5L178.5,89.5L179,89.5L179.5,91.5L180,92L180.5,93L182.5,94L183,96.5L184,98L185,99L185,100.5L186,100.5L187.5,102L188,103L188,103.5L187,104.5L186.5,104.5L186,103L184,101.5L182,100L181,99.5L181,97.5L180.5,96L179.5,95L177.5,94L177,94.5L176.5,93.5L175,93L173,91.5L173.5,91L174.5,91.5L175.5,90.5L175.5,89L173.5,87.5L172,86.5L171,85L170,83L168.5,81L167.5,78.5L167,77L165.5,75.5L164,75.5L164,74.5L162.5,74.5L161.5,73.5L159,73.5L158.5,73L158,71.5L155.5,69L153,65L153.5,64.5L152,63.5L150,61.5L149.5,59.5L148.5,58L149,55.5L149,53.5L148,51.5L149,49L149.5,44L149,40.5L148.5,38L147.5,37L148,36.5L151.5,37L153,39.5L154,39L153.5,37L152.5,34.5L152,34.5L147,32L145,31L140,30L138.5,27.5L139,26L135.5,24.5L135,22.5L132,20.5L132,19L130.5,18L128,17.5L127.5,15L124,13L122.5,10.5L120,10L115.5,10L112.5,9.5L107,6.5L104.5,6L100,5L96,5.5L91,4L87.5,3L84.5,3.5L85.5,5.5L84,5.5L80.5,6L78.5,7L75.5,7.5L75,6L76,3.5L79,2.5L78.5,2L75,3.5L73,5L69.5,7L71,8.5L68.5,10.5L66,11.5L63,12L62.5,13.5L58.5,15L57.5,16L54.5,17L52.5,17L50,17.5L47.5,18.5L45,19.5L40.5,20.5L40,20L43,18.5L45.5,17.5L48.5,16.5L52,16L53,15L57,13.5L57.5,13L59.5,12L60,10L61,8L58,9L57.5,8.5L56,9.5L54,8L53.5,9L52.5,8L49.5,9L48,9L48,7.5L48.5,6.5L46.5,5.5L43,6L41,4.5L39,4L39,2.5L37,1.5L38,0L231.5,0ZM303.5,0L303.5,0L302.5,0L303.5,0ZM367,0L367,0.5L365.5,2.5L364.5,5L360.5,5L356.5,3L351.5,3L348.5,1.5L347.5,0L367,0Z"/>
+        <path class="dm-grid" d="M0 102.7H960M0 165.3H960M0 228.0H960"/>
+        <text class="dm-glab" x="6" y="98.7">TROPIC OF CANCER</text>
+        <text class="dm-glab" x="6" y="161.3">EQUATOR</text>
+        <text class="dm-glab" x="6" y="224.0">TROPIC OF CAPRICORN</text>
+      </svg>
+      <div class="dm-legend">
+        <span><i style="background:var(--go)"></i>origin · farms, co-ops, mills</span>
+        <span><i style="background:var(--ask)"></i>market · roasters, cafés, importers</span>
+        <span>line = a trade route already carrying verified lots</span>
+      </div>
+    </div>
+      <div class="dm-panel" id="dm-panel" aria-live="polite"></div>
+    </div>
+    <div class="dm-tools"><button class="dm-tool on" data-layer="trade">Trade routes</button><button class="dm-tool" data-layer="quality">High-scoring origins</button><button class="dm-tool" data-layer="match">Buyer matches</button><button class="dm-tool" data-layer="people">Contributors only</button><label class="dm-slide">cup score <input id="dm-score" type="range" min="0" max="87" step="0.5" value="0" aria-label="Filter origins by mean cup score"><span id="dm-score-v">any</span></label></div>
+    <div class="dm-cards">
+      <div class="dm-card">
+        <div class="k">Quality</div>
+        <h4>What method gets the score, at your altitude</h4>
+        <p>Mean cup score by processing method across every lot in the vault. A farmer
+        filters this to plots within 150 m of their own elevation before deciding what to
+        try next season.</p>
+        <div class="dm-bar"><span class="n">honey</span><span class="t"><i style="width:100%"></i></span><span class="v">84.9</span></div><div class="dm-bar"><span class="n">natural</span><span class="t"><i style="width:99%"></i></span><span class="v">84.3</span></div><div class="dm-bar"><span class="n">wet hulled</span><span class="t"><i style="width:99%"></i></span><span class="v">84.0</span></div><div class="dm-bar"><span class="n">washed</span><span class="t"><i style="width:99%"></i></span><span class="v">83.9</span></div><div class="dm-bar"><span class="n">monsooned</span><span class="t"><i style="width:97%"></i></span><span class="v">82.6</span></div>
+      </div>
+      <div class="dm-card">
+        <div class="k">Market</div>
+        <h4>What buyers are searching for</h4>
+        <p>Roasters query the vault by profile rather than by broker relationship. These
+        are the searches that returned too few lots this month — each one is a market
+        opening visible from the growing side.</p>
+        <div class="dm-bar"><span class="n">floral · tea-like</span><span class="t"><i style="width:100%"></i></span><span class="v">214</span></div><div class="dm-bar"><span class="n">low acidity</span><span class="t"><i style="width:87%"></i></span><span class="v">187</span></div><div class="dm-bar"><span class="n">honey process</span><span class="t"><i style="width:73%"></i></span><span class="v">156</span></div><div class="dm-bar"><span class="n">single plot</span><span class="t"><i style="width:67%"></i></span><span class="v">143</span></div><div class="dm-bar"><span class="n">shade grown</span><span class="t"><i style="width:46%"></i></span><span class="v">98</span></div>
+      </div>
+      <div class="dm-card">
+        <div class="k">Traceability</div>
+        <h4>How far back a bag can be walked</h4>
+        <p>Every hop carries a date, a quantity and a source. Where a machine reading
+        backs the claim, the lot is marked verified rather than stated.</p>
+        <div class="dm-bar"><span class="n">plot</span><span class="t"><i style="width:82%"></i></span><span class="v">81%</span></div><div class="dm-bar"><span class="n">mill</span><span class="t"><i style="width:94%"></i></span><span class="v">93%</span></div><div class="dm-bar"><span class="n">exporter</span><span class="t"><i style="width:98%"></i></span><span class="v">97%</span></div><div class="dm-bar"><span class="n">roaster</span><span class="t"><i style="width:100%"></i></span><span class="v">99%</span></div>
+      </div>
+    </div>
+    <div class="dm-tablewrap">
+      <table class="dm-table">
+        <thead><tr><th>Lot</th><th>Origin</th><th>Process</th><th>Score</th>
+        <th>Flavour</th><th>Traceable</th><th>Buyer match</th></tr></thead>
+        <tbody><tr><td class='mono'>LOT-2026-0412</td><td><b>Chiang Rai, Thailand</b></td><td>honey</td><td><b>86.5</b></td><td>longan · tamarind</td><td class='mono'>5 hops</td><td><span class='dm-chip'>Osaka · 2 roasters</span></td></tr><tr><td class='mono'>LOT-2026-0388</td><td><b>Huila, Colombia</b></td><td>washed</td><td><b>85.9</b></td><td>citrus · red fruit</td><td class='mono'>6 hops</td><td><span class='dm-chip'>Berlin · 4 roasters</span></td></tr><tr><td class='mono'>LOT-2026-0361</td><td><b>Yirgacheffe, Ethiopia</b></td><td>natural</td><td><b>87.2</b></td><td>jasmine · peach</td><td class='mono'>4 hops</td><td><span class='dm-chip'>Seoul · 3 roasters</span></td></tr><tr><td class='mono'>LOT-2026-0344</td><td><b>Nyeri, Kenya</b></td><td>washed</td><td><b>86.8</b></td><td>blackcurrant · tomato</td><td class='mono'>5 hops</td><td><span class='dm-chip'>Melbourne · 2 roasters</span></td></tr><tr><td class='mono'>LOT-2026-0329</td><td><b>Cerrado, Brazil</b></td><td>natural</td><td><b>83.4</b></td><td>nut · cocoa</td><td class='mono'>3 hops</td><td><span class='dm-chip am'>moisture reading pending</span></td></tr><tr><td class='mono'>LOT-2026-0317</td><td><b>Aceh, Indonesia</b></td><td>wet-hulled</td><td><b>84.1</b></td><td>cedar · herbal</td><td class='mono'>4 hops</td><td><span class='dm-chip'>Taipei · 1 roaster</span></td></tr></tbody>
+      </table>
+    </div>
+    <p class="dm-cap">Every figure on this page is simulated. The point is the shape of
+    the answer, not the numbers: one structure, contributed to by everyone along the
+    chain, that a farmer can query for what to do next season and a roaster can query
+    for what to buy — and both get an answer that carries its own evidence.</p>
+  </div>
+</article>
+
+<section class="join" id="join">
+  <div class="join-bg"></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="k rv">Build the real one</div>
+      <h2 class="rv">This is a sketch. The real one needs contributors.</h2>
+      <p class="lead rv">Leave your details if you want to put the first real data into it.</p>
+      <form id="wl" class="rv" novalidate>
+        <div class="frow">
+          <input type="text" id="name" placeholder="Name" aria-label="Name" autocomplete="name">
+          <input type="email" id="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+        </div>
+        <div class="frow">
+          <input type="text" id="org" placeholder="Farm, mill, co-op or roastery" aria-label="Farm, mill, co-op or roastery" autocomplete="organization">
+          <input type="text" id="country" placeholder="Country" aria-label="Country" autocomplete="country-name">
+        </div>
+        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
+               aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn" type="submit">Send my details</button>
+      </form>
+      <div class="ok" id="ok">Received. We reply within two business days.</div>
+      <div class="err" id="err"></div>
+      <p class="form-note rv">Goes to hello@neogens.co — or write there directly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <div class="k">Get in touch</div>
+    <div class="cta-btns"><a class="btn" href="contact.html">Request a briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-in">
+      <div><div class="f-brand"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg> Neo Gens</div></div>
+      <div class="f-cols"><div class="f-col"><div class="h">Part 1 · The idea</div><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="why.html">Why it works</a><a href="layer.html">Ontology &amp; knowledge graph</a></div><div class="f-col"><div class="h">Part 2 · Museums &amp; libraries</div><a href="advantage.html">What you are holding</a><a href="visit.html">Where things stand</a><a href="experience.html">Visitors and readers</a><a href="museums.html">What leadership looks like</a></div><div class="f-col"><div class="h">Part 2 · Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="sovereignty.html">Your data · AI sovereignty</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a></div><div class="f-col"><div class="h">Part 3 &amp; company</div><p>Neo Gens Co., Ltd.</p><a href="coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo dashboard</a><a href="about.html">Who we are</a><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a href="th-index.html">ฉบับภาษาไทย</a></div></div>
+    </div>
+    <div class="f-bot"><span>© 2026 Neo Gens Co., Ltd.</span><span>We help you turn knowledge into value-creating assets.</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog');
+  function onScroll(){
+    nav.classList.toggle('stuck',window.scrollY>8);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+    rvs.forEach(function(el){io.observe(el)});
+  } else { rvs.forEach(function(el){el.classList.add('in')}); }
+
+  var heads=[].slice.call(document.querySelectorAll('article h2[id]'));
+  var tocLinks={};
+  [].slice.call(document.querySelectorAll('.toc a')).forEach(function(a){ tocLinks[a.getAttribute('href').slice(1)]=a; });
+  if('IntersectionObserver' in window && heads.length){
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var a=tocLinks[e.target.id];
+        if(!a) return;
+        if(e.isIntersecting){
+          [].slice.call(document.querySelectorAll('.toc a.on')).forEach(function(x){x.classList.remove('on')});
+          a.classList.add('on');
+        }
+      });
+    },{rootMargin:'-70px 0px -75% 0px',threshold:0});
+    heads.forEach(function(h){spy.observe(h)});
+  }
+
+  function ngSetTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('ng-theme',t)}catch(e){}}
+  [].slice.call(document.querySelectorAll('.tgl')).forEach(function(b){
+    b.addEventListener('click',function(){
+      ngSetTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
+    });
+  });
+  var ngB=document.getElementById('burger'), ngD=document.getElementById('drawer');
+  if(ngB&&ngD){
+    ngB.addEventListener('click',function(){
+      var o=ngD.classList.toggle('open');
+      ngB.classList.toggle('x',o);
+      ngB.setAttribute('aria-expanded',o?'true':'false');
+    });
+    ngD.addEventListener('click',function(e){ if(e.target.tagName==='A'){ngD.classList.remove('open');ngB.classList.remove('x');ngB.setAttribute('aria-expanded','false');} });
+  }
+
+  var NG_ENDPOINT='https://neogens-briefing.neogens.workers.dev';
+  var form=document.getElementById('wl');
+  if(form) form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var emailEl=document.getElementById('email');
+    var v=emailEl.value.trim();
+    var okEl=document.getElementById('ok'), errEl=document.getElementById('err');
+    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
+    var hp=document.getElementById('website');
+    if(errEl) errEl.style.display='none';
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){emailEl.focus();return;}
+    btn.disabled=true; btn.textContent="Sending…";
+    fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:(document.getElementById('name')||{}).value||'',
+      org:(document.getElementById('org')||{}).value||'',
+      originCountry:(document.getElementById('country')||{}).value||'',
+      topic:'MKM Coffee',
+      email:v, website:hp?hp.value:'', lang:"en", page:location.pathname
+    })}).then(function(res){
+      if(res.status===200){form.style.display='none';okEl.style.display='block';return;}
+      if(res.status===202){form.style.display='none';okEl.innerHTML="Recorded — but our notification system did not respond. Please also write to <b>hello@neogens.co</b> so we are certain to see it.";okEl.style.display='block';return;}
+      if(res.status===429){var e=new Error('rate_limited');e.rate=true;throw e;}
+      throw new Error('http_'+res.status);
+    }).catch(function(e){
+      if(errEl){errEl.innerHTML=(e&&e.rate)?"Too many submissions from your network in the last hour, so this one was not recorded. Try again later, or write directly to <b>hello@neogens.co</b>.":"That did not send, and nothing was recorded. Please write directly to <b>hello@neogens.co</b> — we would rather tell you than show a message that isn't true.";errEl.style.display='block';}
+      btn.disabled=false; btn.textContent=label;
+    });
+  });
+
+})();</script>
+<script>window.__VAULT_DEMO__={"places":[{"n":"Brazil","lon":-45.9,"lat":-21.5,"role":"origin","c":{"farmers":551,"roasters":27,"coops":19,"mills":13,"exporters":10,"cafes":3,"researchers":0,"certifiers":2},"score":83.1,"alt":"800–1,200 m","notes":"nut · cocoa · caramel","proc":"natural"},{"n":"Vietnam","lon":108.0,"lat":12.7,"role":"origin","c":{"farmers":480,"roasters":6,"coops":10,"mills":10,"exporters":5,"cafes":2,"researchers":0,"certifiers":1},"score":81.4,"alt":"600–1,500 m","notes":"dark cocoa · spice","proc":"washed"},{"n":"Colombia","lon":-75.5,"lat":4.6,"role":"origin","c":{"farmers":418,"roasters":17,"coops":15,"mills":11,"exporters":6,"cafes":3,"researchers":1,"certifiers":2},"score":85.2,"alt":"1,400–2,000 m","notes":"citrus · red fruit","proc":"washed"},{"n":"Indonesia","lon":99.5,"lat":2.6,"role":"origin","c":{"farmers":293,"roasters":9,"coops":8,"mills":7,"exporters":4,"cafes":2,"researchers":1,"certifiers":1},"score":84.0,"alt":"1,100–1,600 m","notes":"herbal · earthy · cedar","proc":"wet-hulled"},{"n":"Ethiopia","lon":38.7,"lat":7.7,"role":"origin","c":{"farmers":373,"roasters":7,"coops":13,"mills":9,"exporters":5,"cafes":2,"researchers":1,"certifiers":1},"score":86.4,"alt":"1,700–2,200 m","notes":"jasmine · bergamot · peach","proc":"natural"},{"n":"Honduras","lon":-87.2,"lat":14.6,"role":"origin","c":{"farmers":187,"roasters":4,"coops":7,"mills":6,"exporters":3,"cafes":1,"researchers":1,"certifiers":1},"score":84.3,"alt":"1,200–1,700 m","notes":"brown sugar · stone fruit","proc":"washed"},{"n":"India","lon":75.8,"lat":12.9,"role":"origin","c":{"farmers":169,"roasters":5,"coops":5,"mills":5,"exporters":3,"cafes":2,"researchers":1,"certifiers":1},"score":82.6,"alt":"900–1,500 m","notes":"pepper · malt","proc":"monsooned"},{"n":"Uganda","lon":32.6,"lat":0.9,"role":"origin","c":{"farmers":156,"roasters":2,"coops":6,"mills":4,"exporters":2,"cafes":1,"researchers":1,"certifiers":1},"score":83.2,"alt":"1,300–1,900 m","notes":"dried fruit · cocoa","proc":"natural"},{"n":"Mexico","lon":-96.9,"lat":16.9,"role":"origin","c":{"farmers":133,"roasters":6,"coops":5,"mills":4,"exporters":2,"cafes":2,"researchers":1,"certifiers":1},"score":83.8,"alt":"1,000–1,600 m","notes":"almond · cane sugar","proc":"washed"},{"n":"Guatemala","lon":-90.8,"lat":14.9,"role":"origin","c":{"farmers":129,"roasters":5,"coops":6,"mills":5,"exporters":3,"cafes":1,"researchers":1,"certifiers":1},"score":85.0,"alt":"1,300–1,900 m","notes":"apple · chocolate","proc":"washed"},{"n":"Peru","lon":-75.4,"lat":-6.5,"role":"origin","c":{"farmers":124,"roasters":3,"coops":7,"mills":5,"exporters":2,"cafes":1,"researchers":1,"certifiers":1},"score":84.1,"alt":"1,200–1,800 m","notes":"toffee · orange","proc":"washed"},{"n":"Nicaragua","lon":-86.0,"lat":13.1,"role":"origin","c":{"farmers":84,"roasters":2,"coops":4,"mills":3,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":84.4,"alt":"1,100–1,600 m","notes":"honey · citrus","proc":"honey"},{"n":"Costa Rica","lon":-84.0,"lat":9.8,"role":"origin","c":{"farmers":76,"roasters":5,"coops":4,"mills":4,"exporters":2,"cafes":1,"researchers":1,"certifiers":1},"score":85.5,"alt":"1,200–1,800 m","notes":"tangerine · panela","proc":"honey"},{"n":"Kenya","lon":37.2,"lat":-0.5,"role":"origin","c":{"farmers":107,"roasters":3,"coops":5,"mills":4,"exporters":2,"cafes":1,"researchers":1,"certifiers":1},"score":86.1,"alt":"1,500–2,100 m","notes":"blackcurrant · tomato","proc":"washed"},{"n":"Tanzania","lon":35.0,"lat":-6.5,"role":"origin","c":{"farmers":80,"roasters":2,"coops":4,"mills":3,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":84.0,"alt":"1,300–1,900 m","notes":"plum · black tea","proc":"washed"},{"n":"Rwanda","lon":29.9,"lat":-2.0,"role":"origin","c":{"farmers":71,"roasters":2,"coops":4,"mills":3,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":85.3,"alt":"1,500–2,000 m","notes":"red apple · floral","proc":"washed"},{"n":"Burundi","lon":29.9,"lat":-3.4,"role":"origin","c":{"farmers":49,"roasters":1,"coops":3,"mills":2,"exporters":1,"cafes":1,"researchers":1,"certifiers":0},"score":84.8,"alt":"1,400–1,900 m","notes":"grapefruit · honey","proc":"washed"},{"n":"El Salvador","lon":-89.2,"lat":13.9,"role":"origin","c":{"farmers":62,"roasters":2,"coops":3,"mills":2,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":84.6,"alt":"1,200–1,700 m","notes":"caramel · cherry","proc":"honey"},{"n":"Papua New Guinea","lon":145.0,"lat":-6.5,"role":"origin","c":{"farmers":53,"roasters":1,"coops":3,"mills":2,"exporters":1,"cafes":1,"researchers":1,"certifiers":0},"score":83.5,"alt":"1,300–1,800 m","notes":"tropical fruit · cocoa","proc":"washed"},{"n":"Thailand","lon":99.3,"lat":19.6,"role":"origin","c":{"farmers":147,"roasters":11,"coops":7,"mills":5,"exporters":2,"cafes":3,"researchers":1,"certifiers":1},"score":84.9,"alt":"1,100–1,500 m","notes":"longan · tamarind · lychee","proc":"honey"},{"n":"Laos","lon":106.0,"lat":15.1,"role":"origin","c":{"farmers":40,"roasters":1,"coops":2,"mills":2,"exporters":1,"cafes":1,"researchers":1,"certifiers":0},"score":83.0,"alt":"1,000–1,400 m","notes":"cocoa · dried longan","proc":"natural"},{"n":"Yemen","lon":44.2,"lat":15.0,"role":"origin","c":{"farmers":31,"roasters":1,"coops":1,"mills":2,"exporters":1,"cafes":0,"researchers":1,"certifiers":0},"score":85.8,"alt":"1,500–2,200 m","notes":"dried fig · incense","proc":"natural"},{"n":"Panama","lon":-82.4,"lat":8.8,"role":"origin","c":{"farmers":27,"roasters":2,"coops":1,"mills":2,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":88.2,"alt":"1,400–1,900 m","notes":"jasmine · bergamot","proc":"washed"},{"n":"Ecuador","lon":-79.0,"lat":-1.5,"role":"origin","c":{"farmers":36,"roasters":2,"coops":2,"mills":2,"exporters":1,"cafes":1,"researchers":1,"certifiers":0},"score":84.7,"alt":"1,200–1,900 m","notes":"cane sugar · pear","proc":"washed"},{"n":"DR Congo","lon":28.9,"lat":-2.5,"role":"origin","c":{"farmers":44,"roasters":1,"coops":2,"mills":2,"exporters":1,"cafes":0,"researchers":1,"certifiers":0},"score":83.9,"alt":"1,400–1,900 m","notes":"dark cherry · cocoa","proc":"washed"},{"n":"Rest of origins","lon":-60.0,"lat":-8.0,"role":"origin","c":{"farmers":80,"roasters":2,"coops":4,"mills":3,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":83.6,"alt":"900–1,800 m","notes":"mixed","proc":"mixed"},{"n":"United States","lon":-96.0,"lat":39.0,"role":"market","c":{"farmers":0,"roasters":83,"coops":0,"mills":0,"exporters":5,"cafes":3,"researchers":1,"certifiers":2},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Japan","lon":139.7,"lat":35.7,"role":"market","c":{"farmers":0,"roasters":44,"coops":0,"mills":0,"exporters":3,"cafes":4,"researchers":1,"certifiers":1},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Germany","lon":10.4,"lat":51.2,"role":"market","c":{"farmers":0,"roasters":35,"coops":0,"mills":0,"exporters":3,"cafes":3,"researchers":1,"certifiers":1},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Italy","lon":12.5,"lat":42.5,"role":"market","c":{"farmers":0,"roasters":21,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"United Kingdom","lon":-1.5,"lat":52.5,"role":"market","c":{"farmers":0,"roasters":24,"coops":0,"mills":0,"exporters":2,"cafes":2,"researchers":1,"certifiers":1},"score":0.0,"alt":"","notes":"","proc":""},{"n":"South Korea","lon":127.0,"lat":37.5,"role":"market","c":{"farmers":0,"roasters":23,"coops":0,"mills":0,"exporters":1,"cafes":3,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Australia","lon":149.0,"lat":-33.0,"role":"market","c":{"farmers":0,"roasters":20,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Canada","lon":-79.0,"lat":44.0,"role":"market","c":{"farmers":0,"roasters":17,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Nordics","lon":15.0,"lat":60.0,"role":"market","c":{"farmers":0,"roasters":15,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":1},"score":0.0,"alt":"","notes":"","proc":""},{"n":"France","lon":2.3,"lat":48.9,"role":"market","c":{"farmers":0,"roasters":14,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Netherlands","lon":5.0,"lat":52.2,"role":"market","c":{"farmers":0,"roasters":11,"coops":0,"mills":0,"exporters":2,"cafes":1,"researchers":1,"certifiers":1},"score":0.0,"alt":"","notes":"","proc":""},{"n":"China","lon":116.4,"lat":39.9,"role":"market","c":{"farmers":0,"roasters":18,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Taiwan","lon":121.0,"lat":25.0,"role":"market","c":{"farmers":0,"roasters":12,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Bangkok","lon":100.5,"lat":13.7,"role":"market","c":{"farmers":0,"roasters":14,"coops":0,"mills":0,"exporters":1,"cafes":2,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"UAE","lon":55.3,"lat":25.2,"role":"market","c":{"farmers":0,"roasters":8,"coops":0,"mills":0,"exporters":1,"cafes":1,"researchers":1,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Spain","lon":-3.7,"lat":40.4,"role":"market","c":{"farmers":0,"roasters":7,"coops":0,"mills":0,"exporters":1,"cafes":1,"researchers":0,"certifiers":0},"score":0.0,"alt":"","notes":"","proc":""},{"n":"Switzerland","lon":8.2,"lat":46.8,"role":"market","c":{"farmers":0,"roasters":5,"coops":0,"mills":0,"exporters":1,"cafes":1,"researchers":1,"certifiers":1},"score":0.0,"alt":"","notes":"","proc":""}],"totals":{"farmers":4000,"roasters":500,"coops":150,"mills":120,"exporters":90,"cafes":70,"researchers":40,"certifiers":30},"grand":5000};</script>
+<script>
+/* ===== demo dashboard — ข้อมูลจำลองทั้งหมด ไม่ใช่ของจริง ===== */
+(function () {
+  var D = window.__VAULT_DEMO__;
+  if (!D) return;
+  var places = D.places, totals = D.totals;
+
+  /* --- แปลงพิกัดจริงเป็นพิกัดบนภาพ equirectangular --- */
+  var K = 152.7887, TX = 480, TY = 165.33, RAD = Math.PI / 180;
+  function px(lon) { return TX + K * lon * RAD; }
+  function py(lat) { return TY - K * lat * RAD; }
+
+  var svg = document.getElementById('dm-map');
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  var gEdge = el('g', {}, svg), gNode = el('g', {}, svg);
+
+  /* --- เส้นการค้า จากแหล่งปลูกไปตลาด สร้างแบบตายตัวจากขนาดของทั้งสองฝั่ง --- */
+  var origins = places.filter(function (p) { return p.role === 'origin'; });
+  var markets = places.filter(function (p) { return p.role === 'market'; });
+  origins.sort(function (a, b) { return b.c.farmers - a.c.farmers; });
+  markets.sort(function (a, b) { return b.c.roasters - a.c.roasters; });
+
+  var edges = [];
+  origins.forEach(function (o, i) {
+    var n = o.c.farmers > 300 ? 3 : o.c.farmers > 100 ? 2 : 1;
+    for (var j = 0; j < n; j++) {
+      var m = markets[(i * 3 + j * 2) % markets.length];
+      edges.push({ o: o, m: m });
+    }
+  });
+
+  edges.forEach(function (e) {
+    var x1 = px(e.o.lon), y1 = py(e.o.lat), x2 = px(e.m.lon), y2 = py(e.m.lat);
+    var mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - Math.abs(x2 - x1) * .10 - 8;
+    e.node = el('path', {
+      'class': 'dm-edge',
+      d: 'M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' Q' + mx.toFixed(1) + ' ' +
+         my.toFixed(1) + ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1)
+    }, gEdge);
+  });
+
+  /* --- จุดผู้ร่วมสร้างคลัง --- */
+  function total(p) {
+    var t = 0; for (var k in p.c) t += p.c[k]; return t;
+  }
+  // ป้ายชื่อ ใส่เฉพาะจุดใหญ่ และเว้นจุดที่จะไปทับป้ายที่วางไว้แล้ว
+  var labelled = [];
+  function canLabel(p, t) {
+    if (t < 150) return false;
+    var x = px(p.lon), y = py(p.lat);
+    for (var i = 0; i < labelled.length; i++) {
+      if (Math.abs(labelled[i][0] - x) < 62 && Math.abs(labelled[i][1] - y) < 11) return false;
+    }
+    labelled.push([x, y]);
+    return true;
+  }
+
+  places.slice().sort(function (a, b) { return total(b) - total(a); }).forEach(function (p) {
+    var t = total(p);
+    var r = Math.max(3.4, Math.min(15, Math.sqrt(t) * .78));
+    var g = el('g', { 'class': 'dm-node ' + p.role, tabindex: '0', role: 'button',
+                      'aria-label': p.n + ' — ' + t + ' participants' }, gNode);
+    p.circle = el('circle', { cx: px(p.lon).toFixed(1), cy: py(p.lat).toFixed(1),
+                              r: r.toFixed(1) }, g);
+    if (canLabel(p, t)) {
+      el('text', { x: (px(p.lon) + r + 3).toFixed(1), y: (py(p.lat) + 2.6).toFixed(1) }, g)
+        .textContent = p.n;
+    }
+    p.g = g; p.r = r; p.total = t;
+    g.addEventListener('click', function () { select(p); });
+    g.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(p); }
+    });
+  });
+
+  /* --- แผงรายละเอียด --- */
+  var panel = document.getElementById('dm-panel');
+  var selected = null, minScore = 0;
+
+  function rows(list) {
+    return '<div class="dm-rows">' + list.map(function (r) {
+      return '<div class="dm-row"><span class="a">' + r[0] + '</span><span class="b">' + r[1] + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  function overview() {
+    selected = null;
+    places.forEach(function (p) { p.g.classList.remove('sel'); });
+    edges.forEach(function (e) { e.node.classList.remove('hi'); });
+    panel.innerHTML =
+      '<div class="k">The vault today</div>' +
+      '<h3>5,000 contributors</h3>' +
+      '<div class="sub">43 origins and markets · simulated</div>' +
+      rows([
+        ['Farmers', '<b>' + totals.farmers.toLocaleString() + '</b> · 80%'],
+        ['Roasters', '<b>' + totals.roasters.toLocaleString() + '</b> · 10%'],
+        ['Cooperatives', '<b>' + totals.coops + '</b>'],
+        ['Mills &amp; washing stations', '<b>' + totals.mills + '</b>'],
+        ['Exporters &amp; importers', '<b>' + totals.exporters + '</b>'],
+        ['Cafés', '<b>' + totals.cafes + '</b>'],
+        ['Researchers', '<b>' + totals.researchers + '</b>'],
+        ['Certifiers', '<b>' + totals.certifiers + '</b>']
+      ]) +
+      '<p class="dm-note">Select any point on the map to see what that origin has ' +
+      'put into the vault, and which roasters its profile matches.</p>';
+  }
+
+  function select(p) {
+    selected = p;
+    places.forEach(function (q) { q.g.classList.toggle('sel', q === p); });
+    edges.forEach(function (e) { e.node.classList.toggle('hi', e.o === p || e.m === p); });
+
+    var linked = edges.filter(function (e) { return e.o === p || e.m === p; })
+      .map(function (e) { return e.o === p ? e.m.n : e.o.n; });
+    var uniq = linked.filter(function (v, i) { return linked.indexOf(v) === i; });
+
+    if (p.role === 'origin') {
+      var lots = Math.round(p.c.farmers * 2.4);
+      panel.innerHTML =
+        '<div class="k">Origin</div><h3>' + p.n + '</h3>' +
+        '<div class="sub">' + p.alt + ' · ' + p.proc + '</div>' +
+        rows([
+          ['Contributors', '<b>' + p.total.toLocaleString() + '</b>'],
+          ['Farmers', '<b>' + p.c.farmers.toLocaleString() + '</b>'],
+          ['Cooperatives / mills', '<b>' + (p.c.coops + p.c.mills) + '</b>'],
+          ['Lots on record', '<b>' + lots.toLocaleString() + '</b>'],
+          ['Mean cup score', '<b>' + p.score.toFixed(1) + '</b>'],
+          ['Traceable to plot', '<b>' + (72 + (p.c.mills % 9) * 3) + '%</b>'],
+          ['Flavour profile', p.notes]
+        ]) +
+        '<p class="dm-note">Buying this origin today means reading ' +
+        uniq.length + ' verified routes into ' + uniq.slice(0, 3).join(', ') +
+        (uniq.length > 3 ? ' and ' + (uniq.length - 3) + ' more' : '') + '.</p>' +
+        '<button class="dm-act" data-act="match">Match this profile to roasters</button>' +
+        '<button class="dm-act ghost" data-act="back">Back to overview</button>';
+    } else {
+      panel.innerHTML =
+        '<div class="k">Market</div><h3>' + p.n + '</h3>' +
+        '<div class="sub">roasters, cafés and importers</div>' +
+        rows([
+          ['Contributors', '<b>' + p.total.toLocaleString() + '</b>'],
+          ['Roasters', '<b>' + p.c.roasters + '</b>'],
+          ['Cafés', '<b>' + p.c.cafes + '</b>'],
+          ['Importers', '<b>' + p.c.exporters + '</b>'],
+          ['Origins sourced', '<b>' + uniq.length + '</b>'],
+          ['Cupping results shared', '<b>' + (p.c.roasters * 34).toLocaleString() + '</b>']
+        ]) +
+        '<p class="dm-note">Every cupping result added here sharpens the ' +
+        'benchmark a farmer sees on the other side of the map.</p>' +
+        '<button class="dm-act ghost" data-act="back">Back to overview</button>';
+    }
+  }
+
+  panel.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-act]');
+    if (!b) return;
+    if (b.dataset.act === 'back') return overview();
+    if (b.dataset.act === 'match' && selected) {
+      setLayer('match');
+      document.querySelectorAll('.dm-tool[data-layer]').forEach(function (t) {
+        t.classList.toggle('on', t.dataset.layer === 'match');
+      });
+    }
+  });
+
+  /* --- การหรี่จุดกับขนาดจุด รวมเงื่อนไขไว้ที่เดียว กันสองปุ่มแย่งกันสั่ง --- */
+  var roleView = null;
+
+  function radius(p) {
+    var v = roleView ? p.c[roleView] : p.total;
+    return Math.max(3.4, Math.min(15, Math.sqrt(v) * (roleView ? 1.9 : .78)));
+  }
+
+  function refresh() {
+    places.forEach(function (p) {
+      var byScore = p.role === 'origin' && p.score < minScore;
+      var byRole = roleView && !p.c[roleView];
+      p.g.classList.toggle('dim', !!(byScore || byRole));
+      p.circle.setAttribute('r', radius(p).toFixed(1));
+    });
+  }
+
+  function setLayer(name) {
+    gEdge.style.display = (name === 'people') ? 'none' : '';
+    edges.forEach(function (e) {
+      var show = true;
+      if (name === 'match' && selected) show = (e.o === selected || e.m === selected);
+      if (name === 'quality') show = e.o.score >= 85;
+      e.node.style.display = show ? '' : 'none';
+      e.node.classList.toggle('hi', name === 'match' && selected &&
+        (e.o === selected || e.m === selected));
+    });
+  }
+
+  document.querySelectorAll('.dm-tool[data-layer]').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.dm-tool[data-layer]').forEach(function (x) {
+        x.classList.toggle('on', x === t);
+      });
+      setLayer(t.dataset.layer);
+    });
+  });
+
+  var slider = document.getElementById('dm-score');
+  if (slider) {
+    slider.addEventListener('input', function () {
+      minScore = parseFloat(slider.value);
+      document.getElementById('dm-score-v').textContent =
+        minScore === 0 ? 'any' : minScore.toFixed(1) + '+';
+      refresh();
+    });
+  }
+
+  /* --- ปุ่มสถิติด้านบน ใช้เน้นกลุ่มบทบาท --- */
+  document.querySelectorAll('.dm-stat[data-role]').forEach(function (s) {
+    function toggle() {
+      var was = s.classList.contains('on');
+      document.querySelectorAll('.dm-stat').forEach(function (x) { x.classList.remove('on'); });
+      roleView = was ? null : s.dataset.role;
+      if (!was) s.classList.add('on');
+      refresh();
+    }
+    s.addEventListener('click', toggle);
+    s.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+    });
+  });
+
+  overview();
+  setLayer('trade');
+})();
+</script>
+</body>
+</html>

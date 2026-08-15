@@ -7,7 +7,7 @@ def E(f,m): errs.append((f,m))
 def W(f,m): warns.append((f,m))
 
 class P(HTMLParser):
-    def __init__(s,f): super().__init__(convert_charrefs=True); s.f=f; s._se=False; s.st=[]; s.ids=[]; s.hrefs=[]; s.text=[]
+    def __init__(s,f): super().__init__(convert_charrefs=True); s.f=f; s._se=False; s.st=[]; s.ids=[]; s.hrefs=[]; s.text=[]; s.vis=[]
     def handle_starttag(s,t,a):
         d=dict(a)
         if 'id' in d: s.ids.append(d['id'])
@@ -27,7 +27,7 @@ class P(HTMLParser):
                 if s.st[i][0]==t: del s.st[i:]; return
             return
         s.st.pop()
-    def handle_data(s,d): s.text.append(d)
+    def handle_data(s,d): s.text.append(d); s.vis.append(d)
 
 files=sorted(glob.glob('*.html'))
 parsed={}
@@ -116,10 +116,19 @@ for f in files:
         W(f,'line-height %s may clip Thai tone marks'%lh)
 
 # --- unverifiable statistics (house rule §8) ---
+# หน้าเดโมที่ประกาศตัวเองด้วย <meta name="ng-data" content="simulated"> ถูกข้ามการตรวจนี้
+# เพราะตัวเลขทั้งหน้าเป็นของสมมติโดยเจตนา และหน้าบอกผู้อ่านไว้แล้ว
+# ข้อยกเว้นนี้ไม่เงียบ — ท้ายรายงานจะบอกว่าข้ามไฟล์ไหนไปบ้าง
 NUMPAT=re.compile(r'(?<![\w-])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?\s?%|\d+x\b)')
 ALLOW=re.compile(r'(90[- ]minute|© 20\d\d|20\d\d|G-TPB|1962|1998|2014|2011|01|02|03|04|05|\d+ min read)')
+SIMULATED=re.compile(r'<meta\s+name="ng-data"\s+content="simulated"')
+skipped_num=[]
 for f in files:
     src,p=parsed[f]
+    if SIMULATED.search(src):
+        if 'simulated' not in ' '.join(p.vis).lower():
+            E(f,'declared ng-data=simulated but the page never says so to the reader')
+        skipped_num.append(f); continue
     t=' '.join(x.strip() for x in p.text if x.strip())
     for m in NUMPAT.finditer(t):
         seg=t[max(0,m.start()-45):m.end()+35]
@@ -149,6 +158,9 @@ if warns:
         k=(f,m[:60])
         if k in seenw: continue
         seenw.add(k); print('   %-34s %s'%(f,m[:150]))
-print()
+if skipped_num:
+    print('figure check skipped on %d page(s) declaring simulated data: %s'
+          %(len(skipped_num),', '.join(skipped_num)))
+    print()
 print('Not checked by this script: whether the page looks right, and whether EN and TH still say the same thing.')
 sys.exit(1 if errs else 0)

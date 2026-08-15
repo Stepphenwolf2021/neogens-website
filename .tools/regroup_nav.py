@@ -36,7 +36,8 @@ EN = dict(
             ('km-for-museums-and-libraries.html', 'Long read: MKM for museums &amp; libraries')]),
         ('Part 3 · Public goods', [
             ('coffee.html', 'MKM for Coffee'),
-            ('coffee-farmer.html', 'For coffee farmers')]),
+            ('coffee-farmer.html', 'For coffee farmers'),
+            ('coffee-demo.html', 'Demo: the vault in use')]),
         ('&nbsp;', [
             ('about.html', 'Who we are')]),
     ],
@@ -54,6 +55,7 @@ EN = dict(
                                        ('honest.html', "What we won't do")]),
         ('Part 3 &amp; company', [('coffee.html', 'MKM for Coffee'),
                                   ('coffee-farmer.html', 'For coffee farmers'),
+                                  ('coffee-demo.html', 'Demo dashboard'),
                                   ('about.html', 'Who we are'),
                                   ('mailto:hello@neogens.co', 'hello@neogens.co'),
                                   ('km-for-museums-and-libraries.html', 'Long read: MKM for museums &amp; libraries'),
@@ -89,7 +91,8 @@ TH = dict(
             ('km-for-museums-and-libraries.html', 'บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด')]),
         ('ภาค 3 · โครงการเพื่อสาธารณะ', [
             ('th-coffee.html', 'MKM สำหรับกาแฟ'),
-            ('th-coffee-farmer.html', 'สำหรับคนปลูกกาแฟ')]),
+            ('th-coffee-farmer.html', 'สำหรับคนปลูกกาแฟ'),
+            ('coffee-demo.html', 'เดโมแดชบอร์ด (อังกฤษ)')]),
         ('&nbsp;', [
             ('th-about.html', 'เราคือใคร')]),
     ],
@@ -107,6 +110,7 @@ TH = dict(
                                     ('th-honest.html', 'สิ่งที่เราไม่ทำ')]),
         ('ภาค 3 และบริษัท', [('th-coffee.html', 'MKM สำหรับกาแฟ'),
                             ('th-coffee-farmer.html', 'สำหรับคนปลูกกาแฟ'),
+                            ('coffee-demo.html', 'เดโมแดชบอร์ด'),
                             ('th-about.html', 'เราคือใคร'),
                             ('mailto:hello@neogens.co', 'hello@neogens.co'),
                             ('km-for-museums-and-libraries.html', 'บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด'),
