@@ -73,7 +73,7 @@
 
 **Hard**
 
-- **อ่าน `.tools/LESSONS.md` ให้จบก่อนพิมพ์ตัวอักษรแรกของเซสชัน** แล้วขึ้นต้นข้อความแรกด้วย `อ่าน .tools/LESSONS.md แล้ว — N ข้อ` ตอนนี้ N คือ 6
+- **อ่าน `.tools/LESSONS.md` ให้จบก่อนพิมพ์ตัวอักษรแรกของเซสชัน** แล้วขึ้นต้นข้อความแรกด้วย `อ่าน .tools/LESSONS.md แล้ว — N ข้อ` ตอนนี้ N คือ 7
 - **ข้อความที่ Noppadol เขียนมาเอง ห้ามแก้แม้แต่ตัวเดียว** เห็นอะไรที่คิดว่าควรแก้ ให้ถามก่อนแล้วรอคำตอบ
 - ใช้ `git --no-optional-locks` กับ `status` และ `diff` เสมอ และเช็กว่า `.git/index.lock` ไม่ค้างก่อนบอกว่างานเสร็จ
 - Claude แก้ไฟล์อย่างเดียว ไม่ commit ไม่ push ไม่ deploy เอง
@@ -104,7 +104,7 @@
 
 ## Context files — อ่านตามลำดับนี้
 
-1. `.tools/LESSONS.md` — บทเรียน 6 ข้อ **บังคับอ่านก่อนพิมพ์อะไรทั้งสิ้น**
+1. `.tools/LESSONS.md` — บทเรียน 7 ข้อ **บังคับอ่านก่อนพิมพ์อะไรทั้งสิ้น**
 2. `CLAUDE.md` — กติกาโปรเจกต์
 3. `.tools/HANDOFF.md` — ไฟล์นี้
 4. `.tools/check.py` — ตัวตรวจก่อน publish รู้ว่ามันตรวจอะไรก่อนแก้อะไร
@@ -121,4 +121,4 @@
 1. `~/projects/neogens-briefing-worker/deploy.command` — deploy Worker **ต้องทำก่อน** ไม่งั้นคนกรอกฟอร์มกาแฟจะได้ auto-reply ฉบับพิพิธภัณฑ์
 2. `check.command` แล้ว `publish.command` ที่ `~/projects/neogens-website`
 3. เปิด `coffee.html` `th-coffee.html` `th-layer.html` `th-problem.html` `th-sovereignty.html` ดูด้วยตา ทั้งธีมมืดและสว่าง สองความกว้าง — **Claude เรนเดอร์หน้าเว็บดูเองไม่ได้ในสภาพแวดล้อมนี้ ยืนยันได้แค่โครงสร้างกับเนื้อหา ยืนยันไม่ได้ว่าหน้าตาสวย**
-4. ฟอร์มกาแฟทดสอบได้เฉพาะบนเว็บจริง Worker ยอมรับเฉพาะ Origin `neogens.co` และ `www.neogens.co` เปิดไฟล์จากเครื่องจะได้ 403
+4. **ฟอร์มกาแฟทดสอบได้เฉพาะที่ `https://www.neogens.co/th-coffee.html` เท่านั้น** Worker ยอมรับเฉพาะ Origin `neogens.co` และ `www.neogens.co` เปิดไฟล์ด้วย `file://` จะได้ CORS error เสมอ — เคยเสียเวลาไล่หาสาเหตุผิดมาแล้วหนึ่งรอบ ดูข้อ 7 ใน LESSONS

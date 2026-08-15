@@ -79,34 +79,17 @@ p{line-height:1.9}
 
 /* ===== diagrams ===== */
 figure{margin:clamp(34px,4.5vw,56px) 0 0}
-.photo{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
-.photo img{width:100%;height:auto;display:block}
-.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-@media(max-width:760px){.pcards{grid-template-columns:1fr}}
-.pcard{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:18px 18px 16px}
-.pcard .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--go);margin-bottom:12px}
-.pcard .got{font-size:13.5px;line-height:1.7;color:var(--dim);margin-top:12px}
-.pcard .got b{color:var(--fg);font-weight:600}
-.pscreen{width:100%;height:auto;display:block;border-radius:12px;background:var(--bg-2)}
 .dbox{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:clamp(16px,2.6vw,26px)}
 .dsvg{width:100%;height:auto;display:block}
-.dsvg .bx{fill:#171B1F;stroke:rgba(var(--w-rgb),.16);stroke-width:1}
-.dsvg .bx-go{fill:rgba(var(--go-rgb),.08);stroke:#B8F04A;stroke-width:1.3}
-.dsvg .bx-am{fill:rgba(var(--guess-rgb),.07);stroke:rgba(var(--guess-rgb),.55);stroke-width:1.2}
-.dsvg .bx-as{fill:rgba(var(--ask-rgb),.07);stroke:rgba(var(--ask-rgb),.5);stroke-width:1.2}
-.dsvg .t{font-family:'IBM Plex Sans Thai',sans-serif;font-size:13px;fill:#EDEBE6;font-weight:500}
-.dsvg .t-b{font-family:'IBM Plex Sans Thai',sans-serif;font-size:14px;fill:#EDEBE6;font-weight:600}
-.dsvg .t-s{font-family:'IBM Plex Sans Thai',sans-serif;font-size:11.5px;fill:#A2A8AF}
-.dsvg .m{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:#6E757D;letter-spacing:.02em}
-.dsvg .m-go{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:#B8F04A;letter-spacing:.02em}
-.dsvg .m-am{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:#E8A33D;letter-spacing:.02em}
-.dsvg .m-as{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:#7FC7E8;letter-spacing:.02em}
-.dsvg .ln{stroke:rgba(var(--w-rgb),.2);stroke-width:1;fill:none}
-.dsvg .ln-go{stroke:rgba(var(--go-rgb),.55);stroke-width:1.3;fill:none}
-.dsvg .ln-am{stroke:rgba(var(--guess-rgb),.5);stroke-width:1.3;fill:none;stroke-dasharray:5 4}
-.dsvg .ln-gh{stroke:rgba(var(--w-rgb),.14);stroke-width:1;fill:none;stroke-dasharray:4 4}
 figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mute);margin-top:14px;max-width:62ch}
 figcaption b{color:var(--dim);font-weight:500}
+.tk-l{stroke:var(--fg);stroke-width:1.8;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.tk-f{fill:rgba(var(--w-rgb),.05)}
+.tk-e{stroke:var(--go);stroke-width:1.1;fill:none;opacity:.5}
+.tk-n{stroke:var(--go);stroke-width:1.5;fill:var(--bg)}
+.story.split .col>p:first-child{margin-top:0!important}
+.story.split .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,44px);align-items:start}
+@media(max-width:900px){.story.split .cols{grid-template-columns:1fr;gap:0}}
 .dlab{font-family:var(--mono);font-size:12px;letter-spacing:.04em;margin-bottom:14px;line-height:1.6}
 .dlab.am{color:var(--guess)} .dlab.go{color:var(--go)}
 
@@ -417,17 +400,6 @@ nav{background:var(--glass)}
 .cta-bg{background:radial-gradient(48% 58% at 50% 100%,var(--go-soft),transparent 70%)}
 .duty{border-color:var(--go-line);background:linear-gradient(180deg,var(--go-soft),transparent)}
 .head-bg{background:radial-gradient(56% 46% at 20% 8%,var(--go-soft),transparent 66%),radial-gradient(46% 42% at 84% 22%,var(--ask-soft),transparent 68%)}
-.dsvg .bx{fill:var(--surface-2);stroke:var(--line-2)}
-.dsvg .bx-go{fill:var(--go-soft);stroke:var(--go)}
-.dsvg .bx-gh{stroke:var(--line)}
-.dsvg .t,.dsvg .t-b{fill:var(--fg)}
-.dsvg .t-s{fill:var(--dim)}
-.dsvg .m{fill:var(--mute)}
-.dsvg .m-go{fill:var(--go)}
-.dsvg .m-am{fill:var(--guess)}
-.dsvg .m-as{fill:var(--ask)}
-.dsvg .ln{stroke:var(--line-2)}
-.dsvg .ln-gh{stroke:var(--line)}
 .cover.c1{background:linear-gradient(150deg,var(--surface-2),var(--bg-2))}
 .cover.c2{background:linear-gradient(150deg,var(--surface-2),var(--bg-2))}
 .cover.c3{background:linear-gradient(150deg,var(--surface-2),var(--bg-2))}
@@ -552,147 +524,88 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
 
     <figure class="rv">
       <div class="dbox">
-        <div class="dlab am">ก่อนมี ontology + knowledge graph</div>
-        <svg class="dsvg" viewBox="0 0 900 400" role="img" aria-label="ภาพผู้เข้าชมยืนอยู่หน้าจอแสดงระบบสุริยะ โดยมีชั้นความรู้ซ้อนอยู่อีกชั้นหนึ่ง แสดงเส้นเชื่อมจากตำแหน่งดาวไปยังจารึก การก่อสร้างเทวสถาน และปฏิทินท้องถิ่น">
-          <text class="m" x="40" y="46">ห้องดาราศาสตร์</text>
-
-          <rect class="bx" x="110" y="70" width="300" height="190" rx="12"/>
-          <ellipse class="ln-gh" cx="260" cy="165" rx="42" ry="17"/>
-          <ellipse class="ln-gh" cx="260" cy="165" rx="78" ry="31"/>
-          <ellipse class="ln-gh" cx="260" cy="165" rx="112" ry="45"/>
-          <circle class="f-go" cx="260" cy="165" r="10"/>
-          <circle class="f-dim" cx="302" cy="165" r="4"/>
-          <circle class="f-dim" cx="205" cy="150" r="4.5"/>
-          <circle class="f-dim" cx="345" cy="185" r="5"/>
-          <text class="t-s" x="260" y="286" text-anchor="middle">จอแสดงระบบสุริยะ</text>
-
-          <circle class="f-dim" cx="62" cy="192" r="13"/>
-          <path class="f-dim" d="M44 262 q0-46 18-46 t18 46 z"/>
-          <text class="m" x="62" y="286" text-anchor="middle">ผู้เข้าชม</text>
-
-          <path class="ln-go" d="M272 160 C 340 138, 382 100, 443 92"/>
-          <circle class="f-go" cx="443" cy="92" r="3"/>
-          <text class="m-go" x="330" y="112">เส้นเดียวที่ข้ามฝ่าย</text>
-
-          <rect class="bx-gh" x="428" y="30" width="442" height="336" rx="14"/>
-          <text class="m-go" x="446" y="56">ชั้นความรู้ · เส้นที่ไม่เคยปรากฏบนจอ</text>
-
-          <line class="ln-go" x1="635" y1="92" x2="665" y2="92"/>
-          <line class="ln-go" x1="540" y1="114" x2="540" y2="190"/>
-          <line class="ln-go" x1="760" y1="114" x2="760" y2="190"/>
-          <line class="ln-go" x1="635" y1="212" x2="665" y2="212"/>
-          <line class="ln-go" x1="540" y1="234" x2="610" y2="290"/>
-          <line class="ln-go" x1="760" y1="234" x2="690" y2="290"/>
-
-          <rect class="bx-go" x="445" y="70" width="190" height="44" rx="10"/>
-          <text class="t-s" x="540" y="97" text-anchor="middle">ตำแหน่งดาวตามฤดูกาล</text>
-          <rect class="bx" x="665" y="70" width="190" height="44" rx="10"/>
-          <text class="t-s" x="760" y="97" text-anchor="middle">จารึกที่ฐานเทวรูป</text>
-          <rect class="bx" x="665" y="190" width="190" height="44" rx="10"/>
-          <text class="t-s" x="760" y="217" text-anchor="middle">การก่อสร้างเทวสถาน</text>
-          <rect class="bx" x="445" y="190" width="190" height="44" rx="10"/>
-          <text class="t-s" x="540" y="217" text-anchor="middle">ปฏิทินจันทรคติท้องถิ่น</text>
-          <rect class="bx" x="550" y="290" width="200" height="44" rx="10"/>
-          <text class="t-s" x="650" y="317" text-anchor="middle">ห้องประวัติศาสตร์พื้นถิ่น</text>
-
-          <text class="m" x="650" y="86" text-anchor="middle">ใช้กำหนดฤกษ์</text>
-          <text class="m" x="650" y="206" text-anchor="middle">ลงวันที่ตรงกัน</text>
+        <div class="dlab go">คนลากเส้น เครื่องเก็บเส้น</div>
+        <svg class="dsvg" viewBox="0 0 900 620" role="img" aria-label="ภาพลายเส้นแบบนามธรรม คนนั่งคิด ศอกวางบนเข่า มือแตะคาง มีกราฟความรู้เป็นโหนดและเส้นเชื่อมแผ่ออกจากศีรษะ">
+          <g class="tk-e">
+            <path d="M320 96 L540 128"/>
+            <path d="M324 112 L556 214"/>
+            <path d="M540 128 L620 150"/>
+            <path d="M556 214 L620 150"/>
+            <path d="M556 214 L664 268"/>
+            <path d="M620 150 L700 196"/>
+            <path d="M700 196 L664 268"/>
+            <path d="M620 150 L752 132"/>
+            <path d="M752 132 L812 204"/>
+            <path d="M700 196 L812 204"/>
+            <path d="M664 268 L760 300"/>
+            <path d="M812 204 L760 300"/>
+            <path d="M664 268 L596 318"/>
+            <path d="M596 318 L612 406"/>
+            <path d="M760 300 L676 352"/>
+            <path d="M676 352 L716 420"/>
+            <path d="M676 352 L612 406"/>
+            <path d="M760 300 L838 300"/>
+            <path d="M838 300 L804 382"/>
+            <path d="M804 382 L716 420"/>
+            <path d="M812 204 L868 150"/>
+            <path d="M752 132 L868 150"/>
+            <path d="M596 318 L676 352"/>
+          </g>
+          <g class="tk-n">
+            <circle cx="540" cy="128" r="5"/>
+            <circle cx="556" cy="214" r="5"/>
+            <circle cx="620" cy="150" r="6"/>
+            <circle cx="700" cy="196" r="5"/>
+            <circle cx="664" cy="268" r="6"/>
+            <circle cx="752" cy="132" r="5"/>
+            <circle cx="812" cy="204" r="6"/>
+            <circle cx="760" cy="300" r="5"/>
+            <circle cx="676" cy="352" r="6"/>
+            <circle cx="596" cy="318" r="5"/>
+            <circle cx="838" cy="300" r="5"/>
+            <circle cx="716" cy="420" r="5"/>
+            <circle cx="612" cy="406" r="5"/>
+            <circle cx="804" cy="382" r="5"/>
+            <circle cx="868" cy="150" r="4"/>
+          </g>
+          <g class="tk-l">
+            <path d="M170 520 L500 506 L594 534 L594 580 L170 592 Z" opacity=".4"/>
+            <path d="M170 520 L594 534" opacity=".4"/>
+            <path d="M356 336 L474 328 L502 374 L498 476 L452 502 L372 502 Z" opacity=".28"/>
+            <path d="M282 62 L326 78 L336 116 L316 146 L286 148 L268 116 L268 82 Z" class="tk-f"/>
+            <path d="M286 148 L316 146 L300 158 Z" class="tk-f"/>
+            <path d="M318 146 L378 186 L424 262 L448 340 L360 348 L326 258 L308 190 Z" class="tk-f"/>
+            <path d="M326 258 L360 348"/>
+            <path d="M324 196 L286 288 L238 348 L214 336 L268 262 L300 188 Z" class="tk-f"/>
+            <path d="M214 336 L238 348 L300 214 L288 162 L266 168 L262 226 Z" class="tk-f"/>
+            <path d="M266 168 L288 162 L302 152 L296 138 L272 142 Z" class="tk-f"/>
+            <path d="M378 186 L410 272 L378 340 L352 330 L386 268 L356 196 Z" class="tk-f"/>
+            <path d="M360 348 L250 350 L206 378 L226 412 L340 398 L406 360 Z" class="tk-f"/>
+            <path d="M226 412 L206 378 L222 486 L266 492 Z" class="tk-f"/>
+            <path d="M222 486 L266 492 L294 512 L210 516 Z"/>
+            <path d="M406 360 L340 398 L322 436 L376 442 L444 392 Z" class="tk-f"/>
+            <path d="M322 436 L376 442 L384 498 L336 496 Z" class="tk-f"/>
+            <path d="M336 496 L384 498 L414 518 L326 520 Z"/>
+          </g>
+          <g class="tk-n">
+            <circle cx="316" cy="100" r="4.5"/>
+            <circle cx="324" cy="196" r="4"/>
+            <circle cx="238" cy="348" r="4.5"/>
+            <circle cx="288" cy="162" r="4"/>
+            <circle cx="206" cy="378" r="4"/>
+            <circle cx="448" cy="340" r="4"/>
+            <circle cx="378" cy="186" r="4"/>
+            <circle cx="322" cy="436" r="4"/>
+          </g>
         </svg>
       </div>
-      <figcaption><b>ภาพประกอบ</b> ผู้เข้าชมเห็นเฉพาะสิ่งที่อยู่บนจอ ส่วนเส้นความรู้ที่ทำให้เรื่องนี้มีความหมายกับเขา อยู่ในห้องถัดไปสองห้อง และไม่เคยถูกเขียนไว้ที่ไหน ชั้นความรู้คือที่ที่เส้นเหล่านั้นถูกบันทึกและตรวจสอบย้อนกลับได้</figcaption>
+      <figcaption><b>ภาพประกอบ</b> ออนโทโลยีและกราฟความรู้เก็บเส้นเชื่อมได้ทุกเส้นที่เราป้อนให้ แต่ไม่มีเครื่องมือตัวไหนบอกได้ว่าเส้นไหนมีความหมาย ทุกเส้นในภาพนี้เริ่มจากคนที่นั่งอยู่ทางซ้าย</figcaption>
     </figure>
 
-    <figure class="rv">
-      <div class="dbox">
-        <div class="dlab go">หลังมี ontology + knowledge graph</div>
-        <svg class="dsvg" viewBox="0 0 900 380" role="img" aria-label="ภาพหลังเชื่อมความรู้ ผู้เข้าชมถามคำถาม ชั้นความรู้ประกอบคำตอบเป็นเส้นทางพร้อมที่มา แล้วส่งกลับขึ้นจอ">
-          <text class="m" x="30" y="30">ห้องเดิม · หลังเชื่อมความรู้แล้ว</text>
-
-          <circle class="f-dim" cx="40" cy="180" r="12"/>
-          <path class="f-dim" d="M24 246 q0-44 16-44 t16 44 z"/>
-          <text class="m" x="40" y="272" text-anchor="middle">ผู้เข้าชม</text>
-
-          <rect class="bx" x="80" y="70" width="270" height="170" rx="12"/>
-          <rect class="bx-go" x="94" y="104" width="72" height="32" rx="8"/>
-          <text class="t-s" x="130" y="124" text-anchor="middle">ดาวเหนือ</text>
-          <line class="ln-go" x1="166" y1="120" x2="180" y2="120"/>
-          <rect class="bx-go" x="180" y="104" width="64" height="32" rx="8"/>
-          <text class="t-s" x="212" y="124" text-anchor="middle">ปฏิทิน</text>
-          <line class="ln-go" x1="244" y1="120" x2="258" y2="120"/>
-          <rect class="bx-go" x="258" y="104" width="78" height="32" rx="8"/>
-          <text class="t-s" x="297" y="124" text-anchor="middle">เทวสถาน</text>
-          <circle class="f-go" cx="130" cy="148" r="2.5"/>
-          <circle class="f-go" cx="212" cy="148" r="2.5"/>
-          <circle class="f-go" cx="297" cy="148" r="2.5"/>
-          <text class="m" x="212" y="166" text-anchor="middle">ทุกขั้นมีที่มากำกับ</text>
-          <text class="t-s" x="215" y="196" text-anchor="middle">เส้นทางสำหรับผู้ชมคนนี้</text>
-          <text class="m-go" x="215" y="220" text-anchor="middle">ครั้งหน้ามาอีก ได้อีกเส้นทาง</text>
-
-          <path class="ln-go" d="M354 118 L 424 118"/>
-          <path class="ln-go" d="M424 118 l -7 -3.5 v 7 z" style="fill:var(--go);stroke:none"/>
-          <text class="m" x="389" y="108" text-anchor="middle">คำถาม</text>
-          <path class="ln-go" d="M424 168 L 354 168" style="stroke-width:2.2"/>
-          <path class="ln-go" d="M354 168 l 7 -3.5 v 7 z" style="fill:var(--go);stroke:none"/>
-          <text class="m-go" x="389" y="188" text-anchor="middle">คำตอบ + ที่มา</text>
-
-          <text class="m-go" x="430" y="30">ชั้นความรู้ · องค์กรเป็นเจ้าของ ทุกเส้นตรวจย้อนกลับได้</text>
-          <rect class="bx" x="430" y="40" width="440" height="250" rx="14"/>
-
-          <line class="ln-go" x1="636" y1="90" x2="664" y2="90"/>
-          <line class="ln-go" x1="759" y1="110" x2="759" y2="180"/>
-          <line class="ln-go" x1="541" y1="110" x2="541" y2="180" style="stroke-width:2.6"/>
-          <line class="ln-go" x1="636" y1="200" x2="664" y2="200" style="stroke-width:2.6"/>
-
-          <rect class="bx-go" x="446" y="70" width="190" height="40" rx="10"/>
-          <text class="t-s" x="541" y="95" text-anchor="middle">ตำแหน่งดาวตามฤดูกาล</text>
-          <text class="m" x="541" y="128" text-anchor="middle">ยืนยัน 2 แหล่งอิสระ</text>
-          <rect class="bx" x="664" y="70" width="190" height="40" rx="10"/>
-          <text class="t-s" x="759" y="95" text-anchor="middle">จารึกที่ฐานเทวรูป</text>
-          <text class="m" x="759" y="128" text-anchor="middle">ภาพถ่ายจารึก</text>
-          <rect class="bx-go" x="446" y="180" width="190" height="40" rx="10"/>
-          <text class="t-s" x="541" y="205" text-anchor="middle">ปฏิทินจันทรคติท้องถิ่น</text>
-          <text class="m" x="541" y="238" text-anchor="middle">เอกสารท้องถิ่น</text>
-          <rect class="bx-go" x="664" y="180" width="190" height="40" rx="10"/>
-          <text class="t-s" x="759" y="205" text-anchor="middle">การก่อสร้างเทวสถาน</text>
-          <text class="m" x="759" y="238" text-anchor="middle">รายงานการขุดค้น</text>
-
-          <text class="m" x="650" y="272" text-anchor="middle">เส้นหนาคือเส้นทางที่ถูกใช้ตอบคำถามนี้</text>
-          <text class="m-go" x="450" y="344" text-anchor="middle">ผู้ช่วยความรู้ส่วนบุคคลประกอบคำตอบจากชั้นความรู้ แล้วส่งกลับพร้อมที่มาทุกครั้ง</text>
-        </svg>
-      </div>
-      <figcaption><b>หลังมีการเชื่อมความรู้</b> คอลเลกชันไม่ได้เปลี่ยน สิ่งที่เปลี่ยนคือเส้นทางความรู้ที่ผ่านมัน คำถามของผู้ชมประกอบเป็นคำตอบจากชั้นความรู้ ทุกขั้นมีที่มากำกับ และผู้ชมคนถัดไปที่ถามคนละคำถาม จะได้เส้นทางคนละเส้น จากคอลเลกชันชุดเดิม</figcaption>
-    </figure>
-
-    <figure class="rv">
-      <div class="dlab go">สามคน วัตถุชิ้นเดียวกัน คนละความลึก</div>
-      <p style="font-size:15px;line-height:1.85;color:var(--dim);max-width:70ch;margin:0 0 18px">
-        ภาพข้างล่างแสดงตัวอย่างนิทรรศการดาราศาสตร์ที่ผู้ชมสามารถใช้ AR App
-        สำรวจเส้นความรู้ที่เชื่อมโยงการเคลื่อนที่ของดวงดาวกับความรู้พื้นถิ่นได้
-        ตามระดับความเข้าใจและความสนใจของผู้ชมแต่ละคน
-      </p>
-      <div class="photo"><img src="exhibition-ar.webp" width="1584" height="672" loading="lazy" decoding="async" alt="ผู้เข้าชมสามคนในห้องดาราศาสตร์ แต่ละคนมองผ่านมือถือของตัวเอง"></div>
-      <div class="pcards">
-        <div class="pcard">
-          <div class="who">เด็กที่ยังอ่านไม่คล่อง</div>
-          <svg class="pscreen dsvg" viewBox="0 0 220 300" role="img" aria-hidden="true"><rect x="1" y="1" width="218" height="298" rx="14" fill="none" stroke="rgba(var(--go-rgb),.22)"/><line class="ln-go" x1="8" y1="150" x2="58" y2="150" style="stroke-width:3"/><line class="ln-go" x1="8" y1="178" x2="58" y2="170" style="stroke-width:3"/><circle cx="128" cy="150" r="56" fill="rgba(var(--go-rgb),.16)" stroke="var(--go)" stroke-width="1.6"/><circle cx="112" cy="136" r="5" class="f-go"/><circle cx="146" cy="136" r="5" class="f-go"/><path d="M108 168 q20 16 40 0" fill="none" stroke="var(--go)" stroke-width="2"/><path d="M172 96 a56 56 0 0 1 0 108 z" fill="rgba(var(--go-rgb),.34)"/></svg>
-          <div class="got"><b>ดวงจันทร์ดวงใหญ่ กับหน้าที่กำลังบังมัน</b> สองเส้น เท่านั้น สิ่งที่ได้กลับไปคือเรื่องที่เล่าให้แม่ฟังในรถได้</div>
-        </div>
-        <div class="pcard">
-          <div class="who">ผู้ใหญ่ที่สนใจ</div>
-          <svg class="pscreen dsvg" viewBox="0 0 220 300" role="img" aria-hidden="true"><rect x="1" y="1" width="218" height="298" rx="14" fill="none" stroke="rgba(var(--go-rgb),.22)"/><line class="ln-go" x1="10" y1="96" x2="76" y2="130"/><line class="ln-go" x1="10" y1="118" x2="76" y2="142"/><line class="ln-go" x1="10" y1="150" x2="76" y2="152"/><line class="ln-go" x1="10" y1="182" x2="76" y2="162"/><line class="ln-go" x1="10" y1="210" x2="76" y2="174"/><rect x="76" y="112" width="98" height="86" rx="8" fill="rgba(var(--go-rgb),.12)" stroke="var(--go)" stroke-width="1.4"/><circle cx="125" cy="150" r="20" fill="none" stroke="var(--go)" stroke-width="1.4"/><circle cx="118" cy="145" r="2.6" class="f-go"/><circle cx="132" cy="145" r="2.6" class="f-go"/><path d="M116 158 q9 8 18 0" fill="none" stroke="var(--go)" stroke-width="1.4"/><path d="M86 122 h16 M148 122 h16 M86 188 h16 M148 188 h16" stroke="var(--go)" stroke-width="1.2" opacity=".7"/><text class="m-go" x="110" y="228" text-anchor="middle">5</text></svg>
-          <div class="got"><b>ทับหลังราหูอมจันทร์ ต่อกับแผนที่ดาวบนผนัง</b> ห้าเส้น สิ่งที่ได้กลับไปคือความเชื่อมโยงที่ไม่เคยรู้ว่ามีอยู่</div>
-        </div>
-        <div class="pcard">
-          <div class="who">คนที่รู้เรื่องนี้อยู่แล้ว</div>
-          <svg class="pscreen dsvg" viewBox="0 0 220 300" role="img" aria-hidden="true"><rect x="1" y="1" width="218" height="298" rx="14" fill="none" stroke="rgba(var(--go-rgb),.22)"/><line class="ln-go" x1="110" y1="150" x2="46" y2="70" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="180" y2="64" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="38" y2="150" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="186" y2="152" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="52" y2="236" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="178" y2="240" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="110" y2="52" style="opacity:.55"/><line class="ln-go" x1="110" y1="150" x2="110" y2="254" style="opacity:.55"/><line class="ln-go" x1="46" y1="70" x2="110" y2="52" style="opacity:.3"/><line class="ln-go" x1="110" y1="52" x2="180" y2="64" style="opacity:.3"/><line class="ln-go" x1="180" y1="64" x2="186" y2="152" style="opacity:.3"/><line class="ln-go" x1="186" y1="152" x2="178" y2="240" style="opacity:.3"/><line class="ln-go" x1="178" y1="240" x2="110" y2="254" style="opacity:.3"/><line class="ln-go" x1="110" y1="254" x2="52" y2="236" style="opacity:.3"/><line class="ln-go" x1="52" y1="236" x2="38" y2="150" style="opacity:.3"/><line class="ln-go" x1="38" y1="150" x2="46" y2="70" style="opacity:.3"/><line class="ln-go" x1="46" y1="70" x2="186" y2="152" style="opacity:.3"/><line class="ln-go" x1="180" y1="64" x2="52" y2="236" style="opacity:.3"/><circle cx="46" cy="70" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="180" cy="64" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="38" cy="150" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="186" cy="152" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="52" cy="236" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="178" cy="240" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="110" cy="52" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><circle cx="110" cy="254" r="5" fill="rgba(var(--go-rgb),.18)" stroke="var(--go)" stroke-width="1.1"/><rect x="82" y="128" width="56" height="46" rx="6" fill="rgba(var(--go-rgb),.14)" stroke="var(--go)" stroke-width="1.4"/><circle cx="110" cy="150" r="12" fill="none" stroke="var(--go)" stroke-width="1.3"/><text class="m-go" x="110" y="284" text-anchor="middle">14</text></svg>
-          <div class="got"><b>เพิ่มจารึก รายงานขุดค้น และปฏิทินจันทรคติ</b> สิบสี่เส้น สิ่งที่ได้กลับไปคือหลักฐานที่อยู่เบื้องหลังข้อสรุป และข้อที่ยังเถียงกันอยู่</div>
-        </div>
-      </div>
-      <figcaption><b>ภาพประกอบ</b> ห้องเดียวกัน วัตถุชิ้นเดียวกัน แต่สิ่งที่แต่ละคนได้กลับไปไม่เท่ากัน เพราะชั้นความรู้เก็บความลึกไว้เป็นคุณสมบัติ แล้วเลือกเส้นทางให้ตามพื้นความรู้และความสนใจของคนตรงหน้า ทำให้นิทรรศการสามารถตอบโจทย์ที่ต่างกันของผู้เข้าชมได้อย่างที่ผู้ชมคาดหวัง</figcaption>
-    </figure>
-
-    <div class="story rv" style="margin-top:44px">
+    <div class="story split rv" style="margin-top:44px">
       <div class="k">สิ่งที่สามสิบห้าปีทำให้ผมเชื่อ</div>
+      <div class="cols">
+      <div class="col">
       <p>
         ผมผ่านการทำงานมากับหลายองค์กร และให้คำปรึกษาอีกหลายแห่ง
         ทุกครั้งที่องค์กรหนึ่งไปได้ดีหรือไปไม่รอด มันลงเอยที่เรื่องเดียวกัน
@@ -708,6 +621,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
         โดยเฉพาะองค์กรที่นั่งอยู่บนวัตถุดิบความรู้ที่ถูกสั่งสมมายาวนานอย่างพิพิธภัณฑ์และห้องสมุด
         มีความได้เปรียบจากต้นทุนความเชื่อถือที่สาธารณะมีให้มากกว่าองค์กรอื่น ๆ
       </p>
+      </div>
+      <div class="col">
       <p style="margin-top:14px">
         คนเชื่อพิพิธภัณฑ์ คนเชื่อห้องสมุด
         ในฐานะสถาบันที่เป็นผู้นำด้านการบริหารจัดการความรู้ของโลกมายาวนาน
@@ -727,6 +642,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
         จึงอยากชวนสถาบันที่ทำงานด้านการบริหารจัดการความรู้สมัยใหม่
         อย่างพิพิธภัณฑ์และห้องสมุดที่คิดแบบเดียวกัน มาสร้างไปด้วยกัน
       </p>
+      </div>
+      </div>
     </div>
 
     <div class="story rv" style="margin-top:34px">
