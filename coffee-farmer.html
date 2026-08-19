@@ -23,14 +23,6 @@
 <meta name="theme-color" content="#08090A" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TPBNZQKVWE');
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -235,6 +227,22 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* --- บทสนทนาคนปลูก / โรงคั่ว --- */
+.dlg{margin:30px 0 34px;display:flex;flex-direction:column;gap:13px}
+.dlg-turn{max-width:86%;border:1px solid var(--line);border-radius:16px;
+  background:var(--surface);padding:17px 20px}
+.dlg-turn.grower{align-self:flex-start;border-left:2px solid var(--go)}
+.dlg-turn.roaster{align-self:flex-end;background:var(--surface-2);
+  border-right:2px solid var(--ask)}
+.dlg-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin-bottom:8px}
+.dlg-who{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--go)}
+.dlg-turn.roaster .dlg-who{color:var(--ask)}
+.dlg-field{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--mute);
+  border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.dlg-turn p{margin:0;font-size:16.5px;line-height:1.8;color:var(--fg)}
+.dlg-foot{color:var(--dim)}
+@media(max-width:620px){.dlg-turn{max-width:100%}}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 </head>
@@ -243,10 +251,10 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><a href="problem.html">The idea</a><a href="visit.html">MKM for Museums &amp; Libraries</a><a href="coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
-    <div class="nav-mob"><span class="lang"><a class="on" href="coffee.html">EN</a><span>/</span><a href="th-coffee.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+    <div class="nav-links"><a href="the-problem.html">The idea</a><a href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="problem.html">01 · The problem</a><a href="what.html">02 · What it is</a><a href="why.html">03 · Why it works</a><a href="layer.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="advantage.html">What you are holding</a><a href="visit.html">01 · Where things stand</a><a href="experience.html">02 · Visitors and readers</a><a href="museums.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="sovereignty.html">Your data · AI sovereignty</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="coffee.html">MKM for Coffee</a><a class="on" href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What it is</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="what-you-are-holding.html">What you are holding</a><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="visitors-and-readers.html">02 · Visitors and readers</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">MKM for Coffee</a><a class="on" href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
 </nav>
 
 <header class="head">
@@ -284,7 +292,22 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <p>With your permission, whoever buys that bag can follow it back to the plot and to your name, instead of stopping at a province printed on the label.</p>
 <p>And the more growers take part, the more your own contribution is worth, because every comparison gets sharper as the number of plots in the vault grows.</p>
 
-<h2 id="s03"><span class="sn">03</span>Questions worth asking first</h2>
+<h2 id="s03"><span class="sn">03</span>What the other side is reading</h2>
+<p>One record, two people who have never met — a grower in Chiang Rai and a roaster in northern Europe, both open on the same page of the vault, each reading a different line in it. Illustrative.</p>
+<div class="dlg">
+<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">FLAVOUR PROFILE</span></div><p>I have said for years that this coffee tastes of longan and tamarind. Every sheet handed to me offers berry, cocoa, caramel. So berry is what gets written down, and the words we actually use for our own coffee never leave the farm.</p></div>
+<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">FLAVOUR PROFILE</span></div><p>Longan is the one thing I cannot buy anywhere else. If the record says longan and I taste longan, that is a bag I can sell under its own name instead of burying it in a blend.</p></div>
+<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">MEAN CUP SCORE</span></div><p>The harvest goes out and one number comes back, from the person buying it. In all these years I have never known whether that number was a good one.</p></div>
+<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">MEAN CUP SCORE</span></div><p>I have had your country's average for years. It arrives in the supplier reports every season. It has never occurred to this trade that the person growing the coffee does not have it.</p></div>
+<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">TRACEABLE TO PLOT</span></div><p>They ask for papers proving where the trees stand. We know where they stand. There is simply no way to prove it to someone we will never meet.</p></div>
+<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">TRACEABLE TO PLOT</span></div><p>And without it I cannot bring the coffee into Europe at all. Once the plot is on record you stop being a risk on my compliance list and become a supplier I can plan a year around.</p></div>
+<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">VERIFIED ROUTES</span></div><p>We sell to the mill and it ends there. After that nobody tells us which country drinks it.</p></div>
+<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">VERIFIED ROUTES</span></div><p>Ask and I will tell you. Knowing which market pays for what you already grow is worth more to you than another kilo of yield.</p></div>
+</div>
+<p>Nobody in that exchange added anything new. Every fact in it exists today — the only difference is that each side can see its own half and not the other. The vault does not create knowledge. It makes the same knowledge readable from both ends.</p>
+<p class="dlg-foot">All four of those fields are on the <a href="coffee-demo.html">demo dashboard</a> — click any origin on the map to see them.</p>
+
+<h2 id="s04"><span class="sn">04</span>Questions worth asking first</h2>
 <h3>What does it cost</h3>
 <p>Nothing for the farmer. The project earns from others along the chain who put this knowledge to work — not from the people growing the coffee.</p>
 <h3>Who owns my plot data</h3>
@@ -296,11 +319,11 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <h3>What happens after I leave my email</h3>
 <p>We get in touch, and invite you into the first group testing the system. While we're at it we want to hear what we have got wrong about how coffee actually works where you are.</p>
 
-<h2 id="s04"><span class="sn">04</span>Why it has to be public</h2>
+<h2 id="s05"><span class="sn">05</span>Why it has to be public</h2>
 <p>This vault is a public good — like a road or an irrigation system. Everyone can use it and no single party owns it.</p>
 <p>The structure is published in full: anyone can build their own system on it or argue with it. Your data stays yours, portable and withdrawable. And every fact in the vault carries its own provenance — who said it, and what evidence stands behind it.</p>
 <p>Neo Gens funds and stewards the work but does not own the knowledge inside it. A vault owned by one company is just a database with better marketing, and nobody should put their own data into one.</p>
-<p class="colophon">If you want the full reasoning — why the coffee sector needs a shared knowledge vault, and what each party along the chain gets back — <a href="coffee.html">read the long version</a>.</p>
+<p class="colophon">If you want the full reasoning — why the coffee sector needs a shared knowledge vault, and what each party along the chain gets back — <a href="mkm-for-coffee.html">read the long version</a>.</p>
     </div>
   </div>
 </article>
@@ -344,9 +367,9 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="wrap">
     <div class="f-in">
       <div><div class="f-brand"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg> Neo Gens</div></div>
-      <div class="f-cols"><div class="f-col"><div class="h">Part 1 · The idea</div><a href="problem.html">The problem</a><a href="what.html">What it is</a><a href="why.html">Why it works</a><a href="layer.html">Ontology &amp; knowledge graph</a></div><div class="f-col"><div class="h">Part 2 · Museums &amp; libraries</div><a href="advantage.html">What you are holding</a><a href="visit.html">Where things stand</a><a href="experience.html">Visitors and readers</a><a href="museums.html">What leadership looks like</a></div><div class="f-col"><div class="h">Part 2 · Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="sovereignty.html">Your data · AI sovereignty</a><a href="proof.html">Reference implementation</a><a href="honest.html">What we won't do</a></div><div class="f-col"><div class="h">Part 3 &amp; company</div><p>Neo Gens Co., Ltd.</p><a href="coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo dashboard</a><a href="about.html">Who we are</a><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="km-for-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a href="th-index.html">ฉบับภาษาไทย</a></div></div>
+      <div class="f-cols"><div class="f-col"><div class="h">Part 1 · The idea</div><a href="the-problem.html">The problem</a><a href="what-mkm-is.html">What it is</a><a href="why-it-works.html">Why it works</a><a href="ontology-and-knowledge-graph.html">Ontology &amp; knowledge graph</a></div><div class="f-col"><div class="h">Part 2 · Museums &amp; libraries</div><a href="what-you-are-holding.html">What you are holding</a><a href="mkm-for-museums-and-libraries.html">Where things stand</a><a href="visitors-and-readers.html">Visitors and readers</a><a href="leadership.html">What leadership looks like</a></div><div class="f-col"><div class="h">Part 2 · Working together</div><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a></div><div class="f-col"><div class="h">Part 3 &amp; company</div><p>Neo Gens Co., Ltd.</p><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo dashboard</a><a href="about.html">Who we are</a><a href="mailto:hello@neogens.co">hello@neogens.co</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><a href="th-index.html">ฉบับภาษาไทย</a></div></div>
     </div>
-    <div class="f-bot"><span>© 2026 Neo Gens Co., Ltd.</span><span>We help you turn knowledge into value-creating assets.</span></div>
+    <div class="f-bot"><span>© 2026 Neo Gens Co., Ltd.</span><span>We help you turn knowledge into value-creating assets.</span><a href="privacy.html">Privacy</a></div>
   </div>
 </footer>
 

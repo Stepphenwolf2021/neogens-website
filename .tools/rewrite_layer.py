@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------------------- เนื้อหาใหม่
 
 BLK = {
-    "layer.html": [
+    "ontology-and-knowledge-graph.html": [
         ("01", "An ontology is the pattern — it holds no actual things",
          ["An ontology is an agreement made in advance: what kinds of things this "
           "organisation keeps, what each kind is called, and how the kinds connect to "
@@ -44,7 +44,7 @@ BLK = {
           "it. In a graph that link is already there — it has a name, it has a direction, "
           "and anything can walk along it."]),
     ],
-    "th-layer.html": [
+    "th-ontology-and-knowledge-graph.html": [
         ("01", "ontology คือแบบ ยังไม่มีของจริงสักชิ้นอยู่ในนั้น",
          ["ontology คือการตกลงกันไว้ล่วงหน้าว่า องค์กรนี้เก็บของกี่ประเภท "
           "แต่ละประเภทเรียกว่าอะไร และประเภทไหนเกี่ยวกับประเภทไหน",
@@ -65,7 +65,7 @@ BLK = {
 # ---------------------------------------------------------------- ภาพประกอบ
 
 TXT = {
-    "layer.html": dict(
+    "ontology-and-knowledge-graph.html": dict(
         lab="THE PATTERN, AND THE SAME PATTERN FILLED IN",
         left="THE PATTERN", right="WHAT YOU ACTUALLY HOLD",
         n1="Object", n2="Maker", n3="The alms bowl", n4="The Ban Bu smiths",
@@ -80,7 +80,7 @@ TXT = {
              "before anything is filed; the right one is what the organisation actually "
              "holds, sitting in it."),
     ),
-    "th-layer.html": dict(
+    "th-ontology-and-knowledge-graph.html": dict(
         lab="แบบ กับ แบบเดียวกันที่กรอกของจริงลงไปแล้ว",
         left="แบบ", right="ของจริงที่องค์กรถือไว้",
         n1="วัตถุ", n2="ผู้สร้าง", n3="ขันลงหิน", n4="ช่างบ้านบุ",
@@ -164,7 +164,7 @@ def blk_html(n, h3, ps):
 
 
 def main():
-    for k in ("layer.html", "th-layer.html"):
+    for k in ("ontology-and-knowledge-graph.html", "th-ontology-and-knowledge-graph.html"):
         p = ROOT / k
         s = p.read_text(encoding="utf-8")
         print(f"  {k}")

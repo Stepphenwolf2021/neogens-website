@@ -62,7 +62,7 @@ PAGES['problem'] = dict(
         creed='เราเชื่อว่าความสำเร็จขององค์กร วัดกันที่ความสามารถในการบริหารสินทรัพย์ที่ชื่อว่าข้อมูลและความรู้ '
               'ให้สร้างคุณค่าได้จริง ทั้งกับองค์กรเอง ลูกค้า คู่ค้า สังคม ประเทศ และโลก',
         closer='สิ่งที่ขาดจึงไม่ใช่ AI ที่เก่งขึ้น แต่คือชั้นที่บอกว่าองค์กรนี้รู้อะไร รู้มาได้อย่างไร และให้ความสำคัญกับอะไร',
-        prev=('th-index.html', 'สารบัญทั้งหมด'), next=('th-what.html', 'สิ่งนี้คืออะไร'),
+        prev=('th-index.html', 'สารบัญทั้งหมด'), next=('th-what-mkm-is.html', 'สิ่งนี้คืออะไร'),
     ),
     en=dict(
         title='AI answers everything, and knows nothing about what your organisation is for',
@@ -89,7 +89,7 @@ PAGES['problem'] = dict(
               'its partners, its society, its country and the world.',
         closer='What is missing is not a cleverer AI. It is the layer that records what this organisation '
                'knows, how it came to know it, and what it exists to do.',
-        prev=('index.html', 'All sections'), next=('what.html', 'What it is'),
+        prev=('index.html', 'All sections'), next=('what-mkm-is.html', 'What it is'),
     ),
 )
 
@@ -124,7 +124,7 @@ PAGES['layer'] = dict(
         creed='ontology ที่ตรงกับภารกิจ คือสิ่งที่ทำให้ AI ทำงานให้องค์กรได้ ไม่ใช่ทำงานแทนองค์กร',
         closer='ส่วนที่ยากของงานนี้จึงไม่ใช่เทคโนโลยี แต่คือการทำให้แต่ละแผนกตกลงกันว่าอะไรคืออะไร '
                'ซึ่งเป็นงานที่มีแต่คนขององค์กรเท่านั้นที่ทำได้',
-        prev=('th-why.html', 'ทำไมมันถึงได้ผล'), next=('th-visit.html', 'MKM สำหรับพิพิธภัณฑ์และห้องสมุด'),
+        prev=('th-why-it-works.html', 'ทำไมมันถึงได้ผล'), next=('th-mkm-for-museums-and-libraries.html', 'MKM สำหรับพิพิธภัณฑ์และห้องสมุด'),
     ),
     en=dict(
         title='What an ontology and a knowledge graph actually are',
@@ -157,7 +157,7 @@ PAGES['layer'] = dict(
               'than in place of it.',
         closer='Which makes the hard part of this work not technical. It is getting departments to agree '
                'on what things are — and only your own people can do that.',
-        prev=('why.html', 'Why it works'), next=('visit.html', 'MKM for Museums & Libraries'),
+        prev=('why-it-works.html', 'Why it works'), next=('mkm-for-museums-and-libraries.html', 'MKM for Museums & Libraries'),
     ),
 )
 
@@ -183,7 +183,7 @@ PAGES['sovereignty'] = dict(
               'มันไม่ใช่ฟีเจอร์ แต่เป็นเงื่อนไข',
         closer='เรื่องรายละเอียดตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล ขึ้นกับลักษณะข้อมูลของแต่ละองค์กร '
                'เป็นเรื่องที่คุยกันในวงแรกได้เลย',
-        prev=('th-honest.html', 'สิ่งที่เราไม่ทำ'), next=('th-proof.html', 'งานอ้างอิงที่เราทำเอง'),
+        prev=('th-what-we-wont-do.html', 'สิ่งที่เราไม่ทำ'), next=('th-reference-implementation.html', 'งานอ้างอิงที่เราทำเอง'),
     ),
     en=dict(
         title='We build value on your data, and your data stays with you',
@@ -205,7 +205,7 @@ PAGES['sovereignty'] = dict(
               'behalf of the public, it is not a feature. It is a condition.',
         closer='How this maps onto your specific data-protection obligations depends on what you hold. '
                'That is a good subject for the first conversation.',
-        prev=('honest.html', "What we won't do"), next=('proof.html', 'Reference implementation'),
+        prev=('what-we-wont-do.html', "What we won't do"), next=('reference-implementation.html', 'Reference implementation'),
     ),
 )
 
@@ -271,7 +271,7 @@ def make(shell_file, out_file, d, thai, base_en, base_th):
 
 
 # ── 1. move the old museum-specific problem page to advantage.html ──
-for src, dst in [('problem.html', 'advantage.html'), ('th-problem.html', 'th-advantage.html')]:
+for src, dst in [('the-problem.html', 'what-you-are-holding.html'), ('th-the-problem.html', 'th-what-you-are-holding.html')]:
     s = io.open(os.path.join(W, src), encoding='utf-8').read()
     thai = dst.startswith('th-')
     canon = 'https://www.neogens.co/' + dst
@@ -293,5 +293,5 @@ for src, dst in [('problem.html', 'advantage.html'), ('th-problem.html', 'th-adv
 for key, spec in PAGES.items():
     en = key + '.html'
     th = 'th-' + key + '.html'
-    print('wrote  %-22s %d bytes' % make('why.html', en, spec['en'], False, en, th))
-    print('wrote  %-22s %d bytes' % make('th-why.html', th, spec['th'], True, en, th))
+    print('wrote  %-22s %d bytes' % make('why-it-works.html', en, spec['en'], False, en, th))
+    print('wrote  %-22s %d bytes' % make('th-why-it-works.html', th, spec['th'], True, en, th))

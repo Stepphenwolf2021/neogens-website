@@ -88,7 +88,7 @@ BODY = {
 <p>คลังนี้เป็น public goods หรือของสาธารณะ แบบเดียวกับถนนหรือระบบชลประทาน คือสิ่งที่ทุกคนใช้ได้และไม่มีใครเป็นเจ้าของคนเดียว</p>
 <p>โครงสร้างของคลังเผยแพร่ทั้งหมด ใครจะเอาไปทำระบบของตัวเองหรือเถียงกับมันก็ได้ ข้อมูลของคุณยังเป็นของคุณ พกไปได้ ถอนได้ และทุกข้อเท็จจริงในคลังพกที่มาติดตัวเสมอ ว่าใครเป็นคนบอก และมีหลักฐานอะไรหนุนอยู่</p>
 <p>Neo Gens ลงทุนและดูแลงานนี้ แต่ไม่ได้เป็นเจ้าของความรู้ที่อยู่ในนั้น เพราะคลังที่บริษัทเดียวเป็นเจ้าของ ก็เป็นแค่ฐานข้อมูลที่การตลาดดีขึ้น และไม่ควรมีใครเอาข้อมูลของตัวเองไปไว้</p>
-<p class="colophon">อยากอ่านเบื้องหลังทั้งหมด ว่าทำไมวงการกาแฟต้องมีคลังความรู้ร่วม และแต่ละฝ่ายในสายโซ่ได้อะไรกลับไป — <a href="th-coffee.html">อ่านฉบับเต็ม</a></p>
+<p class="colophon">อยากอ่านเบื้องหลังทั้งหมด ว่าทำไมวงการกาแฟต้องมีคลังความรู้ร่วม และแต่ละฝ่ายในสายโซ่ได้อะไรกลับไป — <a href="th-mkm-for-coffee.html">อ่านฉบับเต็ม</a></p>
 """,
     "en": """
 <h2 id="s01"><span class="sn">01</span>What you would actually do</h2>
@@ -125,7 +125,7 @@ BODY = {
 <p>This vault is a public good — like a road or an irrigation system. Everyone can use it and no single party owns it.</p>
 <p>The structure is published in full: anyone can build their own system on it or argue with it. Your data stays yours, portable and withdrawable. And every fact in the vault carries its own provenance — who said it, and what evidence stands behind it.</p>
 <p>Neo Gens funds and stewards the work but does not own the knowledge inside it. A vault owned by one company is just a database with better marketing, and nobody should put their own data into one.</p>
-<p class="colophon">If you want the full reasoning — why the coffee sector needs a shared knowledge vault, and what each party along the chain gets back — <a href="coffee.html">read the long version</a>.</p>
+<p class="colophon">If you want the full reasoning — why the coffee sector needs a shared knowledge vault, and what each party along the chain gets back — <a href="mkm-for-coffee.html">read the long version</a>.</p>
 """,
 }
 
@@ -141,7 +141,7 @@ JOIN = {
 
 
 def build(lang):
-    src_name = "th-coffee.html" if lang == "th" else "coffee.html"
+    src_name = "th-mkm-for-coffee.html" if lang == "th" else "mkm-for-coffee.html"
     out_name = "th-coffee-farmer.html" if lang == "th" else "coffee-farmer.html"
     other = "coffee-farmer.html" if lang == "th" else "th-coffee-farmer.html"
     s = (ROOT / src_name).read_text(encoding="utf-8")
@@ -153,7 +153,7 @@ def build(lang):
     s = re.sub(r'(<meta property="og:title" content=")[^"]*"', r"\1" + h["ogtitle"] + '"', s, count=1)
     s = re.sub(r'(<meta property="og:description" content=")[^"]*"', r"\1" + h["desc"] + '"', s, count=1)
     s = s.replace(f"https://www.neogens.co/{src_name}", f"https://www.neogens.co/{out_name}")
-    other_src = "coffee.html" if lang == "th" else "th-coffee.html"
+    other_src = "mkm-for-coffee.html" if lang == "th" else "th-mkm-for-coffee.html"
     s = s.replace(f"https://www.neogens.co/{other_src}", f"https://www.neogens.co/{other}")
 
     # --- hero ---

@@ -1,3 +1,9 @@
 .DS_Store
 check.command
 publish.command
+remote.command
+setup-remote.command
+
+# ไบต์โค้ดที่ Python สร้างเอง ไม่ต้องขึ้น repo
+__pycache__/
+*.pyc

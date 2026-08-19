@@ -56,8 +56,53 @@ for f,(src,p) in parsed.items():
         if frag and os.path.exists(path):
             if ('id="%s"'%frag) not in io.open(path,encoding='utf-8').read(): E(f,'dead fragment %s'%h)
 
+# --- ห้ามมีสคริปต์หรือทรัพยากรจากภายนอกที่เก็บข้อมูลผู้อ่าน ---
+# ถอด Google Analytics ออกเมื่อ 2026-08-19 ด่านนี้กันไม่ให้ใครเผลอใส่กลับมา
+# เว็บที่ขายเรื่องอธิปไตยเหนือข้อมูล ต้องไม่ส่ง IP ผู้อ่านออกไปก่อนเขาได้อ่านอะไร
+THIRD_PARTY=re.compile(r'<script[^>]*\ssrc="(https?:)?//([^"]+)"')
+for f in files:
+    src,p=parsed[f]
+    for m in THIRD_PARTY.finditer(src):
+        E(f,'third-party script: %s'%m.group(2).split('/')[0])
+    if 'googletagmanager' in src or 'gtag(' in src:
+        E(f,'analytics tag is back')
+
+# --- hreflang ต้องชี้คู่ภาษาที่ถูกหน้า ---
+# ความผิดที่เคยเกิดจริง หน้าที่สร้างจากแม่แบบลืมแก้แท็ก แล้วประกาศฉบับแปลเป็นหน้าอื่น
+# search engine เจอการประกาศที่ไม่ยืนยันกลับ จะเลิกเชื่อ hreflang ทั้งโดเมน ไม่ใช่แค่หน้านั้น
+# ตรวจ "ชี้ถูกหน้าไหม" ไม่ใช่แค่ "มีแท็กครบไหม" เพราะรอบแรกเขียนแบบหลังแล้วจับความผิดไม่ได้
+BASE='https://www.neogens.co/'
+def _page(v): return v or 'index.html'
+for f in files:
+    src,p=parsed[f]
+    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    alts=dict(re.findall(r'hreflang="([^"]+)" href="'+re.escape(BASE)+r'([^"]*)"',src))
+    if not alts:
+        E(f,'no hreflang tags'); continue
+    en_self = f[3:] if f.startswith('th-') else f
+    th_self = f if f.startswith('th-') else 'th-'+f
+    want={}
+    if os.path.exists(en_self): want['en']=en_self
+    if os.path.exists(th_self): want['th']=th_self
+    want['x-default']=want.get('en') or want.get('th')
+    want={k:('' if v=='index.html' else v) for k,v in want.items()}
+    for k,v in want.items():
+        if k not in alts:
+            E(f,'hreflang %s is missing (should be %s)'%(k,_page(v)))
+        elif alts[k]!=v:
+            E(f,'hreflang %s points at %s but should point at %s'%(k,_page(alts[k]),_page(v)))
+    for k in alts:
+        if k not in want: E(f,'hreflang %s declares a version that does not exist'%k)
+    me='' if f=='index.html' else f
+    if me not in alts.values(): E(f,'hreflang never points back at this page')
+
 # --- required shell on every real page ---
-REAL=[f for f in files if f not in ('km-for-museums.html',)]
+# หน้า stub ที่เด้งไปชื่อใหม่ ไม่ใช่หน้าเว็บเต็ม ไม่ต้องมี nav ธีม หรือ footer
+def is_stub(f):
+    src=parsed[f][0]
+    return 'http-equiv="refresh"' in src and 'rel="canonical"' in src
+STUBS=[f for f in files if is_stub(f)]
+REAL=[f for f in files if f not in STUBS]
 for f in REAL:
     src,p=parsed[f]
     for need,msg in [('<title>','title'),('data-theme','theme boot'),('class="tgl"','theme toggle')]:
@@ -126,7 +171,9 @@ skipped_num=[]
 for f in files:
     src,p=parsed[f]
     if SIMULATED.search(src):
-        if 'simulated' not in ' '.join(p.vis).lower():
+        vis=' '.join(p.vis).lower()
+        # ฉบับไทยบอกผู้อ่านด้วยคำว่า ข้อมูลจำลอง ไม่ใช่คำอังกฤษ
+        if 'simulated' not in vis and 'จำลอง' not in vis:
             E(f,'declared ng-data=simulated but the page never says so to the reader')
         skipped_num.append(f); continue
     t=' '.join(x.strip() for x in p.text if x.strip())

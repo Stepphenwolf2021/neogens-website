@@ -3,6 +3,13 @@
   var D = window.__VAULT_DEMO__;
   if (!D) return;
   var places = D.places, totals = D.totals;
+  /* ป้ายข้อความ ตัวสร้างฝัง __VAULT_LABELS__ มาให้ตอนทำหน้าไทย
+     ถ้าไม่มี ทุกป้ายตกกลับไปเป็นค่าอังกฤษที่เขียนไว้ตรงจุดใช้งาน */
+  var L = window.__VAULT_LABELS__ || {};
+  function T(k, d) { return L[k] || d; }
+  function nm(p) { return (L.place && L.place[p.n]) || p.n; }
+  function pr(v) { return (L.proc && L.proc[v]) || v; }
+  function fill(t, o) { return t.replace(/\{(\w+)\}/g, function (_, k) { return o[k]; }); }
 
   /* --- แปลงพิกัดจริงเป็นพิกัดบนภาพ equirectangular --- */
   var K = 152.7887, TX = 480, TY = 165.33, RAD = Math.PI / 180;
@@ -65,12 +72,12 @@
     var t = total(p);
     var r = Math.max(3.4, Math.min(15, Math.sqrt(t) * .78));
     var g = el('g', { 'class': 'dm-node ' + p.role, tabindex: '0', role: 'button',
-                      'aria-label': p.n + ' — ' + t + ' participants' }, gNode);
+                      'aria-label': nm(p) + ' — ' + t + ' ' + T('participants', 'participants') }, gNode);
     p.circle = el('circle', { cx: px(p.lon).toFixed(1), cy: py(p.lat).toFixed(1),
                               r: r.toFixed(1) }, g);
     if (canLabel(p, t)) {
       el('text', { x: (px(p.lon) + r + 3).toFixed(1), y: (py(p.lat) + 2.6).toFixed(1) }, g)
-        .textContent = p.n;
+        .textContent = nm(p);
     }
     p.g = g; p.r = r; p.total = t;
     g.addEventListener('click', function () { select(p); });
@@ -94,21 +101,21 @@
     places.forEach(function (p) { p.g.classList.remove('sel'); });
     edges.forEach(function (e) { e.node.classList.remove('hi'); });
     panel.innerHTML =
-      '<div class="k">The vault today</div>' +
-      '<h3>5,000 contributors</h3>' +
-      '<div class="sub">43 origins and markets · simulated</div>' +
+      '<div class="k">' + T('today', 'The vault today') + '</div>' +
+      '<h3>' + T('contributors5k', '5,000 contributors') + '</h3>' +
+      '<div class="sub">' + T('originsMarkets', '43 origins and markets · simulated') + '</div>' +
       rows([
-        ['Farmers', '<b>' + totals.farmers.toLocaleString() + '</b> · 80%'],
-        ['Roasters', '<b>' + totals.roasters.toLocaleString() + '</b> · 10%'],
-        ['Cooperatives', '<b>' + totals.coops + '</b>'],
-        ['Mills &amp; washing stations', '<b>' + totals.mills + '</b>'],
-        ['Exporters &amp; importers', '<b>' + totals.exporters + '</b>'],
-        ['Cafés', '<b>' + totals.cafes + '</b>'],
-        ['Researchers', '<b>' + totals.researchers + '</b>'],
-        ['Certifiers', '<b>' + totals.certifiers + '</b>']
+        [T('farmers', 'Farmers'), '<b>' + totals.farmers.toLocaleString() + '</b> · 80%'],
+        [T('roasters', 'Roasters'), '<b>' + totals.roasters.toLocaleString() + '</b> · 10%'],
+        [T('coops', 'Cooperatives'), '<b>' + totals.coops + '</b>'],
+        [T('mills', 'Mills &amp; washing stations'), '<b>' + totals.mills + '</b>'],
+        [T('exporters', 'Exporters &amp; importers'), '<b>' + totals.exporters + '</b>'],
+        [T('cafes', 'Cafés'), '<b>' + totals.cafes + '</b>'],
+        [T('researchers', 'Researchers'), '<b>' + totals.researchers + '</b>'],
+        [T('certifiers', 'Certifiers'), '<b>' + totals.certifiers + '</b>']
       ]) +
-      '<p class="dm-note">Select any point on the map to see what that origin has ' +
-      'put into the vault, and which roasters its profile matches.</p>';
+      '<p class="dm-note">' + T('hint', 'Select any point on the map to see what that '
+        + 'origin has put into the vault, and which roasters its profile matches.') + '</p>';
   }
 
   function select(p) {
@@ -117,43 +124,48 @@
     edges.forEach(function (e) { e.node.classList.toggle('hi', e.o === p || e.m === p); });
 
     var linked = edges.filter(function (e) { return e.o === p || e.m === p; })
-      .map(function (e) { return e.o === p ? e.m.n : e.o.n; });
+      .map(function (e) { return e.o === p ? nm(e.m) : nm(e.o); });
     var uniq = linked.filter(function (v, i) { return linked.indexOf(v) === i; });
 
     if (p.role === 'origin') {
       var lots = Math.round(p.c.farmers * 2.4);
       panel.innerHTML =
-        '<div class="k">Origin</div><h3>' + p.n + '</h3>' +
-        '<div class="sub">' + p.alt + ' · ' + p.proc + '</div>' +
+        '<div class="k">' + T('origin', 'Origin') + '</div><h3>' + nm(p) + '</h3>' +
+        '<div class="sub">' + p.alt + ' · ' + pr(p.proc) + '</div>' +
         rows([
-          ['Contributors', '<b>' + p.total.toLocaleString() + '</b>'],
-          ['Farmers', '<b>' + p.c.farmers.toLocaleString() + '</b>'],
-          ['Cooperatives / mills', '<b>' + (p.c.coops + p.c.mills) + '</b>'],
-          ['Lots on record', '<b>' + lots.toLocaleString() + '</b>'],
-          ['Mean cup score', '<b>' + p.score.toFixed(1) + '</b>'],
-          ['Traceable to plot', '<b>' + (72 + (p.c.mills % 9) * 3) + '%</b>'],
-          ['Flavour profile', p.notes]
+          [T('contributors', 'Contributors'), '<b>' + p.total.toLocaleString() + '</b>'],
+          [T('farmers', 'Farmers'), '<b>' + p.c.farmers.toLocaleString() + '</b>'],
+          [T('coopsMills', 'Cooperatives / mills'), '<b>' + (p.c.coops + p.c.mills) + '</b>'],
+          [T('lots', 'Lots on record'), '<b>' + lots.toLocaleString() + '</b>'],
+          [T('score', 'Mean cup score'), '<b>' + p.score.toFixed(1) + '</b>'],
+          [T('traceable', 'Traceable to plot'), '<b>' + (72 + (p.c.mills % 9) * 3) + '%</b>'],
+          [T('flavour', 'Flavour profile'), p.notes]
         ]) +
-        '<p class="dm-note">Buying this origin today means reading ' +
-        uniq.length + ' verified routes into ' + uniq.slice(0, 3).join(', ') +
-        (uniq.length > 3 ? ' and ' + (uniq.length - 3) + ' more' : '') + '.</p>' +
-        '<button class="dm-act" data-act="match">Match this profile to roasters</button>' +
-        '<button class="dm-act ghost" data-act="back">Back to overview</button>';
+        '<p class="dm-note">' + fill(T('routes',
+          'Buying this origin today means reading {n} verified routes into {list}{more}.'),
+          { n: uniq.length, list: uniq.slice(0, 3).join(', '),
+            more: uniq.length > 3
+              ? fill(T('more', ' and {n} more'), { n: uniq.length - 3 }) : '' }) + '</p>' +
+        '<button class="dm-act" data-act="match">' +
+          T('matchBtn', 'Match this profile to roasters') + '</button>' +
+        '<button class="dm-act ghost" data-act="back">' +
+          T('backBtn', 'Back to overview') + '</button>';
     } else {
       panel.innerHTML =
-        '<div class="k">Market</div><h3>' + p.n + '</h3>' +
-        '<div class="sub">roasters, cafés and importers</div>' +
+        '<div class="k">' + T('market', 'Market') + '</div><h3>' + nm(p) + '</h3>' +
+        '<div class="sub">' + T('marketSub', 'roasters, cafés and importers') + '</div>' +
         rows([
-          ['Contributors', '<b>' + p.total.toLocaleString() + '</b>'],
-          ['Roasters', '<b>' + p.c.roasters + '</b>'],
-          ['Cafés', '<b>' + p.c.cafes + '</b>'],
-          ['Importers', '<b>' + p.c.exporters + '</b>'],
-          ['Origins sourced', '<b>' + uniq.length + '</b>'],
-          ['Cupping results shared', '<b>' + (p.c.roasters * 34).toLocaleString() + '</b>']
+          [T('contributors', 'Contributors'), '<b>' + p.total.toLocaleString() + '</b>'],
+          [T('roasters', 'Roasters'), '<b>' + p.c.roasters + '</b>'],
+          [T('cafes', 'Cafés'), '<b>' + p.c.cafes + '</b>'],
+          [T('importers', 'Importers'), '<b>' + p.c.exporters + '</b>'],
+          [T('sourced', 'Origins sourced'), '<b>' + uniq.length + '</b>'],
+          [T('cupping', 'Cupping results shared'), '<b>' + (p.c.roasters * 34).toLocaleString() + '</b>']
         ]) +
-        '<p class="dm-note">Every cupping result added here sharpens the ' +
-        'benchmark a farmer sees on the other side of the map.</p>' +
-        '<button class="dm-act ghost" data-act="back">Back to overview</button>';
+        '<p class="dm-note">' + T('marketNote', 'Every cupping result added here '
+          + 'sharpens the benchmark a farmer sees on the other side of the map.') + '</p>' +
+        '<button class="dm-act ghost" data-act="back">' +
+          T('backBtn', 'Back to overview') + '</button>';
     }
   }
 

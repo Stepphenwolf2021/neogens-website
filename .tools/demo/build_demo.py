@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-สร้างหน้าเดโม · coffee-demo.html
+สร้างหน้าเดโม · coffee-demo.html และ th-coffee-demo.html
 
 แดชบอร์ดสาธิตว่า Coffee Knowledge Vault จะหน้าตาเป็นอย่างไรเมื่อมีผู้ร่วมสร้าง
 คลัง 5,000 รายทั่วโลก แผนที่โลกกับกราฟความรู้ซ้อนกัน คลิกดูรายละเอียดได้
 ทุกตัวเลขเป็นข้อมูลจำลอง และหน้าบอกเรื่องนี้ไว้ตั้งแต่บรรทัดแรก
 
-ใช้ coffee-farmer.html เป็นแม่แบบ จึงได้ nav ธีม ฟอร์ม และ CSS ชุดเดียวกัน
+ทำสองภาษาจากโครงเดียวกัน ข้อความทั้งหมดอยู่ใน copy_demo.py
+ฉบับอังกฤษใช้ coffee-farmer.html เป็นแม่แบบ ฉบับไทยใช้ th-coffee-farmer.html
+จึงได้ nav ธีม ฟอร์ม และ CSS ชุดเดียวกับหน้าอื่นในภาษานั้น
+
+ป้ายในแผงที่ขึ้นตอนคลิกจุดอยู่ฝั่ง JS ตัวสร้างจึงฝัง window.__VAULT_LABELS__
+ให้ dashboard.js อ่าน ถ้าไม่มีพจนานุกรม ทุกป้ายตกกลับเป็นอังกฤษ
+
 คลาสใหม่ทั้งหมดขึ้นต้นด้วย dm- และมีด่านตรวจว่าไม่ชนของเดิม ตามบทเรียนข้อ 8
+ด่านท้ายสคริปต์นับชิ้นส่วนในไฟล์ผลลัพธ์แล้ว exit ถ้าขาด ตามบทเรียนข้อ 9
 
 รันจากรากรีโป:  python3 .tools/demo/build_demo.py
 """
@@ -18,10 +25,11 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from copy_demo import LANGS, TH_CSS          # noqa: E402
+
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
-SRC = ROOT / "coffee-farmer.html"
-OUT = ROOT / "coffee-demo.html"
 
 DATA = json.loads((HERE / "participants.json").read_text(encoding="utf-8"))
 LAND = (HERE / "land_path.txt").read_text(encoding="utf-8").strip()
@@ -50,30 +58,6 @@ def by_process():
     return sorted(out, key=lambda r: -r[1])
 
 
-SEARCHES = [
-    ("floral · tea-like", 214),
-    ("low acidity", 187),
-    ("honey process", 156),
-    ("single plot", 143),
-    ("shade grown", 98),
-]
-
-LOTS = [
-    ("LOT-2026-0412", "Chiang Rai, Thailand", "honey", "86.5",
-     "longan · tamarind", "5", "Osaka · 2 roasters", "go"),
-    ("LOT-2026-0388", "Huila, Colombia", "washed", "85.9",
-     "citrus · red fruit", "6", "Berlin · 4 roasters", "go"),
-    ("LOT-2026-0361", "Yirgacheffe, Ethiopia", "natural", "87.2",
-     "jasmine · peach", "4", "Seoul · 3 roasters", "go"),
-    ("LOT-2026-0344", "Nyeri, Kenya", "washed", "86.8",
-     "blackcurrant · tomato", "5", "Melbourne · 2 roasters", "go"),
-    ("LOT-2026-0329", "Cerrado, Brazil", "natural", "83.4",
-     "nut · cocoa", "3", "moisture reading pending", "am"),
-    ("LOT-2026-0317", "Aceh, Indonesia", "wet-hulled", "84.1",
-     "cedar · herbal", "4", "Taipei · 1 roaster", "go"),
-]
-
-
 def bars(items, unit=""):
     top = max(v for _, v, *_ in items)
     out = []
@@ -89,31 +73,29 @@ def bars(items, unit=""):
 
 # ---------------------------------------------------------------- ตัวหน้า
 
-def head_block():
+def head_block(C):
     t = DATA["totals"]
-    stat = [
-        ("5,000", "Contributors", "43 origins and markets", None),
-        (f"{t['farmers']:,}", "Farmers", "80% of the vault", "farmers"),
-        (f"{t['roasters']:,}", "Roasters", "10%", "roasters"),
-        (f"{t['coops'] + t['mills']}", "Co-ops &amp; mills", "the collection layer", "coops"),
-        (f"{t['exporters']}", "Exporters &amp; importers", "compliance and shipping", "exporters"),
-        (f"{t['cafes']}", "Cafés", "the last mile", "cafes"),
-        (f"{t['researchers']}", "Researchers", "agronomy and sensory", "researchers"),
-        (f"{t['certifiers']}", "Certifiers", "independent verification", "certifiers"),
-    ]
+    vals = ["5,000", f"{t['farmers']:,}", f"{t['roasters']:,}",
+            f"{t['coops'] + t['mills']}", f"{t['exporters']}", f"{t['cafes']}",
+            f"{t['researchers']}", f"{t['certifiers']}"]
+    roles = [None, "farmers", "roasters", "coops", "exporters", "cafes",
+             "researchers", "certifiers"]
     cells = []
-    for v, l, p, role in stat:
+    for v, l, p, role in zip(vals, C["stats"], C["stats_sub"], roles):
         attr = f' data-role="{role}" tabindex="0"' if role else ""
         cells.append(f'<div class="dm-stat"{attr}><div class="v">{v}</div>'
                      f'<div class="l">{l}</div><div class="p">{p}</div></div>')
     return '<div class="dm-stats">' + "".join(cells) + "</div>"
 
 
-def map_block():
+def map_block(C):
     y_top, y_bot, y_eq = py(23.5), py(-23.5), py(0)
+    leg = "".join(
+        f'<span><i style="background:var(--{c})"></i>{t}</span>' if c else f"<span>{t}</span>"
+        for c, t in zip(["go", "ask", None], C["legend"]))
     return f'''<div class="dm-mapbox">
       <svg id="dm-map" class="dm-map" viewBox="0 0 960 293" role="img"
-           aria-label="World map with the coffee belt shaded, showing 43 points where contributors have registered, and curved lines linking each origin to the markets that buy from it">
+           aria-label="{C['map_alt']}">
         <rect class="dm-belt" x="0" y="{y_top:.1f}" width="960" height="{y_bot - y_top:.1f}"/>
         <path class="dm-land" d="{LAND}"/>
         <path class="dm-grid" d="M0 {y_top:.1f}H960M0 {y_eq:.1f}H960M0 {y_bot:.1f}H960"/>
@@ -121,135 +103,117 @@ def map_block():
         <text class="dm-glab" x="6" y="{y_eq - 4:.1f}">EQUATOR</text>
         <text class="dm-glab" x="6" y="{y_bot - 4:.1f}">TROPIC OF CAPRICORN</text>
       </svg>
-      <div class="dm-legend">
-        <span><i style="background:var(--go)"></i>origin · farms, co-ops, mills</span>
-        <span><i style="background:var(--ask)"></i>market · roasters, cafés, importers</span>
-        <span>line = a trade route already carrying verified lots</span>
-      </div>
+      <div class="dm-legend">{leg}</div>
     </div>'''
 
 
-def panel_block():
-    return '<div class="dm-panel" id="dm-panel" aria-live="polite"></div>'
-
-
-def tools_block():
-    tools = [("trade", "Trade routes"), ("quality", "High-scoring origins"),
-             ("match", "Buyer matches"), ("people", "Contributors only")]
+def tools_block(C):
+    keys = ["trade", "quality", "match", "people"]
     btns = "".join(
         f'<button class="dm-tool{" on" if k == "trade" else ""}" data-layer="{k}">{lab}</button>'
-        for k, lab in tools)
+        for k, lab in zip(keys, C["tools"]))
     return ('<div class="dm-tools">' + btns +
-            '<label class="dm-slide">cup score '
+            f'<label class="dm-slide">{C["slider"]} '
             '<input id="dm-score" type="range" min="0" max="87" step="0.5" value="0" '
-            'aria-label="Filter origins by mean cup score">'
-            '<span id="dm-score-v">any</span></label></div>')
+            f'aria-label="{C["slider_alt"]}">'
+            f'<span id="dm-score-v">{C["slider_any"]}</span></label></div>')
 
 
-def cards_block():
-    proc = [(n.replace("-", " "), s) for n, s, _ in by_process()][:5]
-    return f'''<div class="dm-cards">
-      <div class="dm-card">
-        <div class="k">Quality</div>
-        <h4>What method gets the score, at your altitude</h4>
-        <p>Mean cup score by processing method across every lot in the vault. A farmer
-        filters this to plots within 150 m of their own elevation before deciding what to
-        try next season.</p>
-        {bars(proc)}
-      </div>
-      <div class="dm-card">
-        <div class="k">Market</div>
-        <h4>What buyers are searching for</h4>
-        <p>Roasters query the vault by profile rather than by broker relationship. These
-        are the searches that returned too few lots this month — each one is a market
-        opening visible from the growing side.</p>
-        {bars(SEARCHES)}
-      </div>
-      <div class="dm-card">
-        <div class="k">Traceability</div>
-        <h4>How far back a bag can be walked</h4>
-        <p>Every hop carries a date, a quantity and a source. Where a machine reading
-        backs the claim, the lot is marked verified rather than stated.</p>
-        {bars([("plot", 81), ("mill", 93), ("exporter", 97), ("roaster", 99)], "%")}
-      </div>
-    </div>'''
+def cards_block(C):
+    lab = (C["labels"] or {}).get("proc", {})
+    proc = [(lab.get(n, n.replace("-", " ")), s) for n, s, _ in by_process()][:5]
+    body = [bars(proc), bars(C["searches"]), bars(C["hops_row"], "%")]
+    out = ['<div class="dm-cards">']
+    for (k, h, p), chart in zip(C["cards"], body):
+        out.append(f'<div class="dm-card"><div class="k">{k}</div><h4>{h}</h4>'
+                   f'<p>{p}</p>{chart}</div>')
+    return "".join(out) + "</div>"
 
 
-def table_block():
+def table_block(C):
     rows = []
-    for lot, origin, proc, score, notes, hops, match, kind in LOTS:
+    for lot, origin, proc, score, notes, hops, match, kind in C["lots"]:
         rows.append(
             f"<tr><td class='mono'>{lot}</td><td><b>{origin}</b></td>"
             f"<td>{proc}</td><td><b>{score}</b></td><td>{notes}</td>"
-            f"<td class='mono'>{hops} hops</td>"
+            f"<td class='mono'>{hops} {C['hops']}</td>"
             f"<td><span class='dm-chip{' am' if kind == 'am' else ''}'>{match}</span></td></tr>")
+    head = "".join(f"<th>{h}</th>" for h in C["thead"])
     return f'''<div class="dm-tablewrap">
       <table class="dm-table">
-        <thead><tr><th>Lot</th><th>Origin</th><th>Process</th><th>Score</th>
-        <th>Flavour</th><th>Traceable</th><th>Buyer match</th></tr></thead>
+        <thead><tr>{head}</tr></thead>
         <tbody>{"".join(rows)}</tbody>
       </table>
     </div>
-    <p class="dm-cap">Every figure on this page is simulated. The point is the shape of
-    the answer, not the numbers: one structure, contributed to by everyone along the
-    chain, that a farmer can query for what to do next season and a roaster can query
-    for what to buy — and both get an answer that carries its own evidence.</p>'''
+    <p class="dm-cap">{C["caption"]}</p>'''
 
 
-def body():
-    return ("\n".join([
+def body(C):
+    return "\n".join([
         '<article>',
         '  <div class="wrap">',
-        '    <div class="dm-warn"><b>Simulated</b><p>Nothing on this page is real data. '
-        'It is a working sketch of what the Coffee Knowledge Vault looks like once '
-        '5,000 people along the chain have contributed to it. No one has contributed '
-        'yet — that is the phase we are in.</p></div>',
-        "    " + head_block(),
+        f'    <div class="dm-warn"><b>{C["warn_b"]}</b><p>{C["warn_p"]}</p></div>',
+        "    " + head_block(C),
         '    <div class="dm-wrap">',
-        "      " + map_block(),
-        "      " + panel_block(),
+        "      " + map_block(C),
+        '      <div class="dm-panel" id="dm-panel" aria-live="polite"></div>',
         "    </div>",
-        "    " + tools_block(),
-        "    " + cards_block(),
-        "    " + table_block(),
+        "    " + tools_block(C),
+        "    " + cards_block(C),
+        "    " + table_block(C),
         "  </div>",
         "</article>",
-    ]))
+    ])
 
 
-HEAD = dict(
-    title="What 5,000 contributors would look like — Neo Gens",
-    ogtitle="What 5,000 contributors would look like",
-    desc="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors "
-         "along the coffee chain, a knowledge graph laid over the world map, and what "
-         "a farmer or a roaster would actually ask it.",
-    kicker="MKM for Coffee · demo",
-    h1="What the vault looks like with 5,000 people in it",
-    stand="A simulated view of the Coffee Knowledge Vault — every origin, every market, "
-          "and the routes already carrying verified lots between them. Click any point.",
-    meta="interactive demo",
-)
+LANG_BLOCK = re.compile(r'<span class="lang">.*?</span>(?=<button)', re.S)
 
 
-def main():
-    if not SRC.exists():
-        sys.exit(f"[abort] ไม่พบแม่แบบ {SRC.name}")
-    s = SRC.read_text(encoding="utf-8")
+def build(C):
+    src = ROOT / C["src"]
+    out = ROOT / C["out"]
+    if not src.exists():
+        sys.exit(f"[abort] ไม่พบแม่แบบ {src.name}")
+    s = src.read_text(encoding="utf-8")
 
     # กันชื่อคลาสชนของเดิม ตามบทเรียนข้อ 8
     for cls in sorted(set(re.findall(r"\.(dm-[a-z-]+)", CSS))):
         if re.search(r"(^|[\s,}])\." + re.escape(cls) + r"[\s,{:.]", s, re.M):
-            sys.exit(f"[abort] คลาส .{cls} มีอยู่แล้วในแม่แบบ")
+            sys.exit(f"[abort] คลาส .{cls} มีอยู่แล้วในแม่แบบ {src.name}")
 
-    s = re.sub(r"<title>.*?</title>", f"<title>{HEAD['title']}</title>", s, count=1, flags=re.S)
-    s = re.sub(r'(<meta name="description" content=")[^"]*"', r"\1" + HEAD["desc"] + '"', s, count=1)
-    s = re.sub(r'(<meta property="og:title" content=")[^"]*"', r"\1" + HEAD["ogtitle"] + '"', s, count=1)
-    s = re.sub(r'(<meta property="og:description" content=")[^"]*"', r"\1" + HEAD["desc"] + '"', s, count=1)
-    s = s.replace("https://www.neogens.co/coffee-farmer.html",
-                  "https://www.neogens.co/coffee-demo.html")
-    s = s.replace("https://www.neogens.co/th-coffee-farmer.html",
-                  "https://www.neogens.co/coffee-demo.html")
+    s = re.sub(r"<title>.*?</title>", f"<title>{C['title']}</title>", s, count=1, flags=re.S)
+    s = re.sub(r'(<meta name="description" content=")[^"]*"', r"\1" + C["desc"] + '"', s, count=1)
+    s = re.sub(r'(<meta property="og:title" content=")[^"]*"', r"\1" + C["ogtitle"] + '"', s, count=1)
+    s = re.sub(r'(<meta property="og:description" content=")[^"]*"', r"\1" + C["desc"] + '"', s, count=1)
+    # canonical กับ og:url ชี้มาที่หน้านี้
+    s = s.replace('rel="canonical" href="https://www.neogens.co/' + C["src"] + '"',
+                  'rel="canonical" href="https://www.neogens.co/' + C["out"] + '"')
+    s = s.replace('property="og:url" content="https://www.neogens.co/' + C["src"] + '"',
+                  'property="og:url" content="https://www.neogens.co/' + C["out"] + '"')
+    # hreflang ต้องชี้ระหว่างเดโมสองฉบับ ไม่ใช่หน้าเกษตรกรที่เป็นแม่แบบ
+    # ถ้าลืมข้อนี้ ทั้งสองฉบับจะประกาศตัวเองเป็นฉบับแปลของตัวเอง
+    en_page = C["out"] if C["lang"] == "en" else C["twin"]
+    th_page = C["out"] if C["lang"] == "th" else C["twin"]
+    alts = ('<link rel="alternate" hreflang="en" href="https://www.neogens.co/%s">\n'
+            '<link rel="alternate" hreflang="th" href="https://www.neogens.co/%s">\n'
+            '<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/%s">\n'
+            % (en_page, th_page, en_page))
+    s, n_alt = re.subn(r'[ \t]*<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n',
+                       "", s)
+    if n_alt != 3:
+        sys.exit(f"[abort] แม่แบบมีแท็ก hreflang {n_alt} ตัว คาดว่าต้องมี 3")
+    s = s.replace('<link rel="canonical"', alts + '<link rel="canonical"', 1)
+    for old in ("coffee-farmer.html", "th-coffee-farmer.html"):
+        s = s.replace(f"https://www.neogens.co/{old}", f"https://www.neogens.co/{C['out']}")
 
+    # ปุ่มสลับภาษา ต้องชี้ระหว่างเดโมสองฉบับ ไม่ใช่หน้าเกษตรกรที่เป็นแม่แบบ
+    th_out = C["out"] if C["lang"] == "th" else C["twin"]
+    en_out = C["out"] if C["lang"] == "en" else C["twin"]
+    lang_html = (f'<span class="lang"><a class="on" href="{th_out}">TH</a>'
+                 f'<span>/</span><a href="{en_out}">EN</a></span>') if C["lang"] == "th" else (
+                f'<span class="lang"><a class="on" href="{en_out}">EN</a>'
+                f'<span>/</span><a href="{th_out}">TH</a></span>')
+    s, n_lang = LANG_BLOCK.subn(lambda m: lang_html, s)
 
     # ประกาศให้ check.py รู้ว่าหน้านี้เป็นข้อมูลจำลองโดยเจตนา
     s = s.replace('<meta name="robots"',
@@ -258,37 +222,39 @@ def main():
     # hero
     m = re.search(r'<div class="kicker">.*?</div>\s*</div>\s*</header>', s, re.S)
     s = s[:m.start()] + (
-        f'<div class="kicker">{HEAD["kicker"]}</div>\n'
-        f'      <h1>{HEAD["h1"]}</h1>\n'
-        f'      <p class="stand">{HEAD["stand"]}</p>\n'
-        f'      <div class="meta"><span>Neo Gens</span><span>{HEAD["meta"]}</span>'
-        f'<span><a href="coffee.html">The full argument</a></span></div>\n'
+        f'<div class="kicker">{C["kicker"]}</div>\n'
+        f'      <h1>{C["h1"]}</h1>\n'
+        f'      <p class="stand">{C["stand"]}</p>\n'
+        f'      <div class="meta"><span>Neo Gens</span><span>{C["meta"]}</span>'
+        f'<span><a href="{"th-" if C["lang"] == "th" else ""}mkm-for-coffee.html">'
+        f'{C["fullargument"]}</a></span></div>\n'
         f'    </div>\n  </div>\n</header>') + s[m.end():]
 
     # CSS — แทรกก่อนปิดบล็อก style ของแม่แบบ
-    # ทุกการแทรกในสคริปต์นี้ต้องพิสูจน์ว่าเกิดขึ้นจริง ไม่ใช่ replace แล้วเชื่อว่าสำเร็จ
     if s.count("</style>") != 1:
         sys.exit(f"[abort] แม่แบบมี </style> {s.count('</style>')} จุด คาดว่าต้องมีจุดเดียว")
-    s = s.replace("</style>", "\n/* ===== demo dashboard ===== */\n" + CSS + "</style>", 1)
+    css = CSS
+    if C["lang"] == "th":
+        # 1.1 ตัดหางวรรณยุกต์ไทย ต้องแก้ที่ค่าต้นทาง ไม่ใช่ทับด้วยกฎท้ายไฟล์
+        css = css.replace("line-height:1.1}", "line-height:1.35}") + TH_CSS
+    css = "\n/* ===== demo dashboard ===== */\n" + css
+    s = s.replace("</style>", css + "</style>", 1)
 
     # เนื้อหา
     i, j = s.index("<article>"), s.index("</article>") + len("</article>")
-    s = s[:i] + body() + s[j:]
+    s = s[:i] + body(C) + s[j:]
 
     # บล็อกชวนเข้าร่วม
-    s = re.sub(r'(<div class="k rv">)[^<]*(</div>)',
-               r"\1Build the real one\2", s, count=1)
+    s = re.sub(r'(<div class="k rv">)[^<]*(</div>)', lambda m: m.group(1) + C["join_k"] + m.group(2), s, count=1)
     s = re.sub(r'(<section class="join".*?<h2 class="rv">)[^<]*(</h2>)',
-               r"\1This is a sketch. The real one needs contributors.\2",
-               s, count=1, flags=re.S)
-    s = re.sub(r'(<p class="lead rv">)[^<]*(</p>)',
-               r"\1Leave your details if you want to put the first real data into it.\2",
-               s, count=1)
+               lambda m: m.group(1) + C["join_h"] + m.group(2), s, count=1, flags=re.S)
+    s = re.sub(r'(<p class="lead rv">)[^<]*(</p>)', lambda m: m.group(1) + C["join_p"] + m.group(2), s, count=1)
 
     # ข้อมูลกับสคริปต์ ฝังไว้ในไฟล์ ไม่เรียก network ตอนเปิดหน้า
-    payload = ('<script>window.__VAULT_DEMO__=' +
-               json.dumps(DATA, ensure_ascii=False, separators=(",", ":")) +
-               ";</script>\n<script>\n" + JS + "</script>\n")
+    payload = "<script>window.__VAULT_DEMO__=" + json.dumps(DATA, ensure_ascii=False, separators=(",", ":")) + ";"
+    if C["labels"]:
+        payload += "window.__VAULT_LABELS__=" + json.dumps(C["labels"], ensure_ascii=False, separators=(",", ":")) + ";"
+    payload += "</script>\n<script>\n" + JS + "</script>\n"
     s = s.replace("</body>", payload + "</body>")
 
     # ---- ด่านสุดท้าย ทุกชิ้นต้องอยู่ในไฟล์จริง ----
@@ -299,16 +265,33 @@ def main():
         "สคริปต์แดชบอร์ด": "dm-node" in s and "function setLayer" in s,
         "แผนที่": 'id="dm-map"' in s and len(LAND) > 10000,
         "แผงรายละเอียด": 'id="dm-panel"' in s,
-        "ป้ายบอกว่าเป็นข้อมูลจำลอง": 'name="ng-data"' in s and "Simulated" in s,
+        "ป้ายบอกว่าเป็นข้อมูลจำลอง": 'name="ng-data"' in s and C["warn_b"] in s,
+        "ปุ่มสลับภาษาสองชุด": n_lang == 2 and s.count(lang_html) == 2,
+        "ปุ่มสลับภาษาชี้เดโมอีกฉบับ": f'href="{C["twin"]}"' in lang_html,
+        "hreflang ชี้เดโมสองฉบับ": (
+            f'hreflang="en" href="https://www.neogens.co/{en_page}"' in s and
+            f'hreflang="th" href="https://www.neogens.co/{th_page}"' in s),
+        "canonical ชี้หน้านี้": f'rel="canonical" href="https://www.neogens.co/{C["out"]}"' in s,
+        "การ์ดสามใบ": s.count('<div class="dm-card">') == 3,
+        "ตัวเลขสรุปแปดช่อง": s.count('<div class="dm-stat"') == 8,
+        "แถวตารางหกแถว": s.count("<tr>") == 7,
+        "หัวข้อหลักเป็นภาษาที่ถูก": C["h1"] in s,
     }
+    if C["labels"]:
+        checks["พจนานุกรมป้ายไทย"] = "__VAULT_LABELS__" in s and C["labels"]["origin"] in s
+        checks["ไทยไม่ถ่างตัวอักษร"] = "letter-spacing:0}" in s
     bad = [k for k, ok in checks.items() if not ok]
     if bad:
-        sys.exit("[abort] ชิ้นส่วนที่ไม่เข้าไฟล์: " + ", ".join(bad))
+        sys.exit(f"[abort] {C['out']} ชิ้นส่วนที่ไม่เข้าไฟล์: " + ", ".join(bad))
 
-    OUT.write_text(s, encoding="utf-8")
-    print(f"  สร้าง {OUT.name} · {len(s.encode()) // 1024} KB · "
-          f"{DATA['grand']:,} ราย · {len(DATA['places'])} จุดบนแผนที่")
-    print("  ตรวจชิ้นส่วนครบทั้ง %d ข้อ" % len(checks))
+    out.write_text(s, encoding="utf-8")
+    print(f"  สร้าง {out.name} · {len(s.encode()) // 1024} KB · ตรวจชิ้นส่วนครบ {len(checks)} ข้อ")
+
+
+def main():
+    for C in LANGS:
+        build(C)
+    print(f"  {DATA['grand']:,} ราย · {len(DATA['places'])} จุดบนแผนที่")
 
 
 if __name__ == "__main__":

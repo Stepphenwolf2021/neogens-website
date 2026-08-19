@@ -17,8 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 PAIRS = [
-    ("about.html", "experience.html"),
-    ("th-about.html", "th-experience.html"),
+    ("about.html", "visitors-and-readers.html"),
+    ("th-about.html", "th-visitors-and-readers.html"),
 ]
 
 # กฎ CSS ที่ต้องตามไปด้วย — คัดจาก about.html ช่วง ".photo{" ถึงก่อน ".dbox{"

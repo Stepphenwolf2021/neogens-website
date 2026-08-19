@@ -21,7 +21,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FILES = ["about.html", "th-about.html", "experience.html", "th-experience.html"]
+FILES = ["about.html", "th-about.html", "visitors-and-readers.html", "th-visitors-and-readers.html"]
 
 
 def visible(html: str):
@@ -84,8 +84,8 @@ def main():
         print("  ผ่าน · ไม่มีคำหาย ไม่มีคำเพิ่ม ไม่มีคำเปลี่ยน")
 
     print()
-    for src, dst in [("about.html", "experience.html"),
-                     ("th-about.html", "th-experience.html")]:
+    for src, dst in [("about.html", "visitors-and-readers.html"),
+                     ("th-about.html", "th-visitors-and-readers.html")]:
         moved_out = Counter(before[src]) - Counter(after[src])
         moved_in = Counter(after[dst]) - Counter(before[dst])
         n = sum(moved_out.values())

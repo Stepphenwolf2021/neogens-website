@@ -6,24 +6,24 @@ No prose is rewritten; only navigation labels and links change.
 """
 import glob, io, re, sys
 
-SKIP = {'coffee.html', 'th-coffee.html', '404.html', 'km-for-museums.html'}
+SKIP = {'mkm-for-coffee.html', 'th-mkm-for-coffee.html', '404.html', 'km-for-museums.html'}
 
 EN = dict(
     visit_re=r'<a[^>]*href="visit\.html"[^>]*>MKM for Museums &amp; Libraries</a>',
     museums_re=r'<a[^>]*href="museums\.html"[^>]*>03 · What leadership looks like</a>',
-    coffee='<a href="coffee.html">MKM for Coffee</a>',
+    coffee='<a href="mkm-for-coffee.html">MKM for Coffee</a>',
     old_h='<div class="h">First practice area</div>',
     new_h='<div class="h">Practice areas</div>',
-    hub_card='<a href="coffee.html"><div class="n">MKM for Coffee</div>'
+    hub_card='<a href="mkm-for-coffee.html"><div class="n">MKM for Coffee</div>'
              '<div class="t">The industry is drowning in data and starving for knowledge</div></a>',
 )
 TH = dict(
     visit_re=r'<a[^>]*href="th-visit\.html"[^>]*>MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a>',
     museums_re=r'<a[^>]*href="th-museums\.html"[^>]*>03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a>',
-    coffee='<a href="th-coffee.html">MKM สำหรับกาแฟ</a>',
+    coffee='<a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a>',
     old_h='<div class="h">โดเมนแรก</div>',
     new_h='<div class="h">โดเมนที่ทำ</div>',
-    hub_card='<a href="th-coffee.html"><div class="n">MKM สำหรับกาแฟ</div>'
+    hub_card='<a href="th-mkm-for-coffee.html"><div class="n">MKM สำหรับกาแฟ</div>'
              '<div class="t">แปลงเดียว ถูกสำรวจสามรอบ แล้วไม่มีใครได้ความรู้เพิ่ม</div></a>',
 )
 
@@ -57,7 +57,7 @@ def process(f):
     if r:
         a, b = r
         seg = s[a:b]
-        if 'coffee.html' not in seg:
+        if 'mkm-for-coffee.html' not in seg:
             seg2, ok = sub_once(seg, C['visit_re'], lambda: C['coffee'], 'nav-links', log)
             if ok:
                 log.append('   nav-links +coffee')
@@ -71,7 +71,7 @@ def process(f):
         if C['old_h'] in seg:
             seg = seg.replace(C['old_h'], C['new_h'])
             log.append('   drawer heading renamed')
-        if 'coffee.html' not in seg:
+        if 'mkm-for-coffee.html' not in seg:
             seg, ok = sub_once(seg, C['museums_re'], lambda: C['coffee'], 'drawer', log)
             if ok:
                 log.append('   drawer +coffee')
@@ -85,7 +85,7 @@ def process(f):
         if C['old_h'] in seg:
             seg = seg.replace(C['old_h'], C['new_h'])
             log.append('   footer heading renamed')
-        if 'coffee.html' not in seg and re.search(C['museums_re'], seg):
+        if 'mkm-for-coffee.html' not in seg and re.search(C['museums_re'], seg):
             seg, ok = sub_once(seg, C['museums_re'], lambda: C['coffee'], 'footer', log)
             if ok:
                 log.append('   footer +coffee')
@@ -98,7 +98,7 @@ def process(f):
         b = s.find('</div></div>', a)
         seg = s[a:b]
         seg = seg.replace(C['old_h'], C['new_h'])
-        if 'coffee.html' not in seg:
+        if 'mkm-for-coffee.html' not in seg:
             seg = seg + C['hub_card']
             log.append('   hub card +coffee')
         s = s[:a] + seg + s[b:]
