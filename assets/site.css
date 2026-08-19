@@ -1,0 +1,53 @@
+/* สไตล์ที่ทุกหน้าใช้ร่วมกัน · สร้างด้วย .tools/split_css.py
+   แก้ที่นี่ที่เดียวแล้วมีผลทุกหน้า กฎเฉพาะหน้ายังอยู่ในหน้านั้นเหมือนเดิม */
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:inherit}
+.lang a{text-decoration:none;color:var(--mute);transition:color .2s}
+.lang span{color:var(--line-2)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(var(--go-rgb),.22)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
+.frow{display:flex;gap:9px}
+form input:focus{border-color:rgba(var(--go-rgb),.5)}
+form input::placeholder{color:var(--mute)}
+.f-col a:hover{color:var(--fg)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+html[data-theme="light"]{
+  --go-rgb:76,122,11; --guess-rgb:149,89,10; --ask-rgb:27,100,137; --w-rgb:16,18,20;
+  --bg:#FCFBF8; --bg-2:#F3F1EA; --surface:#FFFFFF; --surface-2:#F6F4ED;
+  --line:rgba(16,18,20,.13); --line-2:rgba(16,18,20,.26);
+  --fg:#15181C; --dim:#4C535A; --mute:#6D757E;
+  --go:#4C7A0B; --guess:#95590A; --ask:#1B6489;
+  --on-go:#FFFFFF;
+  --go-soft:rgba(76,122,11,.10); --go-line:rgba(76,122,11,.34);
+  --ask-soft:rgba(27,100,137,.08);
+  --glass:rgba(252,251,248,.82); --wash:rgba(16,18,20,.05); --shadow:rgba(16,18,20,.20);
+  color-scheme:light;
+}
+::selection{background:var(--go);color:var(--on-go)}
+.tgl:hover{color:var(--fg);border-color:var(--mute)}
+.tgl svg{width:15px;height:15px;display:block}
+html[data-theme="light"] .tgl .i-moon{display:none}
+html:not([data-theme="light"]) .tgl .i-sun{display:none}
+.burger{background:transparent;border:1px solid var(--line-2);border-radius:10px;width:38px;height:34px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.burger span{display:block;width:16px;height:1.5px;background:var(--fg);transition:transform .22s,opacity .18s}
+.burger.x span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--bg);max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.drawer.open{display:block}
+.drawer .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:20px 0 2px}
+.drawer a{display:block;padding:13px 0;border-bottom:1px solid var(--line);color:var(--dim);text-decoration:none;font-size:16px;line-height:1.35}
+.drawer a.on{color:var(--go)}
+.drawer a.btn{display:flex;justify-content:center;margin-top:22px;padding:15px;border-bottom:none;font-size:15px;color:var(--on-go)}
+@media(min-width:1301px){.drawer{display:none!important}}
+/* --- ลิงก์ข้ามไปเนื้อหา กับกรอบโฟกัสที่มองเห็นได้ --- */
+.skip{position:absolute;left:-9999px;top:0;z-index:120}
+.skip:focus{left:10px;top:10px;background:var(--fg);color:var(--bg);
+  padding:11px 18px;border-radius:10px;text-decoration:none;font-size:14.5px;
+  line-height:1.75;box-shadow:0 8px 30px var(--shadow,rgba(0,0,0,.4))}
+:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:3px}
+/* --- ป้ายชื่อช่องในฟอร์ม --- */
+.ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.ffield input{width:100%}

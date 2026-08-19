@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>องค์กรที่มีความรู้ดีที่สุดในห้อง กำลังเสียห้องนั้นไป — Neo Gens</title>
-<meta name="description" content="ผู้ใหญ่ที่มีการศึกษาสี่คน ใช้เวลาทั้งบ่ายในห้องจัดแสดงใหม่ที่ลงทุนดี อ่านป้ายทุกป้าย ลองอุปกรณ์ทุกชิ้น แล้วกลับออกมาโดยไม่มีอะไรเล่าให้เด็กในรถฟังได้เลยสักเรื่อง…">
-<meta property="og:title" content="องค์กรที่มีความรู้ดีที่สุดในห้อง กำลังเสียห้องนั้นไป — Neo Gens">
-<meta property="og:description" content="ผู้ใหญ่ที่มีการศึกษาสี่คน ใช้เวลาทั้งบ่ายในห้องจัดแสดงใหม่ที่ลงทุนดี อ่านป้ายทุกป้าย ลองอุปกรณ์ทุกชิ้น แล้วกลับออกมาโดยไม่มีอะไรเล่าให้เด็กในรถฟังได้เลยสักเรื่อง…">
+<title>MKM สำหรับพิพิธภัณฑ์และห้องสมุด — Neo Gens</title>
+<meta name="description" content="ผู้ใหญ่ที่มีการศึกษาสี่คน ใช้เวลาทั้งบ่ายในห้องจัดแสดงใหม่ที่ลงทุนดี อ่านป้ายทุกป้าย ลองอุปกรณ์ทุกชิ้น">
+<meta property="og:title" content="MKM สำหรับพิพิธภัณฑ์และห้องสมุด">
+<meta property="og:description" content="ผู้ใหญ่ที่มีการศึกษาสี่คน ใช้เวลาทั้งบ่ายในห้องจัดแสดงใหม่ที่ลงทุนดี อ่านป้ายทุกป้าย ลองอุปกรณ์ทุกชิ้น">
 <link rel="canonical" href="https://www.neogens.co/th-mkm-for-museums-and-libraries.html">
 <link rel="alternate" hreflang="en" href="https://www.neogens.co/mkm-for-museums-and-libraries.html">
 <link rel="alternate" hreflang="th" href="https://www.neogens.co/th-mkm-for-museums-and-libraries.html">
@@ -23,14 +23,12 @@
 <meta name="theme-color" content="#08090A" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{ --go-rgb:184,240,74; --guess-rgb:232,163,61; --ask-rgb:127,199,232; --w-rgb:255,255,255; 
   --bg:#08090A; --bg-2:#0D0F11; --surface:#111417; --surface-2:#171B1F;
   --line:rgba(var(--w-rgb),.09); --line-2:rgba(var(--w-rgb),.18);
-  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#6E757D;
+  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#7C838B;
   --go:#B8F04A; --guess:#E8A33D; --ask:#7FC7E8;
   /* ไทยนำหน้าเสมอ เพื่อให้สระบน-ล่างและวรรณยุกต์วางถูกตำแหน่ง */
   --sans:'IBM Plex Sans Thai','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -379,7 +377,7 @@ html[data-theme="light"]{
   --go-rgb:76,122,11; --guess-rgb:149,89,10; --ask-rgb:27,100,137; --w-rgb:16,18,20;
   --bg:#FCFBF8; --bg-2:#F3F1EA; --surface:#FFFFFF; --surface-2:#F6F4ED;
   --line:rgba(16,18,20,.13); --line-2:rgba(16,18,20,.26);
-  --fg:#15181C; --dim:#4C535A; --mute:#79818A;
+  --fg:#15181C; --dim:#4C535A; --mute:#6D757E;
   --go:#4C7A0B; --guess:#95590A; --ask:#1B6489;
   --on-go:#FFFFFF;
   --go-soft:rgba(76,122,11,.10); --go-line:rgba(76,122,11,.34);
@@ -488,10 +486,188 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
 
 section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
 .pband h2.pb-t{font-size:clamp(32px,5.4vw,64px)}
+
+/* --- ลิงก์ข้ามไปเนื้อหา กับกรอบโฟกัสที่มองเห็นได้ --- */
+.skip{position:absolute;left:-9999px;top:0;z-index:120}
+.skip:focus{left:10px;top:10px;background:var(--fg);color:var(--bg);
+  padding:11px 18px;border-radius:10px;text-decoration:none;font-size:14.5px;
+  line-height:1.75;box-shadow:0 8px 30px var(--shadow,rgba(0,0,0,.4))}
+:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:3px}
+
+/* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
+.hkeep-1{font-size:19.456px;font-weight:600;line-height:1.5;font-family:var(--sans);text-transform:none;color:var(--fg);margin-top:61.44px;margin-bottom:0px;margin-left:0px;margin-right:0px}
+.hkeep-2{font-size:17px;font-weight:600;line-height:1.55;font-family:var(--sans);text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+
+/* --- ป้ายชื่อช่องในฟอร์ม --- */
+.ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.ffield input{width:100%}
+.flab{font-family:var(--mono);font-size:10.5px;letter-spacing:0;text-transform:uppercase;
+  color:var(--mute);padding-left:17px;line-height:1.8}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.neogens.co/#org",
+      "name": "Neo Gens",
+      "legalName": "Neo Gens Co., Ltd.",
+      "url": "https://www.neogens.co/",
+      "email": "hello@neogens.co",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangkok",
+        "addressCountry": "TH"
+      },
+      "knowsAbout": [
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-ontology"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-kg"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-sovereignty"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.neogens.co/#website",
+      "url": "https://www.neogens.co/",
+      "name": "Neo Gens",
+      "publisher": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "inLanguage": [
+        "en",
+        "th"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://www.neogens.co/#glossary",
+      "name": "การบริหารจัดการความรู้สมัยใหม่",
+      "url": "https://www.neogens.co/th-ontology-and-knowledge-graph.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-mkm",
+      "name": "การบริหารจัดการความรู้สมัยใหม่",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/th-what-mkm-is.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-ontology",
+      "name": "ontology",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/th-ontology-and-knowledge-graph.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-kg",
+      "name": "knowledge graph",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/th-ontology-and-knowledge-graph.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-sovereignty",
+      "name": "AI sovereignty",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/th-ai-sovereignty.html"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.neogens.co/#service-museums",
+      "name": "MKM สำหรับพิพิธภัณฑ์และห้องสมุด",
+      "provider": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "url": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html",
+      "about": [
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.neogens.co/#service-coffee",
+      "name": "MKM สำหรับกาแฟ",
+      "provider": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "url": "https://www.neogens.co/th-mkm-for-coffee.html",
+      "about": [
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html",
+      "url": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html",
+      "name": "MKM สำหรับพิพิธภัณฑ์และห้องสมุด",
+      "isPartOf": {
+        "@id": "https://www.neogens.co/#website"
+      },
+      "inLanguage": "th",
+      "publisher": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "description": "ผู้ใหญ่ที่มีการศึกษาสี่คน ใช้เวลาทั้งบ่ายในห้องจัดแสดงใหม่ที่ลงทุนดี อ่านป้ายทุกป้าย ลองอุปกรณ์ทุกชิ้น",
+      "about": [
+        {
+          "@id": "https://www.neogens.co/#service-museums"
+        }
+      ],
+      "translationOfWork": {
+        "@id": "https://www.neogens.co/mkm-for-museums-and-libraries.html"
+      },
+      "breadcrumb": {
+        "@id": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html#crumbs"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html#crumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Neo Gens",
+          "item": "https://www.neogens.co/th-index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MKM สำหรับพิพิธภัณฑ์และห้องสมุด",
+          "item": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <marker id="arw" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6" markerHeight="6" orient="auto">
@@ -505,11 +681,12 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="th-index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><a href="th-the-problem.html">แนวคิด</a><a class="on" href="th-mkm-for-museums-and-libraries.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-about.html">เราคือใคร</a><span class="lang"><a class="on" href="th-mkm-for-museums-and-libraries.html">TH</a><span>/</span><a href="mkm-for-museums-and-libraries.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div>
-    <div class="nav-mob"><span class="lang"><a class="on" href="th-mkm-for-museums-and-libraries.html">TH</a><span>/</span><a href="mkm-for-museums-and-libraries.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="เมนู" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+    <div class="nav-links"><a href="th-the-problem.html">แนวคิด</a><a class="on" aria-current="page" href="th-mkm-for-museums-and-libraries.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-about.html">เราคือใคร</a><span class="lang"><a class="on" aria-current="page" href="th-mkm-for-museums-and-libraries.html">TH</a><span>/</span><a href="mkm-for-museums-and-libraries.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="th-mkm-for-museums-and-libraries.html">TH</a><span>/</span><a href="mkm-for-museums-and-libraries.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="เมนู" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="th-index.html">สารบัญทั้งหมด</a><div class="h">ภาค 1 · แนวคิด</div><a href="th-the-problem.html">01 · ปัญหา</a><a href="th-what-mkm-is.html">02 · สิ่งนี้คืออะไร</a><a href="th-why-it-works.html">03 · ทำไมมันถึงได้ผล</a><a href="th-ontology-and-knowledge-graph.html">04 · ontology กับ knowledge graph</a><div class="h">ภาค 2 · พิพิธภัณฑ์และห้องสมุด</div><a href="th-what-you-are-holding.html">สิ่งที่คุณถืออยู่</a><a class="on" href="th-mkm-for-museums-and-libraries.html">01 · สถานะวันนี้</a><a href="th-visitors-and-readers.html">02 · ผู้ชมและผู้อ่าน</a><a href="th-leadership.html">03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a><a href="th-services.html">เราทำอะไรร่วมกัน</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-ai-sovereignty.html">ข้อมูลของคุณ · AI Sovereignty</a><a href="th-what-we-wont-do.html">สิ่งที่เราไม่ทำ</a><a href="long-read-museums-and-libraries.html">บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><div class="h">ภาค 3 · โครงการเพื่อสาธารณะ</div><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-coffee-farmer.html">สำหรับคนปลูกกาแฟ</a><a href="th-coffee-demo.html">เดโมแดชบอร์ด</a><div class="h">&nbsp;</div><a href="th-about.html">เราคือใคร</a><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="th-index.html">สารบัญทั้งหมด</a><div class="h">ภาค 1 · แนวคิด</div><a href="th-the-problem.html">01 · ปัญหา</a><a href="th-what-mkm-is.html">02 · สิ่งนี้คืออะไร</a><a href="th-why-it-works.html">03 · ทำไมมันถึงได้ผล</a><a href="th-ontology-and-knowledge-graph.html">04 · ontology กับ knowledge graph</a><div class="h">ภาค 2 · พิพิธภัณฑ์และห้องสมุด</div><a href="th-what-you-are-holding.html">สิ่งที่คุณถืออยู่</a><a class="on" aria-current="page" href="th-mkm-for-museums-and-libraries.html">01 · สถานะวันนี้</a><a href="th-visitors-and-readers.html">02 · ผู้ชมและผู้อ่าน</a><a href="th-leadership.html">03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a><a href="th-services.html">เราทำอะไรร่วมกัน</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-ai-sovereignty.html">ข้อมูลของคุณ · AI Sovereignty</a><a href="th-what-we-wont-do.html">สิ่งที่เราไม่ทำ</a><a href="long-read-museums-and-libraries.html">บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><div class="h">ภาค 3 · โครงการเพื่อสาธารณะ</div><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-coffee-farmer.html">สำหรับคนปลูกกาแฟ</a><a href="th-coffee-demo.html">เดโมแดชบอร์ด</a><div class="h">&nbsp;</div><a href="th-about.html">เราคือใคร</a><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div></div>
 </nav>
+<main id="main">
 <div class="pband">
   <div class="wrap">
     <div class="pb-k">โดเมนแรกที่เราลงมือ</div>
@@ -621,14 +798,14 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
     </figure>
 
 
-    <h3 class="rv" style="margin-top:clamp(50px,6vw,78px)">วิธีเดียวกัน องค์กรสองแบบ</h3>
+    <h2 class="rv hkeep-1" style="margin-top:clamp(50px,6vw,78px)">วิธีเดียวกัน องค์กรสองแบบ</h2>
     <p class="lede rv" style="margin-top:10px">
       วินัยเป็นเรื่องเดียวกันครับ ที่ต่างคือคำถามไหนที่ล้มเหลวซ้ำ ๆ และใครเป็นคนตอบไม่ได้
     </p>
     <div class="two">
       <div class="tw rv">
         <div class="k">ในพิพิธภัณฑ์</div>
-        <h4>คำถามที่ต้องข้ามแผนก</h4>
+        <h3 class="hkeep-2">คำถามที่ต้องข้ามแผนก</h3>
         <p>ภัณฑารักษ์อยากได้วัตถุทุกชิ้นที่เกี่ยวกับเรื่องเดียว คณะสำรวจเดียว ช่างคนเดียว คำตอบมีอยู่แล้ว แต่กระจายอยู่ในเซรามิก สิ่งทอ งานอนุรักษ์ และจดหมายเหตุ ด้วยศัพท์สี่ชุด</p>
         <dl>
           <dt>หน่วยของข้อมูล</dt><dd>วัตถุหนึ่งชิ้น พร้อมทะเบียนและสายการครอบครอง</dd>
@@ -685,22 +862,23 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
     </p>
     <form id="wl" class="rv" novalidate>
       <div class="frow">
-        <input type="text" id="name" placeholder="ชื่อ-นามสกุล" aria-label="ชื่อ-นามสกุล" autocomplete="name">
-        <input type="text" id="org" placeholder="องค์กร" aria-label="องค์กร" autocomplete="organization">
+        <div class="ffield"><label class="flab" for="name">ชื่อ-นามสกุล</label><input type="text" id="name" autocomplete="name"></div>
+        <div class="ffield"><label class="flab" for="org">องค์กร</label><input type="text" id="org" autocomplete="organization"></div>
       </div>
       <div class="frow">
-        <input type="email" id="email" placeholder="อีเมลองค์กร" aria-label="อีเมลองค์กร" autocomplete="email" required>
+        <div class="ffield"><label class="flab" for="email">อีเมลองค์กร</label><input type="email" id="email" autocomplete="email" required></div>
       </div>
       <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
              aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn" type="submit">ขอนัดหารือ</button>
     </form>
-    <div class="ok" id="ok">ได้รับคำขอของคุณแล้ว เราจะติดต่อกลับภายในสองวันทำการเพื่อนัดหมายเวลา</div>
-    <div class="err" id="err"></div>
+    <div class="ok" id="ok" role="status">ได้รับคำขอของคุณแล้ว เราจะติดต่อกลับภายในสองวันทำการเพื่อนัดหมายเวลา</div>
+    <div class="err" id="err" role="alert"></div>
     <p class="form-note rv">หรือติดต่อโดยตรงที่ hello@neogens.co</p>
   </div>
 </section>
 <div class="pn"><div class="pn-in"><a class="pv" href="th-why-it-works.html"><div class="k">ก่อนหน้า</div><div class="t">ทำไมมันถึงได้ผล</div></a><a class="nx" href="th-visitors-and-readers.html"><div class="k">ถัดไป</div><div class="t">02 · ผู้ชมและผู้อ่าน</div></a></div></div>
+</main>
 <footer>
   <div class="wrap">
     <div class="f-in">
@@ -782,7 +960,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
     var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
     var hp=document.getElementById('website');
     if(errEl) errEl.style.display='none';
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){emailEl.focus();return;}
+    emailEl.removeAttribute('aria-invalid');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="รูปแบบอีเมลยังไม่ถูก ลองตรวจอีกครั้ง";errEl.style.display='block';}emailEl.focus();return;}
     btn.disabled=true; btn.textContent='กำลังส่ง…';
     fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       name:(document.getElementById('name')||{}).value||'',

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The institutions with the best knowledge in the room are losing the room. — Neo Gens</title>
-<meta name="description" content="Four educated adults spend an afternoon in a well-funded new gallery, read every panel, try every interactive — and leave with nothing they can repeat to a child in…">
-<meta property="og:title" content="The institutions with the best knowledge in the room are losing the room. — Neo Gens">
-<meta property="og:description" content="Four educated adults spend an afternoon in a well-funded new gallery, read every panel, try every interactive — and leave with nothing they can repeat to a child in…">
+<title>MKM for Museums & Libraries — Neo Gens</title>
+<meta name="description" content="Four educated adults spend an afternoon in a well-funded new gallery, read every panel, try every interactive — and leave with nothing they can repeat to a">
+<meta property="og:title" content="MKM for Museums & Libraries">
+<meta property="og:description" content="Four educated adults spend an afternoon in a well-funded new gallery, read every panel, try every interactive — and leave with nothing they can repeat to a">
 <link rel="canonical" href="https://www.neogens.co/mkm-for-museums-and-libraries.html">
 <link rel="alternate" hreflang="en" href="https://www.neogens.co/mkm-for-museums-and-libraries.html">
 <link rel="alternate" hreflang="th" href="https://www.neogens.co/th-mkm-for-museums-and-libraries.html">
@@ -23,14 +23,12 @@
 <meta name="theme-color" content="#08090A" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{ --go-rgb:184,240,74; --guess-rgb:232,163,61; --ask-rgb:127,199,232; --w-rgb:255,255,255; 
   --bg:#08090A; --bg-2:#0D0F11; --surface:#111417; --surface-2:#171B1F;
   --line:rgba(var(--w-rgb),.09); --line-2:rgba(var(--w-rgb),.18);
-  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#6E757D;
+  --fg:#EDEBE6; --dim:#A2A8AF; --mute:#7C838B;
   --go:#B8F04A;      /* grounded / corroborated */
   --guess:#E8A33D;   /* generated / claim */
   --ask:#7FC7E8;     /* visitor / enquiry */
@@ -377,7 +375,7 @@ html[data-theme="light"]{
   --go-rgb:76,122,11; --guess-rgb:149,89,10; --ask-rgb:27,100,137; --w-rgb:16,18,20;
   --bg:#FCFBF8; --bg-2:#F3F1EA; --surface:#FFFFFF; --surface-2:#F6F4ED;
   --line:rgba(16,18,20,.13); --line-2:rgba(16,18,20,.26);
-  --fg:#15181C; --dim:#4C535A; --mute:#79818A;
+  --fg:#15181C; --dim:#4C535A; --mute:#6D757E;
   --go:#4C7A0B; --guess:#95590A; --ask:#1B6489;
   --on-go:#FFFFFF;
   --go-soft:rgba(76,122,11,.10); --go-line:rgba(76,122,11,.34);
@@ -486,10 +484,188 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
 
 section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 .pband h2.pb-t{font-size:clamp(32px,5.4vw,64px)}
+
+/* --- ลิงก์ข้ามไปเนื้อหา กับกรอบโฟกัสที่มองเห็นได้ --- */
+.skip{position:absolute;left:-9999px;top:0;z-index:120}
+.skip:focus{left:10px;top:10px;background:var(--fg);color:var(--bg);
+  padding:11px 18px;border-radius:10px;text-decoration:none;font-size:14.5px;
+  line-height:1.75;box-shadow:0 8px 30px var(--shadow,rgba(0,0,0,.4))}
+:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:3px}
+
+/* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
+.hkeep-1{font-size:19.456px;font-weight:600;line-height:1.3;font-family:var(--sans);letter-spacing:-0.38912px;text-transform:none;color:var(--fg);margin-top:61.44px;margin-bottom:0px;margin-left:0px;margin-right:0px}
+.hkeep-2{font-size:16.5px;font-weight:600;line-height:1.3;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+
+/* --- ป้ายชื่อช่องในฟอร์ม --- */
+.ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.ffield input{width:100%}
+.flab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--mute);padding-left:17px;line-height:1.8}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.neogens.co/#org",
+      "name": "Neo Gens",
+      "legalName": "Neo Gens Co., Ltd.",
+      "url": "https://www.neogens.co/",
+      "email": "hello@neogens.co",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangkok",
+        "addressCountry": "TH"
+      },
+      "knowsAbout": [
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-ontology"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-kg"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-sovereignty"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.neogens.co/#website",
+      "url": "https://www.neogens.co/",
+      "name": "Neo Gens",
+      "publisher": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "inLanguage": [
+        "en",
+        "th"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://www.neogens.co/#glossary",
+      "name": "Modern Knowledge Management",
+      "url": "https://www.neogens.co/ontology-and-knowledge-graph.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-mkm",
+      "name": "Modern Knowledge Management",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/what-mkm-is.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-ontology",
+      "name": "Ontology",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/ontology-and-knowledge-graph.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-kg",
+      "name": "Knowledge graph",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/ontology-and-knowledge-graph.html"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://www.neogens.co/#term-sovereignty",
+      "name": "AI sovereignty",
+      "inDefinedTermSet": {
+        "@id": "https://www.neogens.co/#glossary"
+      },
+      "url": "https://www.neogens.co/ai-sovereignty.html"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.neogens.co/#service-museums",
+      "name": "MKM for Museums & Libraries",
+      "provider": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "url": "https://www.neogens.co/mkm-for-museums-and-libraries.html",
+      "about": [
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.neogens.co/#service-coffee",
+      "name": "MKM for Coffee",
+      "provider": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "url": "https://www.neogens.co/mkm-for-coffee.html",
+      "about": [
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.neogens.co/mkm-for-museums-and-libraries.html",
+      "url": "https://www.neogens.co/mkm-for-museums-and-libraries.html",
+      "name": "MKM for Museums & Libraries",
+      "isPartOf": {
+        "@id": "https://www.neogens.co/#website"
+      },
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "description": "Four educated adults spend an afternoon in a well-funded new gallery, read every panel, try every interactive — and leave with nothing they can repeat to a",
+      "about": [
+        {
+          "@id": "https://www.neogens.co/#service-museums"
+        }
+      ],
+      "workTranslation": {
+        "@id": "https://www.neogens.co/th-mkm-for-museums-and-libraries.html"
+      },
+      "breadcrumb": {
+        "@id": "https://www.neogens.co/mkm-for-museums-and-libraries.html#crumbs"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.neogens.co/mkm-for-museums-and-libraries.html#crumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Neo Gens",
+          "item": "https://www.neogens.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MKM for Museums & Libraries",
+          "item": "https://www.neogens.co/mkm-for-museums-and-libraries.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <marker id="arw" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6" markerHeight="6" orient="auto">
@@ -503,11 +679,12 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><a href="the-problem.html">The idea</a><a class="on" href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" href="mkm-for-museums-and-libraries.html">EN</a><span>/</span><a href="th-mkm-for-museums-and-libraries.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
-    <div class="nav-mob"><span class="lang"><a class="on" href="mkm-for-museums-and-libraries.html">EN</a><span>/</span><a href="th-mkm-for-museums-and-libraries.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+    <div class="nav-links"><a href="the-problem.html">The idea</a><a class="on" aria-current="page" href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" aria-current="page" href="mkm-for-museums-and-libraries.html">EN</a><span>/</span><a href="th-mkm-for-museums-and-libraries.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="mkm-for-museums-and-libraries.html">EN</a><span>/</span><a href="th-mkm-for-museums-and-libraries.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What it is</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="what-you-are-holding.html">What you are holding</a><a class="on" href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="visitors-and-readers.html">02 · Visitors and readers</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">All sections</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What it is</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="what-you-are-holding.html">What you are holding</a><a class="on" aria-current="page" href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="visitors-and-readers.html">02 · Visitors and readers</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
 </nav>
+<main id="main">
 <div class="pband">
   <div class="wrap">
     <div class="pb-k">Practice area 01</div>
@@ -618,14 +795,14 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
     </figure>
 
 
-    <h3 class="rv" style="margin-top:clamp(50px,6vw,78px)">One method, two kinds of institution</h3>
+    <h2 class="rv hkeep-1" style="margin-top:clamp(50px,6vw,78px)">One method, two kinds of institution</h2>
     <p class="lede rv" style="margin-top:10px">
       The discipline is the same. What differs is which question keeps failing, and who fails to answer it.
     </p>
     <div class="two">
       <div class="tw rv">
         <div class="k">In a museum</div>
-        <h4>The question that crosses departments</h4>
+        <h3 class="hkeep-2">The question that crosses departments</h3>
         <p>A curator wants every object connected to one theme, one expedition, one maker. The answer exists — spread across ceramics, textiles, conservation and the archive, in four vocabularies.</p>
         <dl>
           <dt>The unit</dt><dd>An object, with an accession record and a chain of custody</dd>
@@ -684,22 +861,23 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
     </p>
     <form id="wl" class="rv" novalidate>
       <div class="frow">
-        <input type="text" id="name" placeholder="Name" aria-label="Name" autocomplete="name">
-        <input type="text" id="org" placeholder="Institution" aria-label="Institution" autocomplete="organization">
+        <div class="ffield"><label class="flab" for="name">Name</label><input type="text" id="name" autocomplete="name"></div>
+        <div class="ffield"><label class="flab" for="org">Institution</label><input type="text" id="org" autocomplete="organization"></div>
       </div>
       <div class="frow">
-        <input type="email" id="email" placeholder="Work email" aria-label="Work email" autocomplete="email" required>
+        <div class="ffield"><label class="flab" for="email">Work email</label><input type="email" id="email" autocomplete="email" required></div>
       </div>
       <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
              aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn" type="submit">Request a briefing</button>
     </form>
-    <div class="ok" id="ok">Received. We'll reply within two business days to find a time.</div>
-    <div class="err" id="err"></div>
+    <div class="ok" id="ok" role="status">Received. We'll reply within two business days to find a time.</div>
+    <div class="err" id="err" role="alert"></div>
     <p class="form-note rv">Or write directly — hello@neogens.co</p>
   </div>
 </section>
 <div class="pn"><div class="pn-in"><a class="pv" href="why-it-works.html"><div class="k">Previous</div><div class="t">Why it works</div></a><a class="nx" href="visitors-and-readers.html"><div class="k">Next</div><div class="t">02 · Visitors and readers</div></a></div></div>
+</main>
 <footer>
   <div class="wrap">
     <div class="f-in">
@@ -782,7 +960,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
     var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
     var hp=document.getElementById('website');
     if(errEl) errEl.style.display='none';
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){emailEl.focus();return;}
+    emailEl.removeAttribute('aria-invalid');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="That email address does not look right — check it and try again.";errEl.style.display='block';}emailEl.focus();return;}
     btn.disabled=true; btn.textContent='Sending…';
     fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       name:(document.getElementById('name')||{}).value||'',

@@ -49,10 +49,12 @@ def targets(name):
 
 def build(name):
     en, th = targets(name)
+    # ต้องตรงกับที่ .tools/sync_nav.py สร้าง ไม่งั้นสองสคริปต์จะเขียนทับกันไปมา
+    # และ aria-current จะหายทุกครั้งที่รันสคริปต์นี้ทีหลัง
     if name.startswith("th-"):
-        return (f'<span class="lang"><a class="on" href="{th}">TH</a>'
+        return (f'<span class="lang"><a class="on" aria-current="page" href="{th}">TH</a>'
                 f'<span>/</span><a href="{en}">EN</a></span>')
-    return (f'<span class="lang"><a class="on" href="{en}">EN</a>'
+    return (f'<span class="lang"><a class="on" aria-current="page" href="{en}">EN</a>'
             f'<span>/</span><a href="{th}">TH</a></span>')
 
 changed, untouched, report = [], [], []
@@ -92,7 +94,7 @@ for path in sorted(ROOT.glob("*.html")):
         hrefs = re.findall(r'href="([^"]+)"', b)
         if set(hrefs) != {en, th}:
             bad.append(f"{path.name} ชี้ไป {hrefs} ควรเป็น {[en, th]}")
-        if 'class="on"' not in b:
+        if 'aria-current="page"' not in b:
             bad.append(f"{path.name} ไม่มีปุ่มที่ทำเครื่องหมายภาษาปัจจุบัน")
     for t in (en, th):
         if not (ROOT / t).exists():

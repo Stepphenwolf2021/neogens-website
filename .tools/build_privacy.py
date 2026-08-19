@@ -53,9 +53,9 @@ EN = {
         ("h2", "Where it goes"),
         ("p", "The form sends your entry to our own endpoint running on Cloudflare "
               "Workers, where it is stored, and an email notification is delivered through "
-              "Resend. The site itself is hosted on GitHub Pages. Typefaces are served by "
-              "Google Fonts, which means Google receives your IP address when a page "
-              "loads — we are moving those files onto our own domain to end that."),
+              "Resend. The site itself is hosted on GitHub Pages. Everything else a page "
+              "needs — typefaces, styles, scripts — is served from this domain, so loading "
+              "a page contacts no one but us."),
         ("h2", "How long we keep it"),
         ("p", "Twenty-four months, after which the record is deleted automatically. The "
               "counter that stops the form being submitted repeatedly from one network "
@@ -112,8 +112,8 @@ TH = {
         ("h2", "ข้อมูลไปอยู่ที่ไหน"),
         ("p", "ฟอร์มส่งสิ่งที่คุณกรอกไปยังปลายทางของเราเองที่ทำงานอยู่บน Cloudflare Workers "
               "และเก็บไว้ที่นั่น แล้วส่งอีเมลแจ้งเตือนผ่าน Resend ตัวเว็บโฮสต์อยู่บน GitHub Pages "
-              "ส่วนฟอนต์ตอนนี้เรียกจาก Google Fonts ซึ่งแปลว่า Google ได้รับหมายเลข IP ของคุณ "
-              "ตอนหน้าเว็บโหลด — เรากำลังย้ายไฟล์ฟอนต์มาไว้บนโดเมนของเราเองเพื่อยุติเรื่องนี้"),
+              "ส่วนอย่างอื่นที่หน้าเว็บต้องใช้ — ฟอนต์ สไตล์ สคริปต์ — เรียกจากโดเมนนี้ทั้งหมด "
+              "การเปิดหน้าเว็บจึงไม่ได้ติดต่อใครนอกจากเรา"),
         ("h2", "เก็บไว้นานแค่ไหน"),
         ("p", "ยี่สิบสี่เดือน แล้วเรคอร์ดจะถูกลบเองโดยอัตโนมัติ ส่วนตัวนับที่กันไม่ให้ส่งฟอร์มซ้ำ "
               "ถี่เกินไปจากเครือข่ายเดียวกัน จะถือหมายเลข IP ไว้ไม่เกินสองชั่วโมงแล้วหมดอายุไปเอง "

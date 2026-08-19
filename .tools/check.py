@@ -56,14 +56,76 @@ for f,(src,p) in parsed.items():
         if frag and os.path.exists(path):
             if ('id="%s"'%frag) not in io.open(path,encoding='utf-8').read(): E(f,'dead fragment %s'%h)
 
+# --- title กับ description ต้องไม่ยาวจนถูกตัดในผลค้นหา ---
+# ย่อเมื่อ 2026-08-19 · เดิม title เกิน 60 อยู่ 25 หน้า ยาวสุด 113
+import html as _html
+for f in files:
+    src,p=parsed[f]
+    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    m=re.search(r'<title>(.*?)</title>',src,re.S)
+    if m and len(_html.unescape(m.group(1)))>60:
+        E(f,'title is %d characters, over the 60 that fit a search result'
+          %len(_html.unescape(m.group(1))))
+    d=re.search(r'<meta name="description" content="([^"]*)"',src)
+    if d and len(_html.unescape(d.group(1)))>160:
+        E(f,'description is %d characters, over 160'%len(_html.unescape(d.group(1))))
+    od=re.search(r'<meta property="og:description" content="([^"]*)"',src)
+    if d and od and d.group(1)!=od.group(1):
+        E(f,'og:description does not match the meta description')
+
+# --- ลำดับหัวข้อห้ามข้ามระดับ ---
+# แก้เมื่อ 2026-08-19 · เดิมข้าม 33 จาก 39 หน้า เช่น h1 → h5
+# โปรแกรมอ่านหน้าจอใช้ลำดับหัวข้อเป็นสารบัญของหน้า ข้ามระดับแล้วสารบัญจะมีรู
+for f in files:
+    src,p=parsed[f]
+    if 'http-equiv="refresh"' in src: continue
+    body=re.sub(r'<(script|style|svg)\b.*?</\1>','',src,flags=re.S)
+    prev=0
+    for m in re.finditer(r'<h([1-6])\b',body):
+        lvl=int(m.group(1))
+        if prev and lvl>prev+1:
+            E(f,'heading level jumps h%d to h%d'%(prev,lvl)); break
+        prev=lvl
+
+# --- สีข้อความรองต้องผ่านเกณฑ์ contrast ---
+# --mute ใช้กับป้ายขนาด 10–11px ซึ่งนับเป็นข้อความปกติ ต้องได้ 4.5:1
+# ยกระดับเมื่อ 2026-08-19 ด่านนี้กันไม่ให้ใครขยับกลับไปค่าที่อ่านไม่ออก
+def _lum(h):
+    h=h.lstrip('#'); r,g,b=[int(h[i:i+2],16)/255 for i in (0,2,4)]
+    f=lambda c: c/12.92 if c<=.03928 else ((c+.055)/1.055)**2.4
+    return .2126*f(r)+.7152*f(g)+.0722*f(b)
+def _ratio(a,b):
+    l1,l2=sorted([_lum(a),_lum(b)],reverse=True); return (l1+.05)/(l2+.05)
+for f in files:
+    src,p=parsed[f]
+    if 'http-equiv="refresh"' in src: continue
+    for block,bgvar in (('root','--bg'),):
+        pass
+    for m in re.finditer(r'(:root|html\[data-theme="light"\])\{([^}]*)',src):
+        body=m.group(2)
+        mute=re.search(r'--mute:\s*(#[0-9A-Fa-f]{6})',body)
+        bg=re.search(r'--bg:\s*(#[0-9A-Fa-f]{6})',body)
+        surf=re.search(r'--surface:\s*(#[0-9A-Fa-f]{6})',body)
+        if not (mute and bg): continue
+        for name,ground in (('page',bg.group(1)),('card',surf.group(1) if surf else None)):
+            if not ground: continue
+            r=_ratio(mute.group(1),ground)
+            if r < 4.5:
+                E(f,'--mute %s on %s %s is %.2f:1, below the 4.5 minimum'
+                  %(mute.group(1),name,ground,r))
+
 # --- ห้ามมีสคริปต์หรือทรัพยากรจากภายนอกที่เก็บข้อมูลผู้อ่าน ---
 # ถอด Google Analytics ออกเมื่อ 2026-08-19 ด่านนี้กันไม่ให้ใครเผลอใส่กลับมา
 # เว็บที่ขายเรื่องอธิปไตยเหนือข้อมูล ต้องไม่ส่ง IP ผู้อ่านออกไปก่อนเขาได้อ่านอะไร
-THIRD_PARTY=re.compile(r'<script[^>]*\ssrc="(https?:)?//([^"]+)"')
+# ครอบทั้ง script และ link เพราะฟอนต์จากภายนอกก็ส่ง IP ผู้อ่านออกไปเหมือนกัน
+THIRD_PARTY=re.compile(r'<(?:script|link|iframe|img)[^>]*\s(?:src|href)="(?:https?:)?//([^"/]+)')
+OURS={'www.neogens.co','neogens.co','neogens-briefing.neogens.workers.dev'}
 for f in files:
     src,p=parsed[f]
     for m in THIRD_PARTY.finditer(src):
-        E(f,'third-party script: %s'%m.group(2).split('/')[0])
+        host=m.group(1)
+        if host not in OURS:
+            E(f,'third-party resource: %s'%host)
     if 'googletagmanager' in src or 'gtag(' in src:
         E(f,'analytics tag is back')
 

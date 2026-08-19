@@ -1,0 +1,10 @@
+Fonts served from this directory
+================================
+
+Inter                — SIL Open Font License 1.1 — https://github.com/rsms/inter
+Instrument Serif     — SIL Open Font License 1.1 — https://github.com/Instrument/instrument-serif
+JetBrains Mono       — SIL Open Font License 1.1 — https://github.com/JetBrains/JetBrainsMono
+IBM Plex Sans Thai   — SIL Open Font License 1.1 — https://github.com/IBM/plex
+
+Downloaded from Google Fonts and re-hosted on neogens.co so that no reader's
+IP address is sent to a third party in order to render this site.
