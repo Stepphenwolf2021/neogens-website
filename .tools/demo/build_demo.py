@@ -125,7 +125,8 @@ def cards_block(C):
     body = [bars(proc), bars(C["searches"]), bars(C["hops_row"], "%")]
     out = ['<div class="dm-cards">']
     for (k, h, p), chart in zip(C["cards"], body):
-        out.append(f'<div class="dm-card"><div class="k">{k}</div><h4>{h}</h4>'
+        # h2 ไม่ใช่ h4 เพราะการ์ดเหล่านี้อยู่ใต้ h1 โดยตรง ข้ามระดับแล้วสารบัญของหน้าจะมีรู
+        out.append(f'<div class="dm-card"><div class="k">{k}</div><h2>{h}</h2>'
                    f'<p>{p}</p>{chart}</div>')
     return "".join(out) + "</div>"
 
@@ -273,6 +274,7 @@ def build(C):
             f'hreflang="th" href="https://www.neogens.co/{th_page}"' in s),
         "canonical ชี้หน้านี้": f'rel="canonical" href="https://www.neogens.co/{C["out"]}"' in s,
         "การ์ดสามใบ": s.count('<div class="dm-card">') == 3,
+        "หัวข้อการ์ดไม่ข้ามระดับ": s.count('<div class="k">') >= 3 and '<h4>' not in s,
         "ตัวเลขสรุปแปดช่อง": s.count('<div class="dm-stat"') == 8,
         "แถวตารางหกแถว": s.count("<tr>") == 7,
         "หัวข้อหลักเป็นภาษาที่ถูก": C["h1"] in s,

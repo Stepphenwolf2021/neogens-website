@@ -22,8 +22,7 @@ EN = {
     "title": "What 5,000 contributors would look like — Neo Gens",
     "ogtitle": "What 5,000 contributors would look like",
     "desc": "A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors "
-            "along the coffee chain, a knowledge graph laid over the world map, and what "
-            "a farmer or a roaster would actually ask it.",
+            "along the coffee chain, and what a farmer or a roaster would actually ask it.",
     "kicker": "MKM for Coffee · demo",
     "h1": "What the vault looks like with 5,000 people in it",
     "stand": "A simulated view of the Coffee Knowledge Vault — every origin, every market, "
@@ -119,7 +118,8 @@ TH = {
                "เส้น = เส้นทางการค้าที่มีล็อตผ่านการยืนยันวิ่งอยู่แล้ว"],
     "map_alt": "แผนที่โลกที่แรเงาแถบปลูกกาแฟ แสดง 43 จุดที่มีผู้ร่วมสร้างคลังลงทะเบียนไว้ "
                "และเส้นโค้งที่เชื่อมแต่ละต้นทางเข้ากับตลาดที่รับซื้อ",
-    "tools": ["เส้นทางการค้า", "ต้นทางคะแนนสูง", "ผู้ซื้อที่ตรงโปรไฟล์", "เฉพาะจำนวนคน"],
+    "tools": ["เส้นทางการค้าทั้งหมด", "เฉพาะต้นทางคะแนนสูง",
+              "เฉพาะคู่ค้าของจุดที่เลือก", "ซ่อนเส้น ดูเฉพาะคน"],
     "slider": "คะแนนคัปปิ้ง",
     "slider_any": "ทั้งหมด",
     "slider_alt": "กรองต้นทางด้วยคะแนนคัปปิ้งเฉลี่ย",
@@ -190,7 +190,7 @@ TH = {
         "cupping": "ผลคัปปิ้งที่แบ่งปันไว้",
         "routes": "ซื้อจากต้นทางนี้วันนี้ แปลว่าได้อ่านเส้นทางที่ยืนยันแล้ว {n} เส้น เข้าสู่{list}{more}",
         "more": " และอีก {n} แห่ง",
-        "matchBtn": "จับคู่โปรไฟล์นี้กับโรงคั่ว",
+        "matchBtn": "ดูโรงคั่วที่รับซื้อโปรไฟล์นี้",
         "backBtn": "กลับไปภาพรวม",
         "marketNote": "ผลคัปปิ้งทุกครั้งที่เพิ่มเข้ามาตรงนี้ "
                       "ทำให้เกณฑ์เทียบที่เกษตรกรอีกฟากของแผนที่มองเห็นคมขึ้น",

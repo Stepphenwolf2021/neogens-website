@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What 5,000 contributors would look like — Neo Gens</title>
-<meta name="description" content="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, a knowledge graph laid over the world map, and what a">
+<meta name="description" content="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, and what a farmer or a roaster would actually ask it.">
 <meta property="og:title" content="What 5,000 contributors would look like">
-<meta property="og:description" content="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, a knowledge graph laid over the world map, and what a">
+<meta property="og:description" content="A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, and what a farmer or a roaster would actually ask it.">
 <link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee-demo.html">
 <link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee-demo.html">
 <link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee-demo.html">
@@ -243,6 +243,22 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .dlg-foot{color:var(--dim)}
 @media(max-width:620px){.dlg-turn{max-width:100%}}
 
+/* --- ลิงก์ข้ามไปเนื้อหา กับกรอบโฟกัสที่มองเห็นได้ --- */
+.skip{position:absolute;left:-9999px;top:0;z-index:120}
+.skip:focus{left:10px;top:10px;background:var(--fg);color:var(--bg);
+  padding:11px 18px;border-radius:10px;text-decoration:none;font-size:14.5px;
+  line-height:1.75;box-shadow:0 8px 30px var(--shadow,rgba(0,0,0,.4))}
+:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:3px}
+
+/* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
+.hkeep-2.hkeep-2{font-size:16.5px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+
+/* --- ป้ายชื่อช่องในฟอร์ม --- */
+.ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.ffield input{width:100%}
+.flab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--mute);padding-left:17px;line-height:1.8}
+
 /* ===== demo dashboard ===== */
 /* ===== demo dashboard ===== */
 .dm-warn{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--guess);border-radius:12px;background:rgba(var(--guess-rgb),.07);padding:14px 18px;margin:28px 0 0}
@@ -298,7 +314,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 @media(max-width:900px){.dm-cards{grid-template-columns:1fr}}
 .dm-card{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:20px}
 .dm-card .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--go);margin-bottom:10px}
-.dm-card h4{font-size:16px;margin-bottom:8px;line-height:1.35;color:var(--fg)}
+.dm-card h2{font-size:16px;margin-bottom:8px;line-height:1.35;color:var(--fg)}
 .dm-card p{font-size:13.5px;line-height:1.7;color:var(--dim);margin:0 0 12px}
 .dm-bar{display:flex;align-items:center;gap:9px;margin-top:7px;font-size:12.5px;color:var(--dim)}
 .dm-bar .n{font-family:var(--mono);font-size:10px;color:var(--mute);width:74px;flex:none;letter-spacing:.06em}
@@ -315,23 +331,6 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .dm-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 9px;border-radius:999px;border:1px solid var(--go-line);color:var(--go);background:var(--go-soft)}
 .dm-chip.am{border-color:rgba(var(--guess-rgb),.4);color:var(--guess);background:rgba(var(--guess-rgb),.07)}
 .dm-cap{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--mute);margin-top:14px;max-width:78ch}
-
-/* --- ลิงก์ข้ามไปเนื้อหา กับกรอบโฟกัสที่มองเห็นได้ --- */
-.skip{position:absolute;left:-9999px;top:0;z-index:120}
-.skip:focus{left:10px;top:10px;background:var(--fg);color:var(--bg);
-  padding:11px 18px;border-radius:10px;text-decoration:none;font-size:14.5px;
-  line-height:1.75;box-shadow:0 8px 30px var(--shadow,rgba(0,0,0,.4))}
-:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:3px}
-
-/* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
-.hkeep-1{font-size:16px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.48px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:8px;margin-left:0px;margin-right:0px}
-.hkeep-2{font-size:16px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.48px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:8px;margin-left:0px;margin-right:0px}
-
-/* --- ป้ายชื่อช่องในฟอร์ม --- */
-.ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
-.ffield input{width:100%}
-.flab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--mute);padding-left:17px;line-height:1.8}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -460,7 +459,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       "publisher": {
         "@id": "https://www.neogens.co/#org"
       },
-      "description": "A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, a knowledge graph laid over the world map, and what a",
+      "description": "A simulated dashboard of the Coffee Knowledge Vault: 5,000 contributors along the coffee chain, and what a farmer or a roaster would actually ask it.",
       "about": [
         {
           "@id": "https://www.neogens.co/#service-coffee"
@@ -548,7 +547,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       <div class="dm-panel" id="dm-panel" aria-live="polite"></div>
     </div>
     <div class="dm-tools"><button class="dm-tool on" data-layer="trade">Trade routes</button><button class="dm-tool" data-layer="quality">High-scoring origins</button><button class="dm-tool" data-layer="match">Buyer matches</button><button class="dm-tool" data-layer="people">Contributors only</button><label class="dm-slide">cup score <input id="dm-score" type="range" min="0" max="87" step="0.5" value="0" aria-label="Filter origins by mean cup score"><span id="dm-score-v">any</span></label></div>
-    <div class="dm-cards"><div class="dm-card"><div class="k">Quality</div><h2 class="hkeep-1">What method gets the score, at your altitude</h2><p>Mean cup score by processing method across every lot in the vault. A farmer filters this to plots within 150 m of their own elevation before deciding what to try next season.</p><div class="dm-bar"><span class="n">honey</span><span class="t"><i style="width:100%"></i></span><span class="v">84.9</span></div><div class="dm-bar"><span class="n">natural</span><span class="t"><i style="width:99%"></i></span><span class="v">84.3</span></div><div class="dm-bar"><span class="n">wet hulled</span><span class="t"><i style="width:99%"></i></span><span class="v">84.0</span></div><div class="dm-bar"><span class="n">washed</span><span class="t"><i style="width:99%"></i></span><span class="v">83.9</span></div><div class="dm-bar"><span class="n">monsooned</span><span class="t"><i style="width:97%"></i></span><span class="v">82.6</span></div></div><div class="dm-card"><div class="k">Market</div><h3 class="hkeep-2">What buyers are searching for</h3><p>Roasters query the vault by profile rather than by broker relationship. These are the searches that returned too few lots this month — each one is a market opening visible from the growing side.</p><div class="dm-bar"><span class="n">floral · tea-like</span><span class="t"><i style="width:100%"></i></span><span class="v">214</span></div><div class="dm-bar"><span class="n">low acidity</span><span class="t"><i style="width:87%"></i></span><span class="v">187</span></div><div class="dm-bar"><span class="n">honey process</span><span class="t"><i style="width:73%"></i></span><span class="v">156</span></div><div class="dm-bar"><span class="n">single plot</span><span class="t"><i style="width:67%"></i></span><span class="v">143</span></div><div class="dm-bar"><span class="n">shade grown</span><span class="t"><i style="width:46%"></i></span><span class="v">98</span></div></div><div class="dm-card"><div class="k">Traceability</div><h4>How far back a bag can be walked</h4><p>Every hop carries a date, a quantity and a source. Where a machine reading backs the claim, the lot is marked verified rather than stated.</p><div class="dm-bar"><span class="n">plot</span><span class="t"><i style="width:82%"></i></span><span class="v">81%</span></div><div class="dm-bar"><span class="n">mill</span><span class="t"><i style="width:94%"></i></span><span class="v">93%</span></div><div class="dm-bar"><span class="n">exporter</span><span class="t"><i style="width:98%"></i></span><span class="v">97%</span></div><div class="dm-bar"><span class="n">roaster</span><span class="t"><i style="width:100%"></i></span><span class="v">99%</span></div></div></div>
+    <div class="dm-cards"><div class="dm-card"><div class="k">Quality</div><h2>What method gets the score, at your altitude</h2><p>Mean cup score by processing method across every lot in the vault. A farmer filters this to plots within 150 m of their own elevation before deciding what to try next season.</p><div class="dm-bar"><span class="n">honey</span><span class="t"><i style="width:100%"></i></span><span class="v">84.9</span></div><div class="dm-bar"><span class="n">natural</span><span class="t"><i style="width:99%"></i></span><span class="v">84.3</span></div><div class="dm-bar"><span class="n">wet hulled</span><span class="t"><i style="width:99%"></i></span><span class="v">84.0</span></div><div class="dm-bar"><span class="n">washed</span><span class="t"><i style="width:99%"></i></span><span class="v">83.9</span></div><div class="dm-bar"><span class="n">monsooned</span><span class="t"><i style="width:97%"></i></span><span class="v">82.6</span></div></div><div class="dm-card"><div class="k">Market</div><h2>What buyers are searching for</h2><p>Roasters query the vault by profile rather than by broker relationship. These are the searches that returned too few lots this month — each one is a market opening visible from the growing side.</p><div class="dm-bar"><span class="n">floral · tea-like</span><span class="t"><i style="width:100%"></i></span><span class="v">214</span></div><div class="dm-bar"><span class="n">low acidity</span><span class="t"><i style="width:87%"></i></span><span class="v">187</span></div><div class="dm-bar"><span class="n">honey process</span><span class="t"><i style="width:73%"></i></span><span class="v">156</span></div><div class="dm-bar"><span class="n">single plot</span><span class="t"><i style="width:67%"></i></span><span class="v">143</span></div><div class="dm-bar"><span class="n">shade grown</span><span class="t"><i style="width:46%"></i></span><span class="v">98</span></div></div><div class="dm-card"><div class="k">Traceability</div><h2>How far back a bag can be walked</h2><p>Every hop carries a date, a quantity and a source. Where a machine reading backs the claim, the lot is marked verified rather than stated.</p><div class="dm-bar"><span class="n">plot</span><span class="t"><i style="width:82%"></i></span><span class="v">81%</span></div><div class="dm-bar"><span class="n">mill</span><span class="t"><i style="width:94%"></i></span><span class="v">93%</span></div><div class="dm-bar"><span class="n">exporter</span><span class="t"><i style="width:98%"></i></span><span class="v">97%</span></div><div class="dm-bar"><span class="n">roaster</span><span class="t"><i style="width:100%"></i></span><span class="v">99%</span></div></div></div>
     <div class="dm-tablewrap">
       <table class="dm-table">
         <thead><tr><th>Lot</th><th>Origin</th><th>Process</th><th>Score</th><th>Flavour</th><th>Traceable</th><th>Buyer match</th></tr></thead>
