@@ -74,7 +74,7 @@ EN = {
          "What that costs, and how we work with your specialists rather than instead "
          "of them.",
          [("mkm-for-museums-and-libraries.html", "01 · Where things stand"),
-          ("what-you-are-holding.html", "What you are holding"),
+          ("what-you-are-holding.html", "01b · What you are holding"),
           ("visitors-and-readers.html", "02 · Visitors and readers"),
           ("leadership.html", "03 · What leadership looks like"),
           ("services.html", "What we do together"),
@@ -113,7 +113,7 @@ TH = {
          "สถาบันที่มีความรู้ดีที่สุดในห้องกำลังเสียห้องนั้นไป เรื่องนี้มีต้นทุนเท่าไร "
          "และเราทำงานร่วมกับผู้เชี่ยวชาญของคุณอย่างไร ไม่ใช่ทำแทนพวกเขา",
          [("th-mkm-for-museums-and-libraries.html", "01 · สถานะวันนี้"),
-          ("th-what-you-are-holding.html", "สิ่งที่คุณถืออยู่"),
+          ("th-what-you-are-holding.html", "01b · สิ่งที่คุณถืออยู่"),
           ("th-visitors-and-readers.html", "02 · ผู้ชมและผู้อ่าน"),
           ("th-leadership.html", "03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร"),
           ("th-services.html", "เราทำอะไรร่วมกัน"),
