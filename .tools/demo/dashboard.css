@@ -69,3 +69,5 @@
 .dm-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 9px;border-radius:999px;border:1px solid var(--go-line);color:var(--go);background:var(--go-soft)}
 .dm-chip.am{border-color:rgba(var(--guess-rgb),.4);color:var(--guess);background:rgba(var(--guess-rgb),.07)}
 .dm-cap{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--mute);margin-top:14px;max-width:78ch}
+.dm-tool[disabled]{opacity:.42;cursor:not-allowed}
+.dm-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--guess);align-self:center}

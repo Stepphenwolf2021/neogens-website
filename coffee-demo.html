@@ -331,6 +331,8 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .dm-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 9px;border-radius:999px;border:1px solid var(--go-line);color:var(--go);background:var(--go-soft)}
 .dm-chip.am{border-color:rgba(var(--guess-rgb),.4);color:var(--guess);background:rgba(var(--guess-rgb),.07)}
 .dm-cap{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--mute);margin-top:14px;max-width:78ch}
+.dm-tool[disabled]{opacity:.42;cursor:not-allowed}
+.dm-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--guess);align-self:center}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -546,7 +548,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
     </div>
       <div class="dm-panel" id="dm-panel" aria-live="polite"></div>
     </div>
-    <div class="dm-tools"><button class="dm-tool on" data-layer="trade">Trade routes</button><button class="dm-tool" data-layer="quality">High-scoring origins</button><button class="dm-tool" data-layer="match">Buyer matches</button><button class="dm-tool" data-layer="people">Contributors only</button><label class="dm-slide">cup score <input id="dm-score" type="range" min="0" max="87" step="0.5" value="0" aria-label="Filter origins by mean cup score"><span id="dm-score-v">any</span></label></div>
+    <div class="dm-tools"><button class="dm-tool on" data-layer="trade">Trade routes</button><button class="dm-tool" data-layer="quality">High-scoring origins</button><button class="dm-tool" data-layer="match">Buyer matches</button><button class="dm-tool" data-layer="people">Contributors only</button><label class="dm-slide">cup score <input id="dm-score" type="range" min="60" max="90" step="0.5" value="60" aria-label="Filter origins by mean cup score"><span id="dm-score-v">any</span></label><span class="dm-hint" id="dm-hint">Select a point on the map first</span></div>
     <div class="dm-cards"><div class="dm-card"><div class="k">Quality</div><h2>What method gets the score, at your altitude</h2><p>Mean cup score by processing method across every lot in the vault. A farmer filters this to plots within 150 m of their own elevation before deciding what to try next season.</p><div class="dm-bar"><span class="n">honey</span><span class="t"><i style="width:100%"></i></span><span class="v">84.9</span></div><div class="dm-bar"><span class="n">natural</span><span class="t"><i style="width:99%"></i></span><span class="v">84.3</span></div><div class="dm-bar"><span class="n">wet hulled</span><span class="t"><i style="width:99%"></i></span><span class="v">84.0</span></div><div class="dm-bar"><span class="n">washed</span><span class="t"><i style="width:99%"></i></span><span class="v">83.9</span></div><div class="dm-bar"><span class="n">monsooned</span><span class="t"><i style="width:97%"></i></span><span class="v">82.6</span></div></div><div class="dm-card"><div class="k">Market</div><h2>What buyers are searching for</h2><p>Roasters query the vault by profile rather than by broker relationship. These are the searches that returned too few lots this month — each one is a market opening visible from the growing side.</p><div class="dm-bar"><span class="n">floral · tea-like</span><span class="t"><i style="width:100%"></i></span><span class="v">214</span></div><div class="dm-bar"><span class="n">low acidity</span><span class="t"><i style="width:87%"></i></span><span class="v">187</span></div><div class="dm-bar"><span class="n">honey process</span><span class="t"><i style="width:73%"></i></span><span class="v">156</span></div><div class="dm-bar"><span class="n">single plot</span><span class="t"><i style="width:67%"></i></span><span class="v">143</span></div><div class="dm-bar"><span class="n">shade grown</span><span class="t"><i style="width:46%"></i></span><span class="v">98</span></div></div><div class="dm-card"><div class="k">Traceability</div><h2>How far back a bag can be walked</h2><p>Every hop carries a date, a quantity and a source. Where a machine reading backs the claim, the lot is marked verified rather than stated.</p><div class="dm-bar"><span class="n">plot</span><span class="t"><i style="width:82%"></i></span><span class="v">81%</span></div><div class="dm-bar"><span class="n">mill</span><span class="t"><i style="width:94%"></i></span><span class="v">93%</span></div><div class="dm-bar"><span class="n">exporter</span><span class="t"><i style="width:98%"></i></span><span class="v">97%</span></div><div class="dm-bar"><span class="n">roaster</span><span class="t"><i style="width:100%"></i></span><span class="v">99%</span></div></div></div>
     <div class="dm-tablewrap">
       <table class="dm-table">
@@ -788,6 +790,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 
   function overview() {
     selected = null;
+    matchable(false);
     places.forEach(function (p) { p.g.classList.remove('sel'); });
     edges.forEach(function (e) { e.node.classList.remove('hi'); });
     panel.innerHTML =
@@ -810,6 +813,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 
   function select(p) {
     selected = p;
+    matchable(true);
     places.forEach(function (q) { q.g.classList.toggle('sel', q === p); });
     edges.forEach(function (e) { e.node.classList.toggle('hi', e.o === p || e.m === p); });
 
@@ -900,8 +904,24 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
     });
   }
 
+  var matchBtn = document.querySelector('.dm-tool[data-layer="match"]');
+  var hintEl = document.getElementById('dm-hint');
+  function matchable(on) {
+    if (!matchBtn) return;
+    matchBtn.disabled = !on;
+    if (hintEl) hintEl.hidden = on;
+    if (!on && matchBtn.classList.contains('on')) {
+      var first = document.querySelector('.dm-tool[data-layer="trade"]');
+      document.querySelectorAll('.dm-tool[data-layer]').forEach(function (x) {
+        x.classList.toggle('on', x === first);
+      });
+      setLayer('trade');
+    }
+  }
+
   document.querySelectorAll('.dm-tool[data-layer]').forEach(function (t) {
     t.addEventListener('click', function () {
+      if (t.disabled) return;
       document.querySelectorAll('.dm-tool[data-layer]').forEach(function (x) {
         x.classList.toggle('on', x === t);
       });
@@ -911,10 +931,14 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 
   var slider = document.getElementById('dm-score');
   if (slider) {
+    var lo = parseFloat(slider.min), hi = parseFloat(slider.max);
+    minScore = lo;
     slider.addEventListener('input', function () {
       minScore = parseFloat(slider.value);
       document.getElementById('dm-score-v').textContent =
-        minScore === 0 ? 'any' : minScore.toFixed(1) + '+';
+        minScore <= lo ? T('anyScore', 'any')
+        : minScore >= hi ? hi + '+'
+        : minScore.toFixed(1) + '+';
       refresh();
     });
   }

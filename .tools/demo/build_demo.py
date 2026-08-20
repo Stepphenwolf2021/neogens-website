@@ -114,9 +114,10 @@ def tools_block(C):
         for k, lab in zip(keys, C["tools"]))
     return ('<div class="dm-tools">' + btns +
             f'<label class="dm-slide">{C["slider"]} '
-            '<input id="dm-score" type="range" min="0" max="87" step="0.5" value="0" '
+            '<input id="dm-score" type="range" min="60" max="90" step="0.5" value="60" '
             f'aria-label="{C["slider_alt"]}">'
-            f'<span id="dm-score-v">{C["slider_any"]}</span></label></div>')
+            f'<span id="dm-score-v">{C["slider_any"]}</span></label>'
+            f'<span class="dm-hint" id="dm-hint">{C["match_hint"]}</span></div>')
 
 
 def cards_block(C):
@@ -274,6 +275,8 @@ def build(C):
             f'hreflang="th" href="https://www.neogens.co/{th_page}"' in s),
         "canonical ชี้หน้านี้": f'rel="canonical" href="https://www.neogens.co/{C["out"]}"' in s,
         "การ์ดสามใบ": s.count('<div class="dm-card">') == 3,
+        "ช่วงคะแนน 60-90": 'min="60" max="90"' in s,
+        "มีบรรทัดบอกให้เลือกจุดก่อน": 'id="dm-hint"' in s and C["match_hint"] in s,
         "หัวข้อการ์ดไม่ข้ามระดับ": s.count('<div class="k">') >= 3 and '<h4>' not in s,
         "ตัวเลขสรุปแปดช่อง": s.count('<div class="dm-stat"') == 8,
         "แถวตารางหกแถว": s.count("<tr>") == 7,

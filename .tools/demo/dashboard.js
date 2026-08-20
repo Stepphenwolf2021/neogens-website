@@ -98,6 +98,7 @@
 
   function overview() {
     selected = null;
+    matchable(false);
     places.forEach(function (p) { p.g.classList.remove('sel'); });
     edges.forEach(function (e) { e.node.classList.remove('hi'); });
     panel.innerHTML =
@@ -120,6 +121,7 @@
 
   function select(p) {
     selected = p;
+    matchable(true);
     places.forEach(function (q) { q.g.classList.toggle('sel', q === p); });
     edges.forEach(function (e) { e.node.classList.toggle('hi', e.o === p || e.m === p); });
 
@@ -210,8 +212,24 @@
     });
   }
 
+  var matchBtn = document.querySelector('.dm-tool[data-layer="match"]');
+  var hintEl = document.getElementById('dm-hint');
+  function matchable(on) {
+    if (!matchBtn) return;
+    matchBtn.disabled = !on;
+    if (hintEl) hintEl.hidden = on;
+    if (!on && matchBtn.classList.contains('on')) {
+      var first = document.querySelector('.dm-tool[data-layer="trade"]');
+      document.querySelectorAll('.dm-tool[data-layer]').forEach(function (x) {
+        x.classList.toggle('on', x === first);
+      });
+      setLayer('trade');
+    }
+  }
+
   document.querySelectorAll('.dm-tool[data-layer]').forEach(function (t) {
     t.addEventListener('click', function () {
+      if (t.disabled) return;
       document.querySelectorAll('.dm-tool[data-layer]').forEach(function (x) {
         x.classList.toggle('on', x === t);
       });
@@ -221,10 +239,14 @@
 
   var slider = document.getElementById('dm-score');
   if (slider) {
+    var lo = parseFloat(slider.min), hi = parseFloat(slider.max);
+    minScore = lo;
     slider.addEventListener('input', function () {
       minScore = parseFloat(slider.value);
       document.getElementById('dm-score-v').textContent =
-        minScore === 0 ? 'any' : minScore.toFixed(1) + '+';
+        minScore <= lo ? T('anyScore', 'any')
+        : minScore >= hi ? hi + '+'
+        : minScore.toFixed(1) + '+';
       refresh();
     });
   }
