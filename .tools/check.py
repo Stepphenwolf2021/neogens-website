@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import io,os,re,glob,sys,unicodedata
+import io,os,re,glob,sys,json,html as _html,unicodedata
 from html.parser import HTMLParser
 VOID={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 errs=[];warns=[]
@@ -55,6 +55,79 @@ for f,(src,p) in parsed.items():
         frag=h.split('#')[1] if '#' in h else ''
         if frag and os.path.exists(path):
             if ('id="%s"'%frag) not in io.open(path,encoding='utf-8').read(): E(f,'dead fragment %s'%h)
+
+# --- JSON-LD ต้องตรงกับหน้าปัจจุบัน ไม่ใช่แค่เป็น JSON ที่อ่านได้ ---
+# ด่านชุดแรกตรวจแค่ว่าแยกวิเคราะห์ผ่านและ @id ที่อ้างมีตัวจริง ซึ่งยังปล่อยให้กราฟ
+# พูดถึงหน้าที่เปลี่ยนไปแล้วได้ ชุดนี้จึงเทียบกับสิ่งที่อยู่ในหน้าจริงทีละอย่าง
+# ข้อความที่คนเห็นต้องตัด script style svg ออกก่อน ไม่งั้นด่าน FAQ จะไปเจอคำถาม
+# ใน JSON-LD ของตัวเองแล้วผ่านทุกครั้งโดยไม่ได้ตรวจอะไรเลย
+BASE='https://www.neogens.co/'
+
+def _visible(src):
+    t=re.sub(r'<(script|style|svg)\b.*?</\1>','',src,flags=re.S)
+    return ' '.join(re.sub(r'<[^>]+>',' ',t).split())
+
+for f in files:
+    src,p=parsed[f]
+    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    m=re.search(r'<script type="application/ld\+json">(.*?)</script>',src,re.S)
+    if not m: continue                      # ด่านก่อนหน้าฟ้องเรื่องไม่มี JSON-LD ไปแล้ว
+    try: graph=json.loads(m.group(1)).get('@graph') or []
+    except Exception: continue
+    me=BASE if f=='index.html' else BASE+f
+    page=next((n for n in graph if n.get('@id')==me), None)
+    if not page:
+        E(f,'JSON-LD has no node describing this page'); continue
+
+    t=re.search(r'<title>(.*?)</title>',src,re.S)
+    if t:
+        want=_html.unescape(t.group(1)).replace(' — Neo Gens','').strip()
+        if (page.get('name') or '').strip()!=want:
+            E(f,'JSON-LD name is stale: %r but the title says %r'
+              %((page.get('name') or '')[:40],want[:40]))
+
+    d=re.search(r'<meta name="description" content="([^"]*)"',src)
+    if d and page.get('description'):
+        if _html.unescape(d.group(1)).strip()!=page['description'].strip():
+            E(f,'JSON-LD description no longer matches the meta description')
+
+    want_lang='th' if f.startswith('th-') else 'en'
+    if page.get('inLanguage')!=want_lang:
+        E(f,'JSON-LD inLanguage is %r, should be %r'%(page.get('inLanguage'),want_lang))
+
+    for k in ('translationOfWork','workTranslation'):
+        v=(page.get(k) or {}).get('@id')
+        if v:
+            tgt=v.replace(BASE,'') or 'index.html'
+            twin=f[3:] if f.startswith('th-') else 'th-'+f
+            if not os.path.exists(tgt):
+                E(f,'JSON-LD %s points at a file that does not exist: %s'%(k,tgt))
+            elif tgt!=twin:
+                E(f,'JSON-LD %s points at %s but the language twin is %s'%(k,tgt,twin))
+
+    bid=(page.get('breadcrumb') or {}).get('@id')
+    if bid:
+        bc=next((n for n in graph if n.get('@id')==bid), None)
+        if not bc:
+            E(f,'JSON-LD breadcrumb id is declared but the list is missing')
+        else:
+            items=bc.get('itemListElement') or []
+            if [i.get('position') for i in items]!=list(range(1,len(items)+1)):
+                E(f,'JSON-LD breadcrumb positions are not 1..n')
+            for i in items:
+                tgt=(i.get('item') or '').replace(BASE,'') or 'index.html'
+                if not os.path.exists(tgt):
+                    E(f,'JSON-LD breadcrumb points at a file that does not exist: %s'%tgt)
+            if items and (items[-1].get('item') or '')!=me and len(items)>2:
+                E(f,'JSON-LD breadcrumb does not end at this page')
+
+    faq=next((n for n in graph if n.get('@type')=='FAQPage'), None)
+    if faq:
+        vis=_visible(src)
+        for q in faq.get('mainEntity') or []:
+            if (q.get('name') or '')[:30] not in vis:
+                E(f,'JSON-LD declares a FAQ question that is not on the page: %s'
+                  %(q.get('name') or '')[:40])
 
 # --- title กับ description ต้องไม่ยาวจนถูกตัดในผลค้นหา ---
 # ย่อเมื่อ 2026-08-19 · เดิม title เกิน 60 อยู่ 25 หน้า ยาวสุด 113
