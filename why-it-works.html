@@ -415,6 +415,15 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
 .hub-cards .d{font-size:14px;line-height:1.55;color:var(--dim)}
 section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 .pband h2.pb-t{font-size:clamp(32px,5.4vw,64px)}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -607,7 +616,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 <main id="main">
 <section id="why">
   <div class="wrap">
-    <div class="eyebrow rv">03 — Why "we already have all of this" isn't enough</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li><a href="the-problem.html">The idea</a></li><li aria-current="page">Why it works · Modern Knowledge Management</li></ol></nav>
+<div class="eyebrow rv">03 — Why "we already have all of this" isn't enough</div>
     <div class="grid-2">
       <div class="rv"><h1>Your knowledge exists. It just can't be traversed.</h1></div>
       <div class="rv">

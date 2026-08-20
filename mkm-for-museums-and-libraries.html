@@ -418,6 +418,15 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 /* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
 .hkeep-1{font-size:19.456px;font-weight:600;line-height:1.3;font-family:var(--sans);letter-spacing:-0.38912px;text-transform:none;color:var(--fg);margin-top:61.44px;margin-bottom:0px;margin-left:0px;margin-right:0px}
 .hkeep-2{font-size:16.5px;font-weight:600;line-height:1.3;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -618,7 +627,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 </div>
 <section id="visit">
   <div class="wrap">
-    <div class="eyebrow rv">MKM for Museums &amp; Libraries · 01 — Where it stands today</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li aria-current="page">MKM for Museums &amp; Libraries</li></ol></nav>
+<div class="eyebrow rv">MKM for Museums &amp; Libraries · 01 — Where it stands today</div>
     <div class="grid-2">
       <div class="rv"><h1>The institutions with the best knowledge in the room are losing the room.</h1></div>
       <div class="rv">

@@ -256,6 +256,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .ffield input{width:100%}
 .flab{font-family:var(--mono);font-size:10.5px;letter-spacing:0;text-transform:uppercase;
   color:var(--mute);padding-left:17px;line-height:1.8}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:0;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -494,7 +503,8 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="kicker">MKM สำหรับกาแฟ · สำหรับคนปลูก</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="th-index.html">Neo Gens</a></li><li><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a></li><li aria-current="page">สำหรับคนปลูกกาแฟ</li></ol></nav>
+<div class="kicker">MKM สำหรับกาแฟ · สำหรับคนปลูก</div>
       <h1>ความรู้ที่อยู่ในหัวคุณ หายไปพร้อมกับทุกฤดูที่ผ่านไป</h1>
       <p class="stand">ทุกปีมีคนขึ้นมาวัดแปลง ถ่ายรูป จดสายพันธุ์ แล้วก็ไม่มีอะไรกลับมาถึงคุณ เรากำลังสร้างคลังความรู้กาแฟที่คนปลูกได้ของกลับด้วย และอยากชวนคุณมาเป็นกลุ่มแรก</p>
       <div class="meta"><span>Neo Gens</span><span>อ่าน 3 นาที</span><span><a href="th-coffee-demo.html">ดูเดโมแดชบอร์ด</a></span></div>

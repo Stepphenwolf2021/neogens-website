@@ -243,6 +243,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .ffield input{width:100%}
 .flab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--mute);padding-left:17px;line-height:1.8}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -430,7 +439,8 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="kicker">Second practice area</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li aria-current="page">MKM for Coffee</li></ol></nav>
+<div class="kicker">Second practice area</div>
       <h1>Turning Coffee Data into Coffee Knowledge</h1>
       <p class="stand">An invitation to build a public Coffee Knowledge Vault on ontology, knowledge graphs and AI — <a href="coffee-demo.html">see a simulated dashboard of the vault in use</a></p>
       <div class="meta"><span>Neo Gens · August 2026</span><span>13 min read</span><span><a href="coffee-farmer.html">Short version for growers</a></span><span><a href="coffee-demo.html">See the demo dashboard</a></span></div>

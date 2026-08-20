@@ -337,6 +337,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .dm-warn b,.dm-stat .l,.dm-legend,.dm-tool,.dm-panel .k,.dm-row .a,
 .dm-act,.dm-card .k,.dm-bar .n,.dm-table th,.dm-chip{letter-spacing:0}
 .dm-bar .n{width:88px}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:0;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -523,7 +532,8 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="kicker">MKM สำหรับกาแฟ · เดโม</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="th-index.html">Neo Gens</a></li><li><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a></li><li aria-current="page">ถ้ามีคนร่วมสร้างคลังห้าพันราย หน้าตาจะเป็นแบบนี้</li></ol></nav>
+<div class="kicker">MKM สำหรับกาแฟ · เดโม</div>
       <h1>จำลองคลังความรู้กาแฟ เมื่อมีผู้บันทึกและร่วมสร้างคลังความรู้กาแฟห้าพันคน</h1>
       <p class="stand">ภาพจำลองของคลังความรู้กาแฟ ทุกแหล่งกาแฟ ทุกตลาด และเส้นทางที่มีล็อตผ่านการยืนยัน วิ่งอยู่ระหว่างกันแล้ว คลิกที่จุดไหนก็ได้</p>
       <div class="meta"><span>Neo Gens</span><span>เดโมกดเล่นได้</span><span><a href="th-mkm-for-coffee.html">อ่านโครงการเต็ม</a></span></div>

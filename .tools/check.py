@@ -120,6 +120,19 @@ for f in files:
                     E(f,'JSON-LD breadcrumb points at a file that does not exist: %s'%tgt)
             if items and (items[-1].get('item') or '')!=me and len(items)>2:
                 E(f,'JSON-LD breadcrumb does not end at this page')
+            # เส้นทางที่ประกาศกับเครื่อง ต้องมีเส้นทางที่คนเห็นคู่กันเสมอ
+            # เพิ่มเมื่อ 2026-08-20 หลังพบว่ามี BreadcrumbList 33 หน้าแต่ไม่มีแถบให้คนเห็นสักหน้า
+            vnav=re.search(r'<nav class="crumbs".*?</nav>',src,re.S)
+            if not vnav:
+                E(f,'has BreadcrumbList but no breadcrumb a reader can see')
+            else:
+                shown=[_html.unescape(x).strip() for x in
+                       re.findall(r'<li[^>]*>(?:<a[^>]*>)?([^<]*)',vnav.group(0))]
+                want=[i.get('name') for i in items]
+                if shown!=want:
+                    E(f,'visible breadcrumb %s does not match the JSON-LD %s'%(shown,want))
+                if vnav.group(0).count('aria-current="page"')!=1:
+                    E(f,'visible breadcrumb does not mark exactly one current step')
 
     faq=next((n for n in graph if n.get('@type')=='FAQPage'), None)
     if faq:

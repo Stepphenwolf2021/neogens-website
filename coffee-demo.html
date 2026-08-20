@@ -333,6 +333,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .dm-cap{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--mute);margin-top:14px;max-width:78ch}
 .dm-tool[disabled]{opacity:.42;cursor:not-allowed}
 .dm-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--guess);align-self:center}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -519,7 +528,8 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="kicker">MKM for Coffee · demo</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li><a href="mkm-for-coffee.html">MKM for Coffee</a></li><li aria-current="page">What 5,000 contributors would look like</li></ol></nav>
+<div class="kicker">MKM for Coffee · demo</div>
       <h1>What the vault looks like with 5,000 people in it</h1>
       <p class="stand">A simulated view of the Coffee Knowledge Vault — every origin, every market, and the routes already carrying verified lots between them. Click any point.</p>
       <div class="meta"><span>Neo Gens</span><span>interactive demo</span><span><a href="mkm-for-coffee.html">The full argument</a></span></div>

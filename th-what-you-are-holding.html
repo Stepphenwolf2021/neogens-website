@@ -57,6 +57,15 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
 /* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
 .hkeep-1{font-size:17px;font-weight:600;line-height:1.55;font-family:var(--sans);text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
 .hkeep-2{font-size:17px;font-weight:600;line-height:1.55;font-family:var(--sans);text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:0;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -249,7 +258,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:normal}
 <main id="main">
 <section id="problem">
   <div class="wrap">
-    <div class="eyebrow rv">ภาค 2 · โซลูชัน — สิ่งที่คุณถืออยู่</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="th-index.html">Neo Gens</a></li><li><a href="th-the-problem.html">แนวคิด</a></li><li aria-current="page">สิ่งที่คุณถืออยู่</li></ol></nav>
+<div class="eyebrow rv">ภาค 2 · โซลูชัน — สิ่งที่คุณถืออยู่</div>
     <div class="grid-2">
       <div class="rv"><h1>ผู้นำเรื่องการบริหารจัดการความรู้ กำลังถูกทิ้งไว้ข้างหลัง โดยผู้เล่นหน้าใหม่ที่มีวัตถุดิบไม่ถึงเศษเสี้ยว</h1></div>
       <div class="rv">

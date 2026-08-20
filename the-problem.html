@@ -429,6 +429,15 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 .closer{margin-top:clamp(28px,3.5vw,40px);font-size:16.5px;color:var(--dim);max-width:64ch}
 /* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
 .hkeep-1{font-size:21px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.42px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:10px;margin-left:0px;margin-right:0px}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -615,7 +624,8 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
 <main id="main">
 <section id="sec">
   <div class="wrap">
-    <div class="eyebrow rv">Part 1 · The idea — 01 The problem</div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li aria-current="page">The idea</li></ol></nav>
+<div class="eyebrow rv">Part 1 · The idea — 01 The problem</div>
     <div class="grid-2">
       <div class="rv"><h1>AI answers everything, and knows nothing about what your organisation is for</h1></div>
       <div class="rv"><p class="lede">Every organisation is putting AI to work, and almost all of them point it straight at their own pile of documents. The model reads what it is given and produces the answer that sounds most plausible.</p><p class="lede" style="margin-top:16px;color:var(--fg)">That works, right up to the moment the answer matters.</p></div>
