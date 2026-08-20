@@ -1,15 +1,23 @@
-/* สไตล์ที่ทุกหน้าใช้ร่วมกัน · สร้างด้วย .tools/split_css.py
-   แก้ที่นี่ที่เดียวแล้วมีผลทุกหน้า กฎเฉพาะหน้ายังอยู่ในหน้านั้นเหมือนเดิม */
+/* สไตล์เปลือกของหน้า ฉบับภาษาอังกฤษ
+   แยกออกมาด้วย .tools/split_css.mjs · แก้ที่นี่ที่เดียวแล้วมีผลทุกหน้าที่ลิงก์ไฟล์นี้
+   กฎเฉพาะหน้ายังอยู่ในหน้านั้นเหมือนเดิม และอยู่หลังไฟล์นี้เสมอ จึงยังชนะเหมือนเดิม */
 *{box-sizing:border-box;margin:0;padding:0}
 a{color:inherit}
+.brand .bt{font-weight:600;letter-spacing:-.02em;font-size:16px;line-height:1.1}
+.brand .bs{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);display:block;margin-top:2px}
+.nav-links a{font-size:13.5px;color:var(--dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;flex:none}
 .lang a{text-decoration:none;color:var(--mute);transition:color .2s}
+.lang a.on{color:var(--go);font-weight:500}
 .lang span{color:var(--line-2)}
 .btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(var(--go-rgb),.22)}
 .btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
 .btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
 .frow{display:flex;gap:9px}
+form input{flex:1;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;padding:13px 20px;min-width:0;transition:border-color .22s}
 form input:focus{border-color:rgba(var(--go-rgb),.5)}
 form input::placeholder{color:var(--mute)}
+.form-note{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--mute)}
 .f-col a:hover{color:var(--fg)}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -51,3 +59,5 @@ html:not([data-theme="light"]) .tgl .i-sun{display:none}
 /* --- ป้ายชื่อช่องในฟอร์ม --- */
 .ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
 .ffield input{width:100%}
+.flab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--mute);padding-left:17px;line-height:1.8}
