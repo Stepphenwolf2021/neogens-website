@@ -56,6 +56,30 @@ for f,(src,p) in parsed.items():
         if frag and os.path.exists(path):
             if ('id="%s"'%frag) not in io.open(path,encoding='utf-8').read(): E(f,'dead fragment %s'%h)
 
+# --- เลขในป้ายหมวดบนหน้า ต้องตรงกับเลขที่เมนูให้ ---
+# เว็บนี้เคยมีลำดับเดียวยาว 01-08 ทั้งเว็บ ก่อนแบ่งเป็นสามภาค พอแบ่งแล้วเลขเก่าค้างบางหน้า
+# จนมีเลขสองระบบซ้อนกัน เช่นหน้า contact เขียน 08 ทั้งที่เมนูไม่ได้ให้เลขมันเลย
+# จัดใหม่เมื่อ 2026-08-20 · ด่านนี้กันไม่ให้เลขค้างแบบนั้นกลับมา
+_EYE=re.compile(r'<div class="(?:kicker|eyebrow[^"]*)">(.*?)</div>',re.S)
+_NUM=re.compile(r'(?:^|·)\s*(\d{2}[a-z]?)\s*—')
+for f in files:
+    src,p=parsed[f]
+    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    m=_EYE.search(src)
+    if not m: continue
+    eye=_html.unescape(m.group(1))
+    hit=_NUM.search(eye)
+    if not hit: continue
+    dw=re.search(r'<div class="drawer".*?</nav>',src,re.S)
+    if not dw: continue
+    link=re.search(r'<a[^>]*href="'+re.escape(f)+r'"[^>]*>([^<]*)</a>',dw.group(0))
+    if not link:
+        E(f,'section label is numbered %s but this page is not in the menu'%hit.group(1))
+        continue
+    label=_html.unescape(link.group(1))
+    if hit.group(1) not in label:
+        E(f,'section label says %s but the menu calls this page %r'%(hit.group(1),label))
+
 # --- JSON-LD ต้องตรงกับหน้าปัจจุบัน ไม่ใช่แค่เป็น JSON ที่อ่านได้ ---
 # ด่านชุดแรกตรวจแค่ว่าแยกวิเคราะห์ผ่านและ @id ที่อ้างมีตัวจริง ซึ่งยังปล่อยให้กราฟ
 # พูดถึงหน้าที่เปลี่ยนไปแล้วได้ ชุดนี้จึงเทียบกับสิ่งที่อยู่ในหน้าจริงทีละอย่าง
