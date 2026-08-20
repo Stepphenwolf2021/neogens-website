@@ -39,7 +39,10 @@ def U(name):
 
 PART = {
     "the-problem.html": 1, "what-mkm-is.html": 1, "why-it-works.html": 1,
-    "ontology-and-knowledge-graph.html": 1, "what-you-are-holding.html": 1,
+    "ontology-and-knowledge-graph.html": 1,
+    # "สิ่งที่คุณถืออยู่" อยู่ภาค 2 ตามเมนูและป้ายบนหน้าตัวเอง ไม่ใช่ภาค 1
+    # เดิมผมจัดไว้ภาค 1 ซึ่งขัดกับที่เหลือ และเพิ่งเห็นตอนเอา breadcrumb ขึ้นหน้า
+    "what-you-are-holding.html": 2,
     "mkm-for-museums-and-libraries.html": 2, "visitors-and-readers.html": 2,
     "leadership.html": 2, "services.html": 2, "engagement.html": 2,
     "ai-sovereignty.html": 2, "what-we-wont-do.html": 2,

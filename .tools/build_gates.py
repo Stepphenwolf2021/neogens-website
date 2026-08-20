@@ -73,8 +73,8 @@ EN = {
          "The institutions with the best knowledge in the room are losing the room. "
          "What that costs, and how we work with your specialists rather than instead "
          "of them.",
-         [("what-you-are-holding.html", "What you are holding"),
-          ("mkm-for-museums-and-libraries.html", "01 · Where things stand"),
+         [("mkm-for-museums-and-libraries.html", "01 · Where things stand"),
+          ("what-you-are-holding.html", "What you are holding"),
           ("visitors-and-readers.html", "02 · Visitors and readers"),
           ("leadership.html", "03 · What leadership looks like"),
           ("services.html", "What we do together"),
@@ -112,8 +112,8 @@ TH = {
          "th-mkm-for-museums-and-libraries.html",
          "สถาบันที่มีความรู้ดีที่สุดในห้องกำลังเสียห้องนั้นไป เรื่องนี้มีต้นทุนเท่าไร "
          "และเราทำงานร่วมกับผู้เชี่ยวชาญของคุณอย่างไร ไม่ใช่ทำแทนพวกเขา",
-         [("th-what-you-are-holding.html", "สิ่งที่คุณถืออยู่"),
-          ("th-mkm-for-museums-and-libraries.html", "01 · สถานะวันนี้"),
+         [("th-mkm-for-museums-and-libraries.html", "01 · สถานะวันนี้"),
+          ("th-what-you-are-holding.html", "สิ่งที่คุณถืออยู่"),
           ("th-visitors-and-readers.html", "02 · ผู้ชมและผู้อ่าน"),
           ("th-leadership.html", "03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร"),
           ("th-services.html", "เราทำอะไรร่วมกัน"),
@@ -157,9 +157,10 @@ for C in (EN, TH):
     path = ROOT / C["file"]
     s = before = path.read_text(encoding="utf-8")
 
-    for cls in ("gates", "gate", "gate-k", "gate-t", "gate-l", "gate-go", "gates-rest"):
-        if re.search(r"\." + cls + r"[{,\s:]", s):
-            sys.exit(f"✗ {C['file']} มีคลาส .{cls} อยู่ก่อนแล้ว ต้องเปลี่ยนชื่อ")
+    # รันซ้ำได้ · ถอดของที่สคริปต์นี้เคยวางไว้ออกก่อน แล้วค่อยประกอบใหม่จากต้นฉบับ
+    s = re.sub(r'<section class="gates">.*?</section>', '<section class="hub"></section>',
+               s, count=1, flags=re.S)
+    s = re.sub(r'\n/\* --- สามประตูหน้าแรก --- \*/.*?(?=</style>)', '', s, count=1, flags=re.S)
 
     m = re.search(r'<section class="hub">.*?</section>', s, re.S)
     if not m:

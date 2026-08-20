@@ -133,6 +133,21 @@ for f in files:
                     E(f,'visible breadcrumb %s does not match the JSON-LD %s'%(shown,want))
                 if vnav.group(0).count('aria-current="page"')!=1:
                     E(f,'visible breadcrumb does not mark exactly one current step')
+            # ภาคที่ breadcrumb บอก ต้องตรงกับกลุ่มที่เมนูจัดหน้านี้ไว้
+            # เพิ่มเมื่อ 2026-08-20 หลังพบว่าหน้า what-you-are-holding ถูกเมนูจัดไว้ภาค 2
+            # แต่ breadcrumb บอกว่าภาค 1 อยู่หลายวันโดยไม่มีใครเห็น เพราะยังไม่ได้แสดงบนหน้า
+            dw=re.search(r'<div class="drawer".*?</nav>',src,re.S)
+            if dw and len(items)>2:
+                groups=re.findall(r'<div class="h">([^<]*)</div>|<a[^>]*href="([^"]+)"',dw.group(0))
+                head=None; where={}
+                for g,h in groups:
+                    if g: head=g.strip()
+                    elif h: where.setdefault(h,head)
+                opener=(items[1].get('item') or '').replace(BASE,'') or 'index.html'
+                mine=f if f!='index.html' else ''
+                if where.get(mine) and where.get(opener) and where[mine]!=where[opener]:
+                    E(f,'menu files this page under %r but the breadcrumb says %r'
+                      %(where[mine],where[opener]))
 
     faq=next((n for n in graph if n.get('@type')=='FAQPage'), None)
     if faq:
