@@ -83,6 +83,21 @@ TERMS = [
 ]
 
 
+def menu_label(name):
+    """ป้ายที่เมนูใช้เรียกหน้านี้ ตัดเลขลำดับข้างหน้าออก
+    ใช้กับขั้นสุดท้ายของ breadcrumb เพราะ breadcrumb คือการนำทาง ควรใช้คำเดียวกับเมนู
+    ไม่ใช่ <title> ซึ่งเขียนเพื่อผลค้นหาและมักยาวกว่า"""
+    lang = "th" if name.startswith("th-") else "en"
+    nav = (ROOT / ".tools" / "shell" / f"nav.{lang}.html").read_text(encoding="utf-8")
+    dw = re.search(r'<div class="drawer".*?</nav>', nav, re.S)
+    if not dw:
+        return None
+    m = re.search(r'<a[^>]*href="' + re.escape(name) + r'"[^>]*>([^<]*)</a>', dw.group(0))
+    if not m:
+        return None
+    return re.sub(r"^\s*\d{2}[a-z]?\s*·\s*", "", html.unescape(m.group(1))).strip()
+
+
 def meta_of(path):
     s = path.read_text(encoding="utf-8")
     t = re.search(r"<title>(.*?)</title>", s, re.S)
@@ -186,7 +201,7 @@ def page_graph(path):
         crumbs = [(("Neo Gens"), U("th-index.html" if th else "index.html")),
                   ((pn_th if th else pn_en), U(("th-" if th else "") + opener))]
         if base_name != opener:
-            crumbs.append((title, pid))
+            crumbs.append((menu_label(name) or title, pid))
         page["breadcrumb"] = {"@id": pid + "#crumbs"}
         nodes.append({
             "@type": "BreadcrumbList", "@id": pid + "#crumbs",

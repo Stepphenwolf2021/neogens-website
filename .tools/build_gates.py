@@ -114,7 +114,7 @@ TH = {
          "และเราทำงานร่วมกับผู้เชี่ยวชาญของคุณอย่างไร ไม่ใช่ทำแทนพวกเขา",
          [("th-mkm-for-museums-and-libraries.html", "01 · สถานะวันนี้"),
           ("th-what-you-are-holding.html", "01b · สิ่งที่คุณถืออยู่"),
-          ("th-visitors-and-readers.html", "02 · ประสบการณ์แบบใหม่"),
+          ("th-visitors-and-readers.html", "02 · ประสบการณ์ใหม่ของการเรียนรู้"),
           ("th-leadership.html", "03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร"),
           ("th-services.html", "เราทำอะไรร่วมกัน"),
           ("th-engagement.html", "รูปแบบการทำงาน"),
