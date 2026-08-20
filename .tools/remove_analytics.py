@@ -27,27 +27,32 @@ BLOCK = re.compile(
     r'[ \t]*<script>\n(?:.*?\n)*?[ \t]*</script>\n')
 
 done, left = [], []
-for path in sorted(ROOT.glob("*.html")):
+# กวาดโฟลเดอร์ย่อยด้วย · หน้าใน archive/ ยังเปิดจากเว็บได้แม้จะ noindex
+# คนที่เปิด URL เก่าตรง ๆ จึงยังถูกส่ง IP ไป Google อยู่ ถ้าไม่ถอดออก
+for path in sorted(ROOT.rglob("*.html")):
+    if ".tools" in path.parts:
+        continue
     s = before = path.read_text(encoding="utf-8")
     if "googletagmanager" not in s:
         continue
     s, n = BLOCK.subn("", s)
     if n != 1:
-        sys.exit(f"✗ {path.name} เจอบล็อก analytics {n} ก้อน รูปแบบไม่ตรงที่คาด ยังไม่ได้แก้อะไร")
+        sys.exit(f"✗ {path.relative_to(ROOT)} เจอบล็อก analytics {n} ก้อน รูปแบบไม่ตรงที่คาด ยังไม่ได้แก้อะไร")
     # ด่านต่อไฟล์ ต้องไม่เหลือร่องรอย และต้องไม่กินโค้ดอื่นไปด้วย
     checks = {
         "ไม่เหลือ gtag": "gtag" not in s and "googletagmanager" not in s and "dataLayer" not in s,
         "สคริปต์อื่นยังอยู่ครบ": s.count("<script") == before.count("<script") - 2,
-        "ตัวตั้งธีมยังอยู่": "ng-theme" in s,
+        "ไม่ได้ลบสคริปต์ตั้งธีมไปด้วย": ("ng-theme" in s) == ("ng-theme" in before),
         "ตัดออกไม่เกินขนาดบล็อก": 0 < len(before) - len(s) < 400,
     }
     bad = [k for k, ok in checks.items() if not ok]
     if bad:
-        sys.exit(f"✗ {path.name} ด่านตรวจไม่ผ่าน: " + " · ".join(bad))
+        sys.exit(f"✗ {path.relative_to(ROOT)} ด่านตรวจไม่ผ่าน: " + " · ".join(bad))
     path.write_text(s, encoding="utf-8")
-    done.append(path.name)
+    done.append(str(path.relative_to(ROOT)))
 
-for path in ROOT.glob("*.html"):
+for path in ROOT.rglob("*.html"):
+    if ".tools" in path.parts: continue
     if "googletagmanager" in path.read_text(encoding="utf-8"):
         left.append(path.name)
 

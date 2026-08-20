@@ -128,6 +128,16 @@ for f in files:
             E(f,'third-party resource: %s'%host)
     if 'googletagmanager' in src or 'gtag(' in src:
         E(f,'analytics tag is back')
+# หน้าในโฟลเดอร์ย่อยก็เปิดจากเว็บได้ ต้องตรวจด้วย แม้จะไม่อยู่ในรายการหน้าหลัก
+import glob as _glob
+for _p in _glob.glob('*/*.html'):
+    if _p.startswith('.tools'): continue
+    _s=io.open(_p,encoding='utf-8').read()
+    for m in THIRD_PARTY.finditer(_s):
+        if m.group(1) not in OURS:
+            E(_p,'third-party resource: %s'%m.group(1))
+    if 'googletagmanager' in _s or 'gtag(' in _s:
+        E(_p,'analytics tag is back')
 
 # --- hreflang ต้องชี้คู่ภาษาที่ถูกหน้า ---
 # ความผิดที่เคยเกิดจริง หน้าที่สร้างจากแม่แบบลืมแก้แท็ก แล้วประกาศฉบับแปลเป็นหน้าอื่น

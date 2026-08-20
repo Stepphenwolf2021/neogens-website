@@ -177,14 +177,10 @@ def render(blocks, L):
 
 # --------------------------------------------------------------------- shells
 
-GA = '''<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPBNZQKVWE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TPBNZQKVWE');
-</script>'''
+# ถอด Google Analytics ออกเมื่อ 2026-08-20 ตามการตัดสินใจเรื่องความเป็นส่วนตัว
+# เว็บนี้ไม่โหลดสคริปต์จากภายนอกเลย และ .tools/check.py มีด่านกันไม่ให้กลับมา
+# ปล่อยตัวแปรว่างไว้เพราะเทมเพลตด้านล่างยังอ้าง %(ga)s อยู่
+GA = ''
 
 THEME_BOOT = '<script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>'
 
