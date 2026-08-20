@@ -65,7 +65,9 @@ _NUM=re.compile(r'(?:^|·)\s*(\d{2}[a-z]?)\s*—')
 for f in files:
     src,p=parsed[f]
     if 'http-equiv="refresh"' in src or f=='404.html': continue
-    m=_EYE.search(src)
+    # ดูเฉพาะป้ายที่อยู่บนหัวหน้า คือก่อน <h1> · บล็อกท้ายหน้าก็มีป้ายของตัวเอง
+    head=src[:src.index('<h1')] if '<h1' in src else src
+    m=_EYE.search(head)
     if not m: continue
     eye=_html.unescape(m.group(1))
     hit=_NUM.search(eye)

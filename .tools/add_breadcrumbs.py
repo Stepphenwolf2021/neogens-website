@@ -67,7 +67,10 @@ for path in sorted(ROOT.glob("*.html")):
            + "".join(lis) + "</ol></nav>\n")
 
     s = BLOCK.sub("", s)                    # รันซ้ำได้ ไม่ซ้อนทับ
+    # ปกติแทรกก่อนป้ายบนหัวหน้า · หน้าที่ตัดป้ายทิ้งไปแล้วให้ยึดกับ <h1> แทน
     m = ANCHOR.search(s, s.index("<main"))
+    if not m or m.start() > s.index("<h1"):
+        m = re.compile(r"<h1").search(s, s.index("<main"))
     if not m:
         sys.exit(f"✗ {path.name} หาจุดยึดไม่เจอ")
     s = s[:m.start()] + nav + s[m.start():]
