@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>For coffee farmers — Neo Gens</title>
-<meta name="description" content="Every season someone comes to record your plot, and nothing comes back to you.">
-<meta property="og:title" content="For coffee farmers">
-<meta property="og:description" content="Every season someone comes to record your plot, and nothing comes back to you.">
-<link rel="canonical" href="https://www.neogens.co/coffee-farmer.html">
-<link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee-farmer.html">
-<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee-farmer.html">
-<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee-farmer.html">
+<title>How a commons stays a commons — Neo Gens</title>
+<meta name="description" content="Knowledge commons fail in predictable ways. They get captured by one large contributor, or they fragment into incompatible forks, or they fill with">
+<meta property="og:title" content="How a commons stays a commons">
+<meta property="og:description" content="Knowledge commons fail in predictable ways. They get captured by one large contributor, or they fragment into incompatible forks, or they fill with">
+<link rel="canonical" href="https://www.neogens.co/mkm-for-coffee-commons.html">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/mkm-for-coffee-commons.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-mkm-for-coffee-commons.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/mkm-for-coffee-commons.html">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Neo Gens">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Neo Gens">
-<meta property="og:url" content="https://www.neogens.co/coffee-farmer.html">
+<meta property="og:url" content="https://www.neogens.co/mkm-for-coffee-commons.html">
 <meta property="og:image" content="https://www.neogens.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -226,22 +226,6 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-/* --- บทสนทนาคนปลูก / โรงคั่ว --- */
-.dlg{margin:30px 0 34px;display:flex;flex-direction:column;gap:13px}
-.dlg-turn{max-width:86%;border:1px solid var(--line);border-radius:16px;
-  background:var(--surface);padding:17px 20px}
-.dlg-turn.grower{align-self:flex-start;border-left:2px solid var(--go)}
-.dlg-turn.roaster{align-self:flex-end;background:var(--surface-2);
-  border-right:2px solid var(--ask)}
-.dlg-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin-bottom:8px}
-.dlg-who{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--go)}
-.dlg-turn.roaster .dlg-who{color:var(--ask)}
-.dlg-field{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--mute);
-  border:1px solid var(--line);border-radius:999px;padding:3px 9px}
-.dlg-turn p{margin:0;font-size:16.5px;line-height:1.8;color:var(--fg)}
-.dlg-foot{color:var(--dim)}
-@media(max-width:620px){.dlg-turn{max-width:100%}}
-
 /* --- ลิงก์ข้ามไปเนื้อหา กับกรอบโฟกัสที่มองเห็นได้ --- */
 .skip{position:absolute;left:-9999px;top:0;z-index:120}
 .skip:focus{left:10px;top:10px;background:var(--fg);color:var(--bg);
@@ -250,7 +234,9 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 :focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:3px}
 
 /* --- ตรึงหน้าตาเดิมไว้ตอนเลื่อนระดับหัวข้อให้ต่อเนื่อง --- */
-.hkeep-2.hkeep-2{font-size:16.5px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+.hkeep-5.hkeep-5{font-size:16.5px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+.hkeep-9.hkeep-9{font-size:16.5px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
+.hkeep-19.hkeep-19{font-size:16.5px;font-weight:600;line-height:1.35;font-family:var(--sans);letter-spacing:-0.495px;text-transform:none;color:var(--fg);margin-top:0px;margin-bottom:9px;margin-left:0px;margin-right:0px}
 
 /* --- ป้ายชื่อช่องในฟอร์ม --- */
 .ffield{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
@@ -266,6 +252,16 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
 .crumbs a:hover{color:var(--go)}
 .crumbs [aria-current]{color:var(--dim)}
+/* >>> ปุ่มก่อนหน้า/ถัดไป · split_coffee.py >>> */
+.pn{border-top:1px solid var(--line);margin-top:clamp(40px,5vw,64px)}
+.pn-in{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.pn a{display:block;padding:26px var(--pad);background:var(--bg);text-decoration:none;transition:background .2s}
+.pn a:hover{background:var(--bg-2)}
+.pn .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:7px}
+.pn .t{font-size:16px;color:var(--fg);line-height:1.3}
+.pn a.nx{text-align:right}
+@media(max-width:640px){.pn-in{grid-template-columns:1fr}.pn a.nx{text-align:left}
+/* <<< ปุ่มก่อนหน้า/ถัดไป <<< */
 /* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
 .nav-links .hs{position:relative;display:inline-flex;align-items:center}
 .nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
@@ -405,10 +401,13 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://www.neogens.co/coffee-farmer.html",
-      "url": "https://www.neogens.co/coffee-farmer.html",
-      "name": "For coffee farmers",
+      "@type": [
+        "WebPage",
+        "TechArticle"
+      ],
+      "@id": "https://www.neogens.co/mkm-for-coffee-commons.html",
+      "url": "https://www.neogens.co/mkm-for-coffee-commons.html",
+      "name": "How a commons stays a commons",
       "isPartOf": {
         "@id": "https://www.neogens.co/#website"
       },
@@ -416,25 +415,26 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       "publisher": {
         "@id": "https://www.neogens.co/#org"
       },
-      "description": "Every season someone comes to record your plot, and nothing comes back to you.",
+      "description": "Knowledge commons fail in predictable ways. They get captured by one large contributor, or they fragment into incompatible forks, or they fill with",
       "about": [
         {
           "@id": "https://www.neogens.co/#service-coffee"
         }
       ],
       "workTranslation": {
-        "@id": "https://www.neogens.co/th-coffee-farmer.html"
+        "@id": "https://www.neogens.co/th-mkm-for-coffee-commons.html"
       },
       "breadcrumb": {
-        "@id": "https://www.neogens.co/coffee-farmer.html#crumbs"
+        "@id": "https://www.neogens.co/mkm-for-coffee-commons.html#crumbs"
       },
-      "mainEntity": {
-        "@id": "https://www.neogens.co/coffee-farmer.html#faq"
+      "headline": "How a commons stays a commons",
+      "author": {
+        "@id": "https://www.neogens.co/#org"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.neogens.co/coffee-farmer.html#crumbs",
+      "@id": "https://www.neogens.co/mkm-for-coffee-commons.html#crumbs",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -451,57 +451,8 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "For coffee farmers",
-          "item": "https://www.neogens.co/coffee-farmer.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.neogens.co/coffee-farmer.html#faq",
-      "isPartOf": {
-        "@id": "https://www.neogens.co/coffee-farmer.html"
-      },
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does it cost",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nothing for the farmer. The project earns from others along the chain who put this knowledge to work — not from the people growing the coffee."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who owns my plot data",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You do. You choose who sees it, you grant access to the buyers you choose, and you withdraw it from the ones you don't. Nobody opens your data to anyone else without your say-so."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What about a bad year",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Whatever you send, you decide who can see it. That rule was written at the start, not added later."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "I'm not comfortable typing",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Then don't. Photograph it, or speak it in the language you use every day, dialect included. The translating is the system's job, not yours."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens after I leave my email",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We get in touch, and invite you into the first group testing the system. While we're at it we want to hear what we have got wrong about how coffee actually works where you are."
-          }
+          "name": "How a commons stays a commons",
+          "item": "https://www.neogens.co/mkm-for-coffee-commons.html"
         }
       ]
     }
@@ -515,10 +466,10 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><span class="hs"><a href="the-problem.html">The idea</a><span class="sub"><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What is MKM ?</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a></span></span><span class="hs"><a href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><span class="sub"><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="what-you-are-holding.html">01b · What you are holding</a><a href="visitors-and-readers.html">02 · The new experience</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a></span></span><span class="hs"><a href="mkm-for-coffee.html">MKM for Coffee</a><span class="sub"><a href="mkm-for-coffee.html">01 · MKM for Coffee</a><a href="mkm-for-coffee-why-now.html">02 · Why this is possible now and was not before</a><a href="mkm-for-coffee-commons.html">03 · How a commons stays a commons</a><a class="on" aria-current="page" href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a></span></span><a href="engagement.html">Engagement</a><span class="hs"><a href="about.html">Who we are</a><span class="sub"><a href="about.html">Who we are</a><a href="seo-as-knowledge-management.html">How we built this site</a></span></span><span class="lang"><a class="on" aria-current="page" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
-    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+    <div class="nav-links"><span class="hs"><a href="the-problem.html">The idea</a><span class="sub"><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What is MKM ?</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a></span></span><span class="hs"><a href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><span class="sub"><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="what-you-are-holding.html">01b · What you are holding</a><a href="visitors-and-readers.html">02 · The new experience</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a></span></span><span class="hs"><a href="mkm-for-coffee.html">MKM for Coffee</a><span class="sub"><a href="mkm-for-coffee.html">01 · MKM for Coffee</a><a href="mkm-for-coffee-why-now.html">02 · Why this is possible now and was not before</a><a class="on" aria-current="page" href="mkm-for-coffee-commons.html">03 · How a commons stays a commons</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a></span></span><a href="engagement.html">Engagement</a><span class="hs"><a href="about.html">Who we are</a><span class="sub"><a href="about.html">Who we are</a><a href="seo-as-knowledge-management.html">How we built this site</a></span></span><span class="lang"><a class="on" aria-current="page" href="mkm-for-coffee-commons.html">EN</a><span>/</span><a href="th-mkm-for-coffee-commons.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="mkm-for-coffee-commons.html">EN</a><span>/</span><a href="th-mkm-for-coffee-commons.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">Home</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What is MKM ?</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="what-you-are-holding.html">01b · What you are holding</a><a href="visitors-and-readers.html">02 · The new experience</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">01 · MKM for Coffee</a><a href="mkm-for-coffee-why-now.html">02 · Why this is possible now and was not before</a><a href="mkm-for-coffee-commons.html">03 · How a commons stays a commons</a><a class="on" aria-current="page" href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a href="seo-as-knowledge-management.html">How we built this site</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">Home</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What is MKM ?</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="what-you-are-holding.html">01b · What you are holding</a><a href="visitors-and-readers.html">02 · The new experience</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">01 · MKM for Coffee</a><a href="mkm-for-coffee-why-now.html">02 · Why this is possible now and was not before</a><a class="on" aria-current="page" href="mkm-for-coffee-commons.html">03 · How a commons stays a commons</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a href="seo-as-knowledge-management.html">How we built this site</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
 <script>document.addEventListener("keydown",function(e){if(e.key==="Escape"&&document.activeElement&&document.activeElement.closest&&document.activeElement.closest(".hs"))document.activeElement.blur()});</script>
 </nav>
 <main id="main">
@@ -527,81 +478,50 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li><a href="mkm-for-coffee.html">MKM for Coffee</a></li><li aria-current="page">For coffee farmers</li></ol></nav>
-<div class="kicker">for growers</div>
-      <h1>What you know about your own plot leaves with every season</h1>
-      <p class="stand">Every year someone measures the plot, takes the photographs, notes the varieties — and nothing comes back to you. We are building a coffee knowledge vault where the grower gets something back, and we are looking for the first group to build it with.</p>
-      <div class="meta"><span>Neo Gens</span><span>3 min read</span><span><a href="coffee-demo.html">See the demo dashboard</a></span></div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li><a href="mkm-for-coffee.html">MKM for Coffee</a></li><li aria-current="page">How a commons stays a commons</li></ol></nav>
+<div class="kicker">Second practice area · Part 3 of 3</div>
+      <h1>Turning Coffee Data into Coffee Knowledge</h1>
+      <p class="stand">An invitation to build a public Coffee Knowledge Vault on ontology, knowledge graphs and AI — <a href="coffee-demo.html">see a simulated dashboard of the vault in use</a></p>
+      <div class="meta"><span>Neo Gens · August 2026</span><span>13 min read</span><span><a href="coffee-farmer.html">Short version for growers</a></span><span><a href="coffee-demo.html">See the demo dashboard</a></span></div>
     </div>
   </div>
 </header>
 
-
-
 <article>
-  <div class="wrap">
-    <div class="artbody">
-<h2 id="s01"><span class="sn">01</span>What you would actually do</h2>
-<p class="first">The short version: tell us what you already do, using what is already in your hand. No new app to install, no form with forty fields.</p>
-<div class="pcards three rv">
-  <div class="pc"><h3 class="hkeep-2">Send it however suits you</h3><p>Photograph the drying beds in the afternoon. Record a voice note saying how long the ferment ran. Take a short clip while turning the pile. Or type one sentence. It goes through the messaging app you already use every day.</p></div>
-  <div class="pc"><h4>The system does the filing</h4><p>What you send gets turned into something the vault can use. When it isn't sure, it asks one short question back rather than guessing quietly — and your own words are always kept first.</p></div>
-  <div class="pc"><h4>No schedule to keep</h4><p>Send something when there is something to say. Skip the weeks when the harvest is on. At the cooperative's collection point the meters already report their own readings, with nothing extra asked of you.</p></div>
-</div>
-<p class="beat">Nobody should have to become a data-entry clerk to get their own knowledge on the record.</p>
-
-<h2 id="s02"><span class="sn">02</span>What you get back</h2>
-<h3>A comparison with plots like yours</h3>
-<p>Plots at a similar altitude, on similar soil, growing the same variety: how long they fermented, how long they dried, and what the cup scored. Today you have to know someone personally to ask. This is the one thing smallholders cannot get anywhere at present.</p>
-<h3>A record of your plot, with the evidence attached</h3>
-<p>What you did each season is written down with its source. When you talk price with a buyer, you have something to show rather than only something to say — and improvement across seasons becomes something you can demonstrate.</p>
-<h3>The person at the other end can trace it back to you</h3>
-<p>With your permission, whoever buys that bag can follow it back to the plot and to your name, instead of stopping at a province printed on the label.</p>
-<p>And the more growers take part, the more your own contribution is worth, because every comparison gets sharper as the number of plots in the vault grows.</p>
-
-<h2 id="s03"><span class="sn">03</span>What the other side is reading</h2>
-<p>One record, two people who have never met — a grower in Chiang Rai and a roaster in northern Europe, both open on the same page of the vault, each reading a different line in it. Illustrative.</p>
-<div class="dlg">
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">FLAVOUR PROFILE</span></div><p>I have said for years that this coffee tastes of longan and tamarind. Every sheet handed to me offers berry, cocoa, caramel. So berry is what gets written down, and the words we actually use for our own coffee never leave the farm.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">FLAVOUR PROFILE</span></div><p>Longan is the one thing I cannot buy anywhere else. If the record says longan and I taste longan, that is a bag I can sell under its own name instead of burying it in a blend.</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">MEAN CUP SCORE</span></div><p>The harvest goes out and one number comes back, from the person buying it. In all these years I have never known whether that number was a good one.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">MEAN CUP SCORE</span></div><p>I have had your country's average for years. It arrives in the supplier reports every season. It has never occurred to this trade that the person growing the coffee does not have it.</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">TRACEABLE TO PLOT</span></div><p>They ask for papers proving where the trees stand. We know where they stand. There is simply no way to prove it to someone we will never meet.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">TRACEABLE TO PLOT</span></div><p>And without it I cannot bring the coffee into Europe at all. Once the plot is on record you stop being a risk on my compliance list and become a supplier I can plan a year around.</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">VERIFIED ROUTES</span></div><p>We sell to the mill and it ends there. After that nobody tells us which country drinks it.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">VERIFIED ROUTES</span></div><p>Ask and I will tell you. Knowing which market pays for what you already grow is worth more to you than another kilo of yield.</p></div>
-</div>
-<p>Nobody in that exchange added anything new. Every fact in it exists today — the only difference is that each side can see its own half and not the other. The vault does not create knowledge. It makes the same knowledge readable from both ends.</p>
-<p class="dlg-foot">All four of those fields are on the <a href="coffee-demo.html">demo dashboard</a> — click any origin on the map to see them.</p>
-
-<h2 id="s04"><span class="sn">04</span>Questions worth asking first</h2>
-<h3>What does it cost</h3>
-<p>Nothing for the farmer. The project earns from others along the chain who put this knowledge to work — not from the people growing the coffee.</p>
-<h3>Who owns my plot data</h3>
-<p>You do. You choose who sees it, you grant access to the buyers you choose, and you withdraw it from the ones you don't. Nobody opens your data to anyone else without your say-so.</p>
-<h3>What about a bad year</h3>
-<p>Whatever you send, you decide who can see it. That rule was written at the start, not added later.</p>
-<h3>I'm not comfortable typing</h3>
-<p>Then don't. Photograph it, or speak it in the language you use every day, dialect included. The translating is the system's job, not yours.</p>
-<h3>What happens after I leave my email</h3>
-<p>We get in touch, and invite you into the first group testing the system. While we're at it we want to hear what we have got wrong about how coffee actually works where you are.</p>
-
-<h2 id="s05"><span class="sn">05</span>Why it has to be public</h2>
-<p>This vault is a public good — like a road or an irrigation system. Everyone can use it and no single party owns it.</p>
-<p>The structure is published in full: anyone can build their own system on it or argue with it. Your data stays yours, portable and withdrawable. And every fact in the vault carries its own provenance — who said it, and what evidence stands behind it.</p>
-<p>Neo Gens funds and stewards the work but does not own the knowledge inside it. A vault owned by one company is just a database with better marketing, and nobody should put their own data into one.</p>
-<p class="colophon">If you want the full reasoning — why the coffee sector needs a shared knowledge vault, and what each party along the chain gets back — <a href="mkm-for-coffee.html">read the long version</a>.</p>
+<div class="wrap">
+<div class="artbody">
+<nav class="toc rv" aria-label="Contents"><div class="h">Contents</div><ol><li><a href="mkm-for-coffee.html#s01"><i>01</i><span>The industry is drowning in data and starving for knowledge</span></a></li><li><a href="mkm-for-coffee.html#s02"><i>02</i><span>Why the value is trapped</span></a></li><li><a href="mkm-for-coffee.html#s03"><i>03</i><span>What a Coffee Knowledge Vault is</span></a></li><li><a href="mkm-for-coffee-why-now.html#s04"><i>04</i><span>Why this is possible now and was not before</span></a></li><li><a href="mkm-for-coffee-why-now.html#s05"><i>05</i><span>What each participant deposits, and what each one withdraws</span></a></li><li><a href="mkm-for-coffee-why-now.html#s06"><i>06</i><span>Trust is what makes deposits from strangers usable</span></a></li><li><a href="mkm-for-coffee-why-now.html#s07"><i>07</i><span>Vocabulary is a contribution, not a constraint</span></a></li><li><a href="#s08"><i>08</i><span>How a commons stays a commons</span></a></li><li><a href="#s09"><i>09</i><span>Proof: the first deposits</span></a></li><li><a href="#s10"><i>10</i><span>An invitation</span></a></li></ol></nav>
+<h2 class="rv" id="s08"><span class="sn">08</span>How a commons stays a commons</h2>
+<p class="">Knowledge commons fail in predictable ways. They get captured by one large contributor, or they fragment into incompatible forks, or they fill with unverifiable junk, or the stewarding organisation quietly turns them into a product. Any serious proposal has to say how it intends not to do that.</p>
+<p class="">Our commitments are four.</p>
+<div class="pcards two rv"><div class="pc"><h3 class="hkeep-19">The structure is open.</h3><p>The ontology, the schema and the reference vocabularies are published. Anyone can implement against them, extend them, or argue with them. A commons whose structure is proprietary is not a commons.</p></div><div class="pc"><h4>Contributors keep rights over their own records.</h4><p>A farmer's farm record is theirs: portable, exportable, shareable with the buyers they choose, revocable from the ones they do not. This is where the ownership question belongs — as a governance rule that keeps participation voluntary and keeps the vault honest, rather than as the headline argument.</p></div><div class="pc"><h4>Provenance is mandatory, everywhere.</h4><p>Every fact in the vault carries its source and its verification status. That is what prevents both capture and junk: a large contributor cannot overwrite the record, they can only add claims that stand or fall on their evidence.</p></div><div class="pc"><h4>Stewardship is separated from ownership.</h4><p>Neo Gens funds and maintains the work. Neo Gens does not own the knowledge, and the design is deliberately unattractive to acquire, because the valuable part is published.</p></div></div>
+<p class="">None of this is charity, and we should be plain about it. We think a functioning knowledge commons makes the whole specialty coffee sector more productive, and organisations that know how to build and use structured knowledge will do well in that world. That is the business we are in. But the vault itself has to be a public good, because a vault that one company owns is just a database with better marketing, and nobody should deposit into it.</p>
+<h2 class="rv" id="s09"><span class="sn">09</span>Proof: the first deposits</h2>
+<p class="">Global ambitions deserve local evidence, so here is an honest account of where the work stands.</p>
+<p class="">We chose Thailand for the first deposits for a reason that surprised us. Thailand grows roughly 16,000 tonnes of coffee a year and drinks around 95,500 — it imported about 80,000 tonnes in 2025 and exported some $9.2 million worth of green and roasted coffee in 2024, ranking 87th in the world. Thai smallholders sell domestically, into a market that wants six times what the country produces. EUDR compliance is not their problem.</p>
+<p class="">That made Thailand a better test, not a worse one. If a knowledge vault only attracts contributions when a regulation forces them, it is a compliance product. In Thailand the only reason anyone would contribute is that the vault gives back more than it takes. That is a much harder bar and a much more honest one.</p>
+<p class="">What exists today: a formal domain ontology built on published academic work on Thai coffee knowledge and extended with supply-chain and data-integrity modules; a Neo4j schema with <code>Lot</code> as the central linking entity; two flavour vocabularies — the international wheel and a Thai/Asian wheel — connected by curated mappings; an eight-stage capture pipeline design from a messaging app to a validated graph write; the claim-and-evidence provenance layer described above; and a competency-question register in which six priority questions are implemented as queries and pass their evaluation tests against a demonstration dataset. The first tangible output, a one-page lot profile for a roaster, has been generated end to end. The ontology is built federation-ready, so a farm registered in Colombia, Ethiopia or Honduras joins the same structure as one in Chiang Rai.</p>
+<p class="">What does not exist yet: contributors. The pilot cooperative, the field interviews that will test our competency questions against what growers actually ask, and the cupping sessions that will validate the Asian flavour wheel are the next phase, not a completed one. Every question in the register is still marked <em>draft</em>, precisely because it came from research rather than from a farmer's mouth. We are not promoting any of them until we have sat with people who grow coffee.</p>
+<p class="">We would rather publish that distinction clearly than round it up. The sector has enough pilots described in the past tense.</p>
+<h2 class="rv" id="s10"><span class="sn">10</span>An invitation</h2>
+<p class="">A vault with one contributor is a database. What we are asking for is the first cohort.</p>
+<ul class="body rv"><li><strong>Cooperatives and producer organisations</strong> willing to make the first deposits in a second origin, and to tell us what the structure gets wrong about how coffee actually works where they are</li><li><strong>Roasters</strong> who will contribute cupping data and use farmer-sourced profiles in real sourcing decisions — and say plainly when the profiles are not good enough to use</li><li><strong>Mills and exporters</strong> who see the case for depositing processing and compliance data once instead of documenting the same farms every season</li><li><strong>Researchers, institutes and origin bodies</strong> with agronomic knowledge or a regional flavour vocabulary that belongs in a shared structure rather than in a PDF</li><li><strong>Development organisations and funders</strong> interested in knowledge infrastructure as a complement to the harder work on prices and contracts, not a substitute for it</li><li><strong>Ontology and knowledge-graph practitioners</strong> willing to read the schema and argue with it</li></ul>
+<p class="">The coffee industry already pays for all of this knowledge. It pays several times over, in duplicated surveys, unprovable quality claims, sourcing decisions made on thin information, and expertise that retires with the person who held it. The only thing missing is a shared place to put it and a structure that makes it compound.</p>
+<p class="">That is a thing a group of people can decide to build. We would like to help build it, and we would like company.</p>
+<p class="colophon rv"><em>Coffee KM is a public-goods project stewarded by <a href="https://neogens.co">Neo Gens</a>, a Modern Knowledge Management practice. The ontology, schema and vocabularies are published openly. To contribute, get in touch.</em></p>
+<h3 class="rv srcs-h">Sources</h3>
+<ul class="srcs-list rv"><li><a href="https://dailycoffeenews.com/2026/07/02/inside-the-coffee-barometer-part-1-prices-swing-structures-dont/">Inside the 2026 Coffee Barometer, Part 1: Prices Swing, Structures Don't</a> — Daily Coffee News, July 2026</li><li><a href="https://coffeebarometer.org/explore-coffee-barometer-2026/">2026 Coffee Barometer</a> — Ethos Agriculture et al., June 2026</li><li><a href="https://dailycoffeenews.com/2026/07/29/eudr-is-accelerating-farm-modernization-but-threats-to-smallholders-remain/">EUDR is Accelerating Farm Modernization, But Threats to Smallholders Remain</a> — Daily Coffee News / Mongabay, July 2026</li><li><a href="https://psqr.eu/publications-resources/eu-deforestation-regulation-eudr-2026-update-new-deadlines-for-companies/">EU Deforestation Regulation 2026 Update: New Deadlines for Companies</a> — PSQR</li><li><a href="https://www.foodnavigator.com/Article/2026/04/17/eudr-how-ready-is-coffee/">Is coffee ready for the EUDR?</a> — FoodNavigator, April 2026</li><li><a href="https://cgspace.cgiar.org/items/87ca1211-1bb5-4dd0-be12-58dbc8e2cfb9">"Error 404 farmers not found"</a> — Berta Ortiz, Alliance of Bioversity International and CIAT</li><li>Lertkrai, Kaewboonma &amp; Wathanti (2023). <em>Developing an Ontology for Thai Coffee Knowledge</em></li><li>Phaekhiao, Khankasikam &amp; Nuntawong (2025). <em>A Comparison of the Effectiveness of Ontology-Driven Information System Development Tools</em>, ICIC Express Letters 19(2), 221–230</li><li><a href="https://oec.world/en/profile/bilateral-product/coffee/reporter/tha">Coffee trade data — Thailand</a> — OEC</li></ul>
     </div>
-  </div>
+</div>
 </article>
 
 <section class="join" id="join">
   <div class="join-bg"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="k rv">Join the first group</div>
-      <h2 class="rv">We are looking for the first growers</h2>
-      <p class="lead rv">Leave your name and email and we will get in touch. No cost, and nothing to commit to.</p>
+      <div class="k rv">Take part</div>
+      <h2 class="rv">The pilot needs its first deposits.</h2>
+      <p class="lead rv">If you would like to put the first records into the vault, leave your details and we will get in touch.</p>
       <form id="wl" class="rv" novalidate>
         <div class="frow">
           <div class="ffield"><label class="flab" for="name">Name</label><input type="text" id="name" autocomplete="name"></div>
@@ -630,6 +550,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   </div>
 </section>
 
+<div class="pn"><div class="pn-in"><a class="pv" href="mkm-for-coffee-why-now.html"><div class="k">Previous</div><div class="t">Why this is possible now and was not before</div></a></div></div>
 </main>
 <footer>
   <div class="wrap">

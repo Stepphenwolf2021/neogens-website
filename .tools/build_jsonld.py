@@ -48,6 +48,8 @@ PART = {
     "ai-sovereignty.html": 2, "what-we-wont-do.html": 2,
     "long-read-museums-and-libraries.html": 2, "reference-implementation.html": 2,
     "mkm-for-coffee.html": 3, "coffee-farmer.html": 3, "coffee-demo.html": 3,
+    # บทความกาแฟถูกแบ่งเป็นสามภาคเมื่อ 08-22 ดู .tools/split_coffee.py
+    "mkm-for-coffee-why-now.html": 3, "mkm-for-coffee-commons.html": 3,
 }
 PART_NAME = {
     1: ("The idea", "แนวคิด", "the-problem.html"),
@@ -70,12 +72,16 @@ ABOUT = {
     "long-read-museums-and-libraries.html": ["#service-museums", "#term-mkm"],
     "mkm-for-coffee.html": ["#service-coffee"], "coffee-farmer.html": ["#service-coffee"],
     "coffee-demo.html": ["#service-coffee"],
+    "mkm-for-coffee-why-now.html": ["#service-coffee"],
+    "mkm-for-coffee-commons.html": ["#service-coffee"],
     # หน้านี้พูดถึงการทำ ontology ของเว็บตัวเอง จึงประกาศว่าพูดถึงศัพท์สองคำนั้นจริง
     "seo-as-knowledge-management.html": ["#term-ontology", "#term-mkm"],
 }
 ARTICLES = {"long-read-museums-and-libraries.html", "mkm-for-coffee.html",
             "th-mkm-for-coffee.html", "seo-as-knowledge-management.html",
-            "th-seo-as-knowledge-management.html"}
+            "th-seo-as-knowledge-management.html",
+            "mkm-for-coffee-why-now.html", "th-mkm-for-coffee-why-now.html",
+            "mkm-for-coffee-commons.html", "th-mkm-for-coffee-commons.html"}
 
 TERMS = [
     ("#term-mkm", "Modern Knowledge Management", "การบริหารจัดการความรู้สมัยใหม่",

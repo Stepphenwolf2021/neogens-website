@@ -51,7 +51,12 @@ for path in sorted(ROOT.glob("*.html")):
 
     graph = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',
                                  s, re.S).group(1))["@graph"]
-    bc = next(n for n in graph if n.get("@type") == "BreadcrumbList")
+    # ต้องหาจากกราฟ ไม่ใช่จากคำในไฟล์ — หน้า SEO พูดถึงคำว่า BreadcrumbList ในเนื้อหา
+    # ด่านข้างบนจึงผ่านทั้งที่ไม่มีโหนดจริง แล้วบรรทัดนี้เคยระเบิดมาแล้วหนึ่งรอบ
+    bc = next((n for n in graph if n.get("@type") == "BreadcrumbList"), None)
+    if bc is None:
+        skipped.append(path.name)
+        continue
     items = sorted(bc["itemListElement"], key=lambda x: x["position"])
     me = BASE if path.name == "index.html" else BASE + path.name
 
