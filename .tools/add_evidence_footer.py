@@ -83,7 +83,10 @@ for p in pages:
     checks[f"{p.name} · footer ไม่หลุดไปอีกภาษา"] = f'href="{other}"' not in foot
     checks[f"{p.name} · footer ใช้ป้ายเดียวกับเมนู"] = foot.count(f">{label}</a>") == 1
     # นับจากป้าย ไม่ใช่จาก href เพราะบนหน้าตัวเอง href เดียวกันโผล่ในปุ่มสลับภาษาด้วย
-    checks[f"{p.name} · ยังมีในเมนูสไลด์เหมือนเดิม"] = body.count(f">{label}</a>") == 1
+    # และต้องนับในเมนูสไลด์เท่านั้น ตั้งแต่ add_nav_dropdown.py ป้ายเดียวกันโผล่บนแถบบนด้วย
+    m = re.search(r'<div class="drawer".*?</div></div>', body, re.S)
+    drawer = m.group(0) if m else ""
+    checks[f"{p.name} · ยังมีในเมนูสไลด์เหมือนเดิม"] = drawer.count(f">{label}</a>") == 1
 
 bad = [k for k, ok in checks.items() if not ok]
 if bad:
