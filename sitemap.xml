@@ -307,4 +307,20 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/privacy.html"/>
   </url>
+  <url>
+    <loc>https://www.neogens.co/seo-as-knowledge-management.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/seo-as-knowledge-management.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-seo-as-knowledge-management.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/seo-as-knowledge-management.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/th-seo-as-knowledge-management.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/seo-as-knowledge-management.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-seo-as-knowledge-management.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/seo-as-knowledge-management.html"/>
+  </url>
 </urlset>

@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>For coffee farmers — Neo Gens</title>
-<meta name="description" content="Every season someone comes to record your plot, and nothing comes back to you.">
-<meta property="og:title" content="For coffee farmers">
-<meta property="og:description" content="Every season someone comes to record your plot, and nothing comes back to you.">
-<link rel="canonical" href="https://www.neogens.co/coffee-farmer.html">
-<link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee-farmer.html">
-<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee-farmer.html">
-<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee-farmer.html">
+<title>SEO as knowledge management — Neo Gens</title>
+<meta name="description" content="Content speaks to the people you want to reach. SEO speaks to the machines in between. How we designed ours as an ontology, and what the test reports.">
+<meta property="og:title" content="SEO as knowledge management — Neo Gens">
+<meta property="og:description" content="Content speaks to the people you want to reach. SEO speaks to the machines in between. How we designed ours as an ontology, and what the test reports.">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/seo-as-knowledge-management.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-seo-as-knowledge-management.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/seo-as-knowledge-management.html">
+<link rel="canonical" href="https://www.neogens.co/seo-as-knowledge-management.html">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Neo Gens">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Neo Gens">
-<meta property="og:url" content="https://www.neogens.co/coffee-farmer.html">
+<meta property="og:url" content="https://www.neogens.co/seo-as-knowledge-management.html">
 <meta property="og:image" content="https://www.neogens.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -266,6 +266,43 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
 .crumbs a:hover{color:var(--go)}
 .crumbs [aria-current]{color:var(--dim)}
+
+/* --- ภาพเปรียบเทียบและตารางผลตรวจ --- */
+/* แม่แบบ coffee-farmer มีแค่ .figplate figcaption ไม่มีกฎ figure/figcaption เปล่า ๆ
+   ภาพในหน้านี้ไม่ได้อยู่ใน .figplate คำบรรยายจึงต้องมีกฎของตัวเอง ไม่งั้นตกไปใช้ขนาดตัวเนื้อ */
+figure{margin:clamp(34px,4.5vw,56px) 0 0}
+figure svg{max-width:100%;height:auto}
+figcaption b{color:var(--dim);font-weight:600}
+.dbox{border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  padding:clamp(16px,2.6vw,26px)}
+.dlab{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;margin-bottom:14px}
+.dlab.go{color:var(--go)}
+.dsvg{width:100%;height:auto;display:block}
+.bx{fill:var(--surface-2);stroke:var(--line-2);stroke-width:1}
+.bx-go{fill:var(--go-soft);stroke:var(--go);stroke-width:1.3}
+.bx-as{fill:rgba(var(--ask-rgb),.07);stroke:rgba(var(--ask-rgb),.5);stroke-width:1.2}
+.ln{stroke:var(--line-2);stroke-width:1;fill:none}
+.ln-gh{stroke:var(--line);stroke-width:1;fill:none;stroke-dasharray:4 4}
+.rr-scroll{overflow-x:auto}
+.rr{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11.5px}
+.rr th{text-align:left;font-weight:400;color:var(--mute);font-size:10px;
+  text-transform:uppercase;padding:0 16px 10px 0;border-bottom:1px solid var(--line);
+  white-space:nowrap}
+.rr td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);color:var(--dim);
+  vertical-align:top}
+.rr tbody tr:last-child td{border-bottom:0}
+.rr td.rr-ok{color:var(--go);white-space:nowrap}
+
+figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(--mute);
+  margin-top:14px;max-width:66ch}
+.dlab{letter-spacing:.13em}
+.t-b{font-family:'Inter',sans-serif;font-size:14px;fill:var(--fg);font-weight:600}
+.t-s{font-family:'Inter',sans-serif;font-size:11.5px;fill:var(--dim)}
+.m{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:var(--mute);letter-spacing:.1em}
+.m-go{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:var(--go);letter-spacing:.1em}
+.m-as{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:var(--ask);letter-spacing:.1em}
+.m-am{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:var(--guess);letter-spacing:.1em}
+.rr th{letter-spacing:.1em}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -383,10 +420,13 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://www.neogens.co/coffee-farmer.html",
-      "url": "https://www.neogens.co/coffee-farmer.html",
-      "name": "For coffee farmers",
+      "@type": [
+        "WebPage",
+        "TechArticle"
+      ],
+      "@id": "https://www.neogens.co/seo-as-knowledge-management.html",
+      "url": "https://www.neogens.co/seo-as-knowledge-management.html",
+      "name": "SEO as knowledge management",
       "isPartOf": {
         "@id": "https://www.neogens.co/#website"
       },
@@ -394,94 +434,22 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       "publisher": {
         "@id": "https://www.neogens.co/#org"
       },
-      "description": "Every season someone comes to record your plot, and nothing comes back to you.",
+      "description": "Content speaks to the people you want to reach. SEO speaks to the machines in between. How we designed ours as an ontology, and what the test reports.",
       "about": [
         {
-          "@id": "https://www.neogens.co/#service-coffee"
+          "@id": "https://www.neogens.co/#term-ontology"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
         }
       ],
       "workTranslation": {
-        "@id": "https://www.neogens.co/th-coffee-farmer.html"
+        "@id": "https://www.neogens.co/th-seo-as-knowledge-management.html"
       },
-      "breadcrumb": {
-        "@id": "https://www.neogens.co/coffee-farmer.html#crumbs"
-      },
-      "mainEntity": {
-        "@id": "https://www.neogens.co/coffee-farmer.html#faq"
+      "headline": "SEO as knowledge management",
+      "author": {
+        "@id": "https://www.neogens.co/#org"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.neogens.co/coffee-farmer.html#crumbs",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Neo Gens",
-          "item": "https://www.neogens.co/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "MKM for Coffee",
-          "item": "https://www.neogens.co/mkm-for-coffee.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "For coffee farmers",
-          "item": "https://www.neogens.co/coffee-farmer.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.neogens.co/coffee-farmer.html#faq",
-      "isPartOf": {
-        "@id": "https://www.neogens.co/coffee-farmer.html"
-      },
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does it cost",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nothing for the farmer. The project earns from others along the chain who put this knowledge to work — not from the people growing the coffee."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who owns my plot data",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You do. You choose who sees it, you grant access to the buyers you choose, and you withdraw it from the ones you don't. Nobody opens your data to anyone else without your say-so."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What about a bad year",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Whatever you send, you decide who can see it. That rule was written at the start, not added later."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "I'm not comfortable typing",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Then don't. Photograph it, or speak it in the language you use every day, dialect included. The translating is the system's job, not yours."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens after I leave my email",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We get in touch, and invite you into the first group testing the system. While we're at it we want to hear what we have got wrong about how coffee actually works where you are."
-          }
-        }
-      ]
     }
   ]
 }
@@ -493,10 +461,10 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><a href="the-problem.html">The idea</a><a href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" aria-current="page" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
-    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="coffee-farmer.html">EN</a><span>/</span><a href="th-coffee-farmer.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+    <div class="nav-links"><a href="the-problem.html">The idea</a><a href="mkm-for-museums-and-libraries.html">MKM for Museums &amp; Libraries</a><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="engagement.html">Engagement</a><a href="about.html">Who we are</a><span class="lang"><a class="on" aria-current="page" href="seo-as-knowledge-management.html">EN</a><span>/</span><a href="th-seo-as-knowledge-management.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="contact.html">Request a briefing</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="seo-as-knowledge-management.html">EN</a><span>/</span><a href="th-seo-as-knowledge-management.html">TH</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">Home</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What is MKM ?</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="what-you-are-holding.html">01b · What you are holding</a><a href="visitors-and-readers.html">02 · The new experience</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">MKM for Coffee</a><a class="on" aria-current="page" href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a href="seo-as-knowledge-management.html">How we built this site</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="index.html">Home</a><div class="h">Part 1 · The idea</div><a href="the-problem.html">01 · The problem</a><a href="what-mkm-is.html">02 · What is MKM ?</a><a href="why-it-works.html">03 · Why it works</a><a href="ontology-and-knowledge-graph.html">04 · Ontology &amp; knowledge graph</a><div class="h">Part 2 · Museums &amp; libraries</div><a href="mkm-for-museums-and-libraries.html">01 · Where things stand</a><a href="what-you-are-holding.html">01b · What you are holding</a><a href="visitors-and-readers.html">02 · The new experience</a><a href="leadership.html">03 · What leadership looks like</a><a href="services.html">What we do together</a><a href="engagement.html">Engagement</a><a href="ai-sovereignty.html">Your data · AI sovereignty</a><a href="what-we-wont-do.html">What we won't do</a><a href="long-read-museums-and-libraries.html">Long read: MKM for museums &amp; libraries</a><div class="h">Part 3 · Public goods</div><a href="mkm-for-coffee.html">MKM for Coffee</a><a href="coffee-farmer.html">For coffee farmers</a><a href="coffee-demo.html">Demo: the vault in use</a><div class="h">&nbsp;</div><a href="about.html">Who we are</a><a class="on" aria-current="page" href="seo-as-knowledge-management.html">How we built this site</a><a class="btn" href="contact.html">Request a briefing</a></div></div>
 </nav>
 <main id="main">
 
@@ -504,11 +472,10 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Neo Gens</a></li><li><a href="mkm-for-coffee.html">MKM for Coffee</a></li><li aria-current="page">For coffee farmers</li></ol></nav>
-<div class="kicker">for growers</div>
-      <h1>What you know about your own plot leaves with every season</h1>
-      <p class="stand">Every year someone measures the plot, takes the photographs, notes the varieties — and nothing comes back to you. We are building a coffee knowledge vault where the grower gets something back, and we are looking for the first group to build it with.</p>
-      <div class="meta"><span>Neo Gens</span><span>3 min read</span><span><a href="coffee-demo.html">See the demo dashboard</a></span></div>
+<div class="kicker">Evidence</div>
+      <h1>Content speaks to people. SEO speaks to machines. Both are knowledge work.</h1>
+      <p class="stand">Most websites are designed for the first conversation and improvised for the second. This is how we designed ours as an ontology, and what happens when a machine is asked to read it back.</p>
+      <div class="meta"><span>Neo Gens</span><span>updated 21 August 2026</span></div>
     </div>
   </div>
 </header>
@@ -517,58 +484,102 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 
 <article>
   <div class="wrap">
-    <div class="artbody">
-<h2 id="s01"><span class="sn">01</span>What you would actually do</h2>
-<p class="first">The short version: tell us what you already do, using what is already in your hand. No new app to install, no form with forty fields.</p>
-<div class="pcards three rv">
-  <div class="pc"><h3 class="hkeep-2">Send it however suits you</h3><p>Photograph the drying beds in the afternoon. Record a voice note saying how long the ferment ran. Take a short clip while turning the pile. Or type one sentence. It goes through the messaging app you already use every day.</p></div>
-  <div class="pc"><h4>The system does the filing</h4><p>What you send gets turned into something the vault can use. When it isn't sure, it asks one short question back rather than guessing quietly — and your own words are always kept first.</p></div>
-  <div class="pc"><h4>No schedule to keep</h4><p>Send something when there is something to say. Skip the weeks when the harvest is on. At the cooperative's collection point the meters already report their own readings, with nothing extra asked of you.</p></div>
-</div>
-<p class="beat">Nobody should have to become a data-entry clerk to get their own knowledge on the record.</p>
+    <h2>Most sites are written for one reader and read by two</h2>
+    <p>Almost every website is commissioned the same way. Someone settles the structure, someone writes the copy, someone designs the pages. Then, near the end, somebody asks about SEO. A few titles are rewritten, a plugin is installed, a list of keywords is handed over, and the site goes live.</p>
+    <p>By then the structure has already been decided, and the structure was the part that mattered. What launches is a site that reads well and cannot be read: nothing in it states what the organisation is, which field it works in, how its pages relate to one another, or which of its words are being used in a specific sense. A person infers all of that in seconds. A machine cannot infer it at all.</p>
+    <p>The cause is order, not effort. The question arrived after the decisions it should have shaped.</p>
+    <h2>Content speaks to people. SEO speaks to computers.</h2>
+    <p>We think of a website as two conversations sharing one file. The content is the conversation with the people we want to reach — the argument, the tone, the examples, the things worth disagreeing with. SEO is the conversation with the computers standing between us and those people: who we are, what we work on, what we are connected to.</p>
+    <p>Take the marketing vocabulary out of the second one and what is left is a cataloguing problem. Something arrives that cannot ask a question, cannot read tone, and will not come back to check. It has one pass to work out what you hold, how it connects, and whether to trust it. That is the same problem a catalogue record solves for a reader who will never meet the curator. Same discipline, different reader.</p>
+    <p>Doing it properly is what lets the right people find you for a reason. An organisation that has described itself accurately to a machine gets matched to the people looking for exactly that. The alternative is buying attention without direction — paying to appear in front of people who do not want you, again and again, for as long as the budget lasts. That cost repeats every time. An accurate description of what you are does not.</p>
+    <h2>How we designed ours: ontology-based SEO</h2>
+    <p>Most SEO work starts from keywords: guess the phrases people type, then bend the pages toward them. It treats a search engine as a lock to be picked.</p>
+    <p>We started at the other end, by describing what actually exists — the things, and the relations between them. That is an ontology, and it is the same object we build with clients. The difference is only that here the vocabulary was set by search engines rather than by a curatorial team. That vocabulary is schema.org: a shared dictionary of types and relations that the major search engines agreed on, so that a statement written once is understood the same way by all of them.</p>
+    <p>In practice: the organisation has one identifier, declared once and referenced from every page. Each of the four terms this site uses in a specific sense has its own identifier and points at the page that defines it. Both practice areas are declared as services pointing back to the same provider. Every page states which of those things it is about. The Thai and English versions of a page are bound together as one work in two languages, not two pages that happen to resemble each other. Four hundred and sixty-five statements across forty-three pages.</p>
+    <p>Around that: an address for every page that says what the page is, twenty-six redirects so that every link ever shared still arrives, and twenty-eight typeface files and every stylesheet served from this domain, so that reading a page contacts nobody but us.</p>
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">THE SAME SEARCH ENGINE, TWO DIFFERENT INPUTS</div>
+        <svg class="dsvg" viewBox="0 0 900 400" role="img" aria-label="A comparison in three rows. On the left, a page containing only lines of text sends plain text to a search engine, which can only guess what the organisation is, and the result is being matched by guesswork. On the right, the same page also carries a small JSON-LD graph, sends it in the shared schema.org vocabulary to the same search engine, which reads who the organisation is and what it works on, and the result is being matched for a reason.">
+      <text class="m-am" x="28" y="22">NO STRUCTURE DECLARED</text>
+      <text class="m-go" x="478" y="22">STRUCTURE DECLARED · ONTOLOGY-BASED</text>
+      <path class="ln-gh" d="M450 34 V386"/>
 
-<h2 id="s02"><span class="sn">02</span>What you get back</h2>
-<h3>A comparison with plots like yours</h3>
-<p>Plots at a similar altitude, on similar soil, growing the same variety: how long they fermented, how long they dried, and what the cup scored. Today you have to know someone personally to ask. This is the one thing smallholders cannot get anywhere at present.</p>
-<h3>A record of your plot, with the evidence attached</h3>
-<p>What you did each season is written down with its source. When you talk price with a buyer, you have something to show rather than only something to say — and improvement across seasons becomes something you can demonstrate.</p>
-<h3>The person at the other end can trace it back to you</h3>
-<p>With your permission, whoever buys that bag can follow it back to the plot and to your name, instead of stopping at a province printed on the label.</p>
-<p>And the more growers take part, the more your own contribution is worth, because every comparison gets sharper as the number of plots in the vault grows.</p>
+      <rect class="bx" x="90" y="40" width="270" height="100" rx="12"/>
+      <text class="t-s" x="108" y="64">Your page</text>
+      <path class="ln-gh" d="M108 84 H346"/>
+      <path class="ln-gh" d="M108 100 H326"/>
+      <path class="ln-gh" d="M108 116 H346"/>
+      <path class="ln-gh" d="M108 132 H286"/>
 
-<h2 id="s03"><span class="sn">03</span>What the other side is reading</h2>
-<p>One record, two people who have never met — a grower in Chiang Rai and a roaster in northern Europe, both open on the same page of the vault, each reading a different line in it. Illustrative.</p>
-<div class="dlg">
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">FLAVOUR PROFILE</span></div><p>I have said for years that this coffee tastes of longan and tamarind. Every sheet handed to me offers berry, cocoa, caramel. So berry is what gets written down, and the words we actually use for our own coffee never leave the farm.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">FLAVOUR PROFILE</span></div><p>Longan is the one thing I cannot buy anywhere else. If the record says longan and I taste longan, that is a bag I can sell under its own name instead of burying it in a blend.</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">MEAN CUP SCORE</span></div><p>The harvest goes out and one number comes back, from the person buying it. In all these years I have never known whether that number was a good one.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">MEAN CUP SCORE</span></div><p>I have had your country's average for years. It arrives in the supplier reports every season. It has never occurred to this trade that the person growing the coffee does not have it.</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">TRACEABLE TO PLOT</span></div><p>They ask for papers proving where the trees stand. We know where they stand. There is simply no way to prove it to someone we will never meet.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">TRACEABLE TO PLOT</span></div><p>And without it I cannot bring the coffee into Europe at all. Once the plot is on record you stop being a risk on my compliance list and become a supplier I can plan a year around.</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">GROWER · CHIANG RAI</span><span class="dlg-field">VERIFIED ROUTES</span></div><p>We sell to the mill and it ends there. After that nobody tells us which country drinks it.</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">ROASTER · NORTHERN EUROPE</span><span class="dlg-field">VERIFIED ROUTES</span></div><p>Ask and I will tell you. Knowing which market pays for what you already grow is worth more to you than another kilo of yield.</p></div>
-</div>
-<p>Nobody in that exchange added anything new. Every fact in it exists today — the only difference is that each side can see its own half and not the other. The vault does not create knowledge. It makes the same knowledge readable from both ends.</p>
-<p class="dlg-foot">All four of those fields are on the <a href="coffee-demo.html">demo dashboard</a> — click any origin on the map to see them.</p>
+      <rect class="bx-go" x="540" y="40" width="270" height="100" rx="12"/>
+      <text class="t-s" x="558" y="64">Your page</text>
+      <path class="ln-gh" d="M558 84 H700"/>
+      <path class="ln-gh" d="M558 100 H680"/>
+      <path class="ln-gh" d="M558 116 H700"/>
+      <path class="ln-gh" d="M558 132 H660"/>
+      <text class="m-go" x="752" y="62" text-anchor="middle">JSON-LD</text>
+      <path class="ln" d="M752 80 L728 116"/>
+      <path class="ln" d="M752 80 L776 116"/>
+      <path class="ln" d="M728 116 H776"/>
+      <circle class="bx-go" cx="752" cy="80" r="9"/>
+      <circle class="bx-go" cx="728" cy="116" r="9"/>
+      <circle class="bx-go" cx="776" cy="116" r="9"/>
 
-<h2 id="s04"><span class="sn">04</span>Questions worth asking first</h2>
-<h3>What does it cost</h3>
-<p>Nothing for the farmer. The project earns from others along the chain who put this knowledge to work — not from the people growing the coffee.</p>
-<h3>Who owns my plot data</h3>
-<p>You do. You choose who sees it, you grant access to the buyers you choose, and you withdraw it from the ones you don't. Nobody opens your data to anyone else without your say-so.</p>
-<h3>What about a bad year</h3>
-<p>Whatever you send, you decide who can see it. That rule was written at the start, not added later.</p>
-<h3>I'm not comfortable typing</h3>
-<p>Then don't. Photograph it, or speak it in the language you use every day, dialect included. The translating is the system's job, not yours.</p>
-<h3>What happens after I leave my email</h3>
-<p>We get in touch, and invite you into the first group testing the system. While we're at it we want to hear what we have got wrong about how coffee actually works where you are.</p>
+      <path class="ln" d="M225 140 V184"/>
+      <path class="ln" d="M218 174 L225 186 L232 174"/>
+      <rect class="bx" x="150" y="148" width="150" height="24" rx="6"/>
+      <text class="m" x="225" y="164" text-anchor="middle">PLAIN TEXT ONLY</text>
 
-<h2 id="s05"><span class="sn">05</span>Why it has to be public</h2>
-<p>This vault is a public good — like a road or an irrigation system. Everyone can use it and no single party owns it.</p>
-<p>The structure is published in full: anyone can build their own system on it or argue with it. Your data stays yours, portable and withdrawable. And every fact in the vault carries its own provenance — who said it, and what evidence stands behind it.</p>
-<p>Neo Gens funds and stewards the work but does not own the knowledge inside it. A vault owned by one company is just a database with better marketing, and nobody should put their own data into one.</p>
-<p class="colophon">If you want the full reasoning — why the coffee sector needs a shared knowledge vault, and what each party along the chain gets back — <a href="mkm-for-coffee.html">read the long version</a>.</p>
-    </div>
+      <path class="ln" d="M675 140 V184"/>
+      <path class="ln" d="M668 174 L675 186 L682 174"/>
+      <rect class="bx-as" x="600" y="148" width="150" height="24" rx="6"/>
+      <text class="m-as" x="675" y="164" text-anchor="middle">schema.org</text>
+
+      <rect class="bx" x="90" y="190" width="270" height="80" rx="12"/>
+      <text class="t-b" x="225" y="216" text-anchor="middle">Search engine</text>
+      <text class="m" x="225" y="238" text-anchor="middle">Sees paragraphs. Cannot tell what</text>
+      <text class="m" x="225" y="254" text-anchor="middle">this organisation is or does.</text>
+
+      <rect class="bx" x="540" y="190" width="270" height="80" rx="12"/>
+      <text class="t-b" x="675" y="216" text-anchor="middle">Search engine</text>
+      <text class="m" x="675" y="238" text-anchor="middle">Reads who you are, what you do,</text>
+      <text class="m" x="675" y="254" text-anchor="middle">what you connect to.</text>
+
+      <path class="ln" d="M225 270 V302"/>
+      <path class="ln" d="M218 292 L225 304 L232 292"/>
+      <path class="ln" d="M675 270 V302"/>
+      <path class="ln" d="M668 292 L675 304 L682 292"/>
+
+      <rect class="bx" x="90" y="308" width="270" height="78" rx="12"/>
+      <text class="t-b" x="225" y="334" text-anchor="middle">Matched by guesswork</text>
+      <text class="m" x="225" y="356" text-anchor="middle">Reach has to be bought,</text>
+      <text class="m" x="225" y="372" text-anchor="middle">and bought again each time.</text>
+
+      <rect class="bx-go" x="540" y="308" width="270" height="78" rx="12"/>
+      <text class="t-b" x="675" y="334" text-anchor="middle">Matched for a reason</text>
+      <text class="m" x="675" y="356" text-anchor="middle">People looking for this find you,</text>
+      <text class="m" x="675" y="372" text-anchor="middle">the description keeps working.</text>
+    </svg>
+      </div>
+      <figcaption><b>Illustrative.</b> The search engine is the same on both sides. What differs is what reaches it. Structured data does not make a page better — it makes the page legible as a thing, rather than only as prose.</figcaption>
+    </figure>
+    <p>The reason to prefer this to keyword work is that it does not expire. Ranking formulas change every year, and tactics built for one are worth nothing under the next. A true description of what an organisation is does not go out of date when the formula changes — and it is the same form that AI assistants read, which is where a growing share of people now put their questions.</p>
+    <h2>Whether a machine can actually read it, you can check yourself</h2>
+    <p>None of the above is worth anything as a claim. Google publishes a free tool, the Rich Results Test, which takes any address, fetches the page the way its crawler would, and reports back exactly which structured items it found and whether each one is valid. It is the closest thing there is to an outside reading of what a site says about itself.</p>
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">GOOGLE RICH RESULTS TEST · 21 August 2026</div>
+        <div class="rr-scroll"><table class="rr"><thead><tr><th>Address tested</th><th>Item detected</th><th>Result</th></tr></thead><tbody><tr><td>www.neogens.co</td><td>Organization</td><td class="rr-ok">Valid · 0 errors · 0 warnings</td></tr><tr><td>www.neogens.co/th-mkm-for-coffee.html</td><td>Breadcrumbs</td><td class="rr-ok">Valid · 0 errors · 0 warnings</td></tr></tbody></table></div>
+      </div>
+      <figcaption>Two pages, run on Google's public tool. Anyone can repeat either row in about thirty seconds without asking us for anything — which is the point of quoting it.</figcaption>
+    </figure>
+    <p>Across the whole site, forty-three pages declare the organisation, 33 declare their position in the navigation, 5 are declared as articles and 2 carry questions and answers. Those numbers are counted from the files at build time, not typed in by hand — if a page loses its graph, the build stops.</p>
+    <h2>What passing buys, and what failing costs</h2>
+    <p>Passing is not a ranking boost, and anyone who tells you otherwise is selling something. What it buys is narrower: the search engine stops inferring and starts quoting. Your organisation becomes one identified thing rather than a name that happens to appear in some text; your pages can be shown with their path, their author, their questions and answers; and the same declarations are what an AI assistant reads when someone asks it a question in your field.</p>
+    <p>Failing is worse than it looks, because of how quietly it happens. An item with an error is not shown with a red mark — it is dropped. The page still looks perfect to a person, still loads, still reads well, and simply is not considered for anything it declared. Nobody writes to tell you. A warning is the softer version: the item is kept but loses the features it did not qualify for.</p>
+    <p>The deeper cost is trust that spreads. A declaration a machine cannot confirm does not only lose its own page. When two pages name each other as translations and only one of them agrees, a search engine stops trusting that kind of statement across the whole domain. One unverifiable claim quietly discounts the true ones next to it — which is the same reason a catalogue with unreliable records is worth less than its accurate half.</p>
+    <p>So we treat the test as a condition of publishing rather than a badge to collect. Every page on this site is built by a script that refuses to write the file if the structure it declares does not match what the page actually shows a reader.</p>
   </div>
 </article>
 
@@ -576,9 +587,9 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="join-bg"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="k rv">Join the first group</div>
-      <h2 class="rv">We are looking for the first growers</h2>
-      <p class="lead rv">Leave your name and email and we will get in touch. No cost, and nothing to commit to.</p>
+      <div class="k rv">The same method</div>
+      <h2 class="rv">Curious what this looks like applied to a collection rather than a website?</h2>
+      <p class="lead rv">Leave your details and we will show you the working, not the summary.</p>
       <form id="wl" class="rv" novalidate>
         <div class="frow">
           <div class="ffield"><label class="flab" for="name">Name</label><input type="text" id="name" autocomplete="name"></div>

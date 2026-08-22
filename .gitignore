@@ -7,3 +7,8 @@ setup-remote.command
 # ไบต์โค้ดที่ Python สร้างเอง ไม่ต้องขึ้น repo
 __pycache__/
 *.pyc
+
+# แพ็กเกจ node ที่ npm ลงให้เอง 26 MB ไม่ต้องขึ้น repo
+# repo นี้คือเว็บที่เสิร์ฟจริง ทุกอย่างที่ commit ลงไปจะถูกเสิร์ฟด้วย
+# package.json กับ package-lock.json เก็บไว้ ลง npm install แล้วได้ jsdom เวอร์ชันเดิม
+node_modules/

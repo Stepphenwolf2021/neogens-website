@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>สำหรับคนปลูกกาแฟ — Neo Gens</title>
-<meta name="description" content="ทุกฤดูมีคนขึ้นมาเก็บข้อมูลแปลงคุณ แล้วไม่มีอะไรกลับมาถึงคุณ หน้านี้อธิบายสั้น ๆ ว่าคุณต้องทำอะไร ได้อะไรกลับ และข้อมูลของคุณอยู่กับใคร">
-<meta property="og:title" content="สำหรับคนปลูกกาแฟ">
-<meta property="og:description" content="ทุกฤดูมีคนขึ้นมาเก็บข้อมูลแปลงคุณ แล้วไม่มีอะไรกลับมาถึงคุณ หน้านี้อธิบายสั้น ๆ ว่าคุณต้องทำอะไร ได้อะไรกลับ และข้อมูลของคุณอยู่กับใคร">
-<link rel="canonical" href="https://www.neogens.co/th-coffee-farmer.html">
-<link rel="alternate" hreflang="en" href="https://www.neogens.co/coffee-farmer.html">
-<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-coffee-farmer.html">
-<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/coffee-farmer.html">
+<title>SEO คือการบริหารจัดการความรู้ — Neo Gens</title>
+<meta name="description" content="เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร">
+<meta property="og:title" content="SEO คือการบริหารจัดการความรู้ — Neo Gens">
+<meta property="og:description" content="เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร">
+<link rel="alternate" hreflang="en" href="https://www.neogens.co/seo-as-knowledge-management.html">
+<link rel="alternate" hreflang="th" href="https://www.neogens.co/th-seo-as-knowledge-management.html">
+<link rel="alternate" hreflang="x-default" href="https://www.neogens.co/seo-as-knowledge-management.html">
+<link rel="canonical" href="https://www.neogens.co/th-seo-as-knowledge-management.html">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Neo Gens">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Neo Gens">
-<meta property="og:url" content="https://www.neogens.co/th-coffee-farmer.html">
+<meta property="og:url" content="https://www.neogens.co/th-seo-as-knowledge-management.html">
 <meta property="og:image" content="https://www.neogens.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -265,6 +265,44 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
 .crumbs a:hover{color:var(--go)}
 .crumbs [aria-current]{color:var(--dim)}
+
+/* --- ภาพเปรียบเทียบและตารางผลตรวจ --- */
+/* แม่แบบ coffee-farmer มีแค่ .figplate figcaption ไม่มีกฎ figure/figcaption เปล่า ๆ
+   ภาพในหน้านี้ไม่ได้อยู่ใน .figplate คำบรรยายจึงต้องมีกฎของตัวเอง ไม่งั้นตกไปใช้ขนาดตัวเนื้อ */
+figure{margin:clamp(34px,4.5vw,56px) 0 0}
+figure svg{max-width:100%;height:auto}
+figcaption b{color:var(--dim);font-weight:600}
+.dbox{border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  padding:clamp(16px,2.6vw,26px)}
+.dlab{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;margin-bottom:14px}
+.dlab.go{color:var(--go)}
+.dsvg{width:100%;height:auto;display:block}
+.bx{fill:var(--surface-2);stroke:var(--line-2);stroke-width:1}
+.bx-go{fill:var(--go-soft);stroke:var(--go);stroke-width:1.3}
+.bx-as{fill:rgba(var(--ask-rgb),.07);stroke:rgba(var(--ask-rgb),.5);stroke-width:1.2}
+.ln{stroke:var(--line-2);stroke-width:1;fill:none}
+.ln-gh{stroke:var(--line);stroke-width:1;fill:none;stroke-dasharray:4 4}
+.rr-scroll{overflow-x:auto}
+.rr{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11.5px}
+.rr th{text-align:left;font-weight:400;color:var(--mute);font-size:10px;
+  text-transform:uppercase;padding:0 16px 10px 0;border-bottom:1px solid var(--line);
+  white-space:nowrap}
+.rr td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);color:var(--dim);
+  vertical-align:top}
+.rr tbody tr:last-child td{border-bottom:0}
+.rr td.rr-ok{color:var(--go);white-space:nowrap}
+
+figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mute);
+  margin-top:14px;max-width:62ch}
+.dlab{letter-spacing:.06em}
+.t-b{font-family:'IBM Plex Sans Thai',sans-serif;font-size:14px;fill:var(--fg);font-weight:600}
+.t-s{font-family:'IBM Plex Sans Thai',sans-serif;font-size:11.5px;fill:var(--dim)}
+.m{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:var(--mute);letter-spacing:0}
+.m-go{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:var(--go);letter-spacing:0}
+.m-as{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:var(--ask);letter-spacing:0}
+.m-am{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:var(--guess);letter-spacing:0}
+.rr{font-size:12px;line-height:1.8}
+.rr th{letter-spacing:0}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -382,10 +420,13 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       ]
     },
     {
-      "@type": "WebPage",
-      "@id": "https://www.neogens.co/th-coffee-farmer.html",
-      "url": "https://www.neogens.co/th-coffee-farmer.html",
-      "name": "สำหรับคนปลูกกาแฟ",
+      "@type": [
+        "WebPage",
+        "TechArticle"
+      ],
+      "@id": "https://www.neogens.co/th-seo-as-knowledge-management.html",
+      "url": "https://www.neogens.co/th-seo-as-knowledge-management.html",
+      "name": "SEO คือการบริหารจัดการความรู้",
       "isPartOf": {
         "@id": "https://www.neogens.co/#website"
       },
@@ -393,94 +434,22 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       "publisher": {
         "@id": "https://www.neogens.co/#org"
       },
-      "description": "ทุกฤดูมีคนขึ้นมาเก็บข้อมูลแปลงคุณ แล้วไม่มีอะไรกลับมาถึงคุณ หน้านี้อธิบายสั้น ๆ ว่าคุณต้องทำอะไร ได้อะไรกลับ และข้อมูลของคุณอยู่กับใคร",
+      "description": "เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร",
       "about": [
         {
-          "@id": "https://www.neogens.co/#service-coffee"
+          "@id": "https://www.neogens.co/#term-ontology"
+        },
+        {
+          "@id": "https://www.neogens.co/#term-mkm"
         }
       ],
       "translationOfWork": {
-        "@id": "https://www.neogens.co/coffee-farmer.html"
+        "@id": "https://www.neogens.co/seo-as-knowledge-management.html"
       },
-      "breadcrumb": {
-        "@id": "https://www.neogens.co/th-coffee-farmer.html#crumbs"
-      },
-      "mainEntity": {
-        "@id": "https://www.neogens.co/th-coffee-farmer.html#faq"
+      "headline": "SEO คือการบริหารจัดการความรู้",
+      "author": {
+        "@id": "https://www.neogens.co/#org"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.neogens.co/th-coffee-farmer.html#crumbs",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Neo Gens",
-          "item": "https://www.neogens.co/th-index.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "MKM สำหรับกาแฟ",
-          "item": "https://www.neogens.co/th-mkm-for-coffee.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "สำหรับคนปลูกกาแฟ",
-          "item": "https://www.neogens.co/th-coffee-farmer.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.neogens.co/th-coffee-farmer.html#faq",
-      "isPartOf": {
-        "@id": "https://www.neogens.co/th-coffee-farmer.html"
-      },
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "ต้องจ่ายเท่าไร",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "เกษตรกรไม่มีค่าใช้จ่าย รายได้ของโครงการมาจากฝ่ายอื่นในสายโซ่ที่เอาความรู้ชุดนี้ไปใช้ทำงาน ไม่ได้มาจากคนปลูก"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ข้อมูลแปลงผมเป็นของใคร",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "เป็นของคุณ คุณเลือกได้ว่าจะให้ใครเห็น ให้สิทธิ์ผู้ซื้อที่คุณเลือกเองได้ และถอนคืนจากคนที่คุณไม่เลือกได้ ไม่มีใครเปิดข้อมูลของคุณให้คนอื่นโดยที่คุณไม่ได้อนุญาต"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ปีที่กาแฟไม่ดี จะอยู่ในนั้นด้วยไหม",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "สิ่งที่คุณส่งเข้ามา คุณเป็นคนกำหนดว่าใครเห็นได้ กติกาข้อนี้เขียนไว้ตั้งแต่ต้น ไม่ใช่มาเพิ่มทีหลัง"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ไม่ถนัดพิมพ์ ทำได้ไหม",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "ได้ ถ่ายรูปหรืออัดเสียงด้วยภาษาที่คุณพูดทุกวัน รวมทั้งภาษาถิ่น ระบบเป็นฝ่ายแปลง ไม่ใช่คุณ"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ทิ้งอีเมลไว้แล้วเจออะไรต่อ",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "เราติดต่อกลับ แล้วชวนคุณเข้าร่วมทดลองระบบเป็นกลุ่มแรก ๆ ระหว่างนั้นเราอยากฟังด้วยว่าเราเข้าใจอะไรผิดเกี่ยวกับวิธีที่กาแฟทำงานจริงในพื้นที่ของคุณ"
-          }
-        }
-      ]
     }
   ]
 }
@@ -492,10 +461,10 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="th-index.html"><svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="5" r="2.6" stroke="var(--go)" stroke-width="1.5"/><circle cx="5" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><circle cx="19" cy="18" r="2.6" stroke="var(--fg)" stroke-width="1.5"/><path d="M10.6 7.2 6.4 15.7M13.4 7.2l4.2 8.5M7.6 18h8.8" stroke="var(--mute)" stroke-width="1.3"/></svg><span><span class="bt">Neo&nbsp;Gens</span><span class="bs">Modern Knowledge Management</span></span></a>
-    <div class="nav-links"><a href="th-the-problem.html">แนวคิด</a><a href="th-mkm-for-museums-and-libraries.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-about.html">เราคือใคร</a><span class="lang"><a class="on" aria-current="page" href="th-coffee-farmer.html">TH</a><span>/</span><a href="coffee-farmer.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div>
-    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="th-coffee-farmer.html">TH</a><span>/</span><a href="coffee-farmer.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="เมนู" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
+    <div class="nav-links"><a href="th-the-problem.html">แนวคิด</a><a href="th-mkm-for-museums-and-libraries.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-about.html">เราคือใคร</a><span class="lang"><a class="on" aria-current="page" href="th-seo-as-knowledge-management.html">TH</a><span>/</span><a href="seo-as-knowledge-management.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div>
+    <div class="nav-mob"><span class="lang"><a class="on" aria-current="page" href="th-seo-as-knowledge-management.html">TH</a><span>/</span><a href="seo-as-knowledge-management.html">EN</a></span><button class="tgl" type="button" aria-label="Toggle colour theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="burger" id="burger" type="button" aria-label="เมนู" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="drawer" id="drawer"><div class="dw"><a href="th-index.html">หน้าแรก</a><div class="h">ภาค 1 · แนวคิด</div><a href="th-the-problem.html">01 · ปัญหา</a><a href="th-what-mkm-is.html">02 · MKM คืออะไร</a><a href="th-why-it-works.html">03 · ทำไมมันถึงได้ผล</a><a href="th-ontology-and-knowledge-graph.html">04 · ontology กับ knowledge graph</a><div class="h">ภาค 2 · พิพิธภัณฑ์และห้องสมุด</div><a href="th-mkm-for-museums-and-libraries.html">01 · สถานะวันนี้</a><a href="th-what-you-are-holding.html">01b · สิ่งที่คุณถืออยู่</a><a href="th-visitors-and-readers.html">02 · ประสบการณ์ใหม่ของการเรียนรู้</a><a href="th-leadership.html">03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a><a href="th-services.html">เราทำอะไรร่วมกัน</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-ai-sovereignty.html">ข้อมูลของคุณ · AI Sovereignty</a><a href="th-what-we-wont-do.html">สิ่งที่เราไม่ทำ</a><a href="long-read-museums-and-libraries.html">บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><div class="h">ภาค 3 · โครงการเพื่อสาธารณะ</div><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a class="on" aria-current="page" href="th-coffee-farmer.html">สำหรับคนปลูกกาแฟ</a><a href="th-coffee-demo.html">เดโมแดชบอร์ด</a><div class="h">&nbsp;</div><a href="th-about.html">เราคือใคร</a><a href="th-seo-as-knowledge-management.html">เว็บนี้สร้างมาอย่างไร</a><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div></div>
+  <div class="drawer" id="drawer"><div class="dw"><a href="th-index.html">หน้าแรก</a><div class="h">ภาค 1 · แนวคิด</div><a href="th-the-problem.html">01 · ปัญหา</a><a href="th-what-mkm-is.html">02 · MKM คืออะไร</a><a href="th-why-it-works.html">03 · ทำไมมันถึงได้ผล</a><a href="th-ontology-and-knowledge-graph.html">04 · ontology กับ knowledge graph</a><div class="h">ภาค 2 · พิพิธภัณฑ์และห้องสมุด</div><a href="th-mkm-for-museums-and-libraries.html">01 · สถานะวันนี้</a><a href="th-what-you-are-holding.html">01b · สิ่งที่คุณถืออยู่</a><a href="th-visitors-and-readers.html">02 · ประสบการณ์ใหม่ของการเรียนรู้</a><a href="th-leadership.html">03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร</a><a href="th-services.html">เราทำอะไรร่วมกัน</a><a href="th-engagement.html">รูปแบบการทำงาน</a><a href="th-ai-sovereignty.html">ข้อมูลของคุณ · AI Sovereignty</a><a href="th-what-we-wont-do.html">สิ่งที่เราไม่ทำ</a><a href="long-read-museums-and-libraries.html">บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a><div class="h">ภาค 3 · โครงการเพื่อสาธารณะ</div><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a><a href="th-coffee-farmer.html">สำหรับคนปลูกกาแฟ</a><a href="th-coffee-demo.html">เดโมแดชบอร์ด</a><div class="h">&nbsp;</div><a href="th-about.html">เราคือใคร</a><a class="on" aria-current="page" href="th-seo-as-knowledge-management.html">เว็บนี้สร้างมาอย่างไร</a><a class="btn" href="th-contact.html">ขอนัดหารือ</a></div></div>
 </nav>
 <main id="main">
 
@@ -503,11 +472,10 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="th-index.html">Neo Gens</a></li><li><a href="th-mkm-for-coffee.html">MKM สำหรับกาแฟ</a></li><li aria-current="page">สำหรับคนปลูกกาแฟ</li></ol></nav>
-<div class="kicker">สำหรับคนปลูก</div>
-      <h1>ความรู้ที่อยู่ในหัวคุณ หายไปพร้อมกับทุกฤดูที่ผ่านไป</h1>
-      <p class="stand">ทุกปีมีคนขึ้นมาวัดแปลง ถ่ายรูป จดสายพันธุ์ แล้วก็ไม่มีอะไรกลับมาถึงคุณ เรากำลังสร้างคลังความรู้กาแฟที่คนปลูกได้ของกลับด้วย และอยากชวนคุณมาเป็นกลุ่มแรก</p>
-      <div class="meta"><span>Neo Gens</span><span>อ่าน 3 นาที</span><span><a href="th-coffee-demo.html">ดูเดโมแดชบอร์ด</a></span></div>
+<div class="kicker">หลักฐาน</div>
+      <h1>เนื้อหาคุยกับคน SEO คุยกับเครื่อง ทั้งสองอย่างคืองานความรู้</h1>
+      <p class="stand">เว็บส่วนใหญ่ออกแบบมาเพื่อบทสนทนาชุดแรก แล้วด้นสดเอากับบทสนทนาชุดที่สอง หน้านี้คือวิธีที่เราออกแบบของเราให้เป็น ontology และสิ่งที่เกิดขึ้นเมื่อให้เครื่องลองอ่านกลับมาให้ฟัง</p>
+      <div class="meta"><span>Neo Gens</span><span>ปรับปรุง 21 สิงหาคม 2026</span></div>
     </div>
   </div>
 </header>
@@ -516,58 +484,102 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 
 <article>
   <div class="wrap">
-    <div class="artbody">
-<h2 id="s01"><span class="sn">01</span>คุณต้องทำอะไรบ้าง</h2>
-<p class="first">สั้นที่สุดคือ เล่าสิ่งที่ทำอยู่แล้วในแต่ละวัน ด้วยเครื่องมือที่มีอยู่แล้วในมือ ไม่มีแอปใหม่ให้โหลด ไม่มีฟอร์มสี่สิบช่อง</p>
-<div class="pcards three rv">
-  <div class="pc"><h3 class="hkeep-2">ส่งด้วยของที่ถนัด</h3><p>ถ่ายรูปลานตากตอนบ่าย อัดเสียงเล่าว่าวันนี้หมักกี่ชั่วโมง ถ่ายคลิปสั้นตอนกลับกอง หรือพิมพ์ประโยคเดียวก็ได้ ส่งผ่านแอปแชตที่คุณใช้อยู่ทุกวัน</p></div>
-  <div class="pc"><h4>ระบบเป็นฝ่ายจัดให้</h4><p>สิ่งที่คุณส่งมาถูกแปลงเป็นข้อมูลที่ใช้ต่อได้ ถ้าระบบไม่แน่ใจ มันถามกลับสั้น ๆ ทีละคำถาม ไม่เดาเงียบ ๆ และเก็บคำพูดจริงของคุณไว้ก่อนเสมอ</p></div>
-  <div class="pc"><h4>ไม่มีตารางบังคับ</h4><p>ส่งเมื่อมีอะไรจะเล่า ฤดูไหนยุ่งก็เว้นไว้ได้ ที่จุดรวบรวมของสหกรณ์ เครื่องวัดส่งค่าเข้ามาเองอยู่แล้ว โดยคุณไม่ต้องทำอะไรเพิ่ม</p></div>
-</div>
-<p class="beat">คนปลูกกาแฟไม่ควรต้องกลายเป็นคนกรอกข้อมูล เพื่อให้ความรู้ของตัวเองอยู่ในระบบ</p>
+    <h2>เว็บส่วนใหญ่เขียนไว้ให้ผู้อ่านแบบเดียว แต่มีผู้อ่านสองแบบ</h2>
+    <p>เว็บเกือบทุกเว็บเกิดขึ้นแบบเดียวกัน มีคนตัดสินใจโครงสร้าง มีคนเขียนเนื้อหา มีคนออกแบบหน้า แล้วตอนใกล้เสร็จจึงมีคนถามขึ้นมาว่า แล้ว SEO ล่ะ จากนั้นชื่อหน้าถูกเขียนใหม่ไม่กี่หน้า ติดปลั๊กอินสักตัว ส่งรายการคำค้นมาให้ชุดหนึ่ง แล้วเว็บก็ขึ้น</p>
+    <p>ถึงตอนนั้นโครงสร้างถูกตัดสินไปเรียบร้อยแล้ว และโครงสร้างคือส่วนที่สำคัญที่สุด สิ่งที่ได้คือเว็บที่คนอ่านรื่น แต่เครื่องอ่านไม่ออก ไม่มีอะไรในนั้นบอกว่าองค์กรนี้คืออะไร ทำงานอยู่ในสาขาไหน หน้าแต่ละหน้าเกี่ยวข้องกันอย่างไร หรือคำไหนในเว็บที่ใช้ในความหมายเฉพาะ คนอ่านอนุมานทั้งหมดนี้ได้ในไม่กี่วินาที เครื่องอนุมานไม่ได้เลยสักอย่าง</p>
+    <p>สาเหตุอยู่ที่ลำดับ ไม่ได้อยู่ที่ความตั้งใจ คำถามเรื่อง SEO มาถึงหลังจากการตัดสินใจที่มันควรมีส่วนกำหนดผ่านไปหมดแล้ว</p>
+    <h2>เนื้อหาคุยกับคน SEO คุยกับคอมพิวเตอร์</h2>
+    <p>เรามองว่าเว็บหนึ่งเว็บมีบทสนทนาสองชุดอยู่ในไฟล์เดียวกัน เนื้อหาคือบทสนทนากับคนที่เราอยากไปให้ถึง — ข้อโต้แย้ง น้ำเสียง ตัวอย่าง และสิ่งที่ควรค่าแก่การเห็นต่าง ส่วน SEO คือบทสนทนากับคอมพิวเตอร์ ที่ยืนอยู่ระหว่างเรากับคนเหล่านั้น ว่าเราเป็นใคร ทำงานเรื่องอะไร และเกี่ยวข้องกับสิ่งไหน</p>
+    <p>ถอดคำศัพท์การตลาดออกจากบทสนทนาชุดหลัง สิ่งที่เหลือคือปัญหาการทำทะเบียน มีสิ่งหนึ่งเดินเข้ามา มันถามคำถามไม่ได้ อ่านน้ำเสียงไม่ออก และจะไม่ย้อนกลับมาตรวจซ้ำ มันมีโอกาสรอบเดียวที่จะเข้าใจว่าคุณถืออะไรอยู่ อะไรเชื่อมกับอะไร และควรเชื่อแค่ไหน นั่นคือปัญหาเดียวกับที่ระเบียนทะเบียนแก้ให้ผู้อ่านที่ไม่มีวันได้เจอภัณฑารักษ์ วิชาเดียวกัน ผู้อ่านคนละแบบ</p>
+    <p>การทำให้ถูกคือสิ่งที่ทำให้คนที่ใช่หาเราเจอด้วยเหตุผลที่สมเหตุสมผล องค์กรที่อธิบายตัวเองกับเครื่องไว้ตรงกับความจริง จะถูกจับคู่กับคนที่กำลังมองหาสิ่งนั้นพอดี ทางเลือกอีกทางคือซื้อความสนใจแบบไร้ทิศทาง จ่ายเงินเพื่อไปโผล่ต่อหน้าคนที่ไม่ได้ต้องการเรา ซ้ำแล้วซ้ำเล่า นานเท่าที่งบยังมีอยู่ ค่าใช้จ่ายแบบนั้นเกิดซ้ำทุกครั้ง คำอธิบายที่ตรงกับความจริงว่าเราเป็นอะไร ไม่ต้องจ่ายซ้ำ</p>
+    <h2>SEO ของเราออกแบบอย่างไร — ontology-based SEO</h2>
+    <p>งาน SEO ส่วนใหญ่เริ่มจากคำค้น เดาว่าคนพิมพ์อะไร แล้วดัดหน้าเว็บเข้าหาคำเหล่านั้น วิธีนี้ปฏิบัติกับระบบค้นหาเหมือนกุญแจที่ต้องหาทางสะเดาะ</p>
+    <p>เราเริ่มจากอีกด้าน คืออธิบายสิ่งที่มีอยู่จริง ว่ามีอะไรบ้าง และแต่ละอย่างสัมพันธ์กันอย่างไร นั่นคือ ontology และเป็นวัตถุชนิดเดียวกับที่เราสร้างร่วมกับลูกค้า ต่างกันเพียงว่าที่นี่ระบบค้นหาเป็นผู้กำหนดคำศัพท์ ไม่ใช่ทีมภัณฑารักษ์ คำศัพท์ชุดนั้นคือ schema.org พจนานุกรมกลางของชนิดและความสัมพันธ์ที่ระบบค้นหารายใหญ่ตกลงร่วมกันไว้ เขียนครั้งเดียวแล้วทุกรายเข้าใจตรงกัน</p>
+    <p>ในทางปฏิบัติ องค์กรมีตัวระบุตัวเดียว ประกาศครั้งเดียวแล้วอ้างถึงจากทุกหน้า ศัพท์สี่คำที่เว็บนี้ใช้ในความหมายเฉพาะ แต่ละคำมีตัวระบุของตัวเอง และชี้ไปยังหน้าที่นิยามมันไว้จริง สองสายงานประกาศเป็นบริการที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน ทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหนในนั้น ฉบับไทยกับอังกฤษของหน้าเดียวกันผูกกันในฐานะงานชิ้นเดียวสองภาษา ไม่ใช่สองหน้าที่บังเอิญคล้ายกัน รวมสี่ร้อยหกสิบห้าข้อความ ในสี่สิบสามหน้า</p>
+    <p>รอบ ๆ นั้นคือที่อยู่ของทุกหน้าที่บอกได้เองว่าหน้านั้นเป็นเรื่องอะไร ทางเบี่ยงยี่สิบหกเส้นที่ทำให้ลิงก์ทุกเส้นที่เคยส่งออกไปยังไปถึงปลายทาง ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดที่เสิร์ฟจากโดเมนนี้ การเปิดหน้าเว็บจึงไม่ได้ติดต่อใครนอกจากเรา</p>
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">ระบบค้นหาตัวเดียวกัน ได้รับของคนละอย่าง</div>
+        <svg class="dsvg" viewBox="0 0 900 400" role="img" aria-label="ภาพเปรียบเทียบสามแถว ฝั่งซ้าย หน้าเว็บที่มีแต่บรรทัดข้อความ ส่งข้อความล้วนไปยังระบบค้นหา ซึ่งได้แต่เดาว่าองค์กรนี้คืออะไร ผลคือถูกจับคู่แบบเดา ฝั่งขวา หน้าเว็บเดียวกันมีกราฟ JSON-LD ขนาดเล็กติดอยู่ด้วย ส่งไปด้วยคำศัพท์กลาง schema.org ไปยังระบบค้นหาตัวเดียวกัน ซึ่งอ่านได้ว่าองค์กรนี้เป็นใครและทำเรื่องอะไร ผลคือถูกจับคู่ด้วยเหตุผล">
+      <text class="m-am" x="28" y="22">เว็บที่ไม่ได้ประกาศโครงสร้าง</text>
+      <text class="m-go" x="478" y="22">เว็บที่ประกาศโครงสร้าง · ONTOLOGY-BASED</text>
+      <path class="ln-gh" d="M450 34 V386"/>
 
-<h2 id="s02"><span class="sn">02</span>แล้วคุณได้อะไรกลับ</h2>
-<h3>เทียบกับแปลงที่คล้ายกับของคุณ</h3>
-<p>แปลงที่ความสูงใกล้กัน ดินคล้ายกัน สายพันธุ์เดียวกัน เขาหมักกี่ชั่วโมง ตากกี่วัน แล้วคะแนนออกมาเท่าไร วันนี้ต้องรู้จักกันเป็นการส่วนตัวถึงจะถามได้ ต่อไปเปิดดูได้ นี่คือสิ่งที่เกษตรกรรายย่อยหาไม่ได้เลยในวันนี้</p>
-<h3>ประวัติของแปลงคุณ ที่มีหลักฐานรองรับ</h3>
-<p>สิ่งที่คุณทำในแต่ละฤดูถูกบันทึกไว้พร้อมที่มา เวลาคุยราคากับผู้ซื้อ คุณมีของให้ดู ไม่ใช่มีแต่คำพูด และคุณภาพที่ดีขึ้นข้ามฤดูก็แสดงให้เห็นได้</p>
-<h3>คนปลายทางตามกลับมาถึงคุณได้</h3>
-<p>ถ้าคุณอนุญาต คนที่ซื้อกาแฟถุงนั้นตามกลับมาถึงแปลงและถึงชื่อคุณได้จริง ไม่ใช่แค่ชื่อจังหวัดบนถุง</p>
-<p>และยิ่งมีคนเข้ามาร่วมมากขึ้น ของที่คุณมีก็ยิ่งมีค่ามากขึ้น เพราะการเทียบทุกครั้งจะแม่นขึ้นตามจำนวนแปลงในคลัง</p>
+      <rect class="bx" x="90" y="40" width="270" height="100" rx="12"/>
+      <text class="t-s" x="108" y="64">หน้าเว็บ</text>
+      <path class="ln-gh" d="M108 84 H346"/>
+      <path class="ln-gh" d="M108 100 H326"/>
+      <path class="ln-gh" d="M108 116 H346"/>
+      <path class="ln-gh" d="M108 132 H286"/>
 
-<h2 id="s03"><span class="sn">03</span>อีกฝั่งของแผ่นเดียวกันเห็นอะไร</h2>
-<p>ข้อมูลชุดเดียว คนสองคนที่ไม่เคยเจอหน้ากัน — คนปลูกอยู่บนดอยในเชียงราย โรงคั่วอยู่ยุโรปเหนือ ทั้งคู่เปิดหน้าเดียวกันในคลัง แล้วอ่านได้คนละบรรทัด ตัวอย่างเพื่อให้เห็นภาพ</p>
-<div class="dlg">
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">คนปลูก · เชียงราย</span><span class="dlg-field">โปรไฟล์รส</span></div><p>บอกมาตลอดว่ากาแฟที่นี่มีกลิ่นลำไยกับมะขาม แต่ใบที่เขายื่นมาให้กรอกมีแต่ เบอร์รี่ โกโก้ คาราเมล ก็ต้องกรอกตามนั้น คำที่ใช้เรียกกาแฟของตัวเองจริง ๆ เลยไม่เคยออกไปพ้นสวน</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">โรงคั่ว · ยุโรปเหนือ</span><span class="dlg-field">โปรไฟล์รส</span></div><p>ลำไยคือสิ่งที่หาซื้อจากที่อื่นไม่ได้ ถ้าในบันทึกเขียนว่าลำไย แล้วชิมแล้วเจอจริง นั่นคือถุงที่ขายได้ในชื่อของมันเอง ไม่ใช่เมล็ดที่เอาไปผสมอยู่ในเบลนด์</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">คนปลูก · เชียงราย</span><span class="dlg-field">คะแนนคัปปิ้งเฉลี่ย</span></div><p>ส่งผลผลิตไปแล้วได้ยินตัวเลขกลับมาตัวเดียว จากปากคนที่รับซื้อ ตลอดมาไม่เคยรู้ว่าตัวเลขนั้นถือว่าดีหรือไม่ดี</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">โรงคั่ว · ยุโรปเหนือ</span><span class="dlg-field">คะแนนคัปปิ้งเฉลี่ย</span></div><p>ค่าเฉลี่ยของประเทศคุณ ฝั่งนี้รู้มาหลายปีแล้ว มันอยู่ในรายงานที่ซัพพลายเออร์ส่งให้ทุกฤดู ไม่มีใครในวงการเคยคิดว่าคนปลูกไม่มีตัวเลขนี้อยู่ในมือ</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">คนปลูก · เชียงราย</span><span class="dlg-field">สาวกลับถึงแปลง</span></div><p>เขาขอเอกสารยืนยันว่าต้นกาแฟอยู่ตรงไหน เรารู้อยู่แล้วว่ามันอยู่ตรงไหน แต่ไม่มีทางพิสูจน์ให้คนที่ไม่มีวันได้เจอหน้ากันดู</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">โรงคั่ว · ยุโรปเหนือ</span><span class="dlg-field">สาวกลับถึงแปลง</span></div><p>และถ้าไม่มีอันนี้ นำกาแฟเข้ายุโรปไม่ได้เลย พอแปลงของคุณอยู่ในระบบ คุณจะเลิกเป็นความเสี่ยงในรายการตรวจ แล้วกลายเป็นคนที่วางแผนสั่งของล่วงหน้าทั้งปีได้</p></div>
-<div class="dlg-turn grower"><div class="dlg-head"><span class="dlg-who">คนปลูก · เชียงราย</span><span class="dlg-field">เส้นทางที่ยืนยันแล้ว</span></div><p>ขายให้โรงสี จบตรงนั้น หลังจากนั้นไม่มีใครบอกว่ากาแฟที่ปลูกไปอยู่ประเทศไหน</p></div>
-<div class="dlg-turn roaster"><div class="dlg-head"><span class="dlg-who">โรงคั่ว · ยุโรปเหนือ</span><span class="dlg-field">เส้นทางที่ยืนยันแล้ว</span></div><p>ถามมาก็ตอบได้ การรู้ว่าตลาดไหนจ่ายให้กับสิ่งที่คุณปลูกอยู่แล้ว มีค่ากับคุณมากกว่าผลผลิตที่เพิ่มขึ้นอีกกิโลหนึ่ง</p></div>
-</div>
-<p>ไม่มีใครในบทสนทนานี้เพิ่มข้อมูลใหม่เข้าไปสักชิ้น ทุกอย่างที่พูดกันมีอยู่แล้ววันนี้ ต่างแค่ว่าแต่ละฝ่ายเห็นได้เฉพาะครึ่งของตัวเอง คลังความรู้ไม่ได้สร้างความรู้ใหม่ มันแค่ทำให้ความรู้ชุดเดิมอ่านได้จากทั้งสองปลาย</p>
-<p class="dlg-foot">ทั้งสี่ฟิลด์ที่ยกมาคุยกันอยู่บน<a href="th-coffee-demo.html">หน้าเดโม</a> คลิกจุดต้นทางบนแผนที่แล้วเห็นได้เลย หน้านั้นยังมีเฉพาะภาษาอังกฤษ</p>
+      <rect class="bx-go" x="540" y="40" width="270" height="100" rx="12"/>
+      <text class="t-s" x="558" y="64">หน้าเว็บ</text>
+      <path class="ln-gh" d="M558 84 H700"/>
+      <path class="ln-gh" d="M558 100 H680"/>
+      <path class="ln-gh" d="M558 116 H700"/>
+      <path class="ln-gh" d="M558 132 H660"/>
+      <text class="m-go" x="752" y="62" text-anchor="middle">JSON-LD</text>
+      <path class="ln" d="M752 80 L728 116"/>
+      <path class="ln" d="M752 80 L776 116"/>
+      <path class="ln" d="M728 116 H776"/>
+      <circle class="bx-go" cx="752" cy="80" r="9"/>
+      <circle class="bx-go" cx="728" cy="116" r="9"/>
+      <circle class="bx-go" cx="776" cy="116" r="9"/>
 
-<h2 id="s04"><span class="sn">04</span>คำถามที่ควรถามก่อนตัดสินใจ</h2>
-<h3>ต้องจ่ายเท่าไร</h3>
-<p>เกษตรกรไม่มีค่าใช้จ่าย รายได้ของโครงการมาจากฝ่ายอื่นในสายโซ่ที่เอาความรู้ชุดนี้ไปใช้ทำงาน ไม่ได้มาจากคนปลูก</p>
-<h3>ข้อมูลแปลงผมเป็นของใคร</h3>
-<p>เป็นของคุณ คุณเลือกได้ว่าจะให้ใครเห็น ให้สิทธิ์ผู้ซื้อที่คุณเลือกเองได้ และถอนคืนจากคนที่คุณไม่เลือกได้ ไม่มีใครเปิดข้อมูลของคุณให้คนอื่นโดยที่คุณไม่ได้อนุญาต</p>
-<h3>ปีที่กาแฟไม่ดี จะอยู่ในนั้นด้วยไหม</h3>
-<p>สิ่งที่คุณส่งเข้ามา คุณเป็นคนกำหนดว่าใครเห็นได้ กติกาข้อนี้เขียนไว้ตั้งแต่ต้น ไม่ใช่มาเพิ่มทีหลัง</p>
-<h3>ไม่ถนัดพิมพ์ ทำได้ไหม</h3>
-<p>ได้ ถ่ายรูปหรืออัดเสียงด้วยภาษาที่คุณพูดทุกวัน รวมทั้งภาษาถิ่น ระบบเป็นฝ่ายแปลง ไม่ใช่คุณ</p>
-<h3>ทิ้งอีเมลไว้แล้วเจออะไรต่อ</h3>
-<p>เราติดต่อกลับ แล้วชวนคุณเข้าร่วมทดลองระบบเป็นกลุ่มแรก ๆ ระหว่างนั้นเราอยากฟังด้วยว่าเราเข้าใจอะไรผิดเกี่ยวกับวิธีที่กาแฟทำงานจริงในพื้นที่ของคุณ</p>
+      <path class="ln" d="M225 140 V184"/>
+      <path class="ln" d="M218 174 L225 186 L232 174"/>
+      <rect class="bx" x="150" y="148" width="150" height="24" rx="6"/>
+      <text class="m" x="225" y="164" text-anchor="middle">ข้อความล้วน</text>
 
-<h2 id="s05"><span class="sn">05</span>ทำไมต้องเป็นของสาธารณะ</h2>
-<p>คลังนี้เป็น public goods หรือของสาธารณะ แบบเดียวกับถนนหรือระบบชลประทาน คือสิ่งที่ทุกคนใช้ได้และไม่มีใครเป็นเจ้าของคนเดียว</p>
-<p>โครงสร้างของคลังเผยแพร่ทั้งหมด ใครจะเอาไปทำระบบของตัวเองหรือเถียงกับมันก็ได้ ข้อมูลของคุณยังเป็นของคุณ พกไปได้ ถอนได้ และทุกข้อเท็จจริงในคลังพกที่มาติดตัวเสมอ ว่าใครเป็นคนบอก และมีหลักฐานอะไรหนุนอยู่</p>
-<p>Neo Gens ลงทุนและดูแลงานนี้ แต่ไม่ได้เป็นเจ้าของความรู้ที่อยู่ในนั้น เพราะคลังที่บริษัทเดียวเป็นเจ้าของ ก็เป็นแค่ฐานข้อมูลที่การตลาดดีขึ้น และไม่ควรมีใครเอาข้อมูลของตัวเองไปไว้</p>
-<p class="colophon">อยากอ่านเบื้องหลังทั้งหมด ว่าทำไมวงการกาแฟต้องมีคลังความรู้ร่วม และแต่ละฝ่ายในสายโซ่ได้อะไรกลับไป — <a href="th-mkm-for-coffee.html">อ่านฉบับเต็ม</a></p>
-    </div>
+      <path class="ln" d="M675 140 V184"/>
+      <path class="ln" d="M668 174 L675 186 L682 174"/>
+      <rect class="bx-as" x="600" y="148" width="150" height="24" rx="6"/>
+      <text class="m-as" x="675" y="164" text-anchor="middle">schema.org</text>
+
+      <rect class="bx" x="90" y="190" width="270" height="80" rx="12"/>
+      <text class="t-b" x="225" y="216" text-anchor="middle">ระบบค้นหา</text>
+      <text class="m" x="225" y="238" text-anchor="middle">เห็นย่อหน้า แต่ไม่รู้ว่านี่คือ</text>
+      <text class="m" x="225" y="254" text-anchor="middle">องค์กรอะไร ต้องเดาเอาเอง</text>
+
+      <rect class="bx" x="540" y="190" width="270" height="80" rx="12"/>
+      <text class="t-b" x="675" y="216" text-anchor="middle">ระบบค้นหา</text>
+      <text class="m" x="675" y="238" text-anchor="middle">อ่านได้ว่าเป็นใคร ทำเรื่องอะไร</text>
+      <text class="m" x="675" y="254" text-anchor="middle">เกี่ยวข้องกับสิ่งไหน</text>
+
+      <path class="ln" d="M225 270 V302"/>
+      <path class="ln" d="M218 292 L225 304 L232 292"/>
+      <path class="ln" d="M675 270 V302"/>
+      <path class="ln" d="M668 292 L675 304 L682 292"/>
+
+      <rect class="bx" x="90" y="308" width="270" height="78" rx="12"/>
+      <text class="t-b" x="225" y="334" text-anchor="middle">ถูกจับคู่แบบเดา</text>
+      <text class="m" x="225" y="356" text-anchor="middle">ต้องซื้อการมองเห็นเอา</text>
+      <text class="m" x="225" y="372" text-anchor="middle">และจ่ายซ้ำทุกครั้ง</text>
+
+      <rect class="bx-go" x="540" y="308" width="270" height="78" rx="12"/>
+      <text class="t-b" x="675" y="334" text-anchor="middle">ถูกจับคู่ด้วยเหตุผล</text>
+      <text class="m" x="675" y="356" text-anchor="middle">คนที่กำลังหาสิ่งนี้ หาเจอเอง</text>
+      <text class="m" x="675" y="372" text-anchor="middle">คำอธิบายเดิมใช้ได้ต่อไป</text>
+    </svg>
+      </div>
+      <figcaption><b>ภาพประกอบ.</b> ระบบค้นหาเป็นตัวเดียวกันทั้งสองฝั่ง ต่างกันที่สิ่งที่ไปถึงมัน ข้อมูลที่มีโครงสร้างไม่ได้ทำให้หน้าดีขึ้น แต่ทำให้หน้ากลายเป็นสิ่งที่เครื่องอ่านออกว่าเป็นอะไร ไม่ใช่แค่กองข้อความ</figcaption>
+    </figure>
+    <p>เหตุผลที่เลือกวิธีนี้แทนการไล่คำค้น คือมันไม่หมดอายุ สูตรจัดอันดับเปลี่ยนทุกปี และเทคนิคที่สร้างมาเพื่อสูตรหนึ่งก็ใช้ไม่ได้กับสูตรถัดไป แต่คำอธิบายที่ตรงกับความจริงว่าองค์กรนี้เป็นอะไร ไม่ล้าสมัยเมื่อสูตรเปลี่ยน และมันคือรูปแบบเดียวกับที่ผู้ช่วย AI อ่าน ซึ่งเป็นที่ที่คนจำนวนมากขึ้นเรื่อย ๆ เอาคำถามไปถาม</p>
+    <h2>เครื่องอ่านได้จริงหรือเปล่า ตรวจเองได้</h2>
+    <p>ทุกอย่างข้างบนไม่มีค่าอะไรเลยถ้าเป็นแค่คำกล่าวอ้าง Google เปิดเครื่องมือฟรีตัวหนึ่งชื่อ Rich Results Test รับที่อยู่หน้าไหนก็ได้ ดึงหน้านั้นมาแบบเดียวกับที่ตัวเก็บข้อมูลของมันทำ แล้วรายงานกลับมาว่าเจอรายการที่มีโครงสร้างอะไรบ้าง และแต่ละรายการใช้ได้หรือไม่ นี่คือสิ่งที่ใกล้เคียงที่สุดกับการให้คนนอกอ่านว่าเว็บหนึ่งพูดถึงตัวเองว่าอย่างไร</p>
+    <figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">ผลตรวจจาก GOOGLE RICH RESULTS TEST · 21 สิงหาคม 2026</div>
+        <div class="rr-scroll"><table class="rr"><thead><tr><th>ที่อยู่ที่ทดสอบ</th><th>สิ่งที่ตรวจพบ</th><th>ผล</th></tr></thead><tbody><tr><td>www.neogens.co</td><td>Organization</td><td class="rr-ok">ผ่าน · 0 ข้อผิดพลาด · 0 คำเตือน</td></tr><tr><td>www.neogens.co/th-mkm-for-coffee.html</td><td>Breadcrumbs</td><td class="rr-ok">ผ่าน · 0 ข้อผิดพลาด · 0 คำเตือน</td></tr></tbody></table></div>
+      </div>
+      <figcaption>สองหน้า รันด้วยเครื่องมือสาธารณะของ Google ใครก็ทำซ้ำทีละแถวได้ในเวลาประมาณสามสิบวินาที โดยไม่ต้องขออะไรจากเรา ซึ่งเป็นเหตุผลเดียวที่หยิบมาอ้าง</figcaption>
+    </figure>
+    <p>ทั้งเว็บ สี่สิบสามหน้าประกาศตัวองค์กร 33 หน้าประกาศตำแหน่งของตัวเองในเส้นทางนำทาง 5 หน้าประกาศตัวเป็นบทความ และ 2 หน้ามีคำถามคำตอบ ตัวเลขเหล่านี้นับจากไฟล์ตอนสร้างหน้า ไม่ได้พิมพ์มือ ถ้าหน้าไหนกราฟหาย กระบวนการสร้างจะหยุดทันที</p>
+    <h2>ผ่านแล้วได้อะไร ไม่ผ่านแล้วเสียอะไร</h2>
+    <p>การผ่านไม่ใช่การเพิ่มอันดับ ใครบอกว่าใช่คือกำลังขายของ สิ่งที่ได้แคบกว่านั้น คือระบบค้นหาเลิกอนุมานแล้วเปลี่ยนมาอ้างสิ่งที่เราเขียนไว้ องค์กรกลายเป็นสิ่งหนึ่งที่ถูกระบุตัวได้ ไม่ใช่ชื่อที่บังเอิญโผล่อยู่ในข้อความ หน้าเว็บถูกแสดงพร้อมเส้นทางของมัน ผู้เขียน หรือคำถามคำตอบได้ และคำประกาศชุดเดียวกันนี้คือสิ่งที่ผู้ช่วย AI อ่าน เวลามีคนถามคำถามในสาขาที่เราทำงานอยู่</p>
+    <p>ส่วนการไม่ผ่านนั้นหนักกว่าที่เห็น เพราะมันเกิดขึ้นอย่างเงียบมาก รายการที่มีข้อผิดพลาดไม่ได้ถูกแสดงพร้อมเครื่องหมายสีแดง แต่ถูกทิ้ง หน้ายังดูสมบูรณ์สำหรับคน ยังโหลดขึ้น ยังอ่านรื่น เพียงแต่ไม่ถูกพิจารณาในเรื่องที่มันประกาศไว้เลย และไม่มีใครเขียนมาบอก ส่วนคำเตือนคือฉบับเบากว่า รายการยังอยู่ แต่เสียคุณสมบัติที่มันไม่ผ่านเกณฑ์ไป</p>
+    <p>ราคาที่แพงกว่านั้นคือความไว้ใจที่ลามข้ามหน้า คำประกาศที่เครื่องยืนยันไม่ได้ ไม่ได้เสียแค่หน้าตัวเอง เมื่อสองหน้าอ้างว่าเป็นฉบับแปลของกันและกัน แต่มีหน้าเดียวที่ยืนยันกลับ ระบบค้นหาจะเลิกเชื่อคำประกาศชนิดนั้นของทั้งโดเมน คำอ้างที่ตรวจไม่ได้หนึ่งข้อ ลดน้ำหนักของข้ออื่นที่จริงซึ่งอยู่ข้าง ๆ ไปด้วย ด้วยเหตุผลเดียวกับที่ทะเบียนซึ่งมีระเบียนเชื่อถือไม่ได้ปนอยู่ มีค่าน้อยกว่าครึ่งที่ถูกต้องของมันเอง</p>
+    <p>เราจึงถือว่าการตรวจนี้เป็นเงื่อนไขของการปล่อยหน้า ไม่ใช่เหรียญที่เอาไว้สะสม ทุกหน้าบนเว็บนี้สร้างด้วยสคริปต์ที่จะไม่ยอมเขียนไฟล์ ถ้าโครงสร้างที่มันประกาศไม่ตรงกับสิ่งที่หน้านั้นแสดงให้ผู้อ่านเห็นจริง</p>
   </div>
 </article>
 
@@ -575,9 +587,9 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="join-bg"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="k rv">ร่วมทดลองเป็นกลุ่มแรก</div>
-      <h2 class="rv">ตอนนี้เรากำลังหาคนปลูกกลุ่มแรก</h2>
-      <p class="lead rv">ทิ้งชื่อกับอีเมลไว้ แล้วเราจะติดต่อกลับ ไม่มีค่าใช้จ่าย และไม่มีข้อผูกมัด</p>
+      <div class="k rv">วิธีเดียวกัน</div>
+      <h2 class="rv">อยากเห็นวิธีนี้ตอนใช้กับคอลเลกชัน ไม่ใช่กับเว็บไซต์</h2>
+      <p class="lead rv">ทิ้งรายละเอียดไว้ แล้วเราจะพาดูร่องรอยการทำงาน ไม่ใช่บทสรุป</p>
       <form id="wl" class="rv" novalidate>
         <div class="frow">
           <div class="ffield"><label class="flab" for="name">ชื่อ-นามสกุล</label><input type="text" id="name" autocomplete="name"></div>
