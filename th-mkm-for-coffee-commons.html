@@ -252,6 +252,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .crumbs a:hover{color:var(--go)}
 .crumbs [aria-current]{color:var(--dim)}
 /* >>> ปุ่มก่อนหน้า/ถัดไป · split_coffee.py >>> */
+/* ---- pager + hub (added) ---- */
 .pn{border-top:1px solid var(--line);margin-top:clamp(40px,5vw,64px)}
 .pn-in{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
 .pn a{display:block;padding:26px var(--pad);background:var(--bg);text-decoration:none;transition:background .2s}
@@ -259,7 +260,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .pn .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:7px}
 .pn .t{font-size:16px;color:var(--fg);line-height:1.3}
 .pn a.nx{text-align:right}
-@media(max-width:640px){.pn-in{grid-template-columns:1fr}.pn a.nx{text-align:left}
+@media(max-width:640px){.pn-in{grid-template-columns:1fr}.pn a.nx{text-align:left}}
 /* <<< ปุ่มก่อนหน้า/ถัดไป <<< */
 /* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
 .nav-links .hs{position:relative;display:inline-flex;align-items:center}

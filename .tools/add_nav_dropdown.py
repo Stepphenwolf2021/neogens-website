@@ -200,6 +200,10 @@ for p, s in pages:
     inline = "".join(re.findall(r"<style[^>]*>(.*?)</style>", s, re.S))
     checks[f"{n} · กฎเมนูย่อยไปถึงหน้านี้"] = bool(LINKED.search(s)) or MARK_A in inhead
     checks[f"{n} · กฎเมนูย่อยไม่ซ้อนกัน"] = inline.count(MARK_A) <= 1
+    # กฎก้อนก่อนหน้าที่ปิดปีกกาไม่ครบ จะกลืนกฎเมนูย่อยทั้งชุดเข้าไปในเงื่อนไขของมัน
+    # เกิดจริงมาแล้วหนึ่งรอบ เมนูกางค้างบนจอกว้างโดยที่กฎอยู่ในไฟล์ครบทุกบรรทัด
+    for st in re.findall(r"<style[^>]*>(.*?)</style>", s, re.S):
+        checks[f"{n} · ปีกกาในบล็อก style สมดุล"] = st.count("{") == st.count("}")
 
     # ทุกลิงก์ในเมนูย่อย ต้องมีอยู่ในเมนูสไลด์ด้วย ป้ายตรงกันทุกตัวอักษร
     for sub in re.findall(r'<span class="sub">(.*?)</span>', nav, re.S):

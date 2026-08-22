@@ -88,14 +88,37 @@ def snapshot():
         print(f"  เก็บต้นฉบับ {keep.relative_to(ROOT)}")
 
 
+def rules_of(css):
+    """ตัด CSS เป็นกฎทีละก้อนโดยนับวงเล็บปีกกา ไม่ใช่ด้วย regex
+
+    regex ตัดกฎธรรมดาได้ แต่ตัด @media ไม่ได้ เพราะมันซ้อนอีกชั้น
+    รอบแรกผมใช้ regex แล้วได้ @media ที่ขาดปีกกาปิด ไปกลืนกฎทุกข้อที่ตามหลัง
+    เข้าไปอยู่ในเงื่อนไข max-width:640px — เมนูย่อยบนจอกว้างเลยกางค้าง ดู LESSONS ข้อ 11
+    """
+    out, buf, depth = [], "", 0
+    for ch in css:
+        buf += ch
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                out.append(buf.strip())
+                buf = ""
+    return [r for r in out if r]
+
+
 def pn_css():
     """ยกกฎ CSS ของปุ่มก่อนหน้า/ถัดไปมาจากหน้าที่ใช้อยู่จริง ไม่เขียนใหม่ให้ต่างกัน"""
     s = (ROOT / PN_DONOR).read_text(encoding="utf-8")
     st = "".join(re.findall(r"<style[^>]*>(.*?)</style>", s, re.S))
-    rules = re.findall(r"(?:@media[^{]*\{[^{}]*\.pn[^}]*\}[^}]*\}|\.pn[a-z-]*[^{]*\{[^}]*\})", st)
+    rules = [r for r in rules_of(st) if re.search(r"(^|[\s,{])\.pn[\s.:,{a-z-]", r)]
     if not rules:
         sys.exit(f"✗ หากฎ .pn ใน {PN_DONOR} ไม่เจอ")
-    return MARK_A + "\n" + "\n".join(rules) + "\n" + MARK_B
+    block = MARK_A + "\n" + "\n".join(rules) + "\n" + MARK_B
+    if block.count("{") != block.count("}"):
+        sys.exit(f"✗ กฎ .pn ที่ยกมาปีกกาไม่สมดุล เปิด {block.count('{')} ปิด {block.count('}')}")
+    return block
 
 
 def cut(s):
@@ -262,6 +285,9 @@ for lang in ("en", "th"):
         checks[f"{n} · ป้ายภาคขึ้นครั้งเดียว"] = s.count(
             WORDS[lang]["part"].format(PARTS.index((base, sids)) + 1)) == 1
         checks[f"{n} · กฎปุ่มก่อนหน้า/ถัดไปมีชุดเดียว"] = s.count(MARK_A) == 1
+        # ปีกกาในบล็อก <style> ต้องสมดุล กฎที่ปิดไม่ครบจะกลืนทุกกฎที่ตามหลังเงียบ ๆ
+        for st in re.findall(r"<style[^>]*>(.*?)</style>", s, re.S):
+            checks[f"{n} · ปีกกาในบล็อก style สมดุล"] = st.count("{") == st.count("}")
         checks[f"{n} · ไม่มีตัวครอบแทรกใต้ .artbody"] = "<section" not in art
         checks[f"{n} · มี article ชั้นเดียว"] = s.count("<article>") == 1 == s.count("</article>")
         checks[f"{n} · มี .artbody ชั้นเดียว"] = s.count('<div class="artbody">') == 1
