@@ -40,6 +40,41 @@ aria-current=page   5–6 อันต่อหน้า                      �
 ด่านตรวจใน `sync_nav.py` เพิ่มสามข้อ และทดสอบแล้วว่าจับได้จริงทั้งสามแบบ
 คือ *มี* · *ชี้ถูก* · **ไม่เกินหนึ่ง** กับ *หัวกลุ่มติดเท่ากันทุกหน้าในกลุ่ม*
 
+*(สองรอบข้างบนขึ้นเว็บแล้วที่ `c74a57a` กับ `d8b4260`)*
+
+### แก้เพิ่มเมื่อ 08-23 รอบเย็น — ฟอร์มหน้าภาคกาแฟ · `.tools/add_interest_field.py`
+
+Noppadol สั่งให้หน้าในภาคกาแฟเหลือทางติดต่อทางเดียวคือฟอร์ม และเพิ่มช่องถามว่าอยากรู้อะไร
+
+```
+เพิ่ม   textarea id="interest" ท้ายฟอร์ม  ไม่บังคับ  maxlength 600
+        EN  What you would like to learn from the vault
+        TH  ข้อมูลที่คุณอยากรู้จาก Coffee Knowledge Vault   ← คำของ Noppadol เอง ห้ามเกลา
+เอาออก  <section class="cta"> แถบ GET IN TOUCH   ทั้งสิบหน้า
+```
+
+หน้าที่แตะ 10 หน้า คือ `mkm-for-coffee` · `-why-now` · `-commons` · `coffee-farmer` · `coffee-demo` ทั้งสองภาษา
+
+> **`privacy.html` กับ `seo-as-knowledge-management.html` ใช้ฟอร์มหน้าตาเดียวกัน**
+> เพราะสร้างจากแม่แบบ `coffee-farmer.html` แต่ไม่ได้อยู่ในภาคกาแฟ **จึงไม่ได้แตะ**
+> สองหน้านั้นยังมีแถบ GET IN TOUCH และยังไม่มีช่อง interest ถ้าอยากให้เหมือนกันต้องสั่ง
+
+**ต้อง deploy สองที่ ไม่ใช่ที่เดียว** — worker คัดฟิลด์ทีละตัว ไม่ได้ส่งต่อทั้งก้อน
+ถ้าขึ้นแต่เว็บ ฟอร์มจะขึ้นว่า *Received* ตามปกติ แต่ข้อความที่คนกรอกหายเงียบ ๆ
+
+```
+~/projects/neogens-website          check.command → publish.command
+~/projects/neogens-briefing-worker  deploy.command      ← ห้ามลืมอันนี้
+```
+
+ฝั่ง worker เพิ่ม `cleanBlock()` แยกจาก `clean()` เพราะ `clean()` ยุบบรรทัดทิ้งเพื่อกัน
+header injection ซึ่งถูกสำหรับค่าที่ไปต่อในหัวเมล แต่ผิดสำหรับกล่องข้อความ
+`cleanBlock()` เก็บ `\n` ไว้ แปลง `\r` ทิ้ง และใช้ได้เฉพาะกับค่าที่ไปอยู่ในเนื้อเมลเท่านั้น
+`test_worker.mjs` 45 ข้อผ่านหมด ในนั้นเป็นข้อของช่องใหม่ 9 ข้อ
+
+วัดด้วย jsdom ที่โหลด CSS ฝังในหน้าเอง — `display:block` · `min-height:98px` · `line-height:1.75`
+· `border-radius:18px` · `resize:vertical` ทุกหน้า ไม่ใช่ค่า default ของเบราว์เซอร์
+
 ---
 
 # บันทึกสถานะ

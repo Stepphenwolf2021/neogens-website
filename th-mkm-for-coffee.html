@@ -284,6 +284,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   .nav-links .sub,.nav-links .hs>a::after{transition:none}
 }
 /* <<< เมนูย่อยบนแถบเมนูบน <<< */
+
+/* >>> ช่องข้อมูลที่อยากรู้ · add_interest_field.py >>> */
+form textarea{width:100%;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:18px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;
+  line-height:1.75;padding:13px 20px;min-height:98px;resize:vertical;
+  display:block;transition:border-color .22s}
+form textarea::placeholder{color:var(--mute)}
+form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
+/* <<< ช่องข้อมูลที่อยากรู้ <<< */
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -534,6 +543,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
           <div class="ffield"><label class="flab" for="org">ชื่อฟาร์ม โรงแปรรูป สหกรณ์ หรือโรงคั่ว</label><input type="text" id="org" autocomplete="organization"></div>
           <div class="ffield"><label class="flab" for="country">ประเทศ</label><input type="text" id="country" autocomplete="country-name"></div>
         </div>
+        <div class="frow"><div class="ffield"><label class="flab" for="interest">ข้อมูลที่คุณอยากรู้จาก Coffee Knowledge Vault</label><textarea id="interest" rows="3" maxlength="600"></textarea></div></div>
         <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
                aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn" type="submit">ส่งข้อมูล</button>
@@ -542,14 +552,6 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       <div class="err" id="err" role="alert"></div>
       <p class="form-note rv">ส่งถึง hello@neogens.co หรือเขียนตรงไปที่นั่นก็ได้</p>
     </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="cta-bg"></div>
-  <div class="wrap">
-    <div class="k">ติดต่อเรา</div>
-    <div class="cta-btns"><a class="btn" href="th-contact.html">ขอ briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
   </div>
 </section>
 
@@ -633,6 +635,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
       name:(document.getElementById('name')||{}).value||'',
       org:(document.getElementById('org')||{}).value||'',
       originCountry:(document.getElementById('country')||{}).value||'',
+interest:(document.getElementById('interest')||{}).value||'',
       topic:'MKM Coffee',
       email:v, website:hp?hp.value:'', lang:"th", page:location.pathname
     })}).then(function(res){
