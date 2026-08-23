@@ -61,10 +61,52 @@ def lang_switch(name):
         if th_page is None:
             sys.exit(f"✗ {name} ไม่มีคู่ภาษา และไม่ได้ประกาศปลายทางสำรอง")
     if th:
-        return (f'<span class="lang"><a class="on" aria-current="page" href="{th_page}">TH</a>'
+        return (f'<span class="lang"><a class="on" href="{th_page}">TH</a>'
                 f'<span>/</span><a href="{en_page}">EN</a></span>')
-    return (f'<span class="lang"><a class="on" aria-current="page" href="{en_page}">EN</a>'
+    return (f'<span class="lang"><a class="on" href="{en_page}">EN</a>'
             f'<span>/</span><a href="{th_page}">TH</a></span>')
+
+
+def hs_spans(nav):
+    """คืนช่วง (start, end) ของทุก <span class="hs"> โดยไล่นับ span ซ้อนชั้น
+
+    ห้ามใช้ regex ตัดตรงนี้ ด้วยเหตุผลเดียวกับข้อ 11 ของ LESSONS.md
+    เมนูย่อยอยู่ใน <span class="sub"> ที่ซ้อนอยู่ข้างใน regex non-greedy จะปิดเร็วไปหนึ่งชั้น
+    """
+    out = []
+    for m in re.finditer(r'<span class="hs">', nav):
+        depth, i = 0, m.start()
+        while i < len(nav):
+            if nav.startswith("<span", i):
+                depth += 1
+            elif nav.startswith("</span>", i):
+                depth -= 1
+                if depth == 0:
+                    out.append((m.start(), i + len("</span>")))
+                    break
+            i += 1
+        else:
+            sys.exit("✗ <span class=\"hs\"> ปิดไม่ครบในต้นฉบับเมนู")
+    return out
+
+
+def mark_group_head(nav, name):
+    """หัวกลุ่มบนแถบเมนูติดสีเข้มทุกหน้าในภาคนั้น ไม่ใช่เฉพาะหน้าแรกของกลุ่ม
+
+    ใช้ class="on" ตัวเดิม จึงไม่ต้องเพิ่มกฎ CSS ใหม่ และไม่ต้องตั้งชื่อคลาสใหม่ให้ชนของเดิม
+    ไม่ใส่ aria-current ให้หัวกลุ่ม เพราะหัวกลุ่มไม่ใช่หน้าที่เปิดอยู่ เป็นแค่ตัวบอกว่าอยู่ภาคไหน
+    """
+    for start, end in reversed(hs_spans(nav)):
+        block = nav[start:end]
+        sub = block[block.index('<span class="sub">'):] if '<span class="sub">' in block else ""
+        if f'href="{name}"' not in sub:
+            continue
+        head = re.search(r"<a\b[^>]*>", block)
+        if head is None or 'class="on"' in head.group(0):
+            continue
+        new_head = head.group(0).replace("<a ", '<a class="on" ', 1)
+        nav = nav[:start] + block[:head.start()] + new_head + block[head.end():] + nav[end:]
+    return nav
 
 
 def render(name, lang):
@@ -72,10 +114,15 @@ def render(name, lang):
     if nav.count("{LANG}") != 2:
         sys.exit(f"✗ ต้นฉบับ nav.{lang}.html ควรมีจุดวางปุ่มสลับภาษา 2 จุด")
     nav = nav.replace("{LANG}", lang_switch(name))
-    # ตัวบ่งชี้หน้าปัจจุบัน ใส่ให้ทุกลิงก์ที่ชี้มาที่หน้านี้
-    nav = nav.replace(f'<a href="{name}">', f'<a class="on" aria-current="page" href="{name}">')
-    nav = nav.replace(f'<a class="btn" href="{name}">',
-                      f'<a class="btn on" aria-current="page" href="{name}">')
+    # ตัวบ่งชี้สายตา ใส่ให้ทุกลิงก์ที่ชี้มาที่หน้านี้
+    nav = nav.replace(f'<a href="{name}">', f'<a class="on" href="{name}">')
+    nav = nav.replace(f'<a class="btn" href="{name}">', f'<a class="btn on" href="{name}">')
+    nav = mark_group_head(nav, name)
+    # aria-current="page" มีได้อันเดียวต่อหน้า ใส่ให้ลิงก์ตัวเองตัวแรกในเมนู
+    first = re.search(rf'<a class="(?:btn )?on" href="{re.escape(name)}">', nav)
+    if first:
+        tag = first.group(0).replace(' href=', ' aria-current="page" href=', 1)
+        nav = nav[:first.start()] + tag + nav[first.end():]
     return nav
 
 
@@ -106,8 +153,24 @@ for path, s in pages():
 for path, s in pages():
     nav = NAV.search(s).group(0)
     name = path.name
+    # ตัวบ่งชี้สถานะต้องตรวจสามข้อ ไม่ใช่ข้อเดียว  ดูข้อ 12 ของ LESSONS.md
     if f'aria-current="page" href="{name}"' not in nav:
         bad.append(f"{name} ไม่มีตัวบ่งชี้หน้าปัจจุบันในเมนู")
+    n_ac = nav.count('aria-current="page"')
+    if n_ac != 1:
+        bad.append(f"{name} มีตัวบ่งชี้หน้าปัจจุบัน {n_ac} อันในเมนู ต้องมีอันเดียว")
+    # หน้าที่อยู่ในกลุ่มเดียวกัน หัวกลุ่มต้องติดเท่ากันทุกหน้า ไม่ใช่เฉพาะหน้าแรกของกลุ่ม
+    for start, end in hs_spans(nav):
+        block = nav[start:end]
+        sub = block[block.index('<span class="sub">'):] if '<span class="sub">' in block else ""
+        head = re.search(r"<a\b[^>]*>", block)
+        if head is None:
+            continue
+        in_group = f'href="{name}"' in sub
+        marked = 'class="on"' in head.group(0)
+        if in_group != marked:
+            label = re.sub(r"<[^>]+>", "", block[head.end():block.find("</a>", head.end())])[:24]
+            bad.append(f"{name} หัวกลุ่ม «{label}» อยู่ในกลุ่ม={in_group} แต่ติดสี={marked}")
     for h in set(re.findall(r'href="([^"#]+\.html)"', nav)):
         if not (ROOT / h).exists():
             bad.append(f"{name} เมนูชี้ไฟล์ที่ไม่มี {h}")
