@@ -713,7 +713,7 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
              aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn" type="submit">Request a briefing</button>
     </form>
-    <div class="ok" id="ok" role="status">Received. We'll reply within two business days to find a time.</div>
+    <div class="ok" id="ok" role="status">Received. A confirmation is on its way to your inbox — we'll reply within two business days to find a time.</div>
     <div class="err" id="err" role="alert"></div>
     <p class="form-note rv">Or write directly — hello@neogens.co</p>
   </div>
@@ -803,7 +803,7 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
     var hp=document.getElementById('website');
     if(errEl) errEl.style.display='none';
     emailEl.removeAttribute('aria-invalid');
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="That email address does not look right — check it and try again.";errEl.style.display='block';}emailEl.focus();return;}
+    if(!/^[^@\s]{1,64}@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/i.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="That email address does not look right — check it and try again.";errEl.style.display='block';}emailEl.focus();return;}
     btn.disabled=true; btn.textContent='Sending…';
     fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       name:(document.getElementById('name')||{}).value||'',
