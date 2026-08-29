@@ -118,6 +118,14 @@ fi
 echo
 echo "3/6  สิ่งที่จะเปลี่ยนบนปลายทาง"
 echo "-----------------------------------------------"
+
+# ตั้งกับดักก่อน git add -A  ไม่ใช่หลัง
+# ถ้าผู้ใช้ปิดหน้าต่างหรือกด Ctrl+C ตอนกำลังอ่านรายการ สคริปต์จะตายกลางคัน
+# โดยที่ไฟล์ทั้งหมดถูก stage ค้างไว้แล้ว — เส้นทางตอบ N มี git reset ให้ แต่การปิด
+# หน้าต่างฆ่าสคริปต์ก่อนถึงบรรทัดนั้น  เกิดจริงกับ personal-library เมื่อ 2026-08-25
+# trap ทำให้ทุกทางออกก่อน commit คืน index ให้เหมือนเดิมเสมอ
+trap 'git reset --quiet 2>/dev/null || true' EXIT INT TERM
+
 git add -A
 git -c color.ui=always diff --cached --stat | sed 's/^/    /'
 echo "-----------------------------------------------"
@@ -138,6 +146,8 @@ read -r -p "4/6  อธิบายการเปลี่ยนรอบนี
 echo
 echo "5/6  กำลังส่งขึ้น GitHub"
 git commit --quiet -m "$msg"
+# commit ผ่านแล้ว ปลดกับดักทันที ไม่งั้นตอนจบสคริปต์มันจะไป reset ทับงานที่เพิ่ง commit
+trap - EXIT INT TERM
 # -u ตั้ง upstream ให้ด้วย จำเป็นตอน push ครั้งแรกของ branch และไม่มีผลเสียตอนอื่น
 git push --quiet -u origin HEAD
 SHA="$(git rev-parse --short HEAD)"
