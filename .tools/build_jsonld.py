@@ -56,7 +56,8 @@ PART = {
 PART_NAME = {
     1: ("The idea", "แนวคิด", "the-problem.html"),
     2: ("MKM for Museums & Libraries", "MKM สำหรับพิพิธภัณฑ์และห้องสมุด",
-        "mkm-for-museums-and-libraries.html"),
+        # หน้าแรกของภาค 2 คือ exec summary ตั้งแต่ 08-31 ไม่ใช่ 01 · สถานะวันนี้
+        "exec-summary-museums.html"),
     3: ("MKM for Coffee", "MKM สำหรับกาแฟ", "mkm-for-coffee.html"),
 }
 

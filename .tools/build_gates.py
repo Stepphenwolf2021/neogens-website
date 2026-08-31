@@ -69,11 +69,12 @@ EN = {
           ("ontology-and-knowledge-graph.html", "04 · Ontology &amp; knowledge graph")],
          "Start with the problem"),
         ("Part 2 · Museums &amp; libraries", "MKM for Museums &amp; Libraries",
-         "mkm-for-museums-and-libraries.html",
+         "exec-summary-museums.html",
          "The institutions with the best knowledge in the room are losing the room. "
          "What that costs, and how we work with your specialists rather than instead "
          "of them.",
-         [("mkm-for-museums-and-libraries.html", "01 · Where things stand"),
+         [("exec-summary-museums.html", "Executive summary"),
+          ("mkm-for-museums-and-libraries.html", "01 · Where things stand"),
           ("what-you-are-holding.html", "01b · What you are holding"),
           ("visitors-and-readers.html", "02 · The new experience"),
           ("leadership.html", "03 · What leadership looks like"),
@@ -109,10 +110,11 @@ TH = {
           ("th-ontology-and-knowledge-graph.html", "04 · ontology กับ knowledge graph")],
          "เริ่มที่ปัญหา"),
         ("ภาค 2 · พิพิธภัณฑ์และห้องสมุด", "MKM สำหรับพิพิธภัณฑ์และห้องสมุด",
-         "th-mkm-for-museums-and-libraries.html",
+         "th-exec-summary-museums.html",
          "สถาบันที่มีความรู้ดีที่สุดในห้องกำลังเสียห้องนั้นไป เรื่องนี้มีต้นทุนเท่าไร "
          "และเราทำงานร่วมกับผู้เชี่ยวชาญของคุณอย่างไร ไม่ใช่ทำแทนพวกเขา",
-         [("th-mkm-for-museums-and-libraries.html", "01 · สถานะวันนี้"),
+         [("th-exec-summary-museums.html", "บทสรุปสำหรับผู้บริหาร"),
+          ("th-mkm-for-museums-and-libraries.html", "01 · สถานะวันนี้"),
           ("th-what-you-are-holding.html", "01b · สิ่งที่คุณถืออยู่"),
           ("th-visitors-and-readers.html", "02 · ประสบการณ์ใหม่ของการเรียนรู้"),
           ("th-leadership.html", "03 · ความเป็นผู้นำหน้าตาเป็นอย่างไร"),

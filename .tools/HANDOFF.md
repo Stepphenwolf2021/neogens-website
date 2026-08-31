@@ -42,6 +42,23 @@ Research & Insights · Operational Know-How · Human Experience · ย่อห�
 อยู่ใต้กลุ่ม **MKM for Museums & Libraries** ตามที่ Noppadol สั่งเมื่อ 08-31
 เดิมคุยกันว่าจะทำเมนูใหม่ชื่อ *MKM Insights* แล้วเปลี่ยนใจ **ยังไม่ทำเมนูใหม่**
 
+> **08-31 รอบดึก — หน้านี้กลายเป็นหน้าแรกของภาค 2 แทน `mkm-for-museums-and-libraries.html`**
+> ไม่ใช่แค่สลับลำดับในเมนู เขาสั่งว่า *เปลี่ยนทั้งหมด ให้เป็นหน้าแรกของภาค 2 จริง*
+> เครื่องมือคือ `.tools/promote_exec_summary.py` รันซ้ำได้ ด่านตรวจ 14 ข้อ แตะห้าที่
+>
+> ```
+> nav.en.html · nav.th.html   หัวกลุ่มบนแถบเมนูชี้มาที่นี่ · รายการขึ้นหน้าสุด ทั้ง sub และ drawer
+> build_footer.py             ขึ้นหัวคอลัมน์ ภาค 2 ทั้งสองภาษา
+> build_gates.py              ประตูที่สองในหน้าแรกชี้มาที่นี่ และเป็นรายการแรกในการ์ด
+> build_jsonld.py             PART_NAME ภาค 2 เปลี่ยน opener เป็นหน้านี้
+> ```
+>
+> ผลคือ **breadcrumb ของทุกหน้าในภาค 2 ขั้นกลางชี้มาที่ exec summary** และหน้านี้เอง
+> เหลือเส้นทางสองขั้น `Neo Gens › MKM for Museums & Libraries` ตรวจจากไฟล์จริงแล้ว
+>
+> **ป้ายในเมนูคือ `Executive summary` ไม่มีเลขนำ** ตามที่เขาเลือก เลข 01 01b 02 03
+> ของหน้าเดิมจึงคงไว้เท่าเดิม ไม่ได้ไล่เลื่อน **ถ้าจะเปลี่ยนใจให้ใส่เลข ต้องเลื่อนทั้งกลุ่ม**
+
 ```
 ต้นฉบับ      .tools/exec-summary-source/neogens-exec-summary-museums-EN.md · -TH.md
 สร้างหน้า     .tools/build_exec_summary.py     แม่แบบคือ coffee-farmer ทั้งสองภาษา

@@ -32,11 +32,11 @@ COLS = {
             ("why-it-works.html", "Why it works"),
             ("ontology-and-knowledge-graph.html", "Ontology &amp; knowledge graph")]),
         ("Part 2 · Museums &amp; libraries", None, [
+            ("exec-summary-museums.html", "Executive summary"),
             ("mkm-for-museums-and-libraries.html", "Where things stand"),
             ("what-you-are-holding.html", "What you are holding"),
             ("visitors-and-readers.html", "The new experience"),
             ("leadership.html", "What leadership looks like"),
-            ("exec-summary-museums.html", "Executive summary"),
             ("long-read-museums-and-libraries.html", "Long read: MKM for museums &amp; libraries")]),
         ("Part 2 · Working together", None, [
             ("services.html", "What we do together"),
@@ -62,11 +62,11 @@ COLS = {
             ("th-why-it-works.html", "ทำไมมันถึงได้ผล"),
             ("th-ontology-and-knowledge-graph.html", "ontology กับ knowledge graph")]),
         ("ภาค 2 · พิพิธภัณฑ์และห้องสมุด", None, [
+            ("th-exec-summary-museums.html", "บทสรุปสำหรับผู้บริหาร"),
             ("th-mkm-for-museums-and-libraries.html", "สถานะวันนี้"),
             ("th-what-you-are-holding.html", "สิ่งที่คุณถืออยู่"),
             ("th-visitors-and-readers.html", "ประสบการณ์ใหม่ของการเรียนรู้"),
             ("th-leadership.html", "ความเป็นผู้นำหน้าตาเป็นอย่างไร"),
-            ("th-exec-summary-museums.html", "บทสรุปสำหรับผู้บริหาร"),
             ("long-read-museums-and-libraries.html",
              "บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด (อังกฤษ)")]),
         ("ภาค 2 · การทำงานร่วมกัน", None, [
