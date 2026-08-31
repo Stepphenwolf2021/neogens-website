@@ -21,8 +21,10 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / ".tools" / "exec-summary-source"
 PAIRS = [("exec-summary-museums.html", "neogens-exec-summary-museums-EN.md"),
          ("th-exec-summary-museums.html", "neogens-exec-summary-museums-TH.md")]
-# ประโยคที่ต้องมี มาจากสามย่อหน้าที่เติมท้ายหัวข้อ 2 เมื่อ 08-31
-PROBES = ["VIAF", "ORCID", "C2PA"]
+# คำที่ต้องมี เป็นหมุดว่าเนื้อหาหลักไม่หายไประหว่างแปลง
+# บล็อกสามทางที่ผู้บริหารมักเลือก ถูกตัดออกเมื่อ 08-31 รอบดึก VIAF จึงเหลือที่เดียว
+# เทียบกับข้อความที่ตัดช่องว่างทิ้งแล้ว หมุดจึงต้องไม่มีช่องว่างด้วย
+PROBES = ["VIAF", "ORCID", "C2PA", "CIDOCCRM"]
 
 bad = []
 for page, md in PAIRS:

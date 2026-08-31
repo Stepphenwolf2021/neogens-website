@@ -47,8 +47,9 @@ LANGS = [
          src="coffee-farmer.html", out="exec-summary-museums.html",
          twin="th-exec-summary-museums.html",
          title="Executive summary — MKM for museums & libraries",
-         desc=("Mission-driven ontology and knowledge graphs for existing collections, "
-               "so that AI works for your institution instead of speaking on its behalf."),
+         desc=("Mission-driven ontology and knowledge graphs over the collection you "
+               "already have, so that AI works on your institution's confidence and "
+               "the public's trust."),
          kicker="executive summary", meta="12 min read",
          cta_k="Start the conversation",
          cta_h="If this is close to what you have been thinking, let's find a time.",
@@ -60,7 +61,8 @@ LANGS = [
          twin="exec-summary-museums.html",
          title="บทสรุปสำหรับผู้บริหาร — MKM พิพิธภัณฑ์และห้องสมุด",
          desc=("ออกแบบและสร้าง ontology กับ knowledge graph จากพันธกิจขององค์กร "
-               "บนคอลเลกชันที่มีอยู่แล้ว เพื่อให้ AI ทำงานให้ ไม่ใช่พูดแทน"),
+               "บนคอลเลกชันที่มีอยู่แล้ว เพื่อให้ AI ทำงานบนความเชื่อมั่นขององค์กร"
+               "และความเชื่อถือของสาธารณชน"),
          kicker="บทสรุปสำหรับผู้บริหาร", meta="อ่าน 12 นาที",
          cta_k="เริ่มต้นบทสนทนา",
          cta_h="ถ้าเรื่องนี้ใกล้กับสิ่งที่ท่านคิดอยู่ มานัดเวลากัน",
@@ -384,7 +386,15 @@ def build(C):
                               f'hreflang="th" href="{BASE}{th_page}"' in s and
                               f'hreflang="x-default" href="{BASE}{en_page}"' in s),
         "ปุ่มสลับภาษาสองชุด": n_lang == 2,
-        "สามย่อหน้าใหม่อยู่ในหน้า": "VIAF" in s and s.count("VIAF") >= 2,
+        "หลักการห้าข้อครบ": all(c in s for c in "①②③④⑤"),
+        # สองบล็อกนี้ถูกตัดออกเมื่อ 08-31 รอบดึก ตามที่ Noppadol ยืนยัน ห้ามเติมกลับโดยไม่ถาม
+        # ดูหัวข้อ exec summary ใน HANDOFF
+        "ไม่เหลือบล็อกสามทางที่ผู้บริหารมักเลือก":
+            "The three routes directors reach for" not in s
+            and "สามทางที่ผู้บริหารมักเลือก" not in s,
+        "ไม่เหลือย่อหน้าข้อสังเกตเรื่องตัวเลข":
+            "One caution about that survey" not in s
+            and "ขอตั้งข้อสังเกตเรื่องตัวเลขชุดนี้" not in s,
         "แผงตัวเลขครบสองแผง": n_fig == 2,
         "ทุกแผงมีบรรทัดบอกที่มา": s.count("<figcaption>") == 2,
         "แผงตัวเลขมีคำบรรยายให้โปรแกรมอ่านหน้าจอ": s.count('role="group"') == 2,
