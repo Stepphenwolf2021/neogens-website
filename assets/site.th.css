@@ -448,3 +448,8 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
   .nav-links .sub,.nav-links .hs>a::after{transition:none}
 }
 /* <<< เมนูย่อยบนแถบเมนูบน <<< */
+
+.hero-list{margin:20px 0 0;padding-left:1.15em;max-width:54ch;list-style:disc;font-size:clamp(16.5px,1.9vw,19px);color:var(--dim);line-height:1.85}
+.hero-list li{margin:0 0 10px}
+.hero-list li:last-child{margin-bottom:0}
+.hero-list b{color:var(--fg);font-weight:600}
