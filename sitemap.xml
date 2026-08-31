@@ -113,6 +113,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/leadership.html"/>
   </url>
   <url>
+    <loc>https://www.neogens.co/exec-summary-museums.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/exec-summary-museums.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-exec-summary-museums.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/exec-summary-museums.html"/>
+  </url>
+  <url>
+    <loc>https://www.neogens.co/th-exec-summary-museums.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neogens.co/exec-summary-museums.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.neogens.co/th-exec-summary-museums.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neogens.co/exec-summary-museums.html"/>
+  </url>
+  <url>
     <loc>https://www.neogens.co/services.html</loc>
     <lastmod>2026-08-09</lastmod>
     <priority>0.8</priority>

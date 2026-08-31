@@ -47,6 +47,8 @@ PART = {
     "leadership.html": 2, "services.html": 2, "engagement.html": 2,
     "ai-sovereignty.html": 2, "what-we-wont-do.html": 2,
     "long-read-museums-and-libraries.html": 2, "reference-implementation.html": 2,
+    # บทสรุปสำหรับผู้บริหาร เข้ามาเมื่อ 08-31 ดู .tools/build_exec_summary.py
+    "exec-summary-museums.html": 2,
     "mkm-for-coffee.html": 3, "coffee-farmer.html": 3, "coffee-demo.html": 3,
     # บทความกาแฟถูกแบ่งเป็นสามภาคเมื่อ 08-22 ดู .tools/split_coffee.py
     "mkm-for-coffee-why-now.html": 3, "mkm-for-coffee-commons.html": 3,
@@ -70,6 +72,7 @@ ABOUT = {
     "engagement.html": ["#service-museums"], "what-we-wont-do.html": ["#service-museums"],
     "reference-implementation.html": ["#service-museums"],
     "long-read-museums-and-libraries.html": ["#service-museums", "#term-mkm"],
+    "exec-summary-museums.html": ["#service-museums", "#term-mkm", "#term-ontology"],
     "mkm-for-coffee.html": ["#service-coffee"], "coffee-farmer.html": ["#service-coffee"],
     "coffee-demo.html": ["#service-coffee"],
     "mkm-for-coffee-why-now.html": ["#service-coffee"],
@@ -81,7 +84,8 @@ ARTICLES = {"long-read-museums-and-libraries.html", "mkm-for-coffee.html",
             "th-mkm-for-coffee.html", "seo-as-knowledge-management.html",
             "th-seo-as-knowledge-management.html",
             "mkm-for-coffee-why-now.html", "th-mkm-for-coffee-why-now.html",
-            "mkm-for-coffee-commons.html", "th-mkm-for-coffee-commons.html"}
+            "mkm-for-coffee-commons.html", "th-mkm-for-coffee-commons.html",
+            "exec-summary-museums.html", "th-exec-summary-museums.html"}
 
 TERMS = [
     ("#term-mkm", "Modern Knowledge Management", "การบริหารจัดการความรู้สมัยใหม่",

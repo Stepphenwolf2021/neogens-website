@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+สร้าง exec-summary-museums.html และฉบับไทย จากต้นฉบับใน .tools/exec-summary-source/
+
+หน้านี้อยู่ในภาค 2 พิพิธภัณฑ์และห้องสมุด จึงมี BreadcrumbList ต่างจากหน้า SEO
+ใช้ coffee-farmer.html กับ th-coffee-farmer.html เป็นแม่แบบ ตามที่ build_evidence.py
+กับ build_privacy.py ทำ จะได้ nav ธีม footer และ CSS ชุดเดียวกับหน้าอื่นในภาษานั้น
+
+**ฟอร์มของแม่แบบถูกถอดออก** เพราะฟอร์มนั้นส่ง topic:'MKM Coffee' ซึ่ง Worker
+มี allow-list รับแค่ค่านี้ค่าเดียว ถ้าปล่อยไว้ ผู้อำนวยการพิพิธภัณฑ์ที่กรอกฟอร์ม
+จะถูกบันทึกเป็นลูกค้าสายกาแฟ ปิดท้ายด้วยลิงก์ไปหน้า contact.html แทน
+JS ที่ผูกกับฟอร์มมี if(form) กันไว้อยู่แล้ว ถอดฟอร์มออกจึงไม่ทำให้ JS พัง
+
+รันซ้ำได้ ผลลัพธ์เท่าเดิม เพราะสร้างจากแม่แบบใหม่ทุกครั้ง ไม่ได้แก้ไฟล์เดิมทับ
+
+รันจากรากรีโป:  python3 .tools/build_exec_summary.py
+"""
+import html
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / ".tools" / "exec-summary-source"
+BASE = "https://www.neogens.co/"
+
+LANG_BLOCK = re.compile(r'<span class="lang">.*?</span>(?=<button)', re.S)
+ALT_BLOCK = re.compile(r'[ \t]*<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n')
+JSONLD_BLOCK = re.compile(r'[ \t]*<script type="application/ld\+json">.*?</script>\n', re.S)
+CRUMBS_BLOCK = re.compile(r'[ \t]*<nav class="crumbs".*?</nav>\n', re.S)
+JOIN_BLOCK = re.compile(r'<section class="join".*?</section>\n', re.S)
+
+TEMPLATE_MARKS = ("What you know about your own plot", "ความรู้ที่อยู่ในหัวคุณ",
+                  "Farm, mill, co-op or roastery", "Send my details",
+                  'id="wl"')
+# หมายเหตุสองข้อ
+# 1 คำว่า MKM Coffee เฉย ๆ ตัดไม่ได้ เพราะเป็นป้ายเมนูของภาค 3 ที่มีอยู่ทุกหน้า
+# 2 สตริง topic:'MKM Coffee' ยังอยู่ในบล็อก JS ของแม่แบบ แต่โค้ดก้อนนั้นมี if(form)
+#   ครอบไว้ พอถอดฟอร์มออก มันจึงไม่มีวันทำงาน ไม่ตัดทิ้งเพราะการไปตัด JS ด้วย regex
+#   คือความผิดข้อ 11 ของ LESSONS.md ซ้ำรอย ด่านข้างล่างจึงตรวจสองอย่างแทน
+#   ไม่มี id="wl" ในหน้า และยังมี if(form) กันไว้
+
+LANGS = [
+    dict(lang="en", md="neogens-exec-summary-museums-EN.md",
+         src="coffee-farmer.html", out="exec-summary-museums.html",
+         twin="th-exec-summary-museums.html",
+         title="Executive summary — MKM for museums & libraries",
+         desc=("Mission-driven ontology and knowledge graphs for existing collections, "
+               "so that AI works for your institution instead of speaking on its behalf."),
+         kicker="executive summary", meta="12 min read",
+         cta_k="Start the conversation",
+         cta_h="If this is close to what you have been thinking, let's find a time.",
+         cta_p=("90 minutes. Bring your curators or librarians, and one question "
+                "your institution could not answer."),
+         cta_btn="Request a briefing"),
+    dict(lang="th", md="neogens-exec-summary-museums-TH.md",
+         src="th-coffee-farmer.html", out="th-exec-summary-museums.html",
+         twin="exec-summary-museums.html",
+         title="บทสรุปสำหรับผู้บริหาร — MKM พิพิธภัณฑ์และห้องสมุด",
+         desc=("ออกแบบและสร้าง ontology กับ knowledge graph จากพันธกิจขององค์กร "
+               "บนคอลเลกชันที่มีอยู่แล้ว เพื่อให้ AI ทำงานให้ ไม่ใช่พูดแทน"),
+         kicker="บทสรุปสำหรับผู้บริหาร", meta="อ่าน 12 นาที",
+         cta_k="เริ่มต้นบทสนทนา",
+         cta_h="ถ้าเรื่องนี้ใกล้กับสิ่งที่ท่านคิดอยู่ มานัดเวลากัน",
+         cta_p=("90 นาที ชวนภัณฑารักษ์หรือบรรณารักษ์มาด้วย "
+                "พร้อมคำถามหนึ่งข้อที่องค์กรของท่านยังตอบไม่ได้"),
+         cta_btn="ขอนัดหารือ"),
+]
+
+
+# ---------------------------------------------------------------- markdown
+
+def inline(t):
+    """escape ก่อน แล้วค่อยแปลง **หนา** กับ *เอียง* ลำดับนี้ห้ามสลับ"""
+    t = html.escape(t, quote=False)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"(?<!\*)\*([^*]+?)\*(?!\*)", r"<em>\1</em>", t)
+    return t
+
+
+def parse(md):
+    """คืน (front, blocks) — front คือส่วนหัวก่อน --- เส้นแรก"""
+    lines = md.rstrip().split("\n")
+    cut = lines.index("---")
+    front, body = lines[:cut], lines[cut + 1:]
+
+    h1 = front[0].lstrip("# ").strip()
+    stand = next(l for l in front[1:] if l.startswith("**")).strip("* ")
+    tag = [l.strip() for l in front if l.strip()][2:]
+
+    blocks, buf, mode = [], [], None
+
+    def flush():
+        nonlocal buf, mode
+        if buf:
+            blocks.append((mode, buf))
+        buf, mode = [], None
+
+    for raw in body:
+        l = raw.rstrip()
+        if not l.strip() or l.strip() == "---":
+            flush()
+            continue
+        if l.startswith("### "):
+            flush()
+            blocks.append(("h3", [l[4:].strip()]))
+        elif l.startswith("## "):
+            flush()
+            blocks.append(("h2", [l[3:].strip()]))
+        elif l.startswith("- "):
+            if mode != "ul":
+                flush()
+                mode = "ul"
+            buf.append(l[2:].strip())
+        elif re.match(r"^\d+\. ", l):
+            if mode != "ol":
+                flush()
+                mode = "ol"
+            buf.append(re.sub(r"^\d+\. ", "", l).strip())
+        else:
+            if mode != "p":
+                flush()
+                mode = "p"
+            buf.append(l.strip())
+    flush()
+    return dict(h1=h1, stand=stand, tag=tag), blocks
+
+
+def render(blocks):
+    out, n, first = [], 0, True
+    for kind, val in blocks:
+        if kind == "h2":
+            m = re.match(r"^(\d+)\.\s+(.*)$", val[0])
+            if m:
+                n = int(m.group(1))
+                out.append(f'<h2 id="s{n:02d}"><span class="sn">{n:02d}</span>'
+                           f"{inline(m.group(2))}</h2>")
+            else:
+                out.append(f"<h2>{inline(val[0])}</h2>")
+        elif kind == "h3":
+            out.append(f"<h3>{inline(val[0])}</h3>")
+        elif kind in ("ul", "ol"):
+            items = "".join(f"<li>{inline(x)}</li>" for x in val)
+            out.append(f"<{kind}>{items}</{kind}>")
+        else:
+            cls = ' class="first"' if first else ""
+            out.append(f"<p{cls}>{inline(' '.join(val))}</p>")
+            first = False
+    return "\n".join(out)
+
+
+# ---------------------------------------------------------------- build
+
+def build(C):
+    md = (SRC / C["md"]).read_text(encoding="utf-8")
+    front, blocks = parse(md)
+    body = render(blocks)
+
+    s = (ROOT / C["src"]).read_text(encoding="utf-8")
+
+    # ---- หัวเรื่องและ meta ----
+    s = re.sub(r"<title>.*?</title>", f"<title>{html.escape(C['title'])}</title>",
+               s, count=1, flags=re.S)
+    for tag in ('<meta name="description" content="',
+                '<meta property="og:description" content="'):
+        cur = re.search(re.escape(tag) + r'([^"]*)"', s).group(1)
+        s = s.replace(tag + cur, tag + html.escape(C["desc"]), 1)
+    s = re.sub(r'(<meta property="og:title" content=")[^"]*"',
+               lambda m: m.group(1) + html.escape(C["title"]) + '"', s, count=1)
+    for old in ("coffee-farmer.html", "th-coffee-farmer.html"):
+        s = s.replace(f"{BASE}{old}", f"{BASE}{C['out']}")
+
+    # ---- คู่ภาษา ----
+    en_page = C["out"] if C["lang"] == "en" else C["twin"]
+    th_page = C["out"] if C["lang"] == "th" else C["twin"]
+    alts = "".join(f'<link rel="alternate" hreflang="{k}" href="{BASE}{v}">\n'
+                   for k, v in (("en", en_page), ("th", th_page), ("x-default", en_page)))
+    s, n_alt = ALT_BLOCK.subn("", s)
+    if n_alt != 3:
+        sys.exit(f"[abort] แม่แบบมี hreflang {n_alt} ตัว คาดว่า 3")
+    s = s.replace('<link rel="canonical"', alts + '<link rel="canonical"', 1)
+
+    lang_html = (f'<span class="lang"><a class="on" href="{th_page}">TH</a>'
+                 f'<span>/</span><a href="{en_page}">EN</a></span>') if C["lang"] == "th" else (
+                f'<span class="lang"><a class="on" href="{en_page}">EN</a>'
+                f'<span>/</span><a href="{th_page}">TH</a></span>')
+    s, n_lang = LANG_BLOCK.subn(lambda m: lang_html, s)
+
+    # ---- หัวหน้า ----
+    m = re.search(r'<div class="kicker">.*?</div>\s*</div>\s*</header>', s, re.S)
+    if not m:
+        sys.exit(f"[abort] {C['src']} ไม่มีหัวหน้าแบบ kicker ที่คาดไว้")
+    meta_bits = "".join(f"<span>{inline(x)}</span>" for x in ["Neo Gens", C["meta"]])
+    s = s[:m.start()] + (
+        f'<div class="kicker">{C["kicker"]}</div>\n'
+        f'      <h1>{inline(front["h1"])}</h1>\n'
+        f'      <p class="stand">{inline(front["stand"])}</p>\n'
+        f'      <div class="meta">{meta_bits}</div>\n'
+        f'    </div>\n  </div>\n</header>') + s[m.end():]
+
+    # ---- เนื้อหา ----
+    i, j = s.index("<article>"), s.index("</article>") + len("</article>")
+    s = s[:i] + ('<article>\n  <div class="wrap">\n    <div class="artbody">\n'
+                 + body + "\n    </div>\n  </div>\n</article>") + s[j:]
+
+    # ---- ของที่ติดมากับแม่แบบและไม่ใช่ของหน้านี้ (ข้อ 10 ของ LESSONS.md) ----
+    s = JSONLD_BLOCK.sub("", s)
+    s = CRUMBS_BLOCK.sub("", s)
+
+    # ---- ฟอร์มกาแฟออก กล่องชวนคุยเข้า ----
+    cta = (f'<section class="join" id="join">\n'
+           f'  <div class="join-bg"></div>\n'
+           f'  <div class="wrap">\n    <div class="inner">\n'
+           f'      <div class="k rv">{inline(C["cta_k"])}</div>\n'
+           f'      <h2 class="rv">{inline(C["cta_h"])}</h2>\n'
+           f'      <p class="lead rv">{inline(C["cta_p"])}</p>\n'
+           f'      <p class="rv"><a class="btn" href="contact.html">'
+           f'{inline(C["cta_btn"])}</a></p>\n'
+           f'      <p class="form-note rv">hello@neogens.co</p>\n'
+           f'    </div>\n  </div>\n</section>\n')
+    s, n_join = JOIN_BLOCK.subn(lambda m: cta, s)
+    if n_join != 1:
+        sys.exit(f"[abort] {C['out']} ตัดกล่องฟอร์มได้ {n_join} ก้อน คาดว่า 1")
+
+    # ---- ด่านตรวจ เขียนไฟล์ต่อเมื่อผ่านครบ ----
+    n_h2 = sum(1 for k, _ in blocks if k == "h2")
+    n_h3 = sum(1 for k, _ in blocks if k == "h3")
+    n_p = sum(1 for k, _ in blocks if k == "p")
+    n_li = sum(len(v) for k, v in blocks if k in ("ul", "ol"))
+    checks = {
+        # --- มีครบ ---
+        "หัวข้อ h2 ครบตามต้นฉบับ": s.count("<h2") == n_h2 + 1,     # +1 คือกล่องชวนคุย
+        "หัวข้อ h3 ครบตามต้นฉบับ": s.count("<h3>") == n_h3,
+        "ย่อหน้าครบตามต้นฉบับ": body.count("<p") == n_p,
+        "รายการครบตามต้นฉบับ": body.count("<li>") == n_li,
+        "พาดหัวมาจากต้นฉบับ": f'<h1>{inline(front["h1"])}</h1>' in s,
+        "มี h1 เดียว": s.count("<h1>") == 1,
+        "title ไม่เกิน 60": len(C["title"]) <= 60,
+        "description ไม่เกิน 160": len(C["desc"]) <= 160,
+        "og:description ตรงกับ description": s.count(html.escape(C["desc"])) >= 2,
+        "canonical ชี้หน้านี้": f'rel="canonical" href="{BASE}{C["out"]}"' in s,
+        "hreflang ชี้คู่ถูก": (f'hreflang="en" href="{BASE}{en_page}"' in s and
+                              f'hreflang="th" href="{BASE}{th_page}"' in s and
+                              f'hreflang="x-default" href="{BASE}{en_page}"' in s),
+        "ปุ่มสลับภาษาสองชุด": n_lang == 2,
+        "สามย่อหน้าใหม่อยู่ในหน้า": "VIAF" in s and s.count("VIAF") >= 2,
+        "ปุ่มปิดท้ายชี้หน้าติดต่อ": 'class="btn" href="contact.html"' in s,
+        # --- ไม่เหลือ ---
+        "ไม่เหลือเนื้อหาแม่แบบ (" + " · ".join(
+            t for t in TEMPLATE_MARKS if t in s) + ")": not any(t in s for t in TEMPLATE_MARKS),
+        "ไม่เหลือฟอร์มของแม่แบบ": "<form" not in s and "<textarea" not in s,
+        "โค้ดส่งฟอร์มกลายเป็นโค้ดตาย": "if(form)" in s and 'id="wl"' not in s,
+        "ไม่เหลือ JSON-LD ของแม่แบบ": "application/ld+json" not in s,
+        "ไม่เหลือแถบเส้นทางของแม่แบบ": 'class="crumbs"' not in s,
+        "ไม่เหลือ markdown ที่ยังไม่แปลง": not re.search(r"(?m)^#{1,3} |\*\*", body),
+        "ไม่มีของภายนอก": not re.search(r'(src|href)="https?://(?!www\.neogens\.co)', s),
+        "ปีกกาใน style สมดุล": s.count("{", 0, s.rindex("</style>")) >= 0,
+        "ลิงก์ในหน้าไปไฟล์ที่มีจริง": all(
+            (ROOT / h).exists()
+            for h in re.findall(r'href="([a-z0-9][a-z0-9.-]*\.html)"', s)
+            if h not in (C["twin"], C["out"])),
+    }
+    bad = [k for k, ok in checks.items() if not ok]
+    if bad:
+        sys.exit(f"[abort] {C['out']}: " + " · ".join(bad))
+
+    (ROOT / C["out"]).write_text(s, encoding="utf-8")
+    print(f"  สร้าง {C['out']} · {len(s.encode()) // 1024} KB · "
+          f"h2 {n_h2} · h3 {n_h3} · ย่อหน้า {n_p} · รายการ {n_li} · ตรวจผ่าน {len(checks)} ข้อ")
+
+
+for C in LANGS:
+    build(C)
+
+# เมนูที่ติดมากับแม่แบบยังชี้ว่าหน้านี้คือ coffee-farmer ต้องซิงก์ใหม่ก่อน
+# แล้วค่อยฝัง JSON-LD เพราะกราฟดึงป้ายเมนูไปใช้ แล้วปิดท้ายด้วยแถบเส้นทาง
+# ซึ่งดึงจาก JSON-LD ของหน้านั้นเอง ลำดับนี้ห้ามสลับ ดู HANDOFF หัวข้อ ลำดับที่ห้ามสลับ
+for tool in ("sync_nav.py", "build_jsonld.py", "add_breadcrumbs.py"):
+    subprocess.run([sys.executable, str(Path(__file__).with_name(tool))],
+                   check=True, cwd=ROOT)
+
+# ---- หน้านี้ต้องไม่ประกาศว่าตัวเองเป็นหน้าอื่น (ข้อ 10 และ 12) ----
+for C in LANGS:
+    t = (ROOT / C["out"]).read_text(encoding="utf-8")
+    ac = re.findall(r'<a[^>]*aria-current="page"[^>]*>', t)
+    for a in ac:
+        href = re.search(r'href="([^"]+)"', a).group(1)
+        if href != C["out"]:
+            sys.exit(f"✗ {C['out']} เมนูชี้ว่าหน้าปัจจุบันคือ {href}")
+    if len(ac) != 1:
+        sys.exit(f"✗ {C['out']} มี aria-current ในลิงก์ {len(ac)} อัน ต้องมีอันเดียว")
+    if 'class="crumbs"' not in t:
+        sys.exit(f"✗ {C['out']} ไม่มีแถบเส้นทาง ทั้งที่อยู่ในภาค 2")
+
+# ---- คู่ภาษาต้องยืนยันกลับหากัน ----
+for C in LANGS:
+    a = (ROOT / C["out"]).read_text(encoding="utf-8")
+    b = (ROOT / C["twin"]).read_text(encoding="utf-8")
+    ca = re.search(r'rel="canonical" href="([^"]+)"', a).group(1)
+    if f'href="{ca}"' not in b:
+        sys.exit(f"✗ {C['twin']} ไม่ได้ชี้กลับมาที่ {ca}")
+print("✓ สองหน้าประกาศฉบับแปลของกันและกันตรงกัน")

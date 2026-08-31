@@ -36,6 +36,7 @@ COLS = {
             ("what-you-are-holding.html", "What you are holding"),
             ("visitors-and-readers.html", "The new experience"),
             ("leadership.html", "What leadership looks like"),
+            ("exec-summary-museums.html", "Executive summary"),
             ("long-read-museums-and-libraries.html", "Long read: MKM for museums &amp; libraries")]),
         ("Part 2 · Working together", None, [
             ("services.html", "What we do together"),
@@ -65,6 +66,7 @@ COLS = {
             ("th-what-you-are-holding.html", "สิ่งที่คุณถืออยู่"),
             ("th-visitors-and-readers.html", "ประสบการณ์ใหม่ของการเรียนรู้"),
             ("th-leadership.html", "ความเป็นผู้นำหน้าตาเป็นอย่างไร"),
+            ("th-exec-summary-museums.html", "บทสรุปสำหรับผู้บริหาร"),
             ("long-read-museums-and-libraries.html",
              "บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด (อังกฤษ)")]),
         ("ภาค 2 · การทำงานร่วมกัน", None, [
