@@ -36,6 +36,25 @@ for (const [file,lang] of PAGES){
     say(neg.length===0, `${file}: letter-spacing ติดลบใน ${neg.join(' / ')}`);
   }
 
+  // แผงตัวเลข  ต้องมีสองแผง มีบรรทัดที่มา และ CSS ต้องติดจริง
+  const figs=[...body.querySelectorAll('figure.esf')];
+  say(figs.length===2, `${file}: แผงตัวเลข ${figs.length} แผง ต้องมี 2`);
+  figs.forEach((f,i)=>{
+    const cap=f.querySelector('figcaption');
+    say(!!cap && cap.querySelector('a[href^="https://"]'),
+        `${file}: แผงที่ ${i+1} ไม่มีลิงก์กลับไปต้นทาง`);
+    const grid=f.querySelector('.esf-in');
+    say(gcs(grid).display==='grid', `${file}: แผงที่ ${i+1} ไม่ได้เป็น grid CSS ไม่ติด`);
+    const cells=f.querySelectorAll('.esf-c').length;
+    say(f.classList.contains('esf-'+cells),
+        `${file}: แผงที่ ${i+1} มี ${cells} ช่อง แต่คลาสไม่ตรง`);
+    const t=f.querySelector('.esf-t');
+    const r=gcs(t).lineHeight, fz=parseFloat(gcs(t).fontSize);
+    const ratio=r.includes('px')? parseFloat(r)/fz : parseFloat(r);
+    if(lang==='th') say(ratio>=1.75 && ratio<=1.9,
+        `${file}: แผงที่ ${i+1} line-height ไทย ${ratio}`);
+  });
+
   // ตัวบ่งชี้หน้าปัจจุบัน  มี · ชี้ถูก · ไม่เกินหนึ่ง (ข้อ 12)
   const ac=[...d.querySelectorAll('a[aria-current="page"]')];
   say(ac.length===1, `${file}: aria-current ในลิงก์ ${ac.length} อัน`);

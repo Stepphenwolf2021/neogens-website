@@ -70,6 +70,132 @@ LANGS = [
 ]
 
 
+# ---------------------------------------------------------------- แผงตัวเลข
+#
+# **ไม่ได้เอาภาพของเจ้าของงานมาแปะ** การ์ดรายงานของ Culture For Causes Network
+# กับอินโฟกราฟิกของ AAM เป็นงานออกแบบของเขา การเอาขึ้นเว็บเชิงพาณิชย์ของเราต้องขออนุญาต
+# สิ่งที่ทำได้โดยไม่ต้องขอคือ **เอาตัวเลขมาวาดใหม่เอง** ตัวเลขไม่มีลิขสิทธิ์ การนำเสนอมี
+# ทุกแผงจึงมีบรรทัดบอกฐาน วันเก็บข้อมูล เจ้าของงาน และลิงก์กลับไปต้นทาง
+#
+# ถ้าวันไหนได้รับอนุญาตให้ใช้ภาพต้นฉบับ ให้มาแทนที่ตรงนี้ที่เดียว
+
+FIGCSS = {
+    "en": """
+/* --- แผงตัวเลขจากงานสำรวจ วาดเองจากข้อมูลที่เผยแพร่ ไม่ได้ใช้ภาพของเจ้าของงาน --- */
+.esf{{margin:36px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}}
+.esf-in{{display:grid}}
+.esf-4 .esf-in{{grid-template-columns:repeat(4,1fr)}}
+.esf-3 .esf-in{{grid-template-columns:repeat(3,1fr)}}
+.esf-c{{padding:20px 18px 20px;border-left:1px solid var(--line)}}
+.esf-c:first-child{{border-left:0;padding-left:0}}
+.esf-k{{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mute);line-height:1.9}}
+.esf-n{{font-size:40px;line-height:1.15;margin:8px 0 10px;color:var(--fg)}}
+.esf-n i{{font-size:19px;font-style:normal;vertical-align:super;color:var(--mute)}}
+.esf-t{{font-size:14px;line-height:1.65;color:var(--dim);margin:0}}
+.esf-d{{font-family:var(--mono);font-size:10px;line-height:1.9;color:var(--mute);margin:8px 0 0}}
+.esf figcaption{{font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--mute);
+  padding:12px 0 14px;margin:0}}
+.esf figcaption a{{color:var(--mute)}}
+.esf figcaption a:hover{{color:var(--go)}}
+@media(max-width:760px){{
+  .esf-in{{grid-template-columns:repeat(2,1fr)}}
+  .esf-c:nth-child(odd){{border-left:0;padding-left:0}}
+}}
+""",
+    "th": """
+/* --- แผงตัวเลขจากงานสำรวจ วาดเองจากข้อมูลที่เผยแพร่ ไม่ได้ใช้ภาพของเจ้าของงาน --- */
+.esf{{margin:36px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}}
+.esf-in{{display:grid}}
+.esf-4 .esf-in{{grid-template-columns:repeat(4,1fr)}}
+.esf-3 .esf-in{{grid-template-columns:repeat(3,1fr)}}
+.esf-c{{padding:20px 18px 20px;border-left:1px solid var(--line)}}
+.esf-c:first-child{{border-left:0;padding-left:0}}
+.esf-k{{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mute);line-height:1.9}}
+.esf-n{{font-size:40px;line-height:1.2;margin:8px 0 10px;color:var(--fg)}}
+.esf-n i{{font-size:19px;font-style:normal;vertical-align:super;color:var(--mute)}}
+.esf-t{{font-size:14px;line-height:1.8;color:var(--dim);margin:0}}
+.esf-d{{font-size:11px;line-height:1.8;color:var(--mute);margin:8px 0 0}}
+.esf figcaption{{font-size:12px;line-height:1.8;color:var(--mute);padding:12px 0 14px;margin:0}}
+.esf figcaption a{{color:var(--mute)}}
+.esf figcaption a:hover{{color:var(--go)}}
+@media(max-width:760px){{
+  .esf-in{{grid-template-columns:repeat(2,1fr)}}
+  .esf-c:nth-child(odd){{border-left:0;padding-left:0}}
+}}
+""",
+}
+
+MW_URL = "https://museumweek2h1r4.substack.com/p/museumweek-2026-the-story-of-a-week"
+AAM_URL = ("https://www.aam-us.org/2026/03/30/"
+           "ai-in-museums-and-community-trust-a-2025-annual-survey-of-museum-goers-data-story/")
+
+FIGURES = {
+    "survey": {
+        "en": dict(
+            label="Museums & AI Survey · 180 institutions · 35 countries",
+            cols=[("AI adoption", "52", "of institutions report having adopted AI tools",
+                   "Don't know · 11%"),
+                  ("Written policy", "9", "have a formal AI charter or written policy",
+                   "Don't know · 11%"),
+                  ("Trained staff", "26", "have received any formal AI training", ""),
+                  ("Perception", "46", "frame AI as an opportunity; 43% remain uncertain", "")],
+            cap=("Fieldwork 17 September – 14 November 2025 · n=180 per measure · "
+                 "MuseumWeek and Culture For Causes Network · "
+                 f'figures redrawn by Neo Gens from the published report card, <a href="{MW_URL}">source</a>'),
+        ),
+        "th": dict(
+            label="Museums & AI Survey · 180 หน่วยงาน · 35 ประเทศ",
+            cols=[("รับ AI มาใช้แล้ว", "52", "ของหน่วยงานตอบว่ารับเครื่องมือ AI เข้ามาใช้แล้ว",
+                   "ตอบว่าไม่รู้ · 11%"),
+                  ("มีนโยบายเป็นลายลักษณ์อักษร", "9",
+                   "มีธรรมนูญหรือนโยบายเรื่อง AI ที่เขียนไว้", "ตอบว่าไม่รู้ · 11%"),
+                  ("เคยผ่านการอบรม", "26", "ของผู้ตอบเคยผ่านการอบรมเรื่อง AI มาบ้าง", ""),
+                  ("มุมมอง", "46", "มองว่า AI เป็นโอกาส อีก 43% ยังไม่มีจุดยืน", "")],
+            cap=("เก็บข้อมูล 17 กันยายน ถึง 14 พฤศจิกายน 2025 · ฐาน 180 ต่อทุกตัวเลข · "
+                 "MuseumWeek กับ Culture For Causes Network · "
+                 f'Neo Gens วาดแผงนี้ขึ้นใหม่จากการ์ดรายงานที่เผยแพร่ <a href="{MW_URL}">ดูต้นทาง</a>'),
+        ),
+    },
+    "public": {
+        "en": dict(
+            label="What the public expects · 2,000+ US adults",
+            cols=[("Exhibitions", "70", "want no AI at all in developing exhibitions", ""),
+                  ("Everything", "43", "expect human beings to write every piece of content", ""),
+                  ("Disclosure", "45", "want to be told every time AI is used", "")],
+            cap=("Surveyed January 2026 · demographically representative sample of more than "
+                 "2,000 US adults · American Alliance of Museums and Wilkening Consulting · "
+                 f'figures redrawn by Neo Gens, <a href="{AAM_URL}">source</a>'),
+        ),
+        "th": dict(
+            label="สิ่งที่ผู้เข้าชมคาดหวัง · ผู้ใหญ่ในสหรัฐกว่า 2,000 คน",
+            cols=[("นิทรรศการ", "70", "ไม่อยากให้ใช้ AI ในการพัฒนานิทรรศการเลย", ""),
+                  ("ทุกชิ้นงาน", "43", "อยากให้คนเป็นผู้เขียนเนื้อหาทุกชิ้นของพิพิธภัณฑ์", ""),
+                  ("การเปิดเผย", "45", "อยากรู้ทุกครั้งที่มีการใช้ AI", "")],
+            cap=("สำรวจเมื่อมกราคม 2026 · กลุ่มตัวอย่างที่คุมสัดส่วนตามโครงสร้างประชากร "
+                 "ผู้ใหญ่ในสหรัฐกว่า 2,000 คน · American Alliance of Museums กับ Wilkening Consulting · "
+                 f'Neo Gens วาดแผงนี้ขึ้นใหม่ <a href="{AAM_URL}">ดูต้นทาง</a>'),
+        ),
+    },
+}
+
+
+def figure(key, lang):
+    F = FIGURES[key][lang]
+    cols = "".join(
+        f'<div class="esf-c"><div class="esf-k">{inline(k)}</div>'
+        f'<div class="esf-n">{n}<i>%</i></div>'
+        f'<p class="esf-t">{inline(t)}</p>'
+        + (f'<p class="esf-d">{inline(d)}</p>' if d else "")
+        + "</div>"
+        for k, n, t, d in F["cols"])
+    return (f'<figure class="esf esf-{len(F["cols"])}" role="group" '
+            f'aria-label="{inline(F["label"])}">'
+            f'<div class="esf-in">{cols}</div>'
+            f'<figcaption>{F["cap"]}</figcaption></figure>')
+
+
 # ---------------------------------------------------------------- markdown
 
 def inline(t):
@@ -128,9 +254,12 @@ def parse(md):
     return dict(h1=h1, stand=stand, tag=tag), blocks
 
 
-def render(blocks):
+def render(blocks, lang):
     out, n, first = [], 0, True
     for kind, val in blocks:
+        if kind == "p" and len(val) == 1 and re.fullmatch(r"\[\[FIGURE:(\w+)\]\]", val[0]):
+            out.append(figure(re.fullmatch(r"\[\[FIGURE:(\w+)\]\]", val[0]).group(1), lang))
+            continue
         if kind == "h2":
             m = re.match(r"^(\d+)\.\s+(.*)$", val[0])
             if m:
@@ -156,7 +285,8 @@ def render(blocks):
 def build(C):
     md = (SRC / C["md"]).read_text(encoding="utf-8")
     front, blocks = parse(md)
-    body = render(blocks)
+    body = render(blocks, C["lang"])
+    n_fig = body.count('<figure class="esf')
 
     s = (ROOT / C["src"]).read_text(encoding="utf-8")
 
@@ -205,6 +335,12 @@ def build(C):
     s = s[:i] + ('<article>\n  <div class="wrap">\n    <div class="artbody">\n'
                  + body + "\n    </div>\n  </div>\n</article>") + s[j:]
 
+    # ---- CSS ของแผงตัวเลข แม่แบบไม่มีคลาสพวกนี้ ต้องเติมเอง ----
+    # แทรกที่ </style> ตัวท้ายที่ยังอยู่ใน <head> ไม่ใช่ตัวท้ายของไฟล์ ดู HANDOFF ข้อ 3
+    head_end = s.index("</head>")
+    last_style = s.rindex("</style>", 0, head_end)
+    s = s[:last_style] + FIGCSS[C["lang"]].replace("{{", "{").replace("}}", "}") + s[last_style:]
+
     # ---- ของที่ติดมากับแม่แบบและไม่ใช่ของหน้านี้ (ข้อ 10 ของ LESSONS.md) ----
     s = JSONLD_BLOCK.sub("", s)
     s = CRUMBS_BLOCK.sub("", s)
@@ -227,14 +363,17 @@ def build(C):
     # ---- ด่านตรวจ เขียนไฟล์ต่อเมื่อผ่านครบ ----
     n_h2 = sum(1 for k, _ in blocks if k == "h2")
     n_h3 = sum(1 for k, _ in blocks if k == "h3")
-    n_p = sum(1 for k, _ in blocks if k == "p")
+    # ตัวยึดรูปนับเป็นบล็อก p ในต้นฉบับ แต่ไม่ได้ออกมาเป็น <p> จึงต้องหักออก
+    n_p = sum(1 for k, v in blocks if k == "p"
+              and not re.fullmatch(r"\[\[FIGURE:\w+\]\]", v[0]))
+    body_wo_fig = re.sub(r'<figure class="esf.*?</figure>', "", body, flags=re.S)
     n_li = sum(len(v) for k, v in blocks if k in ("ul", "ol"))
     checks = {
         # --- มีครบ ---
         "หัวข้อ h2 ครบตามต้นฉบับ": s.count("<h2") == n_h2 + 1,     # +1 คือกล่องชวนคุย
         "หัวข้อ h3 ครบตามต้นฉบับ": s.count("<h3>") == n_h3,
-        "ย่อหน้าครบตามต้นฉบับ": body.count("<p") == n_p,
-        "รายการครบตามต้นฉบับ": body.count("<li>") == n_li,
+        "ย่อหน้าครบตามต้นฉบับ": body_wo_fig.count("<p") == n_p,
+        "รายการครบตามต้นฉบับ": body_wo_fig.count("<li>") == n_li,
         "พาดหัวมาจากต้นฉบับ": f'<h1>{inline(front["h1"])}</h1>' in s,
         "มี h1 เดียว": s.count("<h1>") == 1,
         "title ไม่เกิน 60": len(C["title"]) <= 60,
@@ -246,6 +385,11 @@ def build(C):
                               f'hreflang="x-default" href="{BASE}{en_page}"' in s),
         "ปุ่มสลับภาษาสองชุด": n_lang == 2,
         "สามย่อหน้าใหม่อยู่ในหน้า": "VIAF" in s and s.count("VIAF") >= 2,
+        "แผงตัวเลขครบสองแผง": n_fig == 2,
+        "ทุกแผงมีบรรทัดบอกที่มา": s.count("<figcaption>") == 2,
+        "แผงตัวเลขมีคำบรรยายให้โปรแกรมอ่านหน้าจอ": s.count('role="group"') == 2,
+        "CSS ของแผงเข้าไฟล์แล้ว": ".esf{" in s and s.index(".esf{") < s.index("</head>"),
+        "ไม่เหลือตัวยึดรูปที่ยังไม่แปลง": "[[FIGURE:" not in s,
         "ปุ่มปิดท้ายชี้หน้าติดต่อ": 'class="btn" href="contact.html"' in s,
         # --- ไม่เหลือ ---
         "ไม่เหลือเนื้อหาแม่แบบ (" + " · ".join(
@@ -255,7 +399,14 @@ def build(C):
         "ไม่เหลือ JSON-LD ของแม่แบบ": "application/ld+json" not in s,
         "ไม่เหลือแถบเส้นทางของแม่แบบ": 'class="crumbs"' not in s,
         "ไม่เหลือ markdown ที่ยังไม่แปลง": not re.search(r"(?m)^#{1,3} |\*\*", body),
-        "ไม่มีของภายนอก": not re.search(r'(src|href)="https?://(?!www\.neogens\.co)', s),
+        # ลิงก์ออกนอกเว็บได้เฉพาะบรรทัดอ้างอิงใต้แผงตัวเลข และต้องเป็นสองที่มาที่ประกาศไว้
+        # เท่านั้น ไม่มีการโหลดของจากภายนอกเลย src ยังห้ามเด็ดขาดเหมือนเดิม
+        "ไม่โหลดของจากภายนอก": not re.search(r'src="https?://(?!www\.neogens\.co)', s),
+        "ลิงก์ออกนอกเว็บมีแต่ที่มาของตัวเลข": sorted(
+            set(re.findall(r'href="(https?://(?!www\.neogens\.co)[^"]+)"', s))
+        ) == sorted({AAM_URL, MW_URL}),
+        "ลิงก์ที่มาอยู่ในบรรทัดอ้างอิงใต้แผง": all(
+            s.count(f'<a href="{u}">') == s.count(u) for u in (AAM_URL, MW_URL)),
         "ปีกกาใน style สมดุล": s.count("{", 0, s.rindex("</style>")) >= 0,
         "ลิงก์ในหน้าไปไฟล์ที่มีจริง": all(
             (ROOT / h).exists()

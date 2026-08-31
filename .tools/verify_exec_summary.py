@@ -29,7 +29,15 @@ for page, md in PAIRS:
     s = (ROOT / page).read_text(encoding="utf-8")
     body = s[s.index('<div class="artbody">'):s.index("</article>")]
     body = re.sub(r'<span class="sn">\d+</span>', "", body)
+    # แผงตัวเลขเป็นของที่หน้าเว็บวาดเอง ไม่ได้อยู่ในต้นฉบับ ถอดออกก่อนเทียบ
+    n_fig = len(re.findall(r'<figure class="esf', body))
+    body = re.sub(r'<figure class="esf.*?</figure>', "", body, flags=re.S)
     got = re.sub(r"\s+", "", html.unescape(re.sub(r"<[^>]+>", " ", body)))
+
+    if n_fig != 2:
+        bad.append(page)
+        print(f"✗ {page} มีแผงตัวเลข {n_fig} แผง ต้องมี 2")
+        continue
 
     lines = (SRC / md).read_text(encoding="utf-8").rstrip().split("\n")
     b = "\n".join(lines[lines.index("---") + 1:])
@@ -37,6 +45,7 @@ for page, md in PAIRS:
     b = re.sub(r"(?m)^#{2,3}\s*", "", b)
     b = re.sub(r"(?m)^-\s+", "", b)
     b = re.sub(r"(?m)^\d+\.\s+", "", b)
+    b = re.sub(r"\[\[FIGURE:\w+\]\]", "", b)      # ตัวยึดรูป ไม่ใช่ข้อความที่คนอ่าน
     want = re.sub(r"\s+", "", b.replace("**", "").replace("*", ""))
 
     if got != want:

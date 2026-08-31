@@ -303,6 +303,27 @@ form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
 @media(max-width:900px){.f-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.f-cols{grid-template-columns:minmax(0,1fr)}}
 /* <<< footer ห้าคอลัมน์ <<< */
+
+/* --- แผงตัวเลขจากงานสำรวจ วาดเองจากข้อมูลที่เผยแพร่ ไม่ได้ใช้ภาพของเจ้าของงาน --- */
+.esf{margin:36px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.esf-in{display:grid}
+.esf-4 .esf-in{grid-template-columns:repeat(4,1fr)}
+.esf-3 .esf-in{grid-template-columns:repeat(3,1fr)}
+.esf-c{padding:20px 18px 20px;border-left:1px solid var(--line)}
+.esf-c:first-child{border-left:0;padding-left:0}
+.esf-k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mute);line-height:1.9}
+.esf-n{font-size:40px;line-height:1.2;margin:8px 0 10px;color:var(--fg)}
+.esf-n i{font-size:19px;font-style:normal;vertical-align:super;color:var(--mute)}
+.esf-t{font-size:14px;line-height:1.8;color:var(--dim);margin:0}
+.esf-d{font-size:11px;line-height:1.8;color:var(--mute);margin:8px 0 0}
+.esf figcaption{font-size:12px;line-height:1.8;color:var(--mute);padding:12px 0 14px;margin:0}
+.esf figcaption a{color:var(--mute)}
+.esf figcaption a:hover{color:var(--go)}
+@media(max-width:760px){
+  .esf-in{grid-template-columns:repeat(2,1fr)}
+  .esf-c:nth-child(odd){border-left:0;padding-left:0}
+}
 </style>
 <script>(function(){try{var t=localStorage.getItem("ng-theme");if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <script type="application/ld+json">
@@ -505,7 +526,7 @@ form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
     <div class="inner">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="th-index.html">Neo Gens</a></li><li><a href="th-mkm-for-museums-and-libraries.html">MKM สำหรับพิพิธภัณฑ์และห้องสมุด</a></li><li aria-current="page">บทสรุปสำหรับผู้บริหาร</li></ol></nav>
 <div class="kicker">บทสรุปสำหรับผู้บริหาร</div>
-      <h1>AI ที่ตอบในนามของพิพิธภัณฑ์ ไม่ใช่นิทรรศการ มันคือการตีพิมพ์</h1>
+      <h1>ใช้ AI หรือไม่ใช้ AI ไม่ใช่คำถาม คำถามคือมันน่าเชื่อถือจริงหรือเปล่า</h1>
       <p class="stand">ออกแบบและสร้าง ontology กับ knowledge graph จากพันธกิจขององค์กร บนคอลเลกชันที่มีอยู่แล้ว เพื่อให้ AI ทำงานให้ ไม่ใช่พูดแทน</p>
       <div class="meta"><span>Neo Gens</span><span>อ่าน 12 นาที</span></div>
     </div>
@@ -520,9 +541,12 @@ form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
 <h2 id="s01"><span class="sn">01</span>ปีนี้ UNESCO ถามพิพิธภัณฑ์ทั่วโลกด้วยคำถามเดียวกัน</h2>
 <p class="first">ปี ค.ศ. 2026 UNESCO ร่วมกับ ICOM เปิดแบบสำรวจการใช้ AI ในพิพิธภัณฑ์ทั่วโลก ปิดรับเมื่อ 21 กรกฎาคม และจะออกมาเป็นรายงานร่วมที่ระบุว่าวงการต้องการการสนับสนุนเรื่องใดบ้าง</p>
 <p>ลองสังเกตวิธีตั้งคำถาม สององค์กรที่ใหญ่ที่สุดในวงการไม่ได้ถามว่าพิพิธภัณฑ์ควรใช้ AI หรือไม่ เขาถามว่าต้องมีอะไรรองรับก่อน พิพิธภัณฑ์ถึงจะใช้มันอย่างรับผิดชอบได้</p>
-<p>งานสำรวจอิสระในปีเดียวกันพอจะบอกได้ว่ารายงานฉบับนั้นจะเจออะไร ราว 46% ขององค์กรที่ตอบแบบสอบถามใช้ AI อยู่แล้ว อีก 11% ไม่รู้ว่าคนในองค์กรของตัวเองใช้อยู่หรือเปล่า และมีเพียง 8% ที่มีนโยบายเรื่อง AI เป็นลายลักษณ์อักษร</p>
-<p>การใช้งานวิ่งนำกติกาไปแล้ว</p>
-<p>ฝั่งผู้เข้าชมก็มีคำตอบของตัวเอง แบบสำรวจประจำปีของ American Alliance of Museums ที่เผยแพร่เมื่อมีนาคม 2026 พบว่า 70% ของประชาชนทั่วไปไม่อยากให้พิพิธภัณฑ์ใช้ AI ในการพัฒนานิทรรศการเลย และ 43% ไม่อยากให้ใช้แม้แต่เขียนอีเมลหรือข้อความบนเว็บ</p>
+<p>มีงานสำรวจที่พอจะบอกได้ว่ารายงานฉบับนั้นจะเจออะไร Museums &amp; AI Survey ของ MuseumWeek กับ Culture For Causes Network เก็บข้อมูลจาก 180 หน่วยงานใน 35 ประเทศ ระหว่าง 17 กันยายน ถึง 14 พฤศจิกายน 2025 พบว่า 52% รับ AI เข้ามาใช้ในงานแล้ว อีก 11% ไม่รู้ว่าคนในองค์กรของตัวเองใช้อยู่หรือเปล่า มี 9% ที่มีธรรมนูญหรือนโยบายเรื่อง AI เป็นลายลักษณ์อักษร และ 26% ที่เคยผ่านการอบรมเรื่อง AI มาบ้าง</p>
+<p>การใช้งานวิ่งนำกติกาไปแล้ว ส่วนการอบรมวิ่งตามหลังทั้งสองอย่าง</p>
+<figure class="esf esf-4" role="group" aria-label="Museums &amp; AI Survey · 180 หน่วยงาน · 35 ประเทศ"><div class="esf-in"><div class="esf-c"><div class="esf-k">รับ AI มาใช้แล้ว</div><div class="esf-n">52<i>%</i></div><p class="esf-t">ของหน่วยงานตอบว่ารับเครื่องมือ AI เข้ามาใช้แล้ว</p><p class="esf-d">ตอบว่าไม่รู้ · 11%</p></div><div class="esf-c"><div class="esf-k">มีนโยบายเป็นลายลักษณ์อักษร</div><div class="esf-n">9<i>%</i></div><p class="esf-t">มีธรรมนูญหรือนโยบายเรื่อง AI ที่เขียนไว้</p><p class="esf-d">ตอบว่าไม่รู้ · 11%</p></div><div class="esf-c"><div class="esf-k">เคยผ่านการอบรม</div><div class="esf-n">26<i>%</i></div><p class="esf-t">ของผู้ตอบเคยผ่านการอบรมเรื่อง AI มาบ้าง</p></div><div class="esf-c"><div class="esf-k">มุมมอง</div><div class="esf-n">46<i>%</i></div><p class="esf-t">มองว่า AI เป็นโอกาส อีก 43% ยังไม่มีจุดยืน</p></div></div><figcaption>เก็บข้อมูล 17 กันยายน ถึง 14 พฤศจิกายน 2025 · ฐาน 180 ต่อทุกตัวเลข · MuseumWeek กับ Culture For Causes Network · Neo Gens วาดแผงนี้ขึ้นใหม่จากการ์ดรายงานที่เผยแพร่ <a href="https://museumweek2h1r4.substack.com/p/museumweek-2026-the-story-of-a-week">ดูต้นทาง</a></figcaption></figure>
+<p>ขอตั้งข้อสังเกตเรื่องตัวเลขชุดนี้ไว้ตรงนี้ เพราะทั้งเอกสารฉบับนี้พูดเรื่องตัวเลขที่ตรวจย้อนกลับได้ บทความสรุปผลของผู้จัดทำเองเขียนไว้ว่า 46% กับ 8% ขณะที่การ์ดรายงานของเขาเขียนว่า 52% กับ 9% เราเลือกใช้ตัวเลขจากการ์ด เพราะการ์ดกำกับฐานและสัดส่วนคนที่ตอบว่าไม่รู้ ไว้ทุกตัว และผู้ตอบเป็นกลุ่มที่สมัครใจตอบ จำนวนไม่มาก ทิศทางไม่ต้องสงสัย ตัวเลขหลังจุดต่างหากที่ต้องระวัง</p>
+<p>ฝั่งผู้เข้าชมก็มีคำตอบของตัวเอง มกราคม 2026 American Alliance of Museums ถามคำถามเรื่อง AI ในพิพิธภัณฑ์กับกลุ่มตัวอย่างผู้ใหญ่ในสหรัฐกว่า 2,000 คน ที่คุมสัดส่วนตามโครงสร้างประชากร แล้วเผยแพร่ผลในเดือนมีนาคมปีเดียวกัน มากกว่า 70% ไม่อยากให้พิพิธภัณฑ์ใช้ AI ในการพัฒนานิทรรศการเลย 43% อยากให้คนเป็นผู้เขียนเนื้อหาทุกชิ้นของพิพิธภัณฑ์ ลงไปถึงอีเมลและข้อความบนเว็บ และ 45% อยากรู้ทุกครั้งที่มีการใช้ AI</p>
+<figure class="esf esf-3" role="group" aria-label="สิ่งที่ผู้เข้าชมคาดหวัง · ผู้ใหญ่ในสหรัฐกว่า 2,000 คน"><div class="esf-in"><div class="esf-c"><div class="esf-k">นิทรรศการ</div><div class="esf-n">70<i>%</i></div><p class="esf-t">ไม่อยากให้ใช้ AI ในการพัฒนานิทรรศการเลย</p></div><div class="esf-c"><div class="esf-k">ทุกชิ้นงาน</div><div class="esf-n">43<i>%</i></div><p class="esf-t">อยากให้คนเป็นผู้เขียนเนื้อหาทุกชิ้นของพิพิธภัณฑ์</p></div><div class="esf-c"><div class="esf-k">การเปิดเผย</div><div class="esf-n">45<i>%</i></div><p class="esf-t">อยากรู้ทุกครั้งที่มีการใช้ AI</p></div></div><figcaption>สำรวจเมื่อมกราคม 2026 · กลุ่มตัวอย่างที่คุมสัดส่วนตามโครงสร้างประชากร ผู้ใหญ่ในสหรัฐกว่า 2,000 คน · American Alliance of Museums กับ Wilkening Consulting · Neo Gens วาดแผงนี้ขึ้นใหม่ <a href="https://www.aam-us.org/2026/03/30/ai-in-museums-and-community-trust-a-2025-annual-survey-of-museum-goers-data-story/">ดูต้นทาง</a></figcaption></figure>
 <p>สามตัวเลขนี้ประกอบกันเป็นสถานการณ์เดียว พิพิธภัณฑ์รับเทคโนโลยีเข้ามาเร็วกว่าที่จะวางกติกาได้ทัน ต่อหน้าผู้ชมที่ยังไม่อนุญาต และสิ่งที่วางเดิมพันอยู่คือความไว้วางใจ ซึ่งเป็นทุนก้อนใหญ่ที่สุดที่พิพิธภัณฑ์มี</p>
 <p>เพราะสิ่งที่ AI พูดออกไปในนามขององค์กร ไม่ได้มีสถานะเท่ากับคำพูดในห้องนิทรรศการ มันมีสถานะเท่ากับสิ่งพิมพ์ที่ออกในนามขององค์กร</p>
 <p>ทางออกจึงไม่ใช่การใช้ AI ให้น้อยลง แต่คือการตอบให้ได้ว่ามันยืนอยู่บนอะไร</p>
@@ -578,7 +602,7 @@ form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
 <ol><li>องค์กรใหญ่ของวงการเป็นคนพูดปัญหานี้ออกมาเอง ทั้ง UNESCO, ICOM, หอสมุดรัฐสภาสหรัฐ และ OCLC ต่างบอกตรงกันว่า AI เข้ามาในกระบวนการทำงานกับคอลเลกชันเร็วกว่าที่แนวปฏิบัติเรื่องที่มาจะปรับตัวทัน</li><li>คำตอบไม่ใช่การใช้ AI ให้น้อยลง แต่คือชั้นความรู้ที่บันทึกทั้งสิ่งที่รู้ และรู้ได้อย่างไร เพื่อให้ทุกคำตอบที่ AI ผลิตออกมา สาวกลับไปหาหลักฐานขององค์กรได้ หรือไม่ก็ถูกติดป้ายไว้ว่ายังเป็นแค่ข้ออ้าง</li><li><strong>Neo Gens ออกแบบและสร้างชั้นนั้นไปพร้อมกับท่าน โดยเริ่มจากพันธกิจ ไม่ใช่เริ่มจาก schema เพราะคำถามว่าองค์กรของท่านต้องพูดเรื่องอะไรได้อย่างมีอำนาจ เป็นคำถามเดียวที่ไม่มีโมเดลตัวไหนตอบแทนได้</strong></li></ol>
 <p>นพดล วีรกิตติ · noppadol@neogens.co · neogens.co</p>
 <p><strong>References</strong></p>
-<ul><li>Murray, K. &amp; Sternfeld, J., <em>Content Authenticity and Provenance in the Age of Artificial Intelligence: A Call-to-Action for the LAMs Community</em>, C2PA for G+LAM Community of Practice, February 2026 — Library of Congress</li><li>UNESCO &amp; ICOM, Global Survey on the Use of Artificial Intelligence in Museums, 2026</li><li>American Alliance of Museums, <em>AI in Museums and Community Trust</em>, Annual Survey of Museum-Goers, March 2026</li><li>OCLC Research Library Partnership, Managing AI in Metadata Workflows Working Group</li><li>Library of Congress, <em>Cataloging of Resources Generated Using Artificial Intelligence (AI) Software</em> — FAQ, updated May 2026</li><li>US National Archives, AI-assisted name extraction in the National Archives Catalog</li><li><em>Web Archives Metadata Generation with GPT-4o: Challenges and Insights</em>, arXiv</li><li>Yale University, LUX cross-collection discovery platform (2018–2023); Oxford e-Research Centre, <em>Semantic Completeness vs Data Usability: Lessons Learnt from LUX, Linked Art and IIIF</em></li><li><em>MuseKG: An Interactive Knowledge Graph Over Museum Collections</em>, SIGIR '26, Melbourne, July 2026</li><li>CIDOC CRM, ISO 21127:2023; Linked Art profile</li><li><em>From Fluent to Verifiable: Claim-Level Auditability for Deep Research Agents</em>, arXiv, 2026</li><li>Canning, E., <em>Defining an Ontology for Museum Critical Cataloguing Terminology Guidelines</em>, 9th Workshop on Linked Data in Linguistics</li><li>American Alliance of Museums, <em>Curatorial Chatbot: An Experiment with AI at the Nasher Museum of Art</em></li></ul>
+<ul><li>Murray, K. &amp; Sternfeld, J., <em>Content Authenticity and Provenance in the Age of Artificial Intelligence: A Call-to-Action for the LAMs Community</em>, C2PA for G+LAM Community of Practice, February 2026 — Library of Congress</li><li>UNESCO &amp; ICOM, Global Survey on the Use of Artificial Intelligence in Museums, 2026</li><li>MuseumWeek &amp; Culture For Causes Network, <em>Museums &amp; AI Survey</em>, เก็บข้อมูล 17 กันยายน – 14 พฤศจิกายน 2025 · 180 หน่วยงาน 35 ประเทศ · ตัวเลขมาจากการ์ดรายงานใน <em>MuseumWeek 2026: The Story of a Week</em>, 27 กรกฎาคม 2026</li><li>American Alliance of Museums, <em>AI in Museums and Community Trust: A 2025 Annual Survey of Museum-Goers Data Story</em>, 30 มีนาคม 2026 · รวมผลสำรวจต่อเนื่องเมื่อมกราคม 2026 กับผู้ใหญ่ในสหรัฐกว่า 2,000 คน</li><li>OCLC Research Library Partnership, Managing AI in Metadata Workflows Working Group</li><li>Library of Congress, <em>Cataloging of Resources Generated Using Artificial Intelligence (AI) Software</em> — FAQ, updated May 2026</li><li>US National Archives, AI-assisted name extraction in the National Archives Catalog</li><li><em>Web Archives Metadata Generation with GPT-4o: Challenges and Insights</em>, arXiv</li><li>Yale University, LUX cross-collection discovery platform (2018–2023); Oxford e-Research Centre, <em>Semantic Completeness vs Data Usability: Lessons Learnt from LUX, Linked Art and IIIF</em></li><li><em>MuseKG: An Interactive Knowledge Graph Over Museum Collections</em>, SIGIR '26, Melbourne, July 2026</li><li>CIDOC CRM, ISO 21127:2023; Linked Art profile</li><li><em>From Fluent to Verifiable: Claim-Level Auditability for Deep Research Agents</em>, arXiv, 2026</li><li>Canning, E., <em>Defining an Ontology for Museum Critical Cataloguing Terminology Guidelines</em>, 9th Workshop on Linked Data in Linguistics</li><li>American Alliance of Museums, <em>Curatorial Chatbot: An Experiment with AI at the Nasher Museum of Art</em></li></ul>
     </div>
   </div>
 </article>

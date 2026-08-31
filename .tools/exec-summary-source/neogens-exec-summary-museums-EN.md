@@ -1,4 +1,4 @@
-# The Foundation Comes Before the Answers
+# AI or Not AI Is Not the Question. Whether It Can Be Trusted Is.
 
 **Mission-driven ontology and knowledge graphs for existing collections — so that AI works for your institution instead of speaking on its behalf**
 
@@ -11,9 +11,15 @@ Neo Gens Co., Ltd. · Modern Knowledge Management · August 2026
 
 In 2026, UNESCO and ICOM launched the first global survey of how museums are actually using artificial intelligence. It closed on 21 July, and the findings will be published as a joint report intended to identify emerging trends and, in their words, **critical support needs**. The framing matters: the sector's two leading bodies did not ask whether museums should use AI. They asked what museums need in order to use it responsibly.
 
-Independent research from the same year suggests what that report is likely to find. Roughly **46% of surveyed institutions already use AI in some form, 11% do not know whether their own staff are using it, and only 8% have a formal AI charter.** Adoption has outrun governance.
+Independent research already points at what that report is likely to find. The Museums & AI Survey run by MuseumWeek and the Culture For Causes Network — 180 institutions across 35 countries, fielded between 17 September and 14 November 2025 — reports that **52% of institutions have adopted AI tools, 11% do not know whether their own staff are using them, 9% have a formal AI charter or written policy, and 26% have had any formal AI training.** Adoption has outrun governance, and training trails both.
 
-Meanwhile, the public has taken a position. The American Alliance of Museums' Annual Survey of Museum-Goers, published in March 2026, found that **70% of the general public want museums to use no AI at all in developing exhibitions**, and 43% felt museums should not use it even for emails or website text.
+[[FIGURE:survey]]
+
+One caution about that survey, since this document argues for numbers a reader can check. The publisher's own summary article gives 46% for adoption and 8% for a written charter, where its report card gives 52% and 9%. We cite the report card, because it states the base and the don't-know share for every figure. The sample is also small and self-selected. The direction is not in doubt; the decimal place is.
+
+Meanwhile, the public has taken a position. In January 2026 the American Alliance of Museums put two questions about AI to a demographically representative sample of more than 2,000 US adults, and published the results that March. **Over 70% want museums to use no AI at all in developing exhibitions.** 43% expect human beings to write every piece of museum content, down to emails and website text. And 45% want to be told every time AI is used.
+
+[[FIGURE:public]]
 
 Read together, these three findings describe a single predicament. Museums are adopting a technology faster than they can govern it, in front of an audience that has not granted permission — and whose trust is the institution's principal asset. The way through is not to use less AI. It is to be able to **show what the AI was standing on**.
 
@@ -139,7 +145,8 @@ Noppadol Weerakitti · noppadol@neogens.co · neogens.co
 
 - Murray, K. & Sternfeld, J., *Content Authenticity and Provenance in the Age of Artificial Intelligence: A Call-to-Action for the LAMs Community*, C2PA for G+LAM Community of Practice, February 2026 — Library of Congress
 - UNESCO & ICOM, Global Survey on the Use of Artificial Intelligence in Museums, 2026
-- American Alliance of Museums, *AI in Museums and Community Trust*, Annual Survey of Museum-Goers, March 2026
+- MuseumWeek & Culture For Causes Network, *Museums & AI Survey*, fieldwork 17 September – 14 November 2025, 180 institutions in 35 countries; figures taken from the report card published in *MuseumWeek 2026: The Story of a Week*, 27 July 2026
+- American Alliance of Museums, *AI in Museums and Community Trust: A 2025 Annual Survey of Museum-Goers Data Story*, 30 March 2026, including a January 2026 follow-up survey of more than 2,000 US adults
 - OCLC Research Library Partnership, Managing AI in Metadata Workflows Working Group
 - Library of Congress, *Cataloging of Resources Generated Using Artificial Intelligence (AI) Software* — FAQ, updated May 2026
 - US National Archives, AI-assisted name extraction in the National Archives Catalog
