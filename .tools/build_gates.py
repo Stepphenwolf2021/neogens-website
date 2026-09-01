@@ -26,12 +26,19 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# ── ปิดชั่วคราว 2026-09-01 · หน้าภาค 3 ที่ถูกถอดออกจากหน้าแรก ──
+# ลบตัวแปรนี้ทิ้ง แล้วเอาการอ้างถึงมันในด่านตรวจออก เมื่อเปิดภาคกาแฟกลับมา
+PAUSED = {"mkm-for-coffee.html", "mkm-for-coffee-why-now.html",
+          "mkm-for-coffee-commons.html", "coffee-farmer.html", "coffee-demo.html",
+          "th-mkm-for-coffee.html", "th-mkm-for-coffee-why-now.html",
+          "th-mkm-for-coffee-commons.html", "th-coffee-farmer.html", "th-coffee-demo.html"}
+
 CSS = """
 /* --- สามประตูหน้าแรก --- */
 .gates{{padding:clamp(44px,6vw,80px) 0}}
 .gates-lead{{font-family:var(--mono);font-size:10px;letter-spacing:{ls};
   text-transform:uppercase;color:var(--mute);margin-bottom:20px}}
-.gates-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}}
+.gates-grid{{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}}
 .gate{{border:1px solid var(--line);border-radius:18px;background:var(--surface);
   padding:26px 24px;display:flex;flex-direction:column;
   transition:border-color .2s,transform .2s}}
@@ -58,7 +65,7 @@ CSS = """
 EN = {
     "file": "index.html",
     "ls": ".14em",
-    "lead": "Three ways in — start wherever you already are",
+    "lead": "Two ways in — start wherever you already are",
     "gates": [
         ("Part 1 · The idea", "The idea", "the-problem.html",
          "AI answers everything and knows nothing about your organisation. What a "
@@ -82,13 +89,16 @@ EN = {
           ("engagement.html", "Engagement"),
           ("ai-sovereignty.html", "Your data · AI sovereignty")],
          "See the practice"),
-        ("Part 3 · Public goods", "MKM for Coffee", "mkm-for-coffee.html",
-         "An industry drowning in data and starving for knowledge. A vault no single "
-         "party owns, that everyone along the chain can use — open for comment now.",
-         [("mkm-for-coffee.html", "The full argument"),
-          ("coffee-farmer.html", "For coffee farmers"),
-          ("coffee-demo.html", "Demo: the vault in use")],
-         "Read the project"),
+        # ── ปิดชั่วคราว 2026-09-01 · ถอดประตูที่สาม MKM for Coffee ออก ──
+        # เอากลับ: ปลด comment สองบล็อกนี้ · เปลี่ยน lead กลับเป็น Three ways in
+        # และ .gates-grid กลับเป็น repeat(3,1fr) · ดู .tools/pause_coffee.py
+        # ("Part 3 · Public goods", "MKM for Coffee", "mkm-for-coffee.html",
+        #  "An industry drowning in data and starving for knowledge. A vault no single "
+        #  "party owns, that everyone along the chain can use — open for comment now.",
+        #  [("mkm-for-coffee.html", "The full argument"),
+        #   ("coffee-farmer.html", "For coffee farmers"),
+        #   ("coffee-demo.html", "Demo: the vault in use")],
+        #  "Read the project"),
     ],
     "rest": [("what-we-wont-do.html", "What we won't do"),
              ("long-read-museums-and-libraries.html", "Long read: MKM for museums &amp; libraries"),
@@ -99,7 +109,7 @@ EN = {
 TH = {
     "file": "th-index.html",
     "ls": "0",
-    "lead": "ทางเข้าสามทาง เริ่มจากตรงที่คุณอยู่ตอนนี้",
+    "lead": "ทางเข้าสองทาง เริ่มจากตรงที่คุณอยู่ตอนนี้",
     "gates": [
         ("ภาค 1 · แนวคิด", "แนวคิด", "th-the-problem.html",
          "AI ตอบได้ทุกเรื่อง แต่ไม่รู้อะไรเลยเกี่ยวกับองค์กรของคุณ ชั้นความรู้คืออะไร "
@@ -122,13 +132,14 @@ TH = {
           ("th-engagement.html", "รูปแบบการทำงาน"),
           ("th-ai-sovereignty.html", "ข้อมูลของคุณ · AI Sovereignty")],
          "ดูงานฝั่งปฏิบัติ"),
-        ("ภาค 3 · โครงการเพื่อสาธารณะ", "MKM สำหรับกาแฟ", "th-mkm-for-coffee.html",
-         "อุตสาหกรรมที่จมอยู่ในข้อมูล แต่ขาดความรู้ คลังที่ไม่มีใครเป็นเจ้าของแต่ผู้เดียว "
-         "และทุกคนตลอดห่วงโซ่ใช้ได้ ตอนนี้เปิดรับความคิดเห็นอยู่",
-         [("th-mkm-for-coffee.html", "อ่านโครงการเต็ม"),
-          ("th-coffee-farmer.html", "สำหรับคนปลูกกาแฟ"),
-          ("th-coffee-demo.html", "เดโมแดชบอร์ด")],
-         "อ่านโครงการ"),
+        # ── ปิดชั่วคราว 2026-09-01 · ถอดประตูที่สาม MKM สำหรับกาแฟ ออก ──
+        # ("ภาค 3 · โครงการเพื่อสาธารณะ", "MKM สำหรับกาแฟ", "th-mkm-for-coffee.html",
+        #  "อุตสาหกรรมที่จมอยู่ในข้อมูล แต่ขาดความรู้ คลังที่ไม่มีใครเป็นเจ้าของแต่ผู้เดียว "
+        #  "และทุกคนตลอดห่วงโซ่ใช้ได้ ตอนนี้เปิดรับความคิดเห็นอยู่",
+        #  [("th-mkm-for-coffee.html", "อ่านโครงการเต็ม"),
+        #   ("th-coffee-farmer.html", "สำหรับคนปลูกกาแฟ"),
+        #   ("th-coffee-demo.html", "เดโมแดชบอร์ด")],
+        #  "อ่านโครงการ"),
     ],
     "rest": [("th-what-we-wont-do.html", "สิ่งที่เราไม่ทำ"),
              ("long-read-museums-and-libraries.html", "บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด (อังกฤษ)"),
@@ -177,9 +188,11 @@ for C in (EN, TH):
     # ---- ด่านตรวจ ----
     new_links = set(re.findall(r'href="([^"]+)"', section(C)))
     checks = {
-        "สามประตู": s.count('<div class="gate">') == 3,
-        "หัวข้อประตูกดได้": s.count('class="gate-t"') == 3,
-        "ปุ่มเข้าครบ": s.count('class="gate-go"') == 3,
+        # ปิดชั่วคราว 2026-09-01 · ภาค 3 ถูกถอดออก ประตูจึงเหลือสอง
+        # เอากลับเป็น 3 ทั้งสามข้อ เมื่อเปิดภาคกาแฟกลับมา
+        "สองประตู": s.count('<div class="gate">') == 2,
+        "หัวข้อประตูกดได้": s.count('class="gate-t"') == 2,
+        "ปุ่มเข้าครบ": s.count('class="gate-go"') == 2,
         "รายการข้างในครบ": s.count("<li><a href=") == sum(len(g[4]) for g in C["gates"]),
         "แถวลิงก์รอง": s.count('class="gates-rest"') == 1,
         "CSS เข้าไฟล์": ".gate{" in s and s.index(".gate{") < s.index("</style>"),
@@ -187,7 +200,11 @@ for C in (EN, TH):
         "ไม่เหลือบล็อกเดิม": '<section class="hub">' not in s,
         "ไทยไม่ถ่างตัวอักษร": ("letter-spacing:0;" in CSS.format(ls=C["ls"])
                                if C["ls"] == "0" else True),
-        "ไม่มีลิงก์ไหนหายไปจากหน้าแรก": not (old_links - new_links - set(
+        # ปิดชั่วคราว 2026-09-01 · ลิงก์ภาคกาแฟตั้งใจให้หายไป จึงยกเว้นให้ชุดนี้ชุดเดียว
+        # เอากลับ: ลบ - PAUSED ออกจากบรรทัดล่าง เมื่อเปิดภาคกาแฟกลับมา
+        "ไม่มีลิงก์ไหนหายไปจากหน้าแรก": not (old_links - new_links - PAUSED - set(
+            re.findall(r'href="([^"]+)"', s))),
+        "ไม่เหลือลิงก์กาแฟในหน้าแรก": not (PAUSED & set(
             re.findall(r'href="([^"]+)"', s))),
     }
     bad = [k for k, ok in checks.items() if not ok]

@@ -74,7 +74,7 @@ _EYE=re.compile(r'<div class="(?:kicker|eyebrow[^"]*)">(.*?)</div>',re.S)
 _NUM=re.compile(r'(?:^|·)\s*(\d{2}[a-z]?)\s*—')
 for f in files:
     src,p=parsed[f]
-    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    if 'http-equiv="refresh"' in src or 'data-standalone="notice"' in src or f=='404.html': continue
     # ดูเฉพาะป้ายที่อยู่บนหัวหน้า คือก่อน <h1> · บล็อกท้ายหน้าก็มีป้ายของตัวเอง
     head=src[:src.index('<h1')] if '<h1' in src else src
     m=_EYE.search(head)
@@ -105,7 +105,7 @@ def _visible(src):
 
 for f in files:
     src,p=parsed[f]
-    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    if 'http-equiv="refresh"' in src or 'data-standalone="notice"' in src or f=='404.html': continue
     m=re.search(r'<script type="application/ld\+json">(.*?)</script>',src,re.S)
     if not m: continue                      # ด่านก่อนหน้าฟ้องเรื่องไม่มี JSON-LD ไปแล้ว
     try: graph=json.loads(m.group(1)).get('@graph') or []
@@ -198,7 +198,7 @@ for f in files:
 import html as _html
 for f in files:
     src,p=parsed[f]
-    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    if 'http-equiv="refresh"' in src or 'data-standalone="notice"' in src or f=='404.html': continue
     m=re.search(r'<title>(.*?)</title>',src,re.S)
     if m and len(_html.unescape(m.group(1)))>60:
         E(f,'title is %d characters, over the 60 that fit a search result'
@@ -215,7 +215,7 @@ for f in files:
 # โปรแกรมอ่านหน้าจอใช้ลำดับหัวข้อเป็นสารบัญของหน้า ข้ามระดับแล้วสารบัญจะมีรู
 for f in files:
     src,p=parsed[f]
-    if 'http-equiv="refresh"' in src: continue
+    if 'http-equiv="refresh"' in src or 'data-standalone="notice"' in src: continue
     body=re.sub(r'<(script|style|svg)\b.*?</\1>','',src,flags=re.S)
     prev=0
     for m in re.finditer(r'<h([1-6])\b',body):
@@ -235,7 +235,7 @@ def _ratio(a,b):
     l1,l2=sorted([_lum(a),_lum(b)],reverse=True); return (l1+.05)/(l2+.05)
 for f in files:
     src,p=parsed[f]
-    if 'http-equiv="refresh"' in src: continue
+    if 'http-equiv="refresh"' in src or 'data-standalone="notice"' in src: continue
     for block,bgvar in (('root','--bg'),):
         pass
     for m in re.finditer(r'(:root|html\[data-theme="light"\])\{([^}]*)',src):
@@ -284,7 +284,7 @@ BASE='https://www.neogens.co/'
 def _page(v): return v or 'index.html'
 for f in files:
     src,p=parsed[f]
-    if 'http-equiv="refresh"' in src or f=='404.html': continue
+    if 'http-equiv="refresh"' in src or 'data-standalone="notice"' in src or f=='404.html': continue
     alts=dict(re.findall(r'hreflang="([^"]+)" href="'+re.escape(BASE)+r'([^"]*)"',src))
     if not alts:
         E(f,'no hreflang tags'); continue
@@ -307,8 +307,11 @@ for f in files:
 
 # --- required shell on every real page ---
 # หน้า stub ที่เด้งไปชื่อใหม่ ไม่ใช่หน้าเว็บเต็ม ไม่ต้องมี nav ธีม หรือ footer
+# หน้าแจ้งปิดชั่วคราว (data-standalone="notice") ก็ไม่ใช่หน้าเว็บเต็มเหมือนกัน
+# ใส่เข้ามาเมื่อ 2026-09-01 ตอนถอดภาค 3 ออก ดู .tools/pause_coffee.py
 def is_stub(f):
     src=parsed[f][0]
+    if 'data-standalone="notice"' in src: return True
     return 'http-equiv="refresh"' in src and 'rel="canonical"' in src
 STUBS=[f for f in files if is_stub(f)]
 REAL=[f for f in files if f not in STUBS]

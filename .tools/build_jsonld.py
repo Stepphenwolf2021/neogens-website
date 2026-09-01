@@ -49,16 +49,18 @@ PART = {
     "long-read-museums-and-libraries.html": 2, "reference-implementation.html": 2,
     # บทสรุปสำหรับผู้บริหาร เข้ามาเมื่อ 08-31 ดู .tools/build_exec_summary.py
     "exec-summary-museums.html": 2,
-    "mkm-for-coffee.html": 3, "coffee-farmer.html": 3, "coffee-demo.html": 3,
+    # ── ปิดชั่วคราว 2026-09-01 · ภาค 3 ถูกถอดออก ปลด comment เมื่อเปิดกลับ ──
+    # "mkm-for-coffee.html": 3, "coffee-farmer.html": 3, "coffee-demo.html": 3,
     # บทความกาแฟถูกแบ่งเป็นสามภาคเมื่อ 08-22 ดู .tools/split_coffee.py
-    "mkm-for-coffee-why-now.html": 3, "mkm-for-coffee-commons.html": 3,
+    # "mkm-for-coffee-why-now.html": 3, "mkm-for-coffee-commons.html": 3,
 }
 PART_NAME = {
     1: ("The idea", "แนวคิด", "the-problem.html"),
     2: ("MKM for Museums & Libraries", "MKM สำหรับพิพิธภัณฑ์และห้องสมุด",
         # หน้าแรกของภาค 2 คือ exec summary ตั้งแต่ 08-31 ไม่ใช่ 01 · สถานะวันนี้
         "exec-summary-museums.html"),
-    3: ("MKM for Coffee", "MKM สำหรับกาแฟ", "mkm-for-coffee.html"),
+    # ปิดชั่วคราว 2026-09-01 · ภาค 3 ถูกถอดออก ปลด comment เมื่อเปิดกลับ
+    # 3: ("MKM for Coffee", "MKM สำหรับกาแฟ", "mkm-for-coffee.html"),
 }
 
 # หน้าไหนพูดถึง entity ตัวไหน
@@ -176,11 +178,14 @@ def shared_graph(lang):
          "provider": {"@id": BASE + "#org"},
          "url": U(("th-" if th else "") + "mkm-for-museums-and-libraries.html"),
          "about": [{"@id": BASE + "#term-mkm"}]},
-        {"@type": "Service", "@id": BASE + "#service-coffee",
-         "name": "MKM for Coffee" if not th else "MKM สำหรับกาแฟ",
-         "provider": {"@id": BASE + "#org"},
-         "url": U(("th-" if th else "") + "mkm-for-coffee.html"),
-         "about": [{"@id": BASE + "#term-mkm"}]},
+        # ── ปิดชั่วคราว 2026-09-01 · ถอดภาค 3 MKM for Coffee ออกจากเว็บ ──
+        # เอากลับ: ปลด comment บล็อกนี้ · คืน 3 ใน PART_NAME · คืนไฟล์จาก
+        # .tools/coffee-archive/ แล้วรัน sync_nav → build_jsonld → add_breadcrumbs
+        # {"@type": "Service", "@id": BASE + "#service-coffee",
+        #  "name": "MKM for Coffee" if not th else "MKM สำหรับกาแฟ",
+        #  "provider": {"@id": BASE + "#org"},
+        #  "url": U(("th-" if th else "") + "mkm-for-coffee.html"),
+        #  "about": [{"@id": BASE + "#term-mkm"}]},
     ]
     return [org, site, glossary] + terms + services
 
@@ -245,7 +250,8 @@ BLOCK = re.compile(
 written, stats = 0, {"faq": 0, "crumbs": 0, "article": 0}
 for path in sorted(ROOT.glob("*.html")):
     s = path.read_text(encoding="utf-8")
-    if 'http-equiv="refresh"' in s or path.name == "404.html":
+    if ('http-equiv="refresh"' in s or 'data-standalone="notice"' in s
+            or path.name == "404.html"):
         continue
     lang = "th" if path.name.startswith("th-") else "en"
     graph = shared_graph(lang) + page_graph(path)
@@ -269,7 +275,8 @@ for path in sorted(ROOT.glob("*.html")):
 bad = []
 for path in sorted(ROOT.glob("*.html")):
     s = path.read_text(encoding="utf-8")
-    if 'http-equiv="refresh"' in s or path.name == "404.html":
+    if ('http-equiv="refresh"' in s or 'data-standalone="notice"' in s
+            or path.name == "404.html"):
         continue
     m = BLOCK.search(s)
     if not m:

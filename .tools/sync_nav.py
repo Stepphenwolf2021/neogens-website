@@ -34,7 +34,8 @@ FALLBACK = {"long-read-museums-and-libraries.html": "th-index.html"}
 def pages():
     for p in sorted(ROOT.glob("*.html")):
         s = p.read_text(encoding="utf-8")
-        if 'http-equiv="refresh"' in s or p.name == "404.html":
+        if ('http-equiv="refresh"' in s or 'data-standalone="notice"' in s
+                or p.name == "404.html"):
             continue
         if NAV.search(s):
             yield p, s

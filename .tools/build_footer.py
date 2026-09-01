@@ -43,12 +43,15 @@ COLS = {
             ("engagement.html", "Engagement"),
             ("ai-sovereignty.html", "Your data · AI sovereignty"),
             ("what-we-wont-do.html", "What we won't do")]),
-        ("Part 3 · Public goods", None, [
-            ("mkm-for-coffee.html", "MKM for Coffee"),
-            ("mkm-for-coffee-why-now.html", "Why this is possible now"),
-            ("mkm-for-coffee-commons.html", "How a commons stays a commons"),
-            ("coffee-farmer.html", "For coffee farmers"),
-            ("coffee-demo.html", "Demo dashboard")]),
+        # ── ปิดชั่วคราว 2026-09-01 · ถอดภาค 3 MKM for Coffee ออกจากเว็บ ──
+        # เอากลับ: ปลด comment สี่บล็อกนี้ทั้งไฟล์ แล้วเปลี่ยน repeat(4 กลับเป็น repeat(5
+        # และคืนไฟล์หน้ากาแฟจาก .tools/coffee-archive/ ดู .tools/pause_coffee.py
+        # ("Part 3 · Public goods", None, [
+        #     ("mkm-for-coffee.html", "MKM for Coffee"),
+        #     ("mkm-for-coffee-why-now.html", "Why this is possible now"),
+        #     ("mkm-for-coffee-commons.html", "How a commons stays a commons"),
+        #     ("coffee-farmer.html", "For coffee farmers"),
+        #     ("coffee-demo.html", "Demo dashboard")]),
         ("Company", "Neo Gens Co., Ltd.", [
             ("about.html", "Who we are"),
             ("seo-as-knowledge-management.html", "How we built this site"),
@@ -74,12 +77,13 @@ COLS = {
             ("th-engagement.html", "รูปแบบการทำงาน"),
             ("th-ai-sovereignty.html", "ข้อมูลของคุณ · AI Sovereignty"),
             ("th-what-we-wont-do.html", "สิ่งที่เราไม่ทำ")]),
-        ("ภาค 3 · โครงการเพื่อสาธารณะ", None, [
-            ("th-mkm-for-coffee.html", "MKM สำหรับกาแฟ"),
-            ("th-mkm-for-coffee-why-now.html", "ทำไมเพิ่งทำได้ตอนนี้"),
-            ("th-mkm-for-coffee-commons.html", "จะทำอย่างไรให้สมบัติร่วมยังเป็นของร่วม"),
-            ("th-coffee-farmer.html", "สำหรับคนปลูกกาแฟ"),
-            ("th-coffee-demo.html", "เดโมแดชบอร์ด")]),
+        # ── ปิดชั่วคราว 2026-09-01 · ถอดภาค 3 MKM สำหรับกาแฟ ออกจากเว็บ ──
+        # ("ภาค 3 · โครงการเพื่อสาธารณะ", None, [
+        #     ("th-mkm-for-coffee.html", "MKM สำหรับกาแฟ"),
+        #     ("th-mkm-for-coffee-why-now.html", "ทำไมเพิ่งทำได้ตอนนี้"),
+        #     ("th-mkm-for-coffee-commons.html", "จะทำอย่างไรให้สมบัติร่วมยังเป็นของร่วม"),
+        #     ("th-coffee-farmer.html", "สำหรับคนปลูกกาแฟ"),
+        #     ("th-coffee-demo.html", "เดโมแดชบอร์ด")]),
         ("บริษัท", "Neo Gens Co., Ltd.", [
             ("th-about.html", "เราคือใคร"),
             ("th-seo-as-knowledge-management.html", "เว็บนี้สร้างมาอย่างไร"),
@@ -99,7 +103,7 @@ COLS = {
 # minmax(0,1fr) กันคอลัมน์ดันกันบวมเวลาป้ายยาว ซึ่งเป็นสำนวนที่ CSS รุ่นใหม่ของเว็บนี้ใช้อยู่แล้ว
 CSS = """
 /* >>> footer ห้าคอลัมน์ · build_footer.py >>> */
-.f-cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px 18px}
+.f-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px}
 @media(max-width:1000px){.f-cols{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 22px}}
 @media(max-width:900px){.f-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.f-cols{grid-template-columns:minmax(0,1fr)}}
@@ -206,19 +210,16 @@ for p, s in pages():
     foot = s[a:b]
     n += 1
     parts = foot.split('<div class="f-col">')
-    checks[f"{p.name} · footer ห้าคอลัมน์"] = len(parts) == 6
-    checks[f"{p.name} · กาแฟครบห้าหน้าใน footer"] = \
-        all(h in foot for h, _ in COLS[lang][3][2])
-    checks[f"{p.name} · กาแฟไม่ปนกับบริษัท"] = \
-        len(parts) == 6 and "coffee" not in parts[5]
+    checks[f"{p.name} · footer สี่คอลัมน์"] = len(parts) == 5
+    checks[f"{p.name} · ไม่เหลือลิงก์กาแฟใน footer"] = "coffee" not in foot
     checks[f"{p.name} · long-read อยู่คอลัมน์พิพิธภัณฑ์"] = \
-        len(parts) == 6 and "long-read-museums-and-libraries.html" in parts[2]
+        len(parts) == 5 and "long-read-museums-and-libraries.html" in parts[2]
     checks[f"{p.name} · ไม่เหลือหัวคอลัมน์เก่า"] = \
         "Part 3 &amp; company" not in foot and "ภาค 3 และบริษัท" not in foot
-    checks[f"{p.name} · กฎ CSS ห้าคอลัมน์ติด"] = "repeat(5,minmax(0,1fr))" in css
+    checks[f"{p.name} · กฎ CSS สี่คอลัมน์ติด"] = "repeat(4,minmax(0,1fr))" in css
     checks[f"{p.name} · กฎนี้มีอยู่ชุดเดียว ไม่ซ้อนกัน"] = css.count(OPEN) == 1
     checks[f"{p.name} · กฎเพียงพอในตัว มี display:grid"] = \
-        "repeat(5,minmax(0,1fr))" in css and "display:grid;grid-template-columns:repeat(5" in css
+        "repeat(4,minmax(0,1fr))" in css and "display:grid;grid-template-columns:repeat(4" in css
     checks[f"{p.name} · ปีกกา CSS สมดุล"] = css.count("{") == css.count("}")
     checks[f"{p.name} · แท็ก div สมดุล"] = s.count("<div") == s.count("</div>")
     for href, _ in sum([c[2] for c in COLS[lang]], []):
@@ -235,4 +236,4 @@ for b_ in sorted(set(bad))[:8]:
     print("  !!", b_)
 if fails or bad:
     sys.exit(1)
-print("✓ ทุกหน้าใช้ footer ชุดเดียวกัน · ห้าคอลัมน์ตรงกับเมนูบน · ไม่มีลิงก์ตาย")
+print("✓ ทุกหน้าใช้ footer ชุดเดียวกัน · สี่คอลัมน์ตรงกับเมนูบน · ไม่มีลิงก์ตาย")

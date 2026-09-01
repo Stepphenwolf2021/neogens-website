@@ -59,11 +59,10 @@ neogens.co
 
 Neo Gens ทำงานด้าน Modern Knowledge Management ออกแบบและสร้าง ontology กับ knowledge graph จากพันธกิจขององค์กร บนคอลเลกชันที่มีอยู่แล้ว เพื่อให้ AI ทำงานบนความเชื่อมั่นขององค์กรและความเชื่อถือของสาธารณชน กลุ่มแรกที่เราทำงานด้วยคือพิพิธภัณฑ์ ห้องสมุด และหอจดหมายเหตุ
 
-สามทางที่แนะนำให้เริ่ม
+สองทางที่แนะนำให้เริ่ม
 
 - **เริ่มจากปัญหา** ถ้าอยากเห็นว่าเรามองเรื่องนี้อย่างไร
 - **บทสรุปสำหรับผู้บริหาร** ถ้ามีเวลาสิบนาทีและอยากได้ตัวเลขกับกรณีจริง
-- **MKM for Coffee** โครงการเพื่อสาธารณะที่เปิดรับความเห็นอยู่ตอนนี้
 
 ถ้าเรื่องนี้ตรงกับที่คุณกำลังคิดอยู่ นัดคุยกันได้ 90 นาที เชิญภัณฑารักษ์หรือบรรณารักษ์ของคุณมาด้วย พร้อมคำถามหนึ่งข้อที่องค์กรตอบไม่ได้
 
@@ -85,11 +84,10 @@ The Neo Gens site is open today at neogens.co.
 
 Neo Gens is a Modern Knowledge Management practice. We design and build an organisation's knowledge structure — a mission-driven ontology and knowledge graph over the collections you already hold — in a form that people and AI read the same way. Our first practice area is museums, libraries and archives.
 
-Three ways in:
+Two ways in:
 
 - **Start with the problem** — how we see this, from the top
 - **Executive summary** — ten minutes, with the figures and the cases
-- **MKM for Coffee** — a public-goods project, open for comment now
 
 If this is close to what you have been thinking, let's find a time. 90 minutes, with your curators or librarians in the room, and one question your institution couldn't answer.
 
