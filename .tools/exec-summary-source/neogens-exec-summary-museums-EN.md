@@ -85,7 +85,7 @@ LUX is the strongest evidence that this can be done, and the strongest warning, 
 
 The Oxford e-Research Centre summarised the project's central lesson under the heading *Semantic Completeness vs Data Usability* — the trade-off between the completeness of the abstract model and the real-world usability of the data.
 
-Here is what matters. Five years of modelling that is theoretically perfect but does not serve the museum's mission is a very expensive academic success.
+Here is what matters. Five years of modelling that is theoretically perfect but does not serve the museum's mission is a very expensive academic success that cannot be put to use.
 
 Designing the ontology therefore has to begin with the mission, not with the standard. Begin with the question of what this museum exists to do, and what it must be able to speak to. Only a director and their curators can answer that. No software vendor can answer it for you, and no AI model can infer it from data that sits outside your walls.
 
