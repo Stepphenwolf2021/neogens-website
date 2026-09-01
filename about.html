@@ -69,6 +69,10 @@ figcaption b{color:var(--dim);font-weight:400}
 .tk-e{stroke:var(--go);stroke-width:1.1;fill:none;opacity:.5}
 .tk-n{stroke:var(--go);stroke-width:1.5;fill:var(--bg)}
 .story p{max-width:66ch}
+/* 2026-09-01 · ถอด margin-top ที่ฝังในแท็กออก แล้วให้กฎคุมจังหวะแทน  ดูฉบับไทยคู่กัน */
+#about .story p+p{margin-top:22px}
+#about .lede+.lede{margin-top:20px}
+#about h1{max-width:18em}
 .story .k+p{font-size:18px;color:var(--fg);line-height:1.55}
 .dlab{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:14px}
 .dlab.am{color:var(--guess)}
@@ -567,13 +571,13 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
       Usually nobody in the organisation can see it, and the work the strategy depends on quietly
       does not happen.
     </p>
-    <p class="lede rv" style="margin-top:16px">
+    <p class="lede rv">
       Drawing that line across a whole organisation takes a new method and new tools. An ontology and a
       knowledge graph let cross-department relationships be written down properly for the first time. But
       the tools do not know what should connect to what. Whoever uses them has to understand knowledge
       management well enough to tell which lines mean something and which are coincidence.
     </p>
-    <p class="lede rv" style="margin-top:16px">
+    <p class="lede rv">
       Neo Gens is led by <strong style="color:var(--fg);font-weight:600">Noppadol Weerakitti</strong>. More than 35 years in
       modern knowledge management across information technology, service design, business development,
       public libraries and museums — and, for the last two years, a deliberate study of applying AI,
@@ -669,20 +673,20 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
         thrived or failed, it came down to the same thing: did the organisation know what it knew, and
         could it put that knowledge to use? The same holds for a single person.
       </p>
-      <p style="margin-top:14px">
+      <p>
         That matters more now. AI has given everyone equal access to public knowledge, and the advantage
         that once came from reaching it has become ordinary.
       </p>
-      <p style="margin-top:14px">
+      <p>
         What creates a difference now is the knowledge held inside an organisation, and above all in the
         organisations sitting on raw material accumulated over centuries. Museums and libraries hold that,
         and they hold something more: the public extends them a trust it extends to almost nobody else.
       </p>
-      <p style="margin-top:14px">
+      <p>
         People believe museums. People believe libraries. They believe them as the organisations that have
         led the world in managing knowledge for a very long time, and that belief took a century to build.
       </p>
-      <p style="margin-top:14px">
+      <p>
         So what people will expect from a museum or a library is not merely a chatbot answering basic
         questions the way every other chatbot does. It is a
         <strong style="color:var(--fg);font-weight:600">personal knowledge assistant</strong> — one that
@@ -690,7 +694,7 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
         collection, and in the object in front of them; that opens a new conversation at every step; and
         that sends them out with new possibilities on every visit.
       </p>
-      <p style="margin-top:14px">
+      <p>
         That is the goal of what we call Modern Knowledge Management. We cannot build it alone, which is
         why we are inviting the museums and libraries that think the same way to build it with us.
       </p>
@@ -704,7 +708,7 @@ section h1{font-size:clamp(27px,3.7vw,44px);letter-spacing:-.03em}
         has only ever worked inside one of those departments cannot reconcile them — and no ontology bought
         off the shelf knows they disagree.
       </p>
-      <p style="margin-top:14px">
+      <p>
         The firm is named for both halves of that. <strong style="color:var(--fg);font-weight:600">Neo Gens</strong>
         is <em>neo-generalist</em> and <em>neo-generation</em> at once. A neo-generalist moves along the line
         between deep specialism and broad knowledge instead of settling at one end, and creates value from the

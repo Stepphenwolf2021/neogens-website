@@ -35,7 +35,9 @@ h2{font-size:clamp(25px,3.4vw,40px);line-height:1.38}
 h3{font-size:clamp(18px,1.9vw,22px);line-height:1.5}
 h4{font-size:17px;line-height:1.55}
 p{line-height:1.9}
-.lede{font-size:clamp(16.5px,1.9vw,19px);line-height:1.85;color:var(--dim);max-width:52ch}
+/* ค่าต่ำสุด 18px ไม่ใช่ 16.5px · เพราะเนื้อความในการ์ดขึ้นเป็น 17px แล้ว
+   ถ้าปล่อยไว้ที่ 16.5 ประโยคนำจะเล็กกว่าเนื้อความบนจอมือถือ ลำดับความสำคัญจะกลับหัว · 2026-09-01 */
+.lede{font-size:clamp(18px,1.9vw,19px);line-height:1.85;color:var(--dim);max-width:52ch}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mute);display:flex;align-items:center;gap:10px;margin-bottom:26px;line-height:1.6}
 .eyebrow::before{content:'';width:22px;height:1px;background:var(--line-2);flex:none}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,5vw,68px)}
@@ -453,3 +455,27 @@ figure svg,.graphbox svg{max-width:100%;height:auto}
 .hero-list li{margin:0 0 10px}
 .hero-list li:last-child{margin-bottom:0}
 .hero-list b{color:var(--fg);font-weight:600}
+
+/* >>> จังหวะตัวอักษรไทย · 2026-09-01 · แก้ที่เดียว ได้ทุกหน้าไทย >>> */
+/* วัดจากหน้าจริงที่ความกว้าง 1440px แล้วพบสามเรื่อง
+   1  พาดหัวไม่มี max-width  กว้าง 1040px ขณะที่เนื้อความกว้าง 593-620px
+      หัวกับเนื้อจึงไม่อยู่ในคอลัมน์เดียวกัน และพาดหัวไทยยาว ๆ กวาดตายาก
+   2  ในการ์ดเดียวมีตัวอักษรสามขนาด 19 · 18 · 15.8  ไล่ระดับไม่เป็นระบบ
+      และ 15.8px เล็กเกินไปสำหรับไทยที่มีสระสองชั้น
+   3  ระยะห่างย่อหน้า 15px ทั้งที่ระยะบรรทัด 31px  ย่อหน้าจึงติดกันเป็นพืด
+      ของใหม่เว้นราว 0.85 เท่าของระยะบรรทัด ตาเห็นขอบย่อหน้าได้เอง
+   line-height ของพาดหัวเดิม 1.32 ต่ำเกินไปสำหรับไทย สระบนกับวรรณยุกต์เบียดกัน
+   ย้ายมาที่ 1.42 ซึ่งยังแน่นพอสำหรับพาดหัว แต่ไม่เบียด */
+h1{line-height:1.42}
+h2{line-height:1.45}
+.story p{font-size:17px;line-height:1.95}
+.story .k+p{font-size:18px}
+.story p+p{margin-top:26px}
+.tw p{font-size:16px;line-height:1.9}
+.tw dd{font-size:15.5px;line-height:1.9}
+.tw dt{margin-top:20px}
+/* จอมือถือ · ขอบการ์ด 28px กินความกว้างไปข้างละ 28 เหลือคอลัมน์ข้อความ 277px
+   ที่ 320px เหลือ 222px ตกบรรทัดละ 30 ตัวอักษร สั้นเกินไปสำหรับไทย
+   ลดขอบเป็น 18px ได้คืนมา 20px ต่อบรรทัด · เดสก์ท็อปไม่กระทบ · 2026-09-01 */
+@media(max-width:520px){.story{padding:22px 18px}}
+/* <<< จังหวะตัวอักษรไทย <<< */
