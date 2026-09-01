@@ -39,10 +39,11 @@ EN = {
     "meta": f"updated {UPDATED_EN}",
     "body": [
         ("h2", "What we collect"),
-        ("p", "Only what you enter in the form: your name, your email address, your "
-              "organisation, and your country. On the coffee pages, the form also records "
-              "which topic you wrote in about. Nothing else is collected from you, and "
-              "there is no form anywhere on this site that asks for more."),
+        # 2026-09-01 ฟอร์มทุกหน้าเป็นฟอร์มขอนัดหารือมาตรฐานแล้ว เหลือสามช่อง
+        # ไม่มีช่องประเทศ ไม่มีช่องหัวข้อ ดู .tools/fix_contact_form.py
+        ("p", "Only what you enter in the form: your name, your email address, and "
+              "your organisation. Nothing else is collected from you, and there is no "
+              "form anywhere on this site that asks for more."),
         ("p", "Alongside your entry we store the page you sent it from, the language you "
               "were reading in, the browser you used, and the country code our network "
               "provider derives from the connection. We do not store your IP address."),
@@ -100,8 +101,8 @@ TH = {
     "meta": f"ปรับปรุง {UPDATED}",
     "body": [
         ("h2", "เก็บอะไรบ้าง"),
-        ("p", "เฉพาะสิ่งที่คุณกรอกในฟอร์ม — ชื่อ อีเมล องค์กร และประเทศ ในหน้ากลุ่มกาแฟ "
-              "ฟอร์มจะบันทึกด้วยว่าคุณติดต่อมาเรื่องอะไร นอกจากนี้ไม่มีอะไรถูกเก็บจากคุณอีก "
+        ("p", "เฉพาะสิ่งที่คุณกรอกในฟอร์ม — ชื่อ อีเมล และองค์กร "
+              "นอกจากนี้ไม่มีอะไรถูกเก็บจากคุณอีก "
               "และไม่มีฟอร์มไหนในเว็บนี้ที่ถามมากกว่านั้น"),
         ("p", "พร้อมกับสิ่งที่คุณกรอก ระบบเก็บว่าคุณส่งมาจากหน้าไหน อ่านอยู่ในภาษาใด "
               "ใช้เบราว์เซอร์อะไร และรหัสประเทศที่ผู้ให้บริการเครือข่ายของเราอ่านได้จากการเชื่อมต่อ "
@@ -158,8 +159,16 @@ def article(C):
 
 
 def build(C):
-    src, out = ROOT / C["src"], ROOT / C["out"]
+    # แม่แบบคือหน้า coffee-farmer ทั้งสองภาษา
+    # 2026-09-01 ภาค 3 ถูกถอดออก ที่รากเว็บจึงเป็นหน้าแจ้งปิดชั่วคราว ใช้เป็นแม่แบบไม่ได้
+    # อ่านจากคลังก่อนเสมอ ถ้าไม่มีค่อยกลับไปอ่านที่ราก · ดู .tools/pause_coffee.py
+    arc = ROOT / ".tools" / "coffee-archive" / C["src"]
+    src, out = (arc if arc.exists() else ROOT / C["src"]), ROOT / C["out"]
     s = src.read_text(encoding="utf-8")
+
+    # 2026-09-01 · แม่แบบ coffee-farmer พกแถบเส้นทางของตัวเองติดมา ชี้ไป mkm-for-coffee
+    # หน้านโยบายไม่อยู่ในโครงสามภาค จึงไม่มีแถบเส้นทาง ต้องถอดของแม่แบบทิ้ง  ดูข้อ 10
+    s = re.sub(r'[ \t]*<nav class="crumbs".*?</nav>\n', "", s, flags=re.S)
 
     s = re.sub(r"<title>.*?</title>", f"<title>{C['title']}</title>", s, count=1, flags=re.S)
     for tag in ('<meta name="description" content="', '<meta property="og:description" content="'):
@@ -257,11 +266,17 @@ for path in sorted(ROOT.glob("*.html")):
     path.write_text(s, encoding="utf-8")
     added += 1
 
+# ── 2026-09-01 · หน้าเหล่านี้สร้างจากแม่แบบกาแฟ จึงพกฟอร์มของเกษตรกรติดมา
+# เปลี่ยนเป็นฟอร์มขอนัดหารือมาตรฐานให้เอง จะได้ไม่ต้องจำว่าต้องรันต่อ
+import fix_contact_form  # noqa: E402
+fix_contact_form.run()
+
 # ---- ด่านตรวจ ทุกหน้าจริงต้องมีลิงก์ และต้องชี้ฉบับภาษาเดียวกับหน้า ----
 bad = []
 for path in sorted(ROOT.glob("*.html")):
     s = path.read_text(encoding="utf-8")
-    if 'http-equiv="refresh"' in s or path.name == "404.html":
+    if ('http-equiv="refresh"' in s or 'data-standalone="notice"' in s
+            or path.name == "404.html"):
         continue
     want = ("th-" if path.name.startswith("th-") else "") + "privacy.html"
     if f'href="{want}"' not in s:
@@ -273,3 +288,9 @@ if skipped:
 if bad:
     sys.exit("✗ " + " · ".join(bad[:8]))
 print("✓ ทุกหน้ามีลิงก์นโยบายความเป็นส่วนตัว และชี้ฉบับภาษาเดียวกับหน้า")
+
+# ── 2026-09-01 · หน้านี้สร้างจากแม่แบบ จึงต้องให้เจ้าของเรื่องใส่คำประกาศกลับให้ใหม่
+# ไม่งั้น JSON-LD ของ coffee-farmer จะค้างอยู่ในหน้านโยบายความเป็นส่วนตัว  ดูข้อ 10
+import subprocess as _sp  # noqa: E402
+for _t in ("sync_nav.py", "build_jsonld.py", "add_breadcrumbs.py"):
+    _sp.run([sys.executable, str(Path(__file__).resolve().parent / _t)], check=True)

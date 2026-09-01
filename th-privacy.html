@@ -256,6 +256,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .ffield input{width:100%}
 .flab{font-family:var(--mono);font-size:10.5px;letter-spacing:0;text-transform:uppercase;
   color:var(--mute);padding-left:17px;line-height:1.8}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:0;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 /* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
 .nav-links .hs{position:relative;display:inline-flex;align-items:center}
 .nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
@@ -278,6 +287,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   .nav-links .sub,.nav-links .hs>a::after{transition:none}
 }
 /* <<< เมนูย่อยบนแถบเมนูบน <<< */
+
+/* >>> ช่องข้อมูลที่อยากรู้ · add_interest_field.py >>> */
+form textarea{width:100%;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:18px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;
+  line-height:1.75;padding:13px 20px;min-height:98px;resize:vertical;
+  display:block;transition:border-color .22s}
+form textarea::placeholder{color:var(--mute)}
+form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
+/* <<< ช่องข้อมูลที่อยากรู้ <<< */
 
 /* >>> footer ห้าคอลัมน์ · build_footer.py >>> */
 .f-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px}
@@ -426,7 +444,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="kicker">ความเป็นส่วนตัว</div>
+<div class="kicker">ความเป็นส่วนตัว</div>
       <h1>เว็บนี้เก็บอะไร และไม่เก็บอะไร</h1>
       <p class="stand">หน้านี้สั้น เพราะไม่มีอะไรให้พูดมาก เว็บนี้ไม่ตั้งคุกกี้ ไม่มีการวัดผลการเข้าชม และไม่โหลดสคริปต์จากภายนอกเลยสักตัว ข้อมูลส่วนบุคคลอย่างเดียวที่ระบบนี้ถือไว้ คือสิ่งที่คุณพิมพ์ลงในฟอร์มด้วยตัวเอง</p>
       <div class="meta"><span>Neo Gens</span><span>ปรับปรุง 19 สิงหาคม 2026</span></div>
@@ -439,7 +457,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <article>
   <div class="wrap">
     <h2>เก็บอะไรบ้าง</h2>
-    <p>เฉพาะสิ่งที่คุณกรอกในฟอร์ม — ชื่อ อีเมล องค์กร และประเทศ ในหน้ากลุ่มกาแฟ ฟอร์มจะบันทึกด้วยว่าคุณติดต่อมาเรื่องอะไร นอกจากนี้ไม่มีอะไรถูกเก็บจากคุณอีก และไม่มีฟอร์มไหนในเว็บนี้ที่ถามมากกว่านั้น</p>
+    <p>เฉพาะสิ่งที่คุณกรอกในฟอร์ม — ชื่อ อีเมล และองค์กร นอกจากนี้ไม่มีอะไรถูกเก็บจากคุณอีก และไม่มีฟอร์มไหนในเว็บนี้ที่ถามมากกว่านั้น</p>
     <p>พร้อมกับสิ่งที่คุณกรอก ระบบเก็บว่าคุณส่งมาจากหน้าไหน อ่านอยู่ในภาษาใด ใช้เบราว์เซอร์อะไร และรหัสประเทศที่ผู้ให้บริการเครือข่ายของเราอ่านได้จากการเชื่อมต่อ เราไม่เก็บหมายเลข IP ของคุณ</p>
     <h2>เอาไปทำอะไร</h2>
     <p>ตอบกลับคุณ เท่านั้น ข้อมูลของคุณไม่ถูกใช้ทำอย่างอื่น ไม่ถูกขาย และไม่ถูกส่งต่อให้ผู้ลงโฆษณาหรือคนกลางซื้อขายข้อมูลไม่ว่ากรณีใด</p>
@@ -458,38 +476,30 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   </div>
 </article>
 
-<section class="join" id="join">
-  <div class="join-bg"></div>
-  <div class="wrap">
-    <div class="inner">
-      <div class="k rv">ข้อมูลของคุณ</div>
-      <h2 class="rv">อยากดูว่าเราถืออะไรไว้ หรืออยากให้ลบ</h2>
-      <p class="lead rv">เขียนมาที่ hello@neogens.co แล้วเราจัดการให้ หรือใช้ฟอร์มด้านล่างก็ได้</p>
-      <form id="wl" class="rv" novalidate>
-        <div class="frow">
-          <div class="ffield"><label class="flab" for="name">ชื่อ-นามสกุล</label><input type="text" id="name" autocomplete="name"></div>
-          <div class="ffield"><label class="flab" for="email">อีเมล</label><input type="email" id="email" autocomplete="email" required></div>
-        </div>
-        <div class="frow">
-          <div class="ffield"><label class="flab" for="org">ชื่อฟาร์ม โรงแปรรูป สหกรณ์ หรือโรงคั่ว</label><input type="text" id="org" autocomplete="organization"></div>
-          <div class="ffield"><label class="flab" for="country">ประเทศ</label><input type="text" id="country" autocomplete="country-name"></div>
-        </div>
-        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
-               aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button class="btn" type="submit">ส่งข้อมูล</button>
-      </form>
-      <div class="ok" id="ok" role="status">ได้รับแล้ว เราส่งเมลยืนยันไปที่อีเมลของคุณแล้ว และจะติดต่อกลับภายในสองวันทำการ</div>
-      <div class="err" id="err" role="alert"></div>
-      <p class="form-note rv">ส่งถึง hello@neogens.co หรือเขียนตรงไปที่นั่นก็ได้</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
+<section id="contact" class="cta">
   <div class="cta-bg"></div>
   <div class="wrap">
-    <div class="k">ติดต่อเรา</div>
-    <div class="cta-btns"><a class="btn" href="th-contact.html">ขอ briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
+    <div class="eyebrow rv">เริ่มต้นบทสนทนา</div>
+    <h2 class="rv">ถ้าเรื่องนี้ตรงกับที่คุณกำลังคิดอยู่ นัดเวลาคุยกันได้</h2>
+    <p class="lede rv">
+      90 นาที เชิญภัณฑารักษ์หรือบรรณารักษ์ของคุณมาด้วย
+      พร้อมคำถามหนึ่งข้อที่องค์กรตอบไม่ได้
+    </p>
+    <form id="wl" class="rv" novalidate>
+      <div class="frow">
+        <div class="ffield"><label class="flab" for="name">ชื่อ-นามสกุล</label><input type="text" id="name" autocomplete="name"></div>
+        <div class="ffield"><label class="flab" for="org">องค์กร</label><input type="text" id="org" autocomplete="organization"></div>
+      </div>
+      <div class="frow">
+        <div class="ffield"><label class="flab" for="email">อีเมลองค์กร</label><input type="email" id="email" autocomplete="email" required></div>
+      </div>
+      <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
+             aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="btn" type="submit">ขอนัดหารือ</button>
+    </form>
+    <div class="ok" id="ok" role="status">ได้รับคำขอของคุณแล้ว เราส่งเมลยืนยันไปที่อีเมลของคุณแล้ว และจะติดต่อกลับภายในสองวันทำการเพื่อนัดหมายเวลา</div>
+    <div class="err" id="err" role="alert"></div>
+    <p class="form-note rv">หรือติดต่อโดยตรงที่ hello@neogens.co</p>
   </div>
 </section>
 
@@ -505,39 +515,92 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 </footer>
 
 <script>
+
 (function(){
-  var nav=document.getElementById('nav'), prog=document.getElementById('prog');
-  function onScroll(){
-    nav.classList.toggle('stuck',window.scrollY>8);
-    var h=document.documentElement.scrollHeight-window.innerHeight;
-    prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
-  }
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  var nav=document.getElementById('nav');
+  var s=function(){nav.classList.toggle('stuck',window.scrollY>8)};s();
+  window.addEventListener('scroll',s,{passive:true});
 
   var rvs=[].slice.call(document.querySelectorAll('.rv'));
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
-    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -7% 0px',threshold:.05});
     rvs.forEach(function(el){io.observe(el)});
   } else { rvs.forEach(function(el){el.classList.add('in')}); }
 
-  var heads=[].slice.call(document.querySelectorAll('article h2[id]'));
-  var tocLinks={};
-  [].slice.call(document.querySelectorAll('.toc a')).forEach(function(a){ tocLinks[a.getAttribute('href').slice(1)]=a; });
-  if('IntersectionObserver' in window && heads.length){
-    var spy=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        var a=tocLinks[e.target.id];
-        if(!a) return;
-        if(e.isIntersecting){
-          [].slice.call(document.querySelectorAll('.toc a.on')).forEach(function(x){x.classList.remove('on')});
-          a.classList.add('on');
-        }
-      });
-    },{rootMargin:'-70px 0px -75% 0px',threshold:0});
-    heads.forEach(function(h){spy.observe(h)});
+  var DEPTHS=[
+    {
+      q:'“ทำไมหินก้อนนี้ถึงเป็นลาย”',
+      a:'ลายแต่ละชั้นคือน้ำท่วมหนึ่งครั้ง โคลนตกลงมา แห้ง แล้วรอ พอน้ำท่วมรอบหน้าก็วางอีกชั้นทับลงไป <b>ลองบีบทรายเปียกในมือ แล้วปล่อยให้แห้ง</b> พรุ่งนี้ทำอีกที ทั้งหมดก็เท่านั้นแหละ เพียงแต่ช้ากว่ากันมาก',
+      t:[
+        ['good','<b>เส้นทางที่เลือก:</b> ตรงไปที่ของที่จับต้องได้เลย ไม่มีลำดับความรู้ที่ต้องรู้ก่อน ไม่มีประวัติศาสตร์'],
+        ['good','<b>ไม่มีอะไรให้อ่าน:</b> คำอธิบายคือสิ่งที่ได้ลงมือทำเอง'],
+        ['good','<b>กลับไปพร้อม:</b> ภาพที่ถูกต้องหนึ่งภาพในหัว ที่ความรู้ในอนาคตจะเกาะเข้ากับมันได้']
+      ]
+    },
+    {
+      q:'“ทำไมหินก้อนนี้ถึงเป็นลาย”',
+      a:'แต่ละแถบคือช่วงเวลาที่ตะกอนทับถม แล้วถูกชั้นถัดไปกลบไว้ <b>คนแถบนี้อ่านตลิ่งแม่น้ำกันแบบนี้มานานมากแล้วครับ</b> ดูจากสีของหน้าตัดตลิ่งว่าฤดูไหนเป็นคนวางมันไว้ ดินตรงนั้นลงมือปลูกได้หรือยัง หินก้อนนี้ก็คือการอ่านแบบเดียวกัน เพียงแต่กินเวลายาวกว่ากันมาก',
+      t:[
+        ['good','<b>เส้นทางที่เลือก:</b> ตัวแนวคิด แล้วต่อไปหาคู่เทียบในความรู้ที่คนดูถืออยู่แล้ว'],
+        ['good','<b>เสนอเพิ่ม:</b> ตัวอย่างในคลังที่เก็บมาจากแม่น้ำที่เขารู้จัก'],
+        ['good','<b>กลับไปพร้อม:</b> “สะพาน” ไม่ใช่การถูกแก้ให้ถูก']
+      ]
+    },
+    {
+      q:'“ทำไมหินก้อนนี้ถึงเป็นลาย”',
+      a:'คุณรู้อยู่แล้วว่าชั้นหินก่อตัวอย่างไร <b>สิ่งที่คอลเลกชันนี้ให้คุณได้คือตัว “ข้อเถียง” ครับ</b> คือการหาอายุสองชุดของชั้นหินนี้ที่ขัดกันอยู่สิบปี หลักฐานที่ทำให้เรื่องจบลงในที่สุด และข้อคัดค้านอีกข้อที่ไม่เคยมีใครตอบจริงๆ แถมยังมีตัวอย่างอีกชิ้นในคลัง ที่ไม่เข้ากับลำดับชั้นเลยสักนิด',
+      t:[
+        ['good','<b>เส้นทางที่เลือก:</b> ข้ามคำอธิบายไปเลย ตรงไปที่ประวัติของข้อเถียง'],
+        ['good','<b>เสนอเพิ่ม:</b> หลักฐานชั้นต้น เพราะคนดูคนนี้ยังไงก็ขอดู'],
+        ['good','<b>กลับไปพร้อม:</b> สิ่งที่เขายังไม่รู้ ซึ่งคือหน้าที่ทั้งหมดของเราตรงนี้']
+      ]
+    }
+  ];
+  var dq=document.getElementById('depthQ'), da=document.getElementById('depthA'), dt=document.getElementById('depthT');
+  var dbtns=[].slice.call(document.querySelectorAll('.switch button[data-d]'));
+  function paintDepth(i){
+    var d=DEPTHS[i];
+    dq.textContent=d.q;
+    da.innerHTML=d.a;
+    dt.innerHTML=d.t.map(function(x){return '<div class="tr '+x[0]+'"><i></i><span>'+x[1]+'</span></div>';}).join('');
+    dbtns.forEach(function(b,j){
+      b.classList.toggle('on',j===i);
+      b.setAttribute('aria-selected',j===i?'true':'false');
+    });
   }
+  if(dq&&da&&dt&&dbtns.length){dbtns.forEach(function(b,j){b.addEventListener('click',function(){paintDepth(j)})});paintDepth(0);}
+
+  var NG_ENDPOINT='https://neogens-briefing.neogens.workers.dev';
+  var form=document.getElementById('wl');
+  if(form) form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var emailEl=document.getElementById('email');
+    var v=emailEl.value.trim();
+    var okEl=document.getElementById('ok'), errEl=document.getElementById('err');
+    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
+    var hp=document.getElementById('website');
+    if(errEl) errEl.style.display='none';
+    emailEl.removeAttribute('aria-invalid');
+    if(!/^[^@\s]{1,64}@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/i.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="รูปแบบอีเมลยังไม่ถูก ลองตรวจอีกครั้ง";errEl.style.display='block';}emailEl.focus();return;}
+    btn.disabled=true; btn.textContent='กำลังส่ง…';
+    fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:(document.getElementById('name')||{}).value||'',
+      org:(document.getElementById('org')||{}).value||'',
+      email:v, website:hp?hp.value:'', lang:'th', page:location.pathname
+    })}).then(function(res){
+      if(res.status===200){form.style.display='none';okEl.style.display='block';return;}
+      if(res.status===202){form.style.display='none';okEl.innerHTML='บันทึกคำขอของคุณไว้แล้ว แต่ระบบแจ้งเตือนไม่ตอบสนอง กรุณาติดต่อมาที่ <b>hello@neogens.co</b> อีกทางหนึ่ง เพื่อให้แน่ใจว่าเราได้รับ';okEl.style.display='block';return;}
+      if(res.status===429){var e=new Error('rate_limited');e.rate=true;throw e;}
+      throw new Error('http_'+res.status);
+    }).catch(function(e){
+      if(errEl){errEl.innerHTML=(e&&e.rate)?'ชั่วโมงนี้มีการส่งจากเครือข่ายเดียวกับคุณมากเกินกำหนด รายการนี้จึงยังไม่ถูกบันทึก ลองใหม่ภายหลัง หรือเขียนตรงมาที่ <b>hello@neogens.co</b> ได้เลย':'ส่งไม่สำเร็จ และไม่มีการบันทึกใด ๆ กรุณาติดต่อโดยตรงที่ <b>hello@neogens.co</b> — เราเลือกแจ้งตามจริง มากกว่าแสดงข้อความที่ไม่เป็นความจริง';errEl.style.display='block';}
+      btn.disabled=false; btn.textContent=label;
+    });
+  });
 
   function ngSetTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('ng-theme',t)}catch(e){}}
   [].slice.call(document.querySelectorAll('.tgl')).forEach(function(b){
@@ -555,36 +618,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
     ngD.addEventListener('click',function(e){ if(e.target.tagName==='A'){ngD.classList.remove('open');ngB.classList.remove('x');ngB.setAttribute('aria-expanded','false');} });
   }
 
-  var NG_ENDPOINT='https://neogens-briefing.neogens.workers.dev';
-  var form=document.getElementById('wl');
-  if(form) form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var emailEl=document.getElementById('email');
-    var v=emailEl.value.trim();
-    var okEl=document.getElementById('ok'), errEl=document.getElementById('err');
-    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
-    var hp=document.getElementById('website');
-    if(errEl) errEl.style.display='none';
-    emailEl.removeAttribute('aria-invalid');
-    if(!/^[^@\s]{1,64}@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/i.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="รูปแบบอีเมลยังไม่ถูก ลองตรวจอีกครั้ง";errEl.style.display='block';}emailEl.focus();return;}
-    btn.disabled=true; btn.textContent="กำลังส่ง…";
-    fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      name:(document.getElementById('name')||{}).value||'',
-      org:(document.getElementById('org')||{}).value||'',
-      originCountry:(document.getElementById('country')||{}).value||'',
-      topic:'MKM Coffee',
-      email:v, website:hp?hp.value:'', lang:"th", page:location.pathname
-    })}).then(function(res){
-      if(res.status===200){form.style.display='none';okEl.style.display='block';return;}
-      if(res.status===202){form.style.display='none';okEl.innerHTML="บันทึกข้อมูลของคุณไว้แล้ว แต่ระบบแจ้งเตือนไม่ตอบสนอง กรุณาติดต่อมาที่ <b>hello@neogens.co</b> อีกทางหนึ่ง เพื่อให้แน่ใจว่าเราได้รับ";okEl.style.display='block';return;}
-      if(res.status===429){var e=new Error('rate_limited');e.rate=true;throw e;}
-      throw new Error('http_'+res.status);
-    }).catch(function(e){
-      if(errEl){errEl.innerHTML=(e&&e.rate)?"ชั่วโมงนี้มีการส่งจากเครือข่ายเดียวกับคุณมากเกินกำหนด รายการนี้จึงยังไม่ถูกบันทึก ลองใหม่ภายหลัง หรือเขียนตรงมาที่ <b>hello@neogens.co</b> ได้เลย":"ส่งไม่สำเร็จ และไม่มีการบันทึกใด ๆ กรุณาติดต่อโดยตรงที่ <b>hello@neogens.co</b> — เราเลือกแจ้งตามจริง มากกว่าแสดงข้อความที่ไม่เป็นความจริง";errEl.style.display='block';}
-      btn.disabled=false; btn.textContent=label;
-    });
-  });
-
-})();</script>
+})();
+</script>
 </body>
 </html>

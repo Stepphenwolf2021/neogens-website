@@ -257,6 +257,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .ffield input{width:100%}
 .flab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--mute);padding-left:17px;line-height:1.8}
+
+/* --- เส้นทางที่คนมองเห็น ตรงกับ BreadcrumbList ใน JSON-LD --- */
+.crumbs{margin-bottom:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--mute)}
+.crumbs li+li::before{content:"\203a";margin:0 7px;opacity:.65}
+.crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:var(--go)}
+.crumbs [aria-current]{color:var(--dim)}
 /* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
 .nav-links .hs{position:relative;display:inline-flex;align-items:center}
 .nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
@@ -279,6 +288,15 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   .nav-links .sub,.nav-links .hs>a::after{transition:none}
 }
 /* <<< เมนูย่อยบนแถบเมนูบน <<< */
+
+/* >>> ช่องข้อมูลที่อยากรู้ · add_interest_field.py >>> */
+form textarea{width:100%;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:18px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;
+  line-height:1.75;padding:13px 20px;min-height:98px;resize:vertical;
+  display:block;transition:border-color .22s}
+form textarea::placeholder{color:var(--mute)}
+form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
+/* <<< ช่องข้อมูลที่อยากรู้ <<< */
 
 /* >>> footer ห้าคอลัมน์ · build_footer.py >>> */
 .f-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px}
@@ -427,7 +445,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   <div class="head-bg"></div><div class="head-grid"></div>
   <div class="wrap">
     <div class="inner">
-      <div class="kicker">Privacy</div>
+<div class="kicker">Privacy</div>
       <h1>What this site collects, and what it does not</h1>
       <p class="stand">Short, because there is not much to say. This site sets no cookies, runs no analytics, and loads no third-party scripts. The only personal data it handles is what you type into the briefing form yourself.</p>
       <div class="meta"><span>Neo Gens</span><span>updated 19 August 2026</span></div>
@@ -440,7 +458,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 <article>
   <div class="wrap">
     <h2>What we collect</h2>
-    <p>Only what you enter in the form: your name, your email address, your organisation, and your country. On the coffee pages, the form also records which topic you wrote in about. Nothing else is collected from you, and there is no form anywhere on this site that asks for more.</p>
+    <p>Only what you enter in the form: your name, your email address, and your organisation. Nothing else is collected from you, and there is no form anywhere on this site that asks for more.</p>
     <p>Alongside your entry we store the page you sent it from, the language you were reading in, the browser you used, and the country code our network provider derives from the connection. We do not store your IP address.</p>
     <h2>What we do with it</h2>
     <p>We reply to you. That is the whole purpose. Your details are not used for anything else, are never sold, and are never passed to an advertiser or a data broker.</p>
@@ -459,38 +477,29 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
   </div>
 </article>
 
-<section class="join" id="join">
-  <div class="join-bg"></div>
-  <div class="wrap">
-    <div class="inner">
-      <div class="k rv">Your data</div>
-      <h2 class="rv">Want to see what we hold, or have it deleted?</h2>
-      <p class="lead rv">Write to hello@neogens.co and we will act on it. Or use the form below.</p>
-      <form id="wl" class="rv" novalidate>
-        <div class="frow">
-          <div class="ffield"><label class="flab" for="name">Name</label><input type="text" id="name" autocomplete="name"></div>
-          <div class="ffield"><label class="flab" for="email">Email</label><input type="email" id="email" autocomplete="email" required></div>
-        </div>
-        <div class="frow">
-          <div class="ffield"><label class="flab" for="org">Farm, mill, co-op or roastery</label><input type="text" id="org" autocomplete="organization"></div>
-          <div class="ffield"><label class="flab" for="country">Country</label><input type="text" id="country" autocomplete="country-name"></div>
-        </div>
-        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
-               aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button class="btn" type="submit">Send my details</button>
-      </form>
-      <div class="ok" id="ok" role="status">Received. A confirmation is on its way to your inbox — we reply within two business days.</div>
-      <div class="err" id="err" role="alert"></div>
-      <p class="form-note rv">Goes to hello@neogens.co — or write there directly.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
+<section id="contact" class="cta">
   <div class="cta-bg"></div>
   <div class="wrap">
-    <div class="k">Get in touch</div>
-    <div class="cta-btns"><a class="btn" href="contact.html">Request a briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
+    <div class="eyebrow rv">Start the conversation</div>
+    <h2 class="rv">If this is close to what you have been thinking, let's find a time.</h2>
+    <p class="lede rv">
+      90 minutes. Bring your curators or librarians, and one question your institution couldn't answer.
+    </p>
+    <form id="wl" class="rv" novalidate>
+      <div class="frow">
+        <div class="ffield"><label class="flab" for="name">Name</label><input type="text" id="name" autocomplete="name"></div>
+        <div class="ffield"><label class="flab" for="org">Institution</label><input type="text" id="org" autocomplete="organization"></div>
+      </div>
+      <div class="frow">
+        <div class="ffield"><label class="flab" for="email">Work email</label><input type="email" id="email" autocomplete="email" required></div>
+      </div>
+      <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
+             aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="btn" type="submit">Request a briefing</button>
+    </form>
+    <div class="ok" id="ok" role="status">Received. A confirmation is on its way to your inbox — we'll reply within two business days to find a time.</div>
+    <div class="err" id="err" role="alert"></div>
+    <p class="form-note rv">Or write directly — hello@neogens.co</p>
   </div>
 </section>
 
@@ -506,39 +515,93 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 </footer>
 
 <script>
+
 (function(){
-  var nav=document.getElementById('nav'), prog=document.getElementById('prog');
-  function onScroll(){
-    nav.classList.toggle('stuck',window.scrollY>8);
-    var h=document.documentElement.scrollHeight-window.innerHeight;
-    prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';
-  }
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  var nav=document.getElementById('nav');
+  var s=function(){nav.classList.toggle('stuck',window.scrollY>8)};s();
+  window.addEventListener('scroll',s,{passive:true});
 
   var rvs=[].slice.call(document.querySelectorAll('.rv'));
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
-    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -7% 0px',threshold:.05});
     rvs.forEach(function(el){io.observe(el)});
   } else { rvs.forEach(function(el){el.classList.add('in')}); }
 
-  var heads=[].slice.call(document.querySelectorAll('article h2[id]'));
-  var tocLinks={};
-  [].slice.call(document.querySelectorAll('.toc a')).forEach(function(a){ tocLinks[a.getAttribute('href').slice(1)]=a; });
-  if('IntersectionObserver' in window && heads.length){
-    var spy=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        var a=tocLinks[e.target.id];
-        if(!a) return;
-        if(e.isIntersecting){
-          [].slice.call(document.querySelectorAll('.toc a.on')).forEach(function(x){x.classList.remove('on')});
-          a.classList.add('on');
-        }
-      });
-    },{rootMargin:'-70px 0px -75% 0px',threshold:0});
-    heads.forEach(function(h){spy.observe(h)});
+  // depth switcher
+  var DEPTHS=[
+    {
+      q:'“Why is this rock stripy?”',
+      a:'Every stripe is one flood. Mud settles, dries, and waits — then the next flood puts another layer on top. <b>Squeeze wet sand between your hands and let it dry.</b> Do it again tomorrow. That is the whole thing, only much slower.',
+      t:[
+        ['good','<b>Route taken:</b> straight to a physical analogy — no prerequisite chain, no history'],
+        ['good','<b>Nothing to read:</b> the explanation is something you do with your hands'],
+        ['good','<b>Leaves with:</b> one correct picture that later learning can attach to']
+      ]
+    },
+    {
+      q:'“Why is this rock stripy?”',
+      a:'Each band is a period of deposition, laid down and buried by the next. <b>People here have read riverbanks this way for a very long time</b> — knowing from the colour of a cut bank which season put it there, and whether the ground can be planted. The rock in this case is the same reading, over a far longer stretch of time.',
+      t:[
+        ['good','<b>Route taken:</b> the concept, then its counterpart in knowledge the visitor already holds'],
+        ['good','<b>Also offered:</b> the sample in this collection taken from a river the visitor knows'],
+        ['good','<b>Leaves with:</b> a bridge, not a correction']
+      ]
+    },
+    {
+      q:'“Why is this rock stripy?”',
+      a:'You know how bedding forms. <b>What this collection can show you is the argument</b> — the two datings of this formation that disagreed for a decade, the evidence that eventually settled it, and which of the original objections was never actually answered. There is also one sample in our store that does not fit the sequence at all.',
+      t:[
+        ['good','<b>Route taken:</b> skips the explanation entirely, goes to the history of the dispute'],
+        ['good','<b>Also offered:</b> the primary material, because this visitor will ask for it'],
+        ['good','<b>Leaves with:</b> something they did not already know — which is the whole job here']
+      ]
+    }
+  ];
+  var dq=document.getElementById('depthQ'), da=document.getElementById('depthA'), dt=document.getElementById('depthT');
+  var dbtns=[].slice.call(document.querySelectorAll('.switch button[data-d]'));
+  function paintDepth(i){
+    var d=DEPTHS[i];
+    dq.textContent=d.q;
+    da.innerHTML=d.a;
+    dt.innerHTML=d.t.map(function(x){return '<div class="tr '+x[0]+'"><i></i><span>'+x[1]+'</span></div>';}).join('');
+    dbtns.forEach(function(b,j){
+      b.classList.toggle('on',j===i);
+      b.setAttribute('aria-selected',j===i?'true':'false');
+    });
   }
+  if(dq&&da&&dt&&dbtns.length){dbtns.forEach(function(b,j){b.addEventListener('click',function(){paintDepth(j)})});paintDepth(0);}
+
+  var NG_ENDPOINT='https://neogens-briefing.neogens.workers.dev';
+  var form=document.getElementById('wl');
+  if(form) form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var emailEl=document.getElementById('email');
+    var v=emailEl.value.trim();
+    var okEl=document.getElementById('ok'), errEl=document.getElementById('err');
+    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
+    var hp=document.getElementById('website');
+    if(errEl) errEl.style.display='none';
+    emailEl.removeAttribute('aria-invalid');
+    if(!/^[^@\s]{1,64}@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/i.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="That email address does not look right — check it and try again.";errEl.style.display='block';}emailEl.focus();return;}
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:(document.getElementById('name')||{}).value||'',
+      org:(document.getElementById('org')||{}).value||'',
+      email:v, website:hp?hp.value:'', lang:'en', page:location.pathname
+    })}).then(function(res){
+      if(res.status===200){form.style.display='none';okEl.style.display='block';return;}
+      if(res.status===202){form.style.display='none';okEl.innerHTML='Recorded — but our notification system did not respond. Please also write to <b>hello@neogens.co</b> so we are certain to see it.';okEl.style.display='block';return;}
+      if(res.status===429){var e=new Error('rate_limited');e.rate=true;throw e;}
+      throw new Error('http_'+res.status);
+    }).catch(function(e){
+      if(errEl){errEl.innerHTML=(e&&e.rate)?'Too many submissions from your network in the last hour, so this one was not recorded. Try again later, or write directly to <b>hello@neogens.co</b>.':'That did not send, and nothing was recorded. Please write directly to <b>hello@neogens.co</b> — we would rather tell you than show a message that isn\'t true.';errEl.style.display='block';}
+      btn.disabled=false; btn.textContent=label;
+    });
+  });
 
   function ngSetTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('ng-theme',t)}catch(e){}}
   [].slice.call(document.querySelectorAll('.tgl')).forEach(function(b){
@@ -556,36 +619,7 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
     ngD.addEventListener('click',function(e){ if(e.target.tagName==='A'){ngD.classList.remove('open');ngB.classList.remove('x');ngB.setAttribute('aria-expanded','false');} });
   }
 
-  var NG_ENDPOINT='https://neogens-briefing.neogens.workers.dev';
-  var form=document.getElementById('wl');
-  if(form) form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var emailEl=document.getElementById('email');
-    var v=emailEl.value.trim();
-    var okEl=document.getElementById('ok'), errEl=document.getElementById('err');
-    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
-    var hp=document.getElementById('website');
-    if(errEl) errEl.style.display='none';
-    emailEl.removeAttribute('aria-invalid');
-    if(!/^[^@\s]{1,64}@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/i.test(v)){emailEl.setAttribute('aria-invalid','true');if(errEl){errEl.innerHTML="That email address does not look right — check it and try again.";errEl.style.display='block';}emailEl.focus();return;}
-    btn.disabled=true; btn.textContent="Sending…";
-    fetch(NG_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      name:(document.getElementById('name')||{}).value||'',
-      org:(document.getElementById('org')||{}).value||'',
-      originCountry:(document.getElementById('country')||{}).value||'',
-      topic:'MKM Coffee',
-      email:v, website:hp?hp.value:'', lang:"en", page:location.pathname
-    })}).then(function(res){
-      if(res.status===200){form.style.display='none';okEl.style.display='block';return;}
-      if(res.status===202){form.style.display='none';okEl.innerHTML="Recorded — but our notification system did not respond. Please also write to <b>hello@neogens.co</b> so we are certain to see it.";okEl.style.display='block';return;}
-      if(res.status===429){var e=new Error('rate_limited');e.rate=true;throw e;}
-      throw new Error('http_'+res.status);
-    }).catch(function(e){
-      if(errEl){errEl.innerHTML=(e&&e.rate)?"Too many submissions from your network in the last hour, so this one was not recorded. Try again later, or write directly to <b>hello@neogens.co</b>.":"That did not send, and nothing was recorded. Please write directly to <b>hello@neogens.co</b> — we would rather tell you than show a message that isn't true.";errEl.style.display='block';}
-      btn.disabled=false; btn.textContent=label;
-    });
-  });
-
-})();</script>
+})();
+</script>
 </body>
 </html>
