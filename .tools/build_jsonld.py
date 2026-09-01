@@ -121,10 +121,23 @@ TERM_DESC = {
 # ── ผู้ก่อตั้ง · เพิ่มเมื่อ 2026-09-01 ──
 # เดิมบทความทุกหน้าประกาศ author เป็นองค์กร ทั้งที่หน้า about บอกว่าใครเป็นคนนำ
 # เว็บที่ขายเรื่องอัตลักษณ์ ควรมีตัวตนของคนอยู่ในกราฟด้วย ไม่ใช่มีแต่องค์กร
-# ยังไม่มี sameAs โดยตั้งใจ รอ URL ที่ยืนยันได้จาก Noppadol
 PERSON_ID = "#person-noppadol"
 PERSON = {"en": ("Noppadol Weerakitti", "about.html"),
           "th": ("นพดล วีรกิตติ", "th-about.html")}
+
+# ── ลิงก์ตัวตนภายนอก · เพิ่มเมื่อ 2026-09-01 ──
+# เหตุที่ต้องมี  ค้นคำว่า Neo Gens Modern Knowledge Management เมื่อ 1 กันยายน 2569
+# AI Overview ไม่ได้อ้าง neogens.co เลย แต่ไปอ้างโปรไฟล์ LinkedIn ของ Noppadol
+# กับ neogentechnologies.com ซึ่งเป็นคนละบริษัทที่ชื่อคล้ายกัน แล้วยกคำนิยาม
+# ของบริษัทนั้นมาตอบชื่อเรา แปลว่าทะเบียนตัวตนหลักของ Neo Gens ในสายตาเครื่อง
+# คือ LinkedIn ไม่ใช่เว็บเรา  sameAs คือคำประกาศว่าสองที่นั้นคือสิ่งเดียวกัน
+# กฎของช่องนี้  ใส่เฉพาะที่อยู่ที่เปิดดูได้จริงและเราคุมเนื้อหาได้ ห้ามใส่ที่เดา
+ORG_SAMEAS = ["https://www.linkedin.com/company/neogens/"]
+PERSON_SAMEAS = ["https://www.linkedin.com/in/noppadol-weerakitti-802b3018/"]
+
+# โลโก้แบบ raster  Google อ่าน SVG ในช่อง logo ไม่ได้ จึงต้องมี PNG คู่ไว้
+# ไฟล์เดียวกับที่ใช้เป็นโลโก้เพจ LinkedIn เพื่อให้สองที่เป็นภาพเดียวกันจริง
+ORG_LOGO = "logo-300.png"
 
 # วันที่ของบทความ · ยืนยันโดย Noppadol เมื่อ 2026-09-01 ว่าใช้วันนี้ทั้งห้าหน้า
 ARTICLE_DATE = "2026-09-01"
@@ -192,6 +205,14 @@ def shared_graph(lang):
         "email": "hello@neogens.co",
         "address": {"@type": "PostalAddress", "addressLocality": "Bangkok",
                     "addressCountry": "TH"},
+        # คำอธิบายองค์กร อ่านสดจาก meta description ของหน้าแรกภาษานั้น
+        # ไม่เขียนคำใหม่ที่นี่ เพื่อไม่ให้มีคำอธิบายสองชุดที่วันหนึ่งจะไม่ตรงกัน
+        "description": meta_of(ROOT / (("th-" if th else "") + "index.html"))[1],
+        # ไม่ใส่ @id ให้โลโก้ เพราะไม่มีหน้าไหนต้องอ้างถึงมัน
+        # และ guard ข้างล่างจะฟ้องทันทีถ้ามี @id ที่ไม่ได้เป็นโหนดระดับบนของกราฟ
+        "logo": {"@type": "ImageObject",
+                 "url": BASE + ORG_LOGO, "width": 300, "height": 300},
+        "sameAs": ORG_SAMEAS,
         "knowsAbout": [{"@id": BASE + t[0]} for t in TERMS],
     }
     site = {
@@ -213,7 +234,8 @@ def shared_graph(lang):
              for tid, en, t_th, page in TERMS]
     p_name, p_page = PERSON["th" if th else "en"]
     person = {"@type": "Person", "@id": BASE + PERSON_ID, "name": p_name,
-              "worksFor": {"@id": BASE + "#org"}, "url": U(p_page)}
+              "worksFor": {"@id": BASE + "#org"}, "url": U(p_page),
+              "sameAs": PERSON_SAMEAS}
     services = [
         {"@type": "Service", "@id": BASE + "#service-museums",
          "name": "MKM for Museums & Libraries" if not th

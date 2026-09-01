@@ -56,6 +56,8 @@ COLS = {
             ("about.html", "Who we are"),
             ("seo-as-knowledge-management.html", "How we built this site"),
             ("mailto:hello@neogens.co", "hello@neogens.co"),
+            # ลิงก์ที่คนเห็น คู่กับ sameAs ใน JSON-LD ที่เครื่องอ่าน · 2026-09-01
+            ("https://www.linkedin.com/company/neogens/", "LinkedIn"),
             ("th-index.html", "ฉบับภาษาไทย")]),
     ],
     "th": [
@@ -88,6 +90,7 @@ COLS = {
             ("th-about.html", "เราคือใคร"),
             ("th-seo-as-knowledge-management.html", "เว็บนี้สร้างมาอย่างไร"),
             ("mailto:hello@neogens.co", "hello@neogens.co"),
+            ("https://www.linkedin.com/company/neogens/", "LinkedIn"),
             ("index.html", "English edition")]),
     ],
 }
@@ -223,7 +226,9 @@ for p, s in pages():
     checks[f"{p.name} · ปีกกา CSS สมดุล"] = css.count("{") == css.count("}")
     checks[f"{p.name} · แท็ก div สมดุล"] = s.count("<div") == s.count("</div>")
     for href, _ in sum([c[2] for c in COLS[lang]], []):
-        if href.startswith("mailto:"):
+        # ลิงก์ออกนอกเว็บ ตรวจด้วยการหาไฟล์ไม่ได้ จึงข้าม
+        # ลิงก์พวกนี้ต้องเป็น URL ที่เปิดดูได้จริงและเราคุมปลายทางได้ เช่นเพจ LinkedIn ของเรา
+        if href.startswith(("mailto:", "https://", "http://")):
             continue
         if not (ROOT / href).exists():
             bad.append(f"{p.name} footer ชี้ไฟล์ที่ไม่มี {href}")
