@@ -354,12 +354,13 @@ EN = {
         ("raw", _cmp_fig("en")),
         ("p", "In practice: the organisation has one identifier, declared once and referenced "
               "from every page. Each of the four terms this site uses in a specific sense has "
-              "its own identifier and points at the page that defines it. Both practice areas "
-              "are declared as services pointing back to the same provider. Every page states "
-              "which of those things it is about. The Thai and English versions of a page are "
-              "bound together as one work in two languages, not two pages that happen to "
-              "resemble each other. Three hundred and eighty statements across thirty-nine "
-              "pages."),
+              "its own identifier and points at the page that defines it. The practice area we "
+              "run is declared as a service pointing back to the same provider, and every "
+              "page states which of those things it is about."),
+        ("p", "The Thai and English versions of a page declare each other as one work "
+              "written in two languages, not two pages that happen to resemble each other. "
+              "Across the site that comes to three hundred and eighty declarations in "
+              "thirty-nine pages."),
         ("p", "Around that: an address for every page that says what the page is, twenty-four "
               "redirects so that every link ever shared still arrives, and twenty-eight "
               "typeface files and every stylesheet served from this domain, so that reading a "
@@ -499,10 +500,12 @@ TH = {
         ("p", "ในทางปฏิบัติ องค์กรมีตัวระบุตัวเดียว ประกาศครั้งเดียวแล้วให้ทุกหน้าอ้างถึง "
               "ศัพท์สี่คำที่เว็บนี้ใช้ในความหมายเฉพาะ แต่ละคำมีตัวระบุของตัวเอง "
               "และชี้ไปยังหน้าที่นิยามมันไว้จริง "
-              "สายงานสองสายประกาศตัวเป็นบริการที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน "
-              "ทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหน "
-              "ฉบับไทยกับฉบับอังกฤษของหน้าเดียวกันผูกกันในฐานะงานชิ้นเดียวสองภาษา "
-              "ไม่ใช่สองหน้าที่บังเอิญคล้ายกัน รวมสามร้อยแปดสิบข้อความ ในสามสิบเก้าหน้า"),
+              # 2026-09-01 ภาค 3 ถูกถอดออก เหลือสายงานเดียว ประโยคเดิมเขียนว่าสองสาย จึงไม่จริงแล้ว
+              "สายงานที่เปิดอยู่ประกาศตัวเป็นบริการ ที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน "
+              "และทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหนในนั้น"),
+        ("p", "หน้าเดียวกันฉบับไทยกับฉบับอังกฤษ ประกาศว่าเป็นงานชิ้นเดียวที่เขียนไว้สองภาษา "
+              "ไม่ใช่คนละหน้าที่บังเอิญเนื้อหาคล้ายกัน "
+              "นับรวมทั้งเว็บแล้วเป็นคำประกาศสามร้อยแปดสิบชิ้น ในสามสิบเก้าหน้า"),
         ("p", "รอบ ๆ นั้นคือที่อยู่ของทุกหน้าที่บอกได้เองว่าหน้านั้นเป็นเรื่องอะไร "
               "ทางเบี่ยงยี่สิบสี่เส้นที่ทำให้ลิงก์เก่าทุกเส้นยังไปถึงปลายทาง "
               "ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดเสิร์ฟจากโดเมนนี้ "
