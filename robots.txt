@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# .tools/ ไม่ถูกเสิร์ฟอยู่แล้ว เพราะรีโปนี้ไม่มี .nojekyll
+# Jekyll จึงตัดโฟลเดอร์ที่ขึ้นต้นด้วยจุดทิ้ง  บรรทัดล่างคือด่านที่สอง
+# กันไว้เผื่อวันที่มีคนเติม .nojekyll เข้ามา  เพิ่มเมื่อ 2026-09-01
+Disallow: /.tools/
+
 Sitemap: https://www.neogens.co/sitemap.xml

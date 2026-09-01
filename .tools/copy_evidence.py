@@ -48,8 +48,8 @@ CLAIMS = {
 
 UPDATED_EN = "21 August 2026"
 UPDATED_TH = "21 สิงหาคม 2026"
-TESTED_EN = "21 August 2026"
-TESTED_TH = "21 สิงหาคม 2026"
+TESTED_EN = "1 September 2026"
+TESTED_TH = "1 กันยายน 2026"
 
 # ---------------------------------------------------------------- ภาพเปรียบเทียบ
 # โครงเดียวกันสามแถว ฝั่งซ้ายคือเว็บที่ไม่ได้ประกาศโครงสร้าง ฝั่งขวาคือเว็บที่ประกาศ
@@ -197,19 +197,21 @@ def report(lab, head, rows, cap):
 RR_EN = report(
     f"GOOGLE RICH RESULTS TEST · {TESTED_EN}",
     ["Address tested", "Item detected", "Result"],
-    [["www.neogens.co", "Organization", "~Valid · 0 errors · 0 warnings"],
-     ["www.neogens.co/th-mkm-for-coffee.html", "Breadcrumbs",
-      "~Valid · 0 errors · 0 warnings"]],
-    "Two pages, run on Google's public tool. Anyone can repeat either row in about thirty "
-    "seconds without asking us for anything — which is the point of quoting it.")
+    [["www.neogens.co", "Organization",
+      "~Valid · 0 errors · 2 non-critical"]],
+    "One page, run on Google's public tool. Valid with no errors. The two non-critical "
+    "notes are optional address fields we have chosen not to publish — postalCode and "
+    "streetAddress. Anyone can repeat the row in about thirty seconds without asking us "
+    "for anything, which is the point of quoting it.")
 
 RR_TH = report(
     f"ผลตรวจจาก GOOGLE RICH RESULTS TEST · {TESTED_TH}",
     ["ที่อยู่ที่ทดสอบ", "สิ่งที่ตรวจพบ", "ผล"],
-    [["www.neogens.co", "Organization", "~ผ่าน · 0 ข้อผิดพลาด · 0 คำเตือน"],
-     ["www.neogens.co/th-mkm-for-coffee.html", "Breadcrumbs",
-      "~ผ่าน · 0 ข้อผิดพลาด · 0 คำเตือน"]],
-    "สองหน้า รันด้วยเครื่องมือสาธารณะของ Google ใครก็ทำซ้ำทีละแถวได้ในเวลาประมาณสามสิบวินาที "
+    [["www.neogens.co", "Organization",
+      "~ผ่าน · 0 ข้อผิดพลาด · 2 ข้อสังเกตที่ไม่ร้ายแรง"]],
+    "หนึ่งหน้า รันด้วยเครื่องมือสาธารณะของ Google ผ่าน ไม่มีข้อผิดพลาด "
+    "ส่วนข้อสังเกตสองข้อคือช่องที่อยู่ซึ่งไม่บังคับ และเราเลือกที่จะไม่เผยแพร่ "
+    "คือรหัสไปรษณีย์กับที่อยู่ตามถนน ใครก็ทำซ้ำแถวนี้ได้ในเวลาประมาณสามสิบวินาที "
     "โดยไม่ต้องขออะไรจากเรา ซึ่งเป็นเหตุผลเดียวที่หยิบมาอ้าง")
 
 # ---------------------------------------------------------------- เนื้อหา
@@ -404,6 +406,27 @@ EN = {
               "collect. Every page on this site is built by a script that refuses to write "
               "the file if the structure it declares does not match what the page actually "
               "shows a reader."),
+
+        ("h2", "What the site actually got out of it"),
+        ("p", "What changed is not rank. It is what a machine knows about us without having "
+              "to guess. Every page can say what it is about, where it sits in the site, and "
+              "what it relates to. Search results show the page's path instead of a long "
+              "address, and an AI assistant reading the page gets the same declarations a "
+              "person sees, rather than prose it has to interpret."),
+        ("p", "The longer-lived advantage is that none of it expires. Keyword tactics have to "
+              "be rebuilt every time the ranking formula moves. A truthful description of what "
+              "an organisation is stays true, and we have never paid for a single keyword."),
+        ("p", "For a knowledge management practice there is a further point: this site is a "
+              "checkable example of the thing we sell. We are not saying structure matters "
+              "and then leaving our own structure to chance."),
+        ("p", "If you want to know where your own organisation stands, you can check it "
+              "yourself. Google's Rich Results Test lives at "
+              "search.google.com/test/rich-results — no account, nothing to install. Paste "
+              "your home page address and run it. It takes about thirty seconds."),
+        ("p", "The line worth reading is not pass or fail. It is the line that says what was "
+              "detected. If nothing was detected, your site has not said anything to a machine "
+              "at all, however well people read it. That gap is what this whole piece is "
+              "about."),
     ],
     "join_k": "The same method",
     "join_h": "Curious what this looks like applied to a collection rather than a website?",
@@ -527,6 +550,28 @@ TH = {
         ("p", "เราจึงถือว่าการตรวจนี้เป็นเงื่อนไขของการปล่อยหน้า ไม่ใช่เหรียญเอาไว้สะสม "
               "ทุกหน้าบนเว็บนี้สร้างด้วยสคริปต์ที่จะไม่ยอมเขียนไฟล์ "
               "ถ้าโครงสร้างที่มันประกาศ ไม่ตรงกับสิ่งที่ผู้อ่านเห็นจริงบนหน้า"),
+
+        ("h2", "แล้วเว็บนี้ได้อะไรขึ้นมาจริง ๆ"),
+        ("p", "สิ่งที่เปลี่ยนไปไม่ใช่อันดับ แต่คือสิ่งที่เครื่องรู้เกี่ยวกับเราโดยไม่ต้องเดา "
+              "ทุกหน้าบอกได้เองว่าตัวเองเป็นเรื่องอะไร อยู่ตรงไหนของเว็บ และเกี่ยวกับสิ่งไหน "
+              "ผลค้นหาจึงแสดงเส้นทางของหน้าแทนที่อยู่ยาว ๆ "
+              "และผู้ช่วย AI ที่เข้ามาอ่าน ได้คำประกาศชุดเดียวกับที่คนเห็น "
+              "ไม่ใช่ข้อความที่มันต้องตีความเอาเอง"),
+        ("p", "ข้อได้เปรียบที่ยาวกว่านั้นคือมันไม่หมดอายุ "
+              "เทคนิคไล่ตามคำค้นต้องรื้อใหม่ทุกครั้งที่สูตรจัดอันดับเปลี่ยน "
+              "ส่วนคำอธิบายว่าองค์กรนี้เป็นอะไร ยังจริงอยู่เท่าเดิม "
+              "และเราไม่เคยจ่ายเงินซื้อคำค้นสักคำเดียว"),
+        ("p", "ที่สำคัญกว่านั้นสำหรับสำนักที่ปรึกษาด้านการบริหารจัดการความรู้ "
+              "คือเว็บนี้เป็นตัวอย่างที่ตรวจได้ของสิ่งที่เราขาย "
+              "เราไม่ได้บอกว่าโครงสร้างสำคัญ แล้วปล่อยเว็บของตัวเองไว้เฉย ๆ"),
+        ("p", "ถ้าอยากรู้ว่าเว็บขององค์กรคุณอยู่ตรงไหน ลองเอาไปตรวจดูเองได้ "
+              "เครื่องมือชื่อ Rich Results Test ของ Google "
+              "อยู่ที่ search.google.com/test/rich-results "
+              "ไม่ต้องสมัคร ไม่ต้องติดตั้งอะไร "
+              "วางที่อยู่หน้าแรกขององค์กรลงไปแล้วกดทดสอบ ใช้เวลาประมาณสามสิบวินาที"),
+        ("p", "สิ่งที่ควรดูไม่ใช่คำว่าผ่านหรือไม่ผ่าน แต่คือบรรทัดที่บอกว่ามันตรวจพบอะไร "
+              "ถ้าไม่พบอะไรเลย แปลว่าเว็บขององค์กรคุณยังไม่ได้พูดอะไรกับเครื่องสักคำ "
+              "ทั้งที่คนอ่านเข้าใจมันได้ดี นั่นคือระยะห่างที่หน้านี้ทั้งหน้าพูดถึง"),
     ],
     "join_k": "วิธีเดียวกัน",
     "join_h": "อยากเห็นวิธีนี้ตอนใช้กับคอลเลกชัน ไม่ใช่กับเว็บไซต์",
