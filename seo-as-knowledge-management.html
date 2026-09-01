@@ -393,9 +393,19 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       "url": "https://www.neogens.co/ontology-and-knowledge-graph.html"
     },
     {
+      "@type": "Person",
+      "@id": "https://www.neogens.co/#person-noppadol",
+      "name": "Noppadol Weerakitti",
+      "worksFor": {
+        "@id": "https://www.neogens.co/#org"
+      },
+      "url": "https://www.neogens.co/about.html"
+    },
+    {
       "@type": "DefinedTerm",
       "@id": "https://www.neogens.co/#term-mkm",
       "name": "Modern Knowledge Management",
+      "description": "Modern Knowledge Management puts a layer in between: an explicit model of the things you deal in, and a graph of how they relate — each statement carrying its source.",
       "inDefinedTermSet": {
         "@id": "https://www.neogens.co/#glossary"
       },
@@ -405,6 +415,7 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       "@type": "DefinedTerm",
       "@id": "https://www.neogens.co/#term-ontology",
       "name": "Ontology",
+      "description": "An ontology is an agreement made in advance: what kinds of things this organisation keeps, what each kind is called, and how the kinds connect to one another.",
       "inDefinedTermSet": {
         "@id": "https://www.neogens.co/#glossary"
       },
@@ -414,6 +425,7 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       "@type": "DefinedTerm",
       "@id": "https://www.neogens.co/#term-kg",
       "name": "Knowledge graph",
+      "description": "A knowledge graph is that same pattern with the real holdings filled in.",
       "inDefinedTermSet": {
         "@id": "https://www.neogens.co/#glossary"
       },
@@ -423,6 +435,7 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       "@type": "DefinedTerm",
       "@id": "https://www.neogens.co/#term-sovereignty",
       "name": "AI sovereignty",
+      "description": "Your organisation's knowledge is used to answer your organisation's questions. It is not sent out to train anyone's model.",
       "inDefinedTermSet": {
         "@id": "https://www.neogens.co/#glossary"
       },
@@ -471,8 +484,10 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       },
       "headline": "SEO as knowledge management",
       "author": {
-        "@id": "https://www.neogens.co/#org"
-      }
+        "@id": "https://www.neogens.co/#person-noppadol"
+      },
+      "datePublished": "2026-09-01",
+      "dateModified": "2026-09-01"
     }
   ]
 }
@@ -547,10 +562,15 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
           <text class="t-s" x="490" y="262">Every thing has an identifier and every relation is written down.</text>
         </svg>
       </div>
-      <figcaption><b>Two ways to be read by a machine.</b> On the left the meaning is guessed from words. On the right it is declared, and can be checked. Illustrative.</figcaption>
+      <figcaption><b>Two ways to be read by a machine.</b> On the left the meaning is guessed from words. On the right it is declared, and can be checked.</figcaption>
     </figure>
     <p>In practice: the organisation has one identifier, declared once and referenced from every page. Each of the four terms this site uses in a specific sense has its own identifier and points at the page that defines it. The practice area we run is declared as a service pointing back to the same provider, and every page states which of those things it is about.</p>
     <p>The Thai and English versions of a page declare each other as one work written in two languages, not two pages that happen to resemble each other. Across the site that comes to three hundred and eighty declarations in thirty-nine pages.</p>
+    <p>And if none of it were declared? A search engine would still cope. It would guess whether things that share a name are the same thing, and it guesses well. So the difference is not between understanding and not understanding. It is between knowing and guessing. Declared, a machine knows: checkable, repeatable, the same answer every time. Undeclared, it guesses: right sometimes, wrong sometimes, and liable to change when the formula does.</p>
+    <p>Guessing fails at the hardest points, and this site has three of them. The first is the organisation's own name, written three ways: Neo Gens, Neo Gens Co., Ltd., and the Thai legal name on the privacy page. Within one domain a machine will probably get it right; across languages nothing guarantees it.</p>
+    <p>The second is sharper. Ontology and knowledge graph are defined on the same page. Without separate identifiers a machine can only collapse the two into one thing or fail to tell them apart — both wrong. With separate identifiers they are two things that happen to share a page, which is the truth.</p>
+    <p>The third cannot be guessed at all. Modern Knowledge Management and การบริหารจัดการความรู้สมัยใหม่ are one concept written in two languages, and the two strings have nothing in common. Only a declaration can say so.</p>
+    <p>Put shortly: not declaring does not mean a machine gets it wrong. It means we leave it guessing, and the guess fails where it costs most — across languages, where one page defines several things, and where the same word is used in both a specific and a general sense.</p>
     <p>Around that: an address for every page that says what the page is, twenty-four redirects so that every link ever shared still arrives, and twenty-eight typeface files and every stylesheet served from this domain, so that reading a page contacts nobody but us.</p>
     <figure class="figplate rv">
       <div class="dbox">
@@ -638,9 +658,8 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
     <h2 class="rv" id="s06"><span class="sn">06</span>What the site actually got out of it</h2>
     <p class="first">What changed is not rank. It is what a machine knows about us without having to guess. Every page can say what it is about, where it sits in the site, and what it relates to. Search results show the page's path instead of a long address, and an AI assistant reading the page gets the same declarations a person sees, rather than prose it has to interpret.</p>
     <p>The longer-lived advantage is that none of it expires. Keyword tactics have to be rebuilt every time the ranking formula moves. A truthful description of what an organisation is stays true, and we have never paid for a single keyword.</p>
-    <p>For a knowledge management practice there is a further point: this site is a checkable example of the thing we sell. We are not saying structure matters and then leaving our own structure to chance.</p>
     <p>If you want to know where your own organisation stands, you can check it yourself. Google's Rich Results Test lives at search.google.com/test/rich-results — no account, nothing to install. Paste your home page address and run it. It takes about thirty seconds.</p>
-    <p>The line worth reading is not pass or fail. It is the line that says what was detected. If nothing was detected, your site has not said anything to a machine at all, however well people read it. That gap is what this whole piece is about.</p>
+    <p>The line worth reading is not whether the test passed. It is the line that says what was detected. If nothing was detected, your site has not said a word to a search engine, however well people read it — the search engine does not know your site is there. That is the gap we are talking about.</p>
   </div>
   </div>
 </article>

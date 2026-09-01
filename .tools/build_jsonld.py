@@ -90,6 +90,45 @@ ARTICLES = {"long-read-museums-and-libraries.html", "mkm-for-coffee.html",
             "mkm-for-coffee-commons.html", "th-mkm-for-coffee-commons.html",
             "exec-summary-museums.html", "th-exec-summary-museums.html"}
 
+# คำนิยามสั้นของแต่ละศัพท์ · เพิ่มเมื่อ 2026-09-01
+# **ทุกประโยคยกมาจากหน้าที่นิยามคำนั้นเอง ไม่ได้เขียนขึ้นใหม่**
+# เดิม DefinedTerm มีแค่ชื่อกับลิงก์ เครื่องต้องเปิดหน้านั้นอ่านเอง
+# ใส่ description แล้วเครื่องได้นิยามทันทีโดยไม่ต้องไปอีกหน้า
+TERM_DESC = {
+    "#term-mkm": (
+        "Modern Knowledge Management puts a layer in between: an explicit model of the "
+        "things you deal in, and a graph of how they relate — each statement carrying "
+        "its source.",
+        "Modern Knowledge Management วางชั้น Knowledge Layer ไว้ตรงกลาง "
+        "เพื่ออธิบายแบบจำลองของความรู้ที่องค์กรทำงานด้วย "
+        "และกราฟที่บอกว่าสิ่งเหล่านั้นเกี่ยวข้องกันอย่างไร"),
+    "#term-ontology": (
+        "An ontology is an agreement made in advance: what kinds of things this "
+        "organisation keeps, what each kind is called, and how the kinds connect to "
+        "one another.",
+        "ontology คือการตกลงกันไว้ล่วงหน้าว่า องค์กรนี้เก็บของกี่ประเภท "
+        "แต่ละประเภทเรียกว่าอะไร และประเภทไหนเกี่ยวกับประเภทไหน"),
+    "#term-kg": (
+        "A knowledge graph is that same pattern with the real holdings filled in.",
+        "knowledge graph คือแบบเดิมนั้น ที่ของจริงถูกกรอกลงไปแล้ว"),
+    "#term-sovereignty": (
+        "Your organisation's knowledge is used to answer your organisation's questions. "
+        "It is not sent out to train anyone's model.",
+        "ความรู้ขององค์กรถูกใช้เพื่อตอบคำถามขององค์กร "
+        "ไม่ถูกส่งออกไปฝึกโมเดลของใคร"),
+}
+
+# ── ผู้ก่อตั้ง · เพิ่มเมื่อ 2026-09-01 ──
+# เดิมบทความทุกหน้าประกาศ author เป็นองค์กร ทั้งที่หน้า about บอกว่าใครเป็นคนนำ
+# เว็บที่ขายเรื่องอัตลักษณ์ ควรมีตัวตนของคนอยู่ในกราฟด้วย ไม่ใช่มีแต่องค์กร
+# ยังไม่มี sameAs โดยตั้งใจ รอ URL ที่ยืนยันได้จาก Noppadol
+PERSON_ID = "#person-noppadol"
+PERSON = {"en": ("Noppadol Weerakitti", "about.html"),
+          "th": ("นพดล วีรกิตติ", "th-about.html")}
+
+# วันที่ของบทความ · ยืนยันโดย Noppadol เมื่อ 2026-09-01 ว่าใช้วันนี้ทั้งห้าหน้า
+ARTICLE_DATE = "2026-09-01"
+
 TERMS = [
     ("#term-mkm", "Modern Knowledge Management", "การบริหารจัดการความรู้สมัยใหม่",
      "what-mkm-is.html"),
@@ -168,9 +207,13 @@ def shared_graph(lang):
     }
     terms = [{"@type": "DefinedTerm", "@id": BASE + tid,
               "name": en if not th else t_th,
+              "description": TERM_DESC[tid][1 if th else 0],
               "inDefinedTermSet": {"@id": BASE + "#glossary"},
               "url": U(("th-" if th else "") + page)}
              for tid, en, t_th, page in TERMS]
+    p_name, p_page = PERSON["th" if th else "en"]
+    person = {"@type": "Person", "@id": BASE + PERSON_ID, "name": p_name,
+              "worksFor": {"@id": BASE + "#org"}, "url": U(p_page)}
     services = [
         {"@type": "Service", "@id": BASE + "#service-museums",
          "name": "MKM for Museums & Libraries" if not th
@@ -187,7 +230,7 @@ def shared_graph(lang):
         #  "url": U(("th-" if th else "") + "mkm-for-coffee.html"),
         #  "about": [{"@id": BASE + "#term-mkm"}]},
     ]
-    return [org, site, glossary] + terms + services
+    return [org, site, glossary, person] + terms + services
 
 
 def page_graph(path):
@@ -232,7 +275,12 @@ def page_graph(path):
     if base_name in ARTICLES or name in ARTICLES:
         page["@type"] = ["WebPage", "TechArticle"]
         page["headline"] = title
-        page["author"] = {"@id": BASE + "#org"}
+        # 2026-09-01 · author ชี้ไปที่คน ไม่ใช่องค์กร  องค์กรยังเป็น publisher เหมือนเดิม
+        page["author"] = {"@id": BASE + PERSON_ID}
+        page["publisher"] = {"@id": BASE + "#org"}
+        # วันที่ ยืนยันโดยเจ้าของเว็บ ไม่ได้เดาจากไฟล์
+        page["datePublished"] = ARTICLE_DATE
+        page["dateModified"] = ARTICLE_DATE
 
     faq = faq_nodes(path, pid)
     if faq:

@@ -230,7 +230,7 @@ _CMP_TEXT = {
         cap_l="Meaning is left for the machine to infer from the words on the page.",
         cap_r="Every thing has an identifier and every relation is written down.",
         figcap="<b>Two ways to be read by a machine.</b> On the left the meaning is guessed "
-               "from words. On the right it is declared, and can be checked. Illustrative."),
+               "from words. On the right it is declared, and can be checked."),
     "th": dict(
         lab_l="SEO แบบทั่วไป", lab_r="ONTOLOGY-DRIVEN SEO",
         page="หน้าเว็บ", sub_l="มีแต่คำ", sub_r="มีข้อความที่ประกาศไว้",
@@ -240,7 +240,7 @@ _CMP_TEXT = {
         cap_l="ความหมายและความสัมพันธ์ ปล่อยให้เครื่องเดาเอาเองจากคำบนหน้า",
         cap_r="ทุกสิ่งมีตัวระบุของตัวเอง และทุกความสัมพันธ์ถูกเขียนลงไป",
         figcap="<b>สองวิธีที่เครื่องจะอ่านหน้าเว็บ</b> ด้านซ้าย ความหมายมาจากการเดาจากคำ "
-               "ด้านขวา ความหมายถูกประกาศไว้และตรวจสอบได้ เป็นภาพประกอบ"),
+               "ด้านขวา ความหมายถูกประกาศไว้และตรวจสอบได้"),
 }
 
 
@@ -361,6 +361,27 @@ EN = {
               "written in two languages, not two pages that happen to resemble each other. "
               "Across the site that comes to three hundred and eighty declarations in "
               "thirty-nine pages."),
+        ("p", "And if none of it were declared? A search engine would still cope. It would "
+              "guess whether things that share a name are the same thing, and it guesses well. "
+              "So the difference is not between understanding and not understanding. It is "
+              "between knowing and guessing. Declared, a machine knows: checkable, repeatable, "
+              "the same answer every time. Undeclared, it guesses: right sometimes, wrong "
+              "sometimes, and liable to change when the formula does."),
+        ("p", "Guessing fails at the hardest points, and this site has three of them. The "
+              "first is the organisation's own name, written three ways: Neo Gens, Neo Gens "
+              "Co., Ltd., and the Thai legal name on the privacy page. Within one domain a "
+              "machine will probably get it right; across languages nothing guarantees it."),
+        ("p", "The second is sharper. Ontology and knowledge graph are defined on the same "
+              "page. Without separate identifiers a machine can only collapse the two into "
+              "one thing or fail to tell them apart — both wrong. With separate identifiers "
+              "they are two things that happen to share a page, which is the truth."),
+        ("p", "The third cannot be guessed at all. Modern Knowledge Management and "
+              "การบริหารจัดการความรู้สมัยใหม่ are one concept written in two languages, and "
+              "the two strings have nothing in common. Only a declaration can say so."),
+        ("p", "Put shortly: not declaring does not mean a machine gets it wrong. It means we "
+              "leave it guessing, and the guess fails where it costs most — across languages, "
+              "where one page defines several things, and where the same word is used in both "
+              "a specific and a general sense."),
         ("p", "Around that: an address for every page that says what the page is, twenty-four "
               "redirects so that every link ever shared still arrives, and twenty-eight "
               "typeface files and every stylesheet served from this domain, so that reading a "
@@ -417,17 +438,14 @@ EN = {
         ("p", "The longer-lived advantage is that none of it expires. Keyword tactics have to "
               "be rebuilt every time the ranking formula moves. A truthful description of what "
               "an organisation is stays true, and we have never paid for a single keyword."),
-        ("p", "For a knowledge management practice there is a further point: this site is a "
-              "checkable example of the thing we sell. We are not saying structure matters "
-              "and then leaving our own structure to chance."),
         ("p", "If you want to know where your own organisation stands, you can check it "
               "yourself. Google's Rich Results Test lives at "
               "search.google.com/test/rich-results — no account, nothing to install. Paste "
               "your home page address and run it. It takes about thirty seconds."),
-        ("p", "The line worth reading is not pass or fail. It is the line that says what was "
-              "detected. If nothing was detected, your site has not said anything to a machine "
-              "at all, however well people read it. That gap is what this whole piece is "
-              "about."),
+        ("p", "The line worth reading is not whether the test passed. It is the line that "
+              "says what was detected. If nothing was detected, your site has not said a word "
+              "to a search engine, however well people read it — the search engine does not "
+              "know your site is there. That is the gap we are talking about."),
     ],
     "join_k": "The same method",
     "join_h": "Curious what this looks like applied to a collection rather than a website?",
@@ -506,6 +524,26 @@ TH = {
         ("p", "หน้าเดียวกันฉบับไทยกับฉบับอังกฤษ ประกาศว่าเป็นงานชิ้นเดียวที่เขียนไว้สองภาษา "
               "ไม่ใช่คนละหน้าที่บังเอิญเนื้อหาคล้ายกัน "
               "นับรวมทั้งเว็บแล้วเป็นคำประกาศสามร้อยแปดสิบชิ้น ในสามสิบเก้าหน้า"),
+        ("p", "แล้วถ้าไม่ประกาศล่ะ ระบบค้นหาก็ยังพออ่านออก มันจะเดาเอาว่า "
+              "สิ่งที่ชื่อเหมือนกันคือสิ่งเดียวกันหรือเปล่า และมันเดาเก่งพอสมควร "
+              "ความต่างจึงไม่ใช่ระหว่างเข้าใจกับไม่เข้าใจ แต่เป็นระหว่างรู้กับเดา "
+              "ประกาศไว้แล้วเครื่องรู้ ตรวจได้ ทำซ้ำได้ ผลเหมือนเดิมทุกครั้ง "
+              "ไม่ประกาศแล้วเครื่องเดา ถูกบ้างผิดบ้าง และเปลี่ยนได้เมื่อสูตรเปลี่ยน"),
+        ("p", "การเดาพังตรงจุดที่ยากที่สุดเสมอ ในเว็บนี้มีอยู่สามจุด "
+              "จุดแรกคือชื่อองค์กร ซึ่งเขียนไว้สามรูป Neo Gens · Neo Gens Co., Ltd. · "
+              "และชื่อไทยในหน้านโยบายความเป็นส่วนตัว สองรูปหลังกับรูปแรกไม่มีตัวอักษรตรงกันเลย "
+              "ในโดเมนเดียวกันเครื่องน่าจะเดาถูก แต่พอข้ามภาษาก็ไม่มีอะไรรับประกัน"),
+        ("p", "จุดที่สองชัดกว่านั้น ontology กับ knowledge graph นิยามอยู่บนหน้าเดียวกัน "
+              "ถ้าไม่มีตัวระบุแยกกัน เครื่องมีทางเลือกแค่ยุบสองคำเป็นเรื่องเดียว "
+              "หรือไม่รู้ว่าคำไหนคือคำไหน ซึ่งผิดทั้งสองทาง "
+              "พอแยกตัวระบุ มันกลายเป็นสองสิ่งที่บังเอิญถูกอธิบายไว้ในหน้าเดียวกัน ตรงกับความจริง"),
+        ("p", "จุดที่สามเดาไม่ออกแน่นอน คำว่า Modern Knowledge Management "
+              "กับ การบริหารจัดการความรู้สมัยใหม่ คือแนวคิดเดียวกันที่เขียนไว้สองภาษา "
+              "แต่สองสายอักษรนี้ไม่มีอะไรเหมือนกันสักตัว ต้องประกาศอย่างเดียว"),
+        ("p", "สรุปให้สั้นที่สุด ไม่ประกาศ ไม่ได้แปลว่าเครื่องเข้าใจผิดเสมอไป "
+              "แต่แปลว่าเราปล่อยให้มันเดา และการเดาจะพังตรงจุดที่แพงที่สุด "
+              "คือตอนข้ามภาษา ตอนที่หน้าเดียวนิยามหลายเรื่อง "
+              "และตอนที่คำเดียวกันถูกใช้ทั้งในความหมายเฉพาะและความหมายทั่วไป"),
         ("p", "รอบ ๆ นั้นคือที่อยู่ของทุกหน้าที่บอกได้เองว่าหน้านั้นเป็นเรื่องอะไร "
               "ทางเบี่ยงยี่สิบสี่เส้นที่ทำให้ลิงก์เก่าทุกเส้นยังไปถึงปลายทาง "
               "ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดเสิร์ฟจากโดเมนนี้ "
@@ -564,17 +602,15 @@ TH = {
               "เทคนิคไล่ตามคำค้นต้องรื้อใหม่ทุกครั้งที่สูตรจัดอันดับเปลี่ยน "
               "ส่วนคำอธิบายว่าองค์กรนี้เป็นอะไร ยังจริงอยู่เท่าเดิม "
               "และเราไม่เคยจ่ายเงินซื้อคำค้นสักคำเดียว"),
-        ("p", "ที่สำคัญกว่านั้นสำหรับสำนักที่ปรึกษาด้านการบริหารจัดการความรู้ "
-              "คือเว็บนี้เป็นตัวอย่างที่ตรวจได้ของสิ่งที่เราขาย "
-              "เราไม่ได้บอกว่าโครงสร้างสำคัญ แล้วปล่อยเว็บของตัวเองไว้เฉย ๆ"),
         ("p", "ถ้าอยากรู้ว่าเว็บขององค์กรคุณอยู่ตรงไหน ลองเอาไปตรวจดูเองได้ "
               "เครื่องมือชื่อ Rich Results Test ของ Google "
               "อยู่ที่ search.google.com/test/rich-results "
               "ไม่ต้องสมัคร ไม่ต้องติดตั้งอะไร "
               "วางที่อยู่หน้าแรกขององค์กรลงไปแล้วกดทดสอบ ใช้เวลาประมาณสามสิบวินาที"),
-        ("p", "สิ่งที่ควรดูไม่ใช่คำว่าผ่านหรือไม่ผ่าน แต่คือบรรทัดที่บอกว่ามันตรวจพบอะไร "
-              "ถ้าไม่พบอะไรเลย แปลว่าเว็บขององค์กรคุณยังไม่ได้พูดอะไรกับเครื่องสักคำ "
-              "ทั้งที่คนอ่านเข้าใจมันได้ดี นั่นคือระยะห่างที่หน้านี้ทั้งหน้าพูดถึง"),
+        ("p", "สิ่งที่ควรดูไม่ใช่คำว่าทดสอบผ่านหรือไม่ผ่าน แต่คือบรรทัดที่บอกว่ามันตรวจพบอะไร "
+              "ถ้าไม่พบอะไรเลย แปลว่าเว็บขององค์กรคุณยังไม่ได้พูดอะไรกับ Search Engine สักคำ "
+              "ทั้งที่คนอ่านเข้าใจมันได้ดี แต่ระบบค้นหาไม่รู้จักเว็บคุณ "
+              "นั่นคือระยะห่างที่เราพูดถึง"),
     ],
     "join_k": "วิธีเดียวกัน",
     "join_h": "อยากเห็นวิธีนี้ตอนใช้กับคอลเลกชัน ไม่ใช่กับเว็บไซต์",
