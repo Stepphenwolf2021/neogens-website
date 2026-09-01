@@ -135,8 +135,6 @@ But tools alone are not enough. An ontology that works in practice comes from si
 
 ---
 
-Noppadol Weerakitti · noppadol@neogens.co · neogens.co
-
 **References**
 
 - Murray, K. & Sternfeld, J., *Content Authenticity and Provenance in the Age of Artificial Intelligence: A Call-to-Action for the LAMs Community*, C2PA for G+LAM Community of Practice, February 2026 — Library of Congress

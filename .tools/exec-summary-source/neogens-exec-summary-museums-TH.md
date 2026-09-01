@@ -135,8 +135,6 @@ MuseKG งานที่นำเสนอในการประชุม SIG
 
 ---
 
-นพดล วีรกิตติ · noppadol@neogens.co · neogens.co
-
 **References**
 
 - Murray, K. & Sternfeld, J., *Content Authenticity and Provenance in the Age of Artificial Intelligence: A Call-to-Action for the LAMs Community*, C2PA for G+LAM Community of Practice, February 2026 — Library of Congress

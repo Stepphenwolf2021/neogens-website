@@ -290,7 +290,12 @@ def build(C):
     body = render(blocks, C["lang"])
     n_fig = body.count('<figure class="esf')
 
-    s = (ROOT / C["src"]).read_text(encoding="utf-8")
+    # แม่แบบคือหน้า coffee-farmer ทั้งสองภาษา
+    # 2026-09-01 ภาค 3 ถูกถอดออก ที่รากเว็บจึงเป็นหน้าแจ้งปิดชั่วคราว ใช้เป็นแม่แบบไม่ได้
+    # ตัวจริงย้ายไปอยู่ในคลัง ให้อ่านจากคลังก่อนเสมอ ถ้าไม่มีค่อยกลับไปอ่านที่ราก
+    # เมื่อเปิดภาคกาแฟกลับมา บรรทัดนี้ยังทำงานถูกทั้งสองทาง ไม่ต้องแก้
+    arc = ROOT / ".tools" / "coffee-archive" / C["src"]
+    s = (arc if arc.exists() else ROOT / C["src"]).read_text(encoding="utf-8")
 
     # ---- หัวเรื่องและ meta ----
     s = re.sub(r"<title>.*?</title>", f"<title>{html.escape(C['title'])}</title>",
