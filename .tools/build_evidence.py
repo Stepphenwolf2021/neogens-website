@@ -36,20 +36,52 @@ TEMPLATE_MARKS = ("What you know about your own plot", "ความรู้ท
 
 
 def article(C):
-    out = ["<article>", '  <div class="wrap">']
+    """ประกอบตัวบทความ
+
+    2026-09-01 เปลี่ยนมาใช้ .artbody ซึ่งเป็นระบบตัวอักษรของบทความยาวที่เว็บนี้ใช้อยู่แล้ว
+    กฎทั้งชุดอยู่ในแม่แบบมาตั้งแต่ต้น แต่หน้านี้ไม่เคยเรียกใช้ เนื้อความจึงกว้าง 960px
+    ตกบรรทัดละ 89 ตัวอักษร ซึ่งยาวเกินกว่าที่ตาจะกวาดกลับได้สบาย
+
+    .artbody เป็นกริดสามช่วง  content กว้าง var(--measure) 680px สำหรับตัวเนื้อ
+    ส่วน wide ให้ภาพกับตารางล้นออกมากว้างกว่าเนื้อความ ตัวบทจึงแคบ ภาพจึงกว้าง
+    ไม่ได้ตั้งค่าใหม่เอง ใช้ค่าเดียวกับบทความกาแฟทุกตัว
+    """
+    heads = [v for k, v in C["body"] if k == "h2"]
+    toc = ('<nav class="toc rv" aria-label="%s"><div class="h">%s</div><ol>%s</ol></nav>'
+           % (C["toc_label"], C["toc_head"],
+              "".join(f'<li><a href="#s{i:02d}"><i>{i:02d}</i><span>{h}</span></a></li>'
+                      for i, h in enumerate(heads, 1))))
+
+    out = ["<article>", '  <div class="wrap">', '  <div class="artbody">', "    " + toc]
+    n, first_of_section = 0, False
     for kind, val in C["body"]:
-        if kind == "raw":                      # ภาพและตารางผลตรวจ ส่งเป็น HTML ตรง ๆ
-            out.append("    " + val)
+        if kind == "h2":
+            n += 1
+            out.append(f'    <h2 class="rv" id="s{n:02d}">'
+                       f'<span class="sn">{n:02d}</span>{val}</h2>')
+            first_of_section = True
+        elif kind == "raw":                    # ภาพและตารางผลตรวจ ส่งเป็น HTML ตรง ๆ
+            # ให้ภาพล้นออกไปช่วง wide เหมือนบทความอื่น
+            out.append("    " + val.replace('<figure class="rv">',
+                                            '<figure class="figplate rv">', 1))
         elif kind == "ul":
             out.append("    <ul>" + "".join(f"<li>{x}</li>" for x in val) + "</ul>")
+        elif kind == "p":
+            cls = ' class="first"' if first_of_section else ""
+            out.append(f"    <p{cls}>{val}</p>")
+            first_of_section = False
         else:
             out.append(f"    <{kind}>{val}</{kind}>")
-    out += ["  </div>", "</article>"]
+    out += ["  </div>", "  </div>", "</article>"]
     return "\n".join(out)
 
 
 def build(C):
-    src, out = ROOT / C["src"], ROOT / C["out"]
+    # แม่แบบคือหน้า coffee-farmer ทั้งสองภาษา
+    # 2026-09-01 ภาค 3 ถูกถอดออก ที่รากเว็บจึงเป็นหน้าแจ้งปิดชั่วคราว ใช้เป็นแม่แบบไม่ได้
+    # อ่านจากคลังก่อนเสมอ ถ้าไม่มีค่อยกลับไปอ่านที่ราก · ดู .tools/pause_coffee.py
+    arc = ROOT / ".tools" / "coffee-archive" / C["src"]
+    src, out = (arc if arc.exists() else ROOT / C["src"]), ROOT / C["out"]
     s = src.read_text(encoding="utf-8")
 
     # ---- หัวเรื่องและ meta ----
@@ -120,8 +152,11 @@ def build(C):
     n_p = sum(1 for k, _ in C["body"] if k == "p")
     n_li = sum(len(v) for k, v in C["body"] if k == "ul")
     checks = {
-        "หัวข้อครบตามที่เขียนไว้": s.count("<h2>") == n_h2,
-        "ย่อหน้าครบตามที่เขียนไว้": s.count("<p>") >= n_p,
+        # 2026-09-01 h2 มี class กับ id แล้ว นับด้วย regex แทนการนับสตริงดิบ
+        "หัวข้อครบตามที่เขียนไว้": len(re.findall(r'<h2 class="rv" id="s\d\d">', s)) == n_h2,
+        "ทุกหัวข้อมีเลขกำกับ": len(re.findall(r'<span class="sn">\d\d</span>', s)) == n_h2,
+        "สารบัญตรงกับจำนวนหัวข้อ": s.count('<li><a href="#s') == n_h2,
+        "ย่อหน้าครบตามที่เขียนไว้": len(re.findall(r"<p[ >]", s)) >= n_p,
         "รายการครบตามที่เขียนไว้": s.count("<li>") >= n_li,
         "พาดหัวถูกภาษา": f"<h1>{C['h1']}</h1>" in s,
         "มี h1 เดียว": s.count("<h1>") == 1,
@@ -140,7 +175,10 @@ def build(C):
         "ทุกคลาสในภาพมีกฎรองรับ": all(
             (c + "{") in s for c in re.findall(r'class="(m-am|m-go|m-as|m|t-b|t-s|bx-go|bx-as|bx|ln-gh|ln)"', s)
             for c in ["." + c]),
-        "ภาพมีคำบรรยายให้โปรแกรมอ่านหน้าจอ": s.count('role="img"') == 1 and 'aria-label="' in s,
+        "ภาพมีคำบรรยายให้โปรแกรมอ่านหน้าจอ": s.count('role="img"') == 2
+                                         and s.count('aria-label="') >= 2,
+        "ตัวบทใช้ระบบตัวอักษรของบทความ": '<div class="artbody">' in s,
+        "ภาพล้นออกช่วงกว้างทุกชิ้น": s.count('<figure class="figplate rv">') == 3,
         "ตารางกว้างเกินแล้วเลื่อนได้": s.count('class="rr-scroll"') == 1,
         "ไม่เหลือ JSON-LD ของแม่แบบ": "application/ld+json" not in s,
         "ไม่เหลือแถบเส้นทางของแม่แบบ": 'class="crumbs"' not in s,

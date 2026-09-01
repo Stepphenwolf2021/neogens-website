@@ -21,15 +21,16 @@
 """
 
 # ตัวเลขที่หน้านี้อ้าง และต้องตรงกับไฟล์จริงเสมอ build_evidence.py เป็นคนตรวจ
-FACTS = {"pages": 43, "nodes": 465, "fonts": 28, "stubs": 26, "terms": 4,
-         "org": 43, "crumbs": 33, "article": 5, "faq": 2}
+# 2026-09-01 ตัวเลขลดลงเพราะภาค 3 ถูกถอดออกจากเว็บ ดู .tools/pause_coffee.py
+FACTS = {"pages": 39, "nodes": 380, "fonts": 28, "stubs": 24, "terms": 4,
+         "org": 39, "crumbs": 29, "article": 5, "faq": 0}
 
 # คำที่ใช้สะกดตัวเลขในเนื้อหา ด่านตรวจจะหาคำเหล่านี้ในหน้าที่สร้างเสร็จ
 WORDS = {
-    "en": {43: "forty-three", 465: "four hundred and sixty-five",
-           28: "twenty-eight", 26: "twenty-six", 4: "four"},
-    "th": {43: "สี่สิบสาม", 465: "สี่ร้อยหกสิบห้า",
-           28: "ยี่สิบแปด", 26: "ยี่สิบหก", 4: "สี่"},
+    "en": {39: "thirty-nine", 380: "three hundred and eighty",
+           28: "twenty-eight", 24: "twenty-four", 4: "four"},
+    "th": {39: "สามสิบเก้า", 380: "สามร้อยแปดสิบ",
+           28: "ยี่สิบแปด", 24: "ยี่สิบสี่", 4: "สี่"},
 }
 SPELLED = ("pages", "nodes", "fonts", "stubs", "terms")
 
@@ -38,10 +39,11 @@ SPELLED = ("pages", "nodes", "fonts", "stubs", "terms")
 CLAIMS = {
     "en": ["{crumbs} declare their position",
            "{article} are declared as articles",
-           "{faq} carry questions and answers"],
+           # 2026-09-01 หน้าที่มี FAQ อยู่ในภาค 3 ซึ่งถูกถอดออก ข้ออ้างนี้จึงพักไว้
+           ],
     "th": ["{crumbs} หน้าประกาศตำแหน่งของตัวเอง",
            "{article} หน้าประกาศตัวเป็นบทความ",
-           "{faq} หน้ามีคำถามคำตอบ"],
+           ],
 }
 
 UPDATED_EN = "21 August 2026"
@@ -172,7 +174,7 @@ FIG_TH = figure(
         "out_r1": "คนที่กำลังหาสิ่งนี้ หาเจอเอง",
         "out_r2": "คำอธิบายเดิมใช้ได้ต่อไป",
     }),
-    "<b>ภาพประกอบ.</b> ระบบค้นหาเป็นตัวเดียวกันทั้งสองฝั่ง ต่างกันที่สิ่งที่ไปถึงมัน "
+    "<b>ภาพประกอบ</b> ระบบค้นหาเป็นตัวเดียวกันทั้งสองฝั่ง ต่างกันที่สิ่งที่ไปถึงมัน "
     "ข้อมูลที่มีโครงสร้างไม่ได้ทำให้หน้าดีขึ้น แต่ทำให้หน้ากลายเป็นสิ่งที่เครื่องอ่านออกว่าเป็นอะไร "
     "ไม่ใช่แค่กองข้อความ")
 
@@ -212,19 +214,95 @@ RR_TH = report(
 
 # ---------------------------------------------------------------- เนื้อหา
 
+# ---------------------------------------------------------------- ภาพเปรียบเทียบ
+# เพิ่มเมื่อ 2026-09-01 ตามที่ Noppadol สั่ง  เทียบ SEO แบบเดิม กับ ontology-based SEO
+# ไม่มี marker ลูกศรในหน้านี้ จึงใช้เส้นล้วน  เส้นประ = เครื่องเดาเอง  เส้นทึบ = ประกาศไว้
+# ใช้คลาสเดิมทั้งหมด .bx .bx-go .bx-as .ln .ln-gh .t-b .t-s .m .m-go ไม่ได้ตั้งชื่อใหม่
+_CMP_TEXT = {
+    "en": dict(
+        lab_l="CONVENTIONAL SEO", lab_r="ONTOLOGY-DRIVEN SEO",
+        page="Page", sub_l="words", sub_r="statements",
+        chips=("ontology", "museum", "AI"),
+        engine="Search", engine_sub="infers",
+        aria="Conventional SEO compared with ontology-driven SEO",
+        cap_l="Meaning is left for the machine to infer from the words on the page.",
+        cap_r="Every thing has an identifier and every relation is written down.",
+        figcap="<b>Two ways to be read by a machine.</b> On the left the meaning is guessed "
+               "from words. On the right it is declared, and can be checked. Illustrative."),
+    "th": dict(
+        lab_l="SEO แบบทั่วไป", lab_r="ONTOLOGY-DRIVEN SEO",
+        page="หน้าเว็บ", sub_l="มีแต่คำ", sub_r="มีข้อความที่ประกาศไว้",
+        chips=("ออนโทโลยี", "พิพิธภัณฑ์", "AI"),
+        engine="ระบบค้นหา", engine_sub="เดาเอง",
+        aria="เทียบ SEO แบบทั่วไป กับ ontology-driven SEO",
+        cap_l="ความหมายและความสัมพันธ์ ปล่อยให้เครื่องเดาเอาเองจากคำบนหน้า",
+        cap_r="ทุกสิ่งมีตัวระบุของตัวเอง และทุกความสัมพันธ์ถูกเขียนลงไป",
+        figcap="<b>สองวิธีที่เครื่องจะอ่านหน้าเว็บ</b> ด้านซ้าย ความหมายมาจากการเดาจากคำ "
+               "ด้านขวา ความหมายถูกประกาศไว้และตรวจสอบได้ เป็นภาพประกอบ"),
+}
+
+
+def _cmp_fig(lang):
+    t = _CMP_TEXT[lang]
+    c1, c2, c3 = t["chips"]
+    nodes = ("Organization", "Service", "DefinedTerm")
+    edges = ("publisher", "provider", "about")
+    chips = "".join(
+        f'<rect class="bx" x="196" y="{y}" width="118" height="38" rx="9"/>'
+        f'<text class="t-s" x="255" y="{y+24}" text-anchor="middle">{c}</text>'
+        for y, c in zip((62, 122, 182), (c1, c2, c3)))
+    dashes = "".join(
+        f'<path class="ln-gh" d="M314 {y+19} L352 145"/>' for y in (62, 122, 182))
+    rnodes = "".join(
+        f'<rect class="bx" x="672" y="{y}" width="132" height="42" rx="9"/>'
+        f'<text class="t-s" x="738" y="{y+26}" text-anchor="middle">{n}</text>'
+        f'<path class="ln" d="M628 {y+21} L672 {y+21}"/>'
+        f'<text class="m-go" x="650" y="{y+15}" text-anchor="middle">{e}</text>'
+        for y, n, e in zip((60, 122, 184), nodes, edges))
+    return f'''<figure class="rv">
+      <div class="dbox">
+        <div class="dlab go">{t["lab_l"]} · {t["lab_r"]}</div>
+        <svg class="dsvg" viewBox="0 0 900 300" role="img"
+             aria-label="{t['aria']}">
+          <text class="m" x="16" y="22">{t["lab_l"]}</text>
+          <rect class="bx" x="16" y="60" width="140" height="164" rx="12"/>
+          <text class="t-b" x="86" y="134" text-anchor="middle">{t["page"]}</text>
+          <text class="t-s" x="86" y="156" text-anchor="middle">{t["sub_l"]}</text>
+          {chips}
+          {dashes}
+          <rect class="bx-as" x="352" y="112" width="96" height="66" rx="12"/>
+          <text class="t-b" x="400" y="142" text-anchor="middle">{t["engine"]}</text>
+          <text class="t-s" x="400" y="162" text-anchor="middle">{t["engine_sub"]}</text>
+          <text class="t-s" x="16" y="262">{t["cap_l"]}</text>
+
+          <path class="ln-gh" d="M474 16 L474 284"/>
+
+          <text class="m-go" x="490" y="22">{t["lab_r"]}</text>
+          <rect class="bx-go" x="490" y="60" width="138" height="164" rx="12"/>
+          <text class="t-b" x="559" y="134" text-anchor="middle">{t["page"]}</text>
+          <text class="t-s" x="559" y="156" text-anchor="middle">{t["sub_r"]}</text>
+          {rnodes}
+          <text class="t-s" x="490" y="262">{t["cap_r"]}</text>
+        </svg>
+      </div>
+      <figcaption>{t["figcap"]}</figcaption>
+    </figure>'''
+
+
 EN = {
     "src": "coffee-farmer.html",
     "out": "seo-as-knowledge-management.html",
     "twin": "th-seo-as-knowledge-management.html",
     "lang": "en",
     "title": "SEO as knowledge management — Neo Gens",
-    "desc": "Content speaks to the people you want to reach. SEO speaks to the machines in "
-            "between. How we designed ours as an ontology, and what the test reports.",
+    "desc": "Content speaks to people. SEO speaks to software. How we designed ours as "
+            "ontology-driven SEO from day one, and what the test reports.",
     "kicker": "Evidence",
-    "h1": "Content speaks to people. SEO speaks to machines. Both are knowledge work.",
+    "toc_label": "Contents",
+    "toc_head": "In this piece",
+    "h1": "Content speaks to people.<br>SEO speaks to software.<br>All of it is Modern Knowledge Management.",
     "stand": "Most websites are designed for the first conversation and improvised for the "
-             "second. This is how we designed ours as an ontology, and what happens when a "
-             "machine is asked to read it back.",
+             "second. This is how we designed ours as ontology-driven SEO from day one.",
     "meta": f"updated {UPDATED_EN}",
     "body": [
         ("h2", "Most sites are written for one reader and read by two"),
@@ -247,12 +325,12 @@ EN = {
               "the examples, the things worth disagreeing with. SEO is the conversation with "
               "the computers standing between us and those people: who we are, what we work "
               "on, what we are connected to."),
-        ("p", "Take the marketing vocabulary out of the second one and what is left is a "
-              "cataloguing problem. Something arrives that cannot ask a question, cannot read "
-              "tone, and will not come back to check. It has one pass to work out what you "
-              "hold, how it connects, and whether to trust it. That is the same problem a "
-              "catalogue record solves for a reader who will never meet the curator. Same "
-              "discipline, different reader."),
+        ("p", "What you prepare for that second conversation is read by a crawler — Google's "
+              "and everyone else's — which records it in an index, and that index is how "
+              "people looking for what you hold arrive at you. The crawler makes one pass. "
+              "If it comes away without an answer it does not return to check. That single "
+              "pass is the chance to say what you hold, how it connects, and how far it can "
+              "be trusted."),
         ("p", "Doing it properly is what lets the right people find you for a reason. An "
               "organisation that has described itself accurately to a machine gets matched to "
               "the people looking for exactly that. The alternative is buying attention "
@@ -260,25 +338,27 @@ EN = {
               "again and again, for as long as the budget lasts. That cost repeats every "
               "time. An accurate description of what you are does not."),
 
-        ("h2", "How we designed ours: ontology-based SEO"),
+        ("h2", "How we designed ours: ontology-driven SEO"),
         ("p", "Most SEO work starts from keywords: guess the phrases people type, then bend "
               "the pages toward them. It treats a search engine as a lock to be picked."),
         ("p", "We started at the other end, by describing what actually exists — the things, "
-              "and the relations between them. That is an ontology, and it is the same object "
-              "we build with clients. The difference is only that here the vocabulary was set "
-              "by search engines rather than by a curatorial team. That vocabulary is "
-              "schema.org: a shared dictionary of types and relations that the major search "
-              "engines agreed on, so that a statement written once is understood the same way "
-              "by all of them."),
+              "and the relations between them. That is an ontology, and it is the same kind of "
+              "material we build with clients. The difference is only that here the vocabulary "
+              "was set by search engines rather than by a web team or a curatorial one. That "
+              "vocabulary is schema.org: a shared dictionary of types and relations that the "
+              "major search engines agreed on, so that a statement written once is understood "
+              "the same way by all of them. Follow the structure schema.org already gives you "
+              "and every search engine can find you, without buying expensive keywords."),
+        ("raw", _cmp_fig("en")),
         ("p", "In practice: the organisation has one identifier, declared once and referenced "
               "from every page. Each of the four terms this site uses in a specific sense has "
               "its own identifier and points at the page that defines it. Both practice areas "
               "are declared as services pointing back to the same provider. Every page states "
               "which of those things it is about. The Thai and English versions of a page are "
               "bound together as one work in two languages, not two pages that happen to "
-              "resemble each other. Four hundred and sixty-five statements across forty-three "
+              "resemble each other. Three hundred and eighty statements across thirty-nine "
               "pages."),
-        ("p", "Around that: an address for every page that says what the page is, twenty-six "
+        ("p", "Around that: an address for every page that says what the page is, twenty-four "
               "redirects so that every link ever shared still arrives, and twenty-eight "
               "typeface files and every stylesheet served from this domain, so that reading a "
               "page contacts nobody but us."),
@@ -296,9 +376,9 @@ EN = {
               "whether each one is valid. It is the closest thing there is to an outside "
               "reading of what a site says about itself."),
         ("raw", RR_EN),
-        ("p", "Across the whole site, forty-three pages declare the organisation, 33 declare "
-              "their position in the navigation, 5 are declared as articles and 2 carry "
-              "questions and answers. Those numbers are counted from the files at build time, "
+        ("p", "Across the whole site, thirty-nine pages declare the organisation, 29 declare "
+              "their position in the navigation and 5 are declared as articles. "
+              "Those numbers are counted from the files at build time, "
               "not typed in by hand — if a page loses its graph, the build stops."),
 
         ("h2", "What passing buys, and what failing costs"),
@@ -336,110 +416,117 @@ TH = {
     "twin": "seo-as-knowledge-management.html",
     "lang": "th",
     "title": "SEO คือการบริหารจัดการความรู้ — Neo Gens",
-    "desc": "เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง "
-            "เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร",
+    "desc": "เนื้อหาใช้สื่อสารกับคน SEO ใช้สื่อสารกับซอฟต์แวร์ "
+            "เราออกแบบเว็บของเราให้เป็น ontology-driven SEO ตั้งแต่วันแรก และผลตรวจบอกอะไร",
     "kicker": "หลักฐาน",
-    "h1": "เนื้อหาคุยกับคน SEO คุยกับเครื่อง ทั้งสองอย่างคืองานความรู้",
-    "stand": "เว็บส่วนใหญ่ออกแบบมาเพื่อบทสนทนาชุดแรก แล้วด้นสดเอากับบทสนทนาชุดที่สอง "
-             "หน้านี้คือวิธีที่เราออกแบบของเราให้เป็น ontology "
-             "และสิ่งที่เกิดขึ้นเมื่อให้เครื่องลองอ่านกลับมาให้ฟัง",
+    "toc_label": "สารบัญ",
+    "toc_head": "ในบทความนี้",
+    "h1": "เนื้อหาใช้สื่อสารกับคน<br>SEO ใช้สื่อสารกับซอฟต์แวร์<br>งานทั้งหมดคือการบริหารจัดการความรู้สมัยใหม่",
+    "stand": "เว็บส่วนใหญ่ออกแบบมาเพื่อบทสนทนาชุดแรก แล้วค่อยมาด้นสดเอากับบทสนทนาชุดที่สอง "
+             "หน้านี้คือวิธีที่เราออกแบบเว็บของเราให้เป็น ontology-driven SEO ตั้งแต่วันแรก",
     "meta": f"ปรับปรุง {UPDATED_TH}",
     "body": [
-        ("h2", "เว็บส่วนใหญ่เขียนไว้ให้ผู้อ่านแบบเดียว แต่มีผู้อ่านสองแบบ"),
+        ("h2", "เว็บส่วนใหญ่เขียนไว้ให้ผู้อ่านแบบเดียว"),
         ("p", "เว็บเกือบทุกเว็บเกิดขึ้นแบบเดียวกัน มีคนตัดสินใจโครงสร้าง มีคนเขียนเนื้อหา "
               "มีคนออกแบบหน้า แล้วตอนใกล้เสร็จจึงมีคนถามขึ้นมาว่า แล้ว SEO ล่ะ "
               "จากนั้นชื่อหน้าถูกเขียนใหม่ไม่กี่หน้า ติดปลั๊กอินสักตัว "
-              "ส่งรายการคำค้นมาให้ชุดหนึ่ง แล้วเว็บก็ขึ้น"),
+              "ส่งรายการคำค้นมาให้ชุดหนึ่ง แล้วเว็บก็ขึ้นสู่สายตาสาธารณชน"),
         ("p", "ถึงตอนนั้นโครงสร้างถูกตัดสินไปเรียบร้อยแล้ว และโครงสร้างคือส่วนที่สำคัญที่สุด "
-              "สิ่งที่ได้คือเว็บที่คนอ่านรื่น แต่เครื่องอ่านไม่ออก "
-              "ไม่มีอะไรในนั้นบอกว่าองค์กรนี้คืออะไร ทำงานอยู่ในสาขาไหน "
+              "สิ่งที่ได้จึงเป็นเว็บที่คนอ่านได้ แต่ระบบค้นหาอ่านไม่เข้าใจ "
+              "ไม่มีอะไรในโครงสร้างนั้นบอกว่าองค์กรนี้คืออะไร ทำงานอยู่ในสาขาไหน "
               "หน้าแต่ละหน้าเกี่ยวข้องกันอย่างไร หรือคำไหนในเว็บที่ใช้ในความหมายเฉพาะ "
               "คนอ่านอนุมานทั้งหมดนี้ได้ในไม่กี่วินาที เครื่องอนุมานไม่ได้เลยสักอย่าง"),
-        ("p", "สาเหตุอยู่ที่ลำดับ ไม่ได้อยู่ที่ความตั้งใจ "
+        ("p", "สาเหตุอยู่ที่ลำดับการทำงาน ไม่ได้อยู่ที่ความตั้งใจ "
               "คำถามเรื่อง SEO มาถึงหลังจากการตัดสินใจที่มันควรมีส่วนกำหนดผ่านไปหมดแล้ว"),
 
-        ("h2", "เนื้อหาคุยกับคน SEO คุยกับคอมพิวเตอร์"),
-        ("p", "เรามองว่าเว็บหนึ่งเว็บมีบทสนทนาสองชุดอยู่ในไฟล์เดียวกัน "
-              "เนื้อหาคือบทสนทนากับคนที่เราอยากไปให้ถึง — ข้อโต้แย้ง น้ำเสียง ตัวอย่าง "
-              "และสิ่งที่ควรค่าแก่การเห็นต่าง ส่วน SEO คือบทสนทนากับคอมพิวเตอร์ "
-              "ที่ยืนอยู่ระหว่างเรากับคนเหล่านั้น ว่าเราเป็นใคร ทำงานเรื่องอะไร "
-              "และเกี่ยวข้องกับสิ่งไหน"),
-        ("p", "ถอดคำศัพท์การตลาดออกจากบทสนทนาชุดหลัง สิ่งที่เหลือคือปัญหาการทำทะเบียน "
-              "มีสิ่งหนึ่งเดินเข้ามา มันถามคำถามไม่ได้ อ่านน้ำเสียงไม่ออก "
-              "และจะไม่ย้อนกลับมาตรวจซ้ำ มันมีโอกาสรอบเดียวที่จะเข้าใจว่าคุณถืออะไรอยู่ "
-              "อะไรเชื่อมกับอะไร และควรเชื่อแค่ไหน "
-              "นั่นคือปัญหาเดียวกับที่ระเบียนทะเบียนแก้ให้ผู้อ่านที่ไม่มีวันได้เจอภัณฑารักษ์ "
-              "วิชาเดียวกัน ผู้อ่านคนละแบบ"),
-        ("p", "การทำให้ถูกคือสิ่งที่ทำให้คนที่ใช่หาเราเจอด้วยเหตุผลที่สมเหตุสมผล "
+        ("h2", "เนื้อหาคุยกับคน ข้อมูล SEO คุยกับคอมพิวเตอร์"),
+        ("p", "เรามองว่าเว็บหนึ่งเว็บมีบทสนทนาสองชุดอยู่ในนั้น "
+              "เนื้อหาที่แสดงบนหน้าเว็บคือบทสนทนากับคนที่เราอยากสื่อสารด้วย "
+              "ส่วนข้อมูล SEO คือบทสนทนากับระบบค้นหาที่ยืนอยู่ตรงกลางระหว่างเรากับคนเหล่านั้น "
+              "เป็นการประกาศว่าเราเป็นใคร ทำงานเรื่องอะไร และเกี่ยวข้องกับสิ่งไหนบ้าง"),
+        ("p", "ข้อมูล SEO ที่เราเตรียมไว้ มีไว้ให้บอตของระบบค้นหาอย่าง Google "
+              "เข้ามาอ่านแล้วบันทึกลงระบบของเขา เว็บของเราจึงถูกค้นเจอ "
+              "ตอนที่มีคนกำลังต้องการสิ่งที่เรามี บอตเข้ามาอ่านรอบเดียว "
+              "ถ้าอ่านแล้วไม่ได้คำตอบ มันไม่ย้อนกลับมาตรวจซ้ำให้ "
+              "โอกาสรอบเดียวนั้นคือโอกาสที่จะบอกว่าคุณถืออะไรอยู่ อะไรเชื่อมกับอะไร "
+              "และเชื่อถือได้แค่ไหน"),
+        ("p", "ทำให้ถูกแล้วคนที่ใช่จะหาเราเจอด้วยเหตุผลที่สมเหตุสมผล "
               "องค์กรที่อธิบายตัวเองกับเครื่องไว้ตรงกับความจริง "
               "จะถูกจับคู่กับคนที่กำลังมองหาสิ่งนั้นพอดี "
               "ทางเลือกอีกทางคือซื้อความสนใจแบบไร้ทิศทาง "
-              "จ่ายเงินเพื่อไปโผล่ต่อหน้าคนที่ไม่ได้ต้องการเรา ซ้ำแล้วซ้ำเล่า "
+              "จ่ายเงินไปโผล่ต่อหน้าคนที่ไม่ได้ต้องการเรา ซ้ำแล้วซ้ำเล่า "
               "นานเท่าที่งบยังมีอยู่ ค่าใช้จ่ายแบบนั้นเกิดซ้ำทุกครั้ง "
               "คำอธิบายที่ตรงกับความจริงว่าเราเป็นอะไร ไม่ต้องจ่ายซ้ำ"),
 
-        ("h2", "SEO ของเราออกแบบอย่างไร — ontology-based SEO"),
-        ("p", "งาน SEO ส่วนใหญ่เริ่มจากคำค้น เดาว่าคนพิมพ์อะไร แล้วดัดหน้าเว็บเข้าหาคำเหล่านั้น "
-              "วิธีนี้ปฏิบัติกับระบบค้นหาเหมือนกุญแจที่ต้องหาทางสะเดาะ"),
-        ("p", "เราเริ่มจากอีกด้าน คืออธิบายสิ่งที่มีอยู่จริง ว่ามีอะไรบ้าง "
-              "และแต่ละอย่างสัมพันธ์กันอย่างไร นั่นคือ ontology "
-              "และเป็นวัตถุชนิดเดียวกับที่เราสร้างร่วมกับลูกค้า "
-              "ต่างกันเพียงว่าที่นี่ระบบค้นหาเป็นผู้กำหนดคำศัพท์ ไม่ใช่ทีมภัณฑารักษ์ "
-              "คำศัพท์ชุดนั้นคือ schema.org "
-              "พจนานุกรมกลางของชนิดและความสัมพันธ์ที่ระบบค้นหารายใหญ่ตกลงร่วมกันไว้ "
-              "เขียนครั้งเดียวแล้วทุกรายเข้าใจตรงกัน"),
-        ("p", "ในทางปฏิบัติ องค์กรมีตัวระบุตัวเดียว ประกาศครั้งเดียวแล้วอ้างถึงจากทุกหน้า "
+        ("h2", "SEO ของเราออกแบบอย่างไร — ontology-driven SEO"),
+        ("p", "งาน SEO ส่วนใหญ่เริ่มจากคำค้น เดาว่าคนพิมพ์อะไร "
+              "แล้วดัดหน้าเว็บเข้าหาคำเหล่านั้น "
+              "วิธีนี้มองระบบค้นหาเป็นกุญแจที่ต้องหาทางสะเดาะ"),
+        ("p", "เราเริ่มจากอีกด้าน คือเขียนให้ชัดว่าองค์กรนี้มีอะไรอยู่บ้าง "
+              "และแต่ละอย่างเกี่ยวกันอย่างไร นั่นคือ ontology "
+              "และเป็นข้อมูลชนิดเดียวกับที่เราสร้างร่วมกับลูกค้า "
+              "ต่างกันตรงที่คำศัพท์ชุดนี้ระบบค้นหาเป็นคนกำหนด "
+              "ไม่ใช่ทีมพัฒนาเว็บ หรือภัณฑารักษ์ "
+              "คำศัพท์ชุดนั้นชื่อ schema.org "
+              "เป็นพจนานุกรมกลางของชนิดและความสัมพันธ์ที่ระบบค้นหารายใหญ่ตกลงกันไว้ "
+              "เขียนครั้งเดียว ทุกรายอ่านเข้าใจตรงกัน "
+              "ดังนั้น ถ้าเราทำตามโครงสร้างที่มีอยู่ใน schema.org "
+              "ระบบค้นหาทุกตัวก็จะหาเราเจอ โดยไม่ต้องเสียเงินซื้อ keyword ราคาแพง"),
+        ("raw", _cmp_fig("th")),
+        ("p", "ในทางปฏิบัติ องค์กรมีตัวระบุตัวเดียว ประกาศครั้งเดียวแล้วให้ทุกหน้าอ้างถึง "
               "ศัพท์สี่คำที่เว็บนี้ใช้ในความหมายเฉพาะ แต่ละคำมีตัวระบุของตัวเอง "
               "และชี้ไปยังหน้าที่นิยามมันไว้จริง "
-              "สองสายงานประกาศเป็นบริการที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน "
-              "ทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหนในนั้น "
-              "ฉบับไทยกับอังกฤษของหน้าเดียวกันผูกกันในฐานะงานชิ้นเดียวสองภาษา "
-              "ไม่ใช่สองหน้าที่บังเอิญคล้ายกัน รวมสี่ร้อยหกสิบห้าข้อความ ในสี่สิบสามหน้า"),
+              "สายงานสองสายประกาศตัวเป็นบริการที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน "
+              "ทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหน "
+              "ฉบับไทยกับฉบับอังกฤษของหน้าเดียวกันผูกกันในฐานะงานชิ้นเดียวสองภาษา "
+              "ไม่ใช่สองหน้าที่บังเอิญคล้ายกัน รวมสามร้อยแปดสิบข้อความ ในสามสิบเก้าหน้า"),
         ("p", "รอบ ๆ นั้นคือที่อยู่ของทุกหน้าที่บอกได้เองว่าหน้านั้นเป็นเรื่องอะไร "
-              "ทางเบี่ยงยี่สิบหกเส้นที่ทำให้ลิงก์ทุกเส้นที่เคยส่งออกไปยังไปถึงปลายทาง "
-              "ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดที่เสิร์ฟจากโดเมนนี้ "
-              "การเปิดหน้าเว็บจึงไม่ได้ติดต่อใครนอกจากเรา"),
+              "ทางเบี่ยงยี่สิบสี่เส้นที่ทำให้ลิงก์เก่าทุกเส้นยังไปถึงปลายทาง "
+              "ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดเสิร์ฟจากโดเมนนี้ "
+              "เปิดหน้าเว็บนี้แล้วไม่ได้ติดต่อใครนอกจากเรา"),
         ("raw", FIG_TH),
-        ("p", "เหตุผลที่เลือกวิธีนี้แทนการไล่คำค้น คือมันไม่หมดอายุ สูตรจัดอันดับเปลี่ยนทุกปี "
-              "และเทคนิคที่สร้างมาเพื่อสูตรหนึ่งก็ใช้ไม่ได้กับสูตรถัดไป "
-              "แต่คำอธิบายที่ตรงกับความจริงว่าองค์กรนี้เป็นอะไร ไม่ล้าสมัยเมื่อสูตรเปลี่ยน "
-              "และมันคือรูปแบบเดียวกับที่ผู้ช่วย AI อ่าน "
-              "ซึ่งเป็นที่ที่คนจำนวนมากขึ้นเรื่อย ๆ เอาคำถามไปถาม"),
+        ("p", "ที่เลือกวิธีนี้แทนการไล่ตามคำค้น เพราะมันไม่หมดอายุ "
+              "สูตรจัดอันดับเปลี่ยนทุกปี เทคนิคที่สร้างมาเพื่อสูตรหนึ่งใช้กับสูตรถัดไปไม่ได้ "
+              "แต่คำอธิบายที่ตรงกับความจริงว่าองค์กรนี้เป็นอะไร ไม่ล้าสมัยตามสูตร "
+              "และเป็นรูปแบบเดียวกับที่ผู้ช่วย AI อ่าน "
+              "ซึ่งเป็นที่ที่คนเอาคำถามไปถามมากขึ้นทุกปี"),
 
         ("h2", "เครื่องอ่านได้จริงหรือเปล่า ตรวจเองได้"),
-        ("p", "ทุกอย่างข้างบนไม่มีค่าอะไรเลยถ้าเป็นแค่คำกล่าวอ้าง "
+        ("p", "ทุกอย่างข้างบนไม่มีน้ำหนักเลยถ้าเป็นแค่คำกล่าวอ้าง "
               "Google เปิดเครื่องมือฟรีตัวหนึ่งชื่อ Rich Results Test "
-              "รับที่อยู่หน้าไหนก็ได้ ดึงหน้านั้นมาแบบเดียวกับที่ตัวเก็บข้อมูลของมันทำ "
-              "แล้วรายงานกลับมาว่าเจอรายการที่มีโครงสร้างอะไรบ้าง และแต่ละรายการใช้ได้หรือไม่ "
+              "ใส่ที่อยู่หน้าไหนก็ได้ มันจะดึงหน้านั้นมาแบบเดียวกับที่บอตของมันทำ "
+              "แล้วรายงานกลับมาว่าเจอข้อมูลที่มีโครงสร้างอะไรบ้าง และแต่ละชิ้นใช้ได้หรือไม่ "
               "นี่คือสิ่งที่ใกล้เคียงที่สุดกับการให้คนนอกอ่านว่าเว็บหนึ่งพูดถึงตัวเองว่าอย่างไร"),
         ("raw", RR_TH),
-        ("p", "ทั้งเว็บ สี่สิบสามหน้าประกาศตัวองค์กร 33 หน้าประกาศตำแหน่งของตัวเองในเส้นทางนำทาง "
-              "5 หน้าประกาศตัวเป็นบทความ และ 2 หน้ามีคำถามคำตอบ "
+        ("p", "ทั้งเว็บ สามสิบเก้าหน้าประกาศตัวองค์กร "
+              "29 หน้าประกาศตำแหน่งของตัวเองในเส้นทางนำทาง และ 5 หน้าประกาศตัวเป็นบทความ "
               "ตัวเลขเหล่านี้นับจากไฟล์ตอนสร้างหน้า ไม่ได้พิมพ์มือ "
               "ถ้าหน้าไหนกราฟหาย กระบวนการสร้างจะหยุดทันที"),
 
         ("h2", "ผ่านแล้วได้อะไร ไม่ผ่านแล้วเสียอะไร"),
-        ("p", "การผ่านไม่ใช่การเพิ่มอันดับ ใครบอกว่าใช่คือกำลังขายของ "
-              "สิ่งที่ได้แคบกว่านั้น คือระบบค้นหาเลิกอนุมานแล้วเปลี่ยนมาอ้างสิ่งที่เราเขียนไว้ "
-              "องค์กรกลายเป็นสิ่งหนึ่งที่ถูกระบุตัวได้ ไม่ใช่ชื่อที่บังเอิญโผล่อยู่ในข้อความ "
-              "หน้าเว็บถูกแสดงพร้อมเส้นทางของมัน ผู้เขียน หรือคำถามคำตอบได้ "
+        ("p", "ผ่านการตรวจไม่ได้แปลว่าอันดับดีขึ้น ใครบอกว่าใช่คือกำลังขายของ "
+              "สิ่งที่ได้แคบกว่านั้นมาก คือระบบค้นหาเลิกเดา "
+              "แล้วหันมาอ้างสิ่งที่เราเขียนไว้แทน "
+              "องค์กรกลายเป็นสิ่งที่ระบุตัวได้ ไม่ใช่ชื่อที่บังเอิญโผล่อยู่ในข้อความ "
+              "หน้าเว็บถูกแสดงพร้อมเส้นทาง ผู้เขียน หรือคำถามคำตอบได้ "
               "และคำประกาศชุดเดียวกันนี้คือสิ่งที่ผู้ช่วย AI อ่าน "
               "เวลามีคนถามคำถามในสาขาที่เราทำงานอยู่"),
-        ("p", "ส่วนการไม่ผ่านนั้นหนักกว่าที่เห็น เพราะมันเกิดขึ้นอย่างเงียบมาก "
-              "รายการที่มีข้อผิดพลาดไม่ได้ถูกแสดงพร้อมเครื่องหมายสีแดง แต่ถูกทิ้ง "
+        ("p", "การไม่ผ่านหนักกว่าที่เห็น เพราะมันเงียบ "
+              "ข้อมูลที่มีข้อผิดพลาดไม่ได้ขึ้นเครื่องหมายสีแดงให้ใครเห็น มันถูกทิ้งไปเฉย ๆ "
               "หน้ายังดูสมบูรณ์สำหรับคน ยังโหลดขึ้น ยังอ่านรื่น "
-              "เพียงแต่ไม่ถูกพิจารณาในเรื่องที่มันประกาศไว้เลย และไม่มีใครเขียนมาบอก "
-              "ส่วนคำเตือนคือฉบับเบากว่า รายการยังอยู่ แต่เสียคุณสมบัติที่มันไม่ผ่านเกณฑ์ไป"),
+              "เพียงแต่ไม่ถูกนับในเรื่องที่มันประกาศไว้เลย และไม่มีใครเขียนมาบอก "
+              "ส่วนคำเตือนคือฉบับเบากว่า ข้อมูลยังอยู่ "
+              "แต่เสียคุณสมบัติที่มันไม่ผ่านเกณฑ์ไป"),
         ("p", "ราคาที่แพงกว่านั้นคือความไว้ใจที่ลามข้ามหน้า "
               "คำประกาศที่เครื่องยืนยันไม่ได้ ไม่ได้เสียแค่หน้าตัวเอง "
-              "เมื่อสองหน้าอ้างว่าเป็นฉบับแปลของกันและกัน แต่มีหน้าเดียวที่ยืนยันกลับ "
-              "ระบบค้นหาจะเลิกเชื่อคำประกาศชนิดนั้นของทั้งโดเมน "
-              "คำอ้างที่ตรวจไม่ได้หนึ่งข้อ ลดน้ำหนักของข้ออื่นที่จริงซึ่งอยู่ข้าง ๆ ไปด้วย "
-              "ด้วยเหตุผลเดียวกับที่ทะเบียนซึ่งมีระเบียนเชื่อถือไม่ได้ปนอยู่ "
-              "มีค่าน้อยกว่าครึ่งที่ถูกต้องของมันเอง"),
-        ("p", "เราจึงถือว่าการตรวจนี้เป็นเงื่อนไขของการปล่อยหน้า ไม่ใช่เหรียญที่เอาไว้สะสม "
+              "สองหน้าอ้างว่าเป็นฉบับแปลของกันและกัน แต่มีหน้าเดียวที่ยืนยันกลับ "
+              "ระบบค้นหาก็เลิกเชื่อคำประกาศชนิดนั้นทั้งโดเมน "
+              "คำอ้างที่ตรวจไม่ได้หนึ่งข้อ ดึงน้ำหนักของข้อที่จริงข้าง ๆ ลงไปด้วย "
+              "เหมือนทะเบียนที่มีระเบียนเชื่อถือไม่ได้ปนอยู่ "
+              "ทั้งเล่มมีค่าน้อยกว่าครึ่งที่ถูกต้องของมันเอง"),
+        ("p", "เราจึงถือว่าการตรวจนี้เป็นเงื่อนไขของการปล่อยหน้า ไม่ใช่เหรียญเอาไว้สะสม "
               "ทุกหน้าบนเว็บนี้สร้างด้วยสคริปต์ที่จะไม่ยอมเขียนไฟล์ "
-              "ถ้าโครงสร้างที่มันประกาศไม่ตรงกับสิ่งที่หน้านั้นแสดงให้ผู้อ่านเห็นจริง"),
+              "ถ้าโครงสร้างที่มันประกาศ ไม่ตรงกับสิ่งที่ผู้อ่านเห็นจริงบนหน้า"),
     ],
     "join_k": "วิธีเดียวกัน",
     "join_h": "อยากเห็นวิธีนี้ตอนใช้กับคอลเลกชัน ไม่ใช่กับเว็บไซต์",

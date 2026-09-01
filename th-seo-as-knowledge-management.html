@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SEO คือการบริหารจัดการความรู้ — Neo Gens</title>
-<meta name="description" content="เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร">
+<meta name="description" content="เนื้อหาใช้สื่อสารกับคน SEO ใช้สื่อสารกับซอฟต์แวร์ เราออกแบบเว็บของเราให้เป็น ontology-driven SEO ตั้งแต่วันแรก และผลตรวจบอกอะไร">
 <meta property="og:title" content="SEO คือการบริหารจัดการความรู้ — Neo Gens">
-<meta property="og:description" content="เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร">
+<meta property="og:description" content="เนื้อหาใช้สื่อสารกับคน SEO ใช้สื่อสารกับซอฟต์แวร์ เราออกแบบเว็บของเราให้เป็น ontology-driven SEO ตั้งแต่วันแรก และผลตรวจบอกอะไร">
 <link rel="alternate" hreflang="en" href="https://www.neogens.co/seo-as-knowledge-management.html">
 <link rel="alternate" hreflang="th" href="https://www.neogens.co/th-seo-as-knowledge-management.html">
 <link rel="alternate" hreflang="x-default" href="https://www.neogens.co/seo-as-knowledge-management.html">
@@ -265,7 +265,37 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
 .crumbs a:hover{color:var(--go)}
 .crumbs [aria-current]{color:var(--dim)}
+/* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
+.nav-links .hs{position:relative;display:inline-flex;align-items:center}
+.nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
+.nav-links .hs>a::after{content:"";width:5px;height:5px;border-right:1.4px solid currentColor;
+  border-bottom:1.4px solid currentColor;transform:translateY(-2px) rotate(45deg);
+  opacity:.5;transition:opacity .2s,transform .2s}
+.nav-links .hs:hover>a::after,.nav-links .hs:focus-within>a::after{opacity:1;transform:translateY(1px) rotate(225deg)}
+.nav-links .sub{position:absolute;top:100%;left:-16px;min-width:262px;max-width:340px;
+  margin-top:14px;padding:9px 0;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 16px 44px var(--shadow);display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s,transform .18s,visibility .18s;z-index:120}
+.nav-links .sub::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
+.nav-links .hs:hover>.sub,.nav-links .hs:focus-within>.sub{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-links .sub a{display:block;padding:7px 18px;font-size:13px;line-height:1.85;
+  color:var(--dim);white-space:normal;text-decoration:none;transition:color .18s,background .18s}
+.nav-links .sub a:hover,.nav-links .sub a:focus-visible{color:var(--fg);background:var(--wash)}
+.nav-links .sub a.on{color:var(--go)}
+@media(prefers-reduced-motion:reduce){
+  .nav-links .sub,.nav-links .hs>a::after{transition:none}
+}
+/* <<< เมนูย่อยบนแถบเมนูบน <<< */
 
+/* >>> ช่องข้อมูลที่อยากรู้ · add_interest_field.py >>> */
+form textarea{width:100%;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:18px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;
+  line-height:1.75;padding:13px 20px;min-height:98px;resize:vertical;
+  display:block;transition:border-color .22s}
+form textarea::placeholder{color:var(--mute)}
+form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
+/* <<< ช่องข้อมูลที่อยากรู้ <<< */
 /* --- ภาพเปรียบเทียบและตารางผลตรวจ --- */
 /* แม่แบบ coffee-farmer มีแค่ .figplate figcaption ไม่มีกฎ figure/figcaption เปล่า ๆ
    ภาพในหน้านี้ไม่ได้อยู่ใน .figplate คำบรรยายจึงต้องมีกฎของตัวเอง ไม่งั้นตกไปใช้ขนาดตัวเนื้อ */
@@ -303,28 +333,6 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
 .m-am{font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;fill:var(--guess);letter-spacing:0}
 .rr{font-size:12px;line-height:1.8}
 .rr th{letter-spacing:0}
-/* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
-.nav-links .hs{position:relative;display:inline-flex;align-items:center}
-.nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
-.nav-links .hs>a::after{content:"";width:5px;height:5px;border-right:1.4px solid currentColor;
-  border-bottom:1.4px solid currentColor;transform:translateY(-2px) rotate(45deg);
-  opacity:.5;transition:opacity .2s,transform .2s}
-.nav-links .hs:hover>a::after,.nav-links .hs:focus-within>a::after{opacity:1;transform:translateY(1px) rotate(225deg)}
-.nav-links .sub{position:absolute;top:100%;left:-16px;min-width:262px;max-width:340px;
-  margin-top:14px;padding:9px 0;background:var(--surface);border:1px solid var(--line);
-  border-radius:14px;box-shadow:0 16px 44px var(--shadow);display:flex;flex-direction:column;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .18s,transform .18s,visibility .18s;z-index:120}
-.nav-links .sub::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
-.nav-links .hs:hover>.sub,.nav-links .hs:focus-within>.sub{opacity:1;visibility:visible;transform:translateY(0)}
-.nav-links .sub a{display:block;padding:7px 18px;font-size:13px;line-height:1.85;
-  color:var(--dim);white-space:normal;text-decoration:none;transition:color .18s,background .18s}
-.nav-links .sub a:hover,.nav-links .sub a:focus-visible{color:var(--fg);background:var(--wash)}
-.nav-links .sub a.on{color:var(--go)}
-@media(prefers-reduced-motion:reduce){
-  .nav-links .sub,.nav-links .hs>a::after{transition:none}
-}
-/* <<< เมนูย่อยบนแถบเมนูบน <<< */
 
 /* >>> footer ห้าคอลัมน์ · build_footer.py >>> */
 .f-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px}
@@ -449,7 +457,7 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
       "publisher": {
         "@id": "https://www.neogens.co/#org"
       },
-      "description": "เนื้อหาคือสิ่งที่ใช้คุยกับคนที่เราอยากไปให้ถึง SEO คือสิ่งที่ใช้คุยกับเครื่องที่ยืนอยู่ตรงกลาง เราออกแบบของเราให้เป็น ontology อย่างไร และผลตรวจบอกอะไร",
+      "description": "เนื้อหาใช้สื่อสารกับคน SEO ใช้สื่อสารกับซอฟต์แวร์ เราออกแบบเว็บของเราให้เป็น ontology-driven SEO ตั้งแต่วันแรก และผลตรวจบอกอะไร",
       "about": [
         {
           "@id": "https://www.neogens.co/#term-ontology"
@@ -489,8 +497,8 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
   <div class="wrap">
     <div class="inner">
 <div class="kicker">หลักฐาน</div>
-      <h1>เนื้อหาคุยกับคน SEO คุยกับเครื่อง ทั้งสองอย่างคืองานความรู้</h1>
-      <p class="stand">เว็บส่วนใหญ่ออกแบบมาเพื่อบทสนทนาชุดแรก แล้วด้นสดเอากับบทสนทนาชุดที่สอง หน้านี้คือวิธีที่เราออกแบบของเราให้เป็น ontology และสิ่งที่เกิดขึ้นเมื่อให้เครื่องลองอ่านกลับมาให้ฟัง</p>
+      <h1>เนื้อหาใช้สื่อสารกับคน<br>SEO ใช้สื่อสารกับซอฟต์แวร์<br>งานทั้งหมดคือการบริหารจัดการความรู้สมัยใหม่</h1>
+      <p class="stand">เว็บส่วนใหญ่ออกแบบมาเพื่อบทสนทนาชุดแรก แล้วค่อยมาด้นสดเอากับบทสนทนาชุดที่สอง หน้านี้คือวิธีที่เราออกแบบเว็บของเราให้เป็น ontology-driven SEO ตั้งแต่วันแรก</p>
       <div class="meta"><span>Neo Gens</span><span>ปรับปรุง 21 สิงหาคม 2026</span></div>
     </div>
   </div>
@@ -500,20 +508,50 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
 
 <article>
   <div class="wrap">
-    <h2>เว็บส่วนใหญ่เขียนไว้ให้ผู้อ่านแบบเดียว แต่มีผู้อ่านสองแบบ</h2>
-    <p>เว็บเกือบทุกเว็บเกิดขึ้นแบบเดียวกัน มีคนตัดสินใจโครงสร้าง มีคนเขียนเนื้อหา มีคนออกแบบหน้า แล้วตอนใกล้เสร็จจึงมีคนถามขึ้นมาว่า แล้ว SEO ล่ะ จากนั้นชื่อหน้าถูกเขียนใหม่ไม่กี่หน้า ติดปลั๊กอินสักตัว ส่งรายการคำค้นมาให้ชุดหนึ่ง แล้วเว็บก็ขึ้น</p>
-    <p>ถึงตอนนั้นโครงสร้างถูกตัดสินไปเรียบร้อยแล้ว และโครงสร้างคือส่วนที่สำคัญที่สุด สิ่งที่ได้คือเว็บที่คนอ่านรื่น แต่เครื่องอ่านไม่ออก ไม่มีอะไรในนั้นบอกว่าองค์กรนี้คืออะไร ทำงานอยู่ในสาขาไหน หน้าแต่ละหน้าเกี่ยวข้องกันอย่างไร หรือคำไหนในเว็บที่ใช้ในความหมายเฉพาะ คนอ่านอนุมานทั้งหมดนี้ได้ในไม่กี่วินาที เครื่องอนุมานไม่ได้เลยสักอย่าง</p>
-    <p>สาเหตุอยู่ที่ลำดับ ไม่ได้อยู่ที่ความตั้งใจ คำถามเรื่อง SEO มาถึงหลังจากการตัดสินใจที่มันควรมีส่วนกำหนดผ่านไปหมดแล้ว</p>
-    <h2>เนื้อหาคุยกับคน SEO คุยกับคอมพิวเตอร์</h2>
-    <p>เรามองว่าเว็บหนึ่งเว็บมีบทสนทนาสองชุดอยู่ในไฟล์เดียวกัน เนื้อหาคือบทสนทนากับคนที่เราอยากไปให้ถึง — ข้อโต้แย้ง น้ำเสียง ตัวอย่าง และสิ่งที่ควรค่าแก่การเห็นต่าง ส่วน SEO คือบทสนทนากับคอมพิวเตอร์ ที่ยืนอยู่ระหว่างเรากับคนเหล่านั้น ว่าเราเป็นใคร ทำงานเรื่องอะไร และเกี่ยวข้องกับสิ่งไหน</p>
-    <p>ถอดคำศัพท์การตลาดออกจากบทสนทนาชุดหลัง สิ่งที่เหลือคือปัญหาการทำทะเบียน มีสิ่งหนึ่งเดินเข้ามา มันถามคำถามไม่ได้ อ่านน้ำเสียงไม่ออก และจะไม่ย้อนกลับมาตรวจซ้ำ มันมีโอกาสรอบเดียวที่จะเข้าใจว่าคุณถืออะไรอยู่ อะไรเชื่อมกับอะไร และควรเชื่อแค่ไหน นั่นคือปัญหาเดียวกับที่ระเบียนทะเบียนแก้ให้ผู้อ่านที่ไม่มีวันได้เจอภัณฑารักษ์ วิชาเดียวกัน ผู้อ่านคนละแบบ</p>
-    <p>การทำให้ถูกคือสิ่งที่ทำให้คนที่ใช่หาเราเจอด้วยเหตุผลที่สมเหตุสมผล องค์กรที่อธิบายตัวเองกับเครื่องไว้ตรงกับความจริง จะถูกจับคู่กับคนที่กำลังมองหาสิ่งนั้นพอดี ทางเลือกอีกทางคือซื้อความสนใจแบบไร้ทิศทาง จ่ายเงินเพื่อไปโผล่ต่อหน้าคนที่ไม่ได้ต้องการเรา ซ้ำแล้วซ้ำเล่า นานเท่าที่งบยังมีอยู่ ค่าใช้จ่ายแบบนั้นเกิดซ้ำทุกครั้ง คำอธิบายที่ตรงกับความจริงว่าเราเป็นอะไร ไม่ต้องจ่ายซ้ำ</p>
-    <h2>SEO ของเราออกแบบอย่างไร — ontology-based SEO</h2>
-    <p>งาน SEO ส่วนใหญ่เริ่มจากคำค้น เดาว่าคนพิมพ์อะไร แล้วดัดหน้าเว็บเข้าหาคำเหล่านั้น วิธีนี้ปฏิบัติกับระบบค้นหาเหมือนกุญแจที่ต้องหาทางสะเดาะ</p>
-    <p>เราเริ่มจากอีกด้าน คืออธิบายสิ่งที่มีอยู่จริง ว่ามีอะไรบ้าง และแต่ละอย่างสัมพันธ์กันอย่างไร นั่นคือ ontology และเป็นวัตถุชนิดเดียวกับที่เราสร้างร่วมกับลูกค้า ต่างกันเพียงว่าที่นี่ระบบค้นหาเป็นผู้กำหนดคำศัพท์ ไม่ใช่ทีมภัณฑารักษ์ คำศัพท์ชุดนั้นคือ schema.org พจนานุกรมกลางของชนิดและความสัมพันธ์ที่ระบบค้นหารายใหญ่ตกลงร่วมกันไว้ เขียนครั้งเดียวแล้วทุกรายเข้าใจตรงกัน</p>
-    <p>ในทางปฏิบัติ องค์กรมีตัวระบุตัวเดียว ประกาศครั้งเดียวแล้วอ้างถึงจากทุกหน้า ศัพท์สี่คำที่เว็บนี้ใช้ในความหมายเฉพาะ แต่ละคำมีตัวระบุของตัวเอง และชี้ไปยังหน้าที่นิยามมันไว้จริง สองสายงานประกาศเป็นบริการที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน ทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหนในนั้น ฉบับไทยกับอังกฤษของหน้าเดียวกันผูกกันในฐานะงานชิ้นเดียวสองภาษา ไม่ใช่สองหน้าที่บังเอิญคล้ายกัน รวมสี่ร้อยหกสิบห้าข้อความ ในสี่สิบสามหน้า</p>
-    <p>รอบ ๆ นั้นคือที่อยู่ของทุกหน้าที่บอกได้เองว่าหน้านั้นเป็นเรื่องอะไร ทางเบี่ยงยี่สิบหกเส้นที่ทำให้ลิงก์ทุกเส้นที่เคยส่งออกไปยังไปถึงปลายทาง ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดที่เสิร์ฟจากโดเมนนี้ การเปิดหน้าเว็บจึงไม่ได้ติดต่อใครนอกจากเรา</p>
-    <figure class="rv">
+  <div class="artbody">
+    <nav class="toc rv" aria-label="สารบัญ"><div class="h">ในบทความนี้</div><ol><li><a href="#s01"><i>01</i><span>เว็บส่วนใหญ่เขียนไว้ให้ผู้อ่านแบบเดียว</span></a></li><li><a href="#s02"><i>02</i><span>เนื้อหาคุยกับคน ข้อมูล SEO คุยกับคอมพิวเตอร์</span></a></li><li><a href="#s03"><i>03</i><span>SEO ของเราออกแบบอย่างไร — ontology-driven SEO</span></a></li><li><a href="#s04"><i>04</i><span>เครื่องอ่านได้จริงหรือเปล่า ตรวจเองได้</span></a></li><li><a href="#s05"><i>05</i><span>ผ่านแล้วได้อะไร ไม่ผ่านแล้วเสียอะไร</span></a></li></ol></nav>
+    <h2 class="rv" id="s01"><span class="sn">01</span>เว็บส่วนใหญ่เขียนไว้ให้ผู้อ่านแบบเดียว</h2>
+    <p class="first">เว็บเกือบทุกเว็บเกิดขึ้นแบบเดียวกัน มีคนตัดสินใจโครงสร้าง มีคนเขียนเนื้อหา มีคนออกแบบหน้า แล้วตอนใกล้เสร็จจึงมีคนถามขึ้นมาว่า แล้ว SEO ล่ะ จากนั้นชื่อหน้าถูกเขียนใหม่ไม่กี่หน้า ติดปลั๊กอินสักตัว ส่งรายการคำค้นมาให้ชุดหนึ่ง แล้วเว็บก็ขึ้นสู่สายตาสาธารณชน</p>
+    <p>ถึงตอนนั้นโครงสร้างถูกตัดสินไปเรียบร้อยแล้ว และโครงสร้างคือส่วนที่สำคัญที่สุด สิ่งที่ได้จึงเป็นเว็บที่คนอ่านได้ แต่ระบบค้นหาอ่านไม่เข้าใจ ไม่มีอะไรในโครงสร้างนั้นบอกว่าองค์กรนี้คืออะไร ทำงานอยู่ในสาขาไหน หน้าแต่ละหน้าเกี่ยวข้องกันอย่างไร หรือคำไหนในเว็บที่ใช้ในความหมายเฉพาะ คนอ่านอนุมานทั้งหมดนี้ได้ในไม่กี่วินาที เครื่องอนุมานไม่ได้เลยสักอย่าง</p>
+    <p>สาเหตุอยู่ที่ลำดับการทำงาน ไม่ได้อยู่ที่ความตั้งใจ คำถามเรื่อง SEO มาถึงหลังจากการตัดสินใจที่มันควรมีส่วนกำหนดผ่านไปหมดแล้ว</p>
+    <h2 class="rv" id="s02"><span class="sn">02</span>เนื้อหาคุยกับคน ข้อมูล SEO คุยกับคอมพิวเตอร์</h2>
+    <p class="first">เรามองว่าเว็บหนึ่งเว็บมีบทสนทนาสองชุดอยู่ในนั้น เนื้อหาที่แสดงบนหน้าเว็บคือบทสนทนากับคนที่เราอยากสื่อสารด้วย ส่วนข้อมูล SEO คือบทสนทนากับระบบค้นหาที่ยืนอยู่ตรงกลางระหว่างเรากับคนเหล่านั้น เป็นการประกาศว่าเราเป็นใคร ทำงานเรื่องอะไร และเกี่ยวข้องกับสิ่งไหนบ้าง</p>
+    <p>ข้อมูล SEO ที่เราเตรียมไว้ มีไว้ให้บอตของระบบค้นหาอย่าง Google เข้ามาอ่านแล้วบันทึกลงระบบของเขา เว็บของเราจึงถูกค้นเจอ ตอนที่มีคนกำลังต้องการสิ่งที่เรามี บอตเข้ามาอ่านรอบเดียว ถ้าอ่านแล้วไม่ได้คำตอบ มันไม่ย้อนกลับมาตรวจซ้ำให้ โอกาสรอบเดียวนั้นคือโอกาสที่จะบอกว่าคุณถืออะไรอยู่ อะไรเชื่อมกับอะไร และเชื่อถือได้แค่ไหน</p>
+    <p>ทำให้ถูกแล้วคนที่ใช่จะหาเราเจอด้วยเหตุผลที่สมเหตุสมผล องค์กรที่อธิบายตัวเองกับเครื่องไว้ตรงกับความจริง จะถูกจับคู่กับคนที่กำลังมองหาสิ่งนั้นพอดี ทางเลือกอีกทางคือซื้อความสนใจแบบไร้ทิศทาง จ่ายเงินไปโผล่ต่อหน้าคนที่ไม่ได้ต้องการเรา ซ้ำแล้วซ้ำเล่า นานเท่าที่งบยังมีอยู่ ค่าใช้จ่ายแบบนั้นเกิดซ้ำทุกครั้ง คำอธิบายที่ตรงกับความจริงว่าเราเป็นอะไร ไม่ต้องจ่ายซ้ำ</p>
+    <h2 class="rv" id="s03"><span class="sn">03</span>SEO ของเราออกแบบอย่างไร — ontology-driven SEO</h2>
+    <p class="first">งาน SEO ส่วนใหญ่เริ่มจากคำค้น เดาว่าคนพิมพ์อะไร แล้วดัดหน้าเว็บเข้าหาคำเหล่านั้น วิธีนี้มองระบบค้นหาเป็นกุญแจที่ต้องหาทางสะเดาะ</p>
+    <p>เราเริ่มจากอีกด้าน คือเขียนให้ชัดว่าองค์กรนี้มีอะไรอยู่บ้าง และแต่ละอย่างเกี่ยวกันอย่างไร นั่นคือ ontology และเป็นข้อมูลชนิดเดียวกับที่เราสร้างร่วมกับลูกค้า ต่างกันตรงที่คำศัพท์ชุดนี้ระบบค้นหาเป็นคนกำหนด ไม่ใช่ทีมพัฒนาเว็บ หรือภัณฑารักษ์ คำศัพท์ชุดนั้นชื่อ schema.org เป็นพจนานุกรมกลางของชนิดและความสัมพันธ์ที่ระบบค้นหารายใหญ่ตกลงกันไว้ เขียนครั้งเดียว ทุกรายอ่านเข้าใจตรงกัน ดังนั้น ถ้าเราทำตามโครงสร้างที่มีอยู่ใน schema.org ระบบค้นหาทุกตัวก็จะหาเราเจอ โดยไม่ต้องเสียเงินซื้อ keyword ราคาแพง</p>
+    <figure class="figplate rv">
+      <div class="dbox">
+        <div class="dlab go">SEO แบบทั่วไป · ONTOLOGY-DRIVEN SEO</div>
+        <svg class="dsvg" viewBox="0 0 900 300" role="img"
+             aria-label="เทียบ SEO แบบทั่วไป กับ ontology-driven SEO">
+          <text class="m" x="16" y="22">SEO แบบทั่วไป</text>
+          <rect class="bx" x="16" y="60" width="140" height="164" rx="12"/>
+          <text class="t-b" x="86" y="134" text-anchor="middle">หน้าเว็บ</text>
+          <text class="t-s" x="86" y="156" text-anchor="middle">มีแต่คำ</text>
+          <rect class="bx" x="196" y="62" width="118" height="38" rx="9"/><text class="t-s" x="255" y="86" text-anchor="middle">ออนโทโลยี</text><rect class="bx" x="196" y="122" width="118" height="38" rx="9"/><text class="t-s" x="255" y="146" text-anchor="middle">พิพิธภัณฑ์</text><rect class="bx" x="196" y="182" width="118" height="38" rx="9"/><text class="t-s" x="255" y="206" text-anchor="middle">AI</text>
+          <path class="ln-gh" d="M314 81 L352 145"/><path class="ln-gh" d="M314 141 L352 145"/><path class="ln-gh" d="M314 201 L352 145"/>
+          <rect class="bx-as" x="352" y="112" width="96" height="66" rx="12"/>
+          <text class="t-b" x="400" y="142" text-anchor="middle">ระบบค้นหา</text>
+          <text class="t-s" x="400" y="162" text-anchor="middle">เดาเอง</text>
+          <text class="t-s" x="16" y="262">ความหมายและความสัมพันธ์ ปล่อยให้เครื่องเดาเอาเองจากคำบนหน้า</text>
+
+          <path class="ln-gh" d="M474 16 L474 284"/>
+
+          <text class="m-go" x="490" y="22">ONTOLOGY-DRIVEN SEO</text>
+          <rect class="bx-go" x="490" y="60" width="138" height="164" rx="12"/>
+          <text class="t-b" x="559" y="134" text-anchor="middle">หน้าเว็บ</text>
+          <text class="t-s" x="559" y="156" text-anchor="middle">มีข้อความที่ประกาศไว้</text>
+          <rect class="bx" x="672" y="60" width="132" height="42" rx="9"/><text class="t-s" x="738" y="86" text-anchor="middle">Organization</text><path class="ln" d="M628 81 L672 81"/><text class="m-go" x="650" y="75" text-anchor="middle">publisher</text><rect class="bx" x="672" y="122" width="132" height="42" rx="9"/><text class="t-s" x="738" y="148" text-anchor="middle">Service</text><path class="ln" d="M628 143 L672 143"/><text class="m-go" x="650" y="137" text-anchor="middle">provider</text><rect class="bx" x="672" y="184" width="132" height="42" rx="9"/><text class="t-s" x="738" y="210" text-anchor="middle">DefinedTerm</text><path class="ln" d="M628 205 L672 205"/><text class="m-go" x="650" y="199" text-anchor="middle">about</text>
+          <text class="t-s" x="490" y="262">ทุกสิ่งมีตัวระบุของตัวเอง และทุกความสัมพันธ์ถูกเขียนลงไป</text>
+        </svg>
+      </div>
+      <figcaption><b>สองวิธีที่เครื่องจะอ่านหน้าเว็บ</b> ด้านซ้าย ความหมายมาจากการเดาจากคำ ด้านขวา ความหมายถูกประกาศไว้และตรวจสอบได้ เป็นภาพประกอบ</figcaption>
+    </figure>
+    <p>ในทางปฏิบัติ องค์กรมีตัวระบุตัวเดียว ประกาศครั้งเดียวแล้วให้ทุกหน้าอ้างถึง ศัพท์สี่คำที่เว็บนี้ใช้ในความหมายเฉพาะ แต่ละคำมีตัวระบุของตัวเอง และชี้ไปยังหน้าที่นิยามมันไว้จริง สายงานสองสายประกาศตัวเป็นบริการที่ชี้กลับมาที่ผู้ให้บริการรายเดียวกัน ทุกหน้าบอกว่าตัวเองพูดถึงสิ่งไหน ฉบับไทยกับฉบับอังกฤษของหน้าเดียวกันผูกกันในฐานะงานชิ้นเดียวสองภาษา ไม่ใช่สองหน้าที่บังเอิญคล้ายกัน รวมสามร้อยแปดสิบข้อความ ในสามสิบเก้าหน้า</p>
+    <p>รอบ ๆ นั้นคือที่อยู่ของทุกหน้าที่บอกได้เองว่าหน้านั้นเป็นเรื่องอะไร ทางเบี่ยงยี่สิบสี่เส้นที่ทำให้ลิงก์เก่าทุกเส้นยังไปถึงปลายทาง ไฟล์ฟอนต์ยี่สิบแปดไฟล์และสไตล์ทั้งหมดเสิร์ฟจากโดเมนนี้ เปิดหน้าเว็บนี้แล้วไม่ได้ติดต่อใครนอกจากเรา</p>
+    <figure class="figplate rv">
       <div class="dbox">
         <div class="dlab go">ระบบค้นหาตัวเดียวกัน ได้รับของคนละอย่าง</div>
         <svg class="dsvg" viewBox="0 0 900 400" role="img" aria-label="ภาพเปรียบเทียบสามแถว ฝั่งซ้าย หน้าเว็บที่มีแต่บรรทัดข้อความ ส่งข้อความล้วนไปยังระบบค้นหา ซึ่งได้แต่เดาว่าองค์กรนี้คืออะไร ผลคือถูกจับคู่แบบเดา ฝั่งขวา หน้าเว็บเดียวกันมีกราฟ JSON-LD ขนาดเล็กติดอยู่ด้วย ส่งไปด้วยคำศัพท์กลาง schema.org ไปยังระบบค้นหาตัวเดียวกัน ซึ่งอ่านได้ว่าองค์กรนี้เป็นใครและทำเรื่องอะไร ผลคือถูกจับคู่ด้วยเหตุผล">
@@ -578,24 +616,25 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
       <text class="m" x="675" y="372" text-anchor="middle">คำอธิบายเดิมใช้ได้ต่อไป</text>
     </svg>
       </div>
-      <figcaption><b>ภาพประกอบ.</b> ระบบค้นหาเป็นตัวเดียวกันทั้งสองฝั่ง ต่างกันที่สิ่งที่ไปถึงมัน ข้อมูลที่มีโครงสร้างไม่ได้ทำให้หน้าดีขึ้น แต่ทำให้หน้ากลายเป็นสิ่งที่เครื่องอ่านออกว่าเป็นอะไร ไม่ใช่แค่กองข้อความ</figcaption>
+      <figcaption><b>ภาพประกอบ</b> ระบบค้นหาเป็นตัวเดียวกันทั้งสองฝั่ง ต่างกันที่สิ่งที่ไปถึงมัน ข้อมูลที่มีโครงสร้างไม่ได้ทำให้หน้าดีขึ้น แต่ทำให้หน้ากลายเป็นสิ่งที่เครื่องอ่านออกว่าเป็นอะไร ไม่ใช่แค่กองข้อความ</figcaption>
     </figure>
-    <p>เหตุผลที่เลือกวิธีนี้แทนการไล่คำค้น คือมันไม่หมดอายุ สูตรจัดอันดับเปลี่ยนทุกปี และเทคนิคที่สร้างมาเพื่อสูตรหนึ่งก็ใช้ไม่ได้กับสูตรถัดไป แต่คำอธิบายที่ตรงกับความจริงว่าองค์กรนี้เป็นอะไร ไม่ล้าสมัยเมื่อสูตรเปลี่ยน และมันคือรูปแบบเดียวกับที่ผู้ช่วย AI อ่าน ซึ่งเป็นที่ที่คนจำนวนมากขึ้นเรื่อย ๆ เอาคำถามไปถาม</p>
-    <h2>เครื่องอ่านได้จริงหรือเปล่า ตรวจเองได้</h2>
-    <p>ทุกอย่างข้างบนไม่มีค่าอะไรเลยถ้าเป็นแค่คำกล่าวอ้าง Google เปิดเครื่องมือฟรีตัวหนึ่งชื่อ Rich Results Test รับที่อยู่หน้าไหนก็ได้ ดึงหน้านั้นมาแบบเดียวกับที่ตัวเก็บข้อมูลของมันทำ แล้วรายงานกลับมาว่าเจอรายการที่มีโครงสร้างอะไรบ้าง และแต่ละรายการใช้ได้หรือไม่ นี่คือสิ่งที่ใกล้เคียงที่สุดกับการให้คนนอกอ่านว่าเว็บหนึ่งพูดถึงตัวเองว่าอย่างไร</p>
-    <figure class="rv">
+    <p>ที่เลือกวิธีนี้แทนการไล่ตามคำค้น เพราะมันไม่หมดอายุ สูตรจัดอันดับเปลี่ยนทุกปี เทคนิคที่สร้างมาเพื่อสูตรหนึ่งใช้กับสูตรถัดไปไม่ได้ แต่คำอธิบายที่ตรงกับความจริงว่าองค์กรนี้เป็นอะไร ไม่ล้าสมัยตามสูตร และเป็นรูปแบบเดียวกับที่ผู้ช่วย AI อ่าน ซึ่งเป็นที่ที่คนเอาคำถามไปถามมากขึ้นทุกปี</p>
+    <h2 class="rv" id="s04"><span class="sn">04</span>เครื่องอ่านได้จริงหรือเปล่า ตรวจเองได้</h2>
+    <p class="first">ทุกอย่างข้างบนไม่มีน้ำหนักเลยถ้าเป็นแค่คำกล่าวอ้าง Google เปิดเครื่องมือฟรีตัวหนึ่งชื่อ Rich Results Test ใส่ที่อยู่หน้าไหนก็ได้ มันจะดึงหน้านั้นมาแบบเดียวกับที่บอตของมันทำ แล้วรายงานกลับมาว่าเจอข้อมูลที่มีโครงสร้างอะไรบ้าง และแต่ละชิ้นใช้ได้หรือไม่ นี่คือสิ่งที่ใกล้เคียงที่สุดกับการให้คนนอกอ่านว่าเว็บหนึ่งพูดถึงตัวเองว่าอย่างไร</p>
+    <figure class="figplate rv">
       <div class="dbox">
         <div class="dlab go">ผลตรวจจาก GOOGLE RICH RESULTS TEST · 21 สิงหาคม 2026</div>
         <div class="rr-scroll"><table class="rr"><thead><tr><th>ที่อยู่ที่ทดสอบ</th><th>สิ่งที่ตรวจพบ</th><th>ผล</th></tr></thead><tbody><tr><td>www.neogens.co</td><td>Organization</td><td class="rr-ok">ผ่าน · 0 ข้อผิดพลาด · 0 คำเตือน</td></tr><tr><td>www.neogens.co/th-mkm-for-coffee.html</td><td>Breadcrumbs</td><td class="rr-ok">ผ่าน · 0 ข้อผิดพลาด · 0 คำเตือน</td></tr></tbody></table></div>
       </div>
       <figcaption>สองหน้า รันด้วยเครื่องมือสาธารณะของ Google ใครก็ทำซ้ำทีละแถวได้ในเวลาประมาณสามสิบวินาที โดยไม่ต้องขออะไรจากเรา ซึ่งเป็นเหตุผลเดียวที่หยิบมาอ้าง</figcaption>
     </figure>
-    <p>ทั้งเว็บ สี่สิบสามหน้าประกาศตัวองค์กร 33 หน้าประกาศตำแหน่งของตัวเองในเส้นทางนำทาง 5 หน้าประกาศตัวเป็นบทความ และ 2 หน้ามีคำถามคำตอบ ตัวเลขเหล่านี้นับจากไฟล์ตอนสร้างหน้า ไม่ได้พิมพ์มือ ถ้าหน้าไหนกราฟหาย กระบวนการสร้างจะหยุดทันที</p>
-    <h2>ผ่านแล้วได้อะไร ไม่ผ่านแล้วเสียอะไร</h2>
-    <p>การผ่านไม่ใช่การเพิ่มอันดับ ใครบอกว่าใช่คือกำลังขายของ สิ่งที่ได้แคบกว่านั้น คือระบบค้นหาเลิกอนุมานแล้วเปลี่ยนมาอ้างสิ่งที่เราเขียนไว้ องค์กรกลายเป็นสิ่งหนึ่งที่ถูกระบุตัวได้ ไม่ใช่ชื่อที่บังเอิญโผล่อยู่ในข้อความ หน้าเว็บถูกแสดงพร้อมเส้นทางของมัน ผู้เขียน หรือคำถามคำตอบได้ และคำประกาศชุดเดียวกันนี้คือสิ่งที่ผู้ช่วย AI อ่าน เวลามีคนถามคำถามในสาขาที่เราทำงานอยู่</p>
-    <p>ส่วนการไม่ผ่านนั้นหนักกว่าที่เห็น เพราะมันเกิดขึ้นอย่างเงียบมาก รายการที่มีข้อผิดพลาดไม่ได้ถูกแสดงพร้อมเครื่องหมายสีแดง แต่ถูกทิ้ง หน้ายังดูสมบูรณ์สำหรับคน ยังโหลดขึ้น ยังอ่านรื่น เพียงแต่ไม่ถูกพิจารณาในเรื่องที่มันประกาศไว้เลย และไม่มีใครเขียนมาบอก ส่วนคำเตือนคือฉบับเบากว่า รายการยังอยู่ แต่เสียคุณสมบัติที่มันไม่ผ่านเกณฑ์ไป</p>
-    <p>ราคาที่แพงกว่านั้นคือความไว้ใจที่ลามข้ามหน้า คำประกาศที่เครื่องยืนยันไม่ได้ ไม่ได้เสียแค่หน้าตัวเอง เมื่อสองหน้าอ้างว่าเป็นฉบับแปลของกันและกัน แต่มีหน้าเดียวที่ยืนยันกลับ ระบบค้นหาจะเลิกเชื่อคำประกาศชนิดนั้นของทั้งโดเมน คำอ้างที่ตรวจไม่ได้หนึ่งข้อ ลดน้ำหนักของข้ออื่นที่จริงซึ่งอยู่ข้าง ๆ ไปด้วย ด้วยเหตุผลเดียวกับที่ทะเบียนซึ่งมีระเบียนเชื่อถือไม่ได้ปนอยู่ มีค่าน้อยกว่าครึ่งที่ถูกต้องของมันเอง</p>
-    <p>เราจึงถือว่าการตรวจนี้เป็นเงื่อนไขของการปล่อยหน้า ไม่ใช่เหรียญที่เอาไว้สะสม ทุกหน้าบนเว็บนี้สร้างด้วยสคริปต์ที่จะไม่ยอมเขียนไฟล์ ถ้าโครงสร้างที่มันประกาศไม่ตรงกับสิ่งที่หน้านั้นแสดงให้ผู้อ่านเห็นจริง</p>
+    <p>ทั้งเว็บ สามสิบเก้าหน้าประกาศตัวองค์กร 29 หน้าประกาศตำแหน่งของตัวเองในเส้นทางนำทาง และ 5 หน้าประกาศตัวเป็นบทความ ตัวเลขเหล่านี้นับจากไฟล์ตอนสร้างหน้า ไม่ได้พิมพ์มือ ถ้าหน้าไหนกราฟหาย กระบวนการสร้างจะหยุดทันที</p>
+    <h2 class="rv" id="s05"><span class="sn">05</span>ผ่านแล้วได้อะไร ไม่ผ่านแล้วเสียอะไร</h2>
+    <p class="first">ผ่านการตรวจไม่ได้แปลว่าอันดับดีขึ้น ใครบอกว่าใช่คือกำลังขายของ สิ่งที่ได้แคบกว่านั้นมาก คือระบบค้นหาเลิกเดา แล้วหันมาอ้างสิ่งที่เราเขียนไว้แทน องค์กรกลายเป็นสิ่งที่ระบุตัวได้ ไม่ใช่ชื่อที่บังเอิญโผล่อยู่ในข้อความ หน้าเว็บถูกแสดงพร้อมเส้นทาง ผู้เขียน หรือคำถามคำตอบได้ และคำประกาศชุดเดียวกันนี้คือสิ่งที่ผู้ช่วย AI อ่าน เวลามีคนถามคำถามในสาขาที่เราทำงานอยู่</p>
+    <p>การไม่ผ่านหนักกว่าที่เห็น เพราะมันเงียบ ข้อมูลที่มีข้อผิดพลาดไม่ได้ขึ้นเครื่องหมายสีแดงให้ใครเห็น มันถูกทิ้งไปเฉย ๆ หน้ายังดูสมบูรณ์สำหรับคน ยังโหลดขึ้น ยังอ่านรื่น เพียงแต่ไม่ถูกนับในเรื่องที่มันประกาศไว้เลย และไม่มีใครเขียนมาบอก ส่วนคำเตือนคือฉบับเบากว่า ข้อมูลยังอยู่ แต่เสียคุณสมบัติที่มันไม่ผ่านเกณฑ์ไป</p>
+    <p>ราคาที่แพงกว่านั้นคือความไว้ใจที่ลามข้ามหน้า คำประกาศที่เครื่องยืนยันไม่ได้ ไม่ได้เสียแค่หน้าตัวเอง สองหน้าอ้างว่าเป็นฉบับแปลของกันและกัน แต่มีหน้าเดียวที่ยืนยันกลับ ระบบค้นหาก็เลิกเชื่อคำประกาศชนิดนั้นทั้งโดเมน คำอ้างที่ตรวจไม่ได้หนึ่งข้อ ดึงน้ำหนักของข้อที่จริงข้าง ๆ ลงไปด้วย เหมือนทะเบียนที่มีระเบียนเชื่อถือไม่ได้ปนอยู่ ทั้งเล่มมีค่าน้อยกว่าครึ่งที่ถูกต้องของมันเอง</p>
+    <p>เราจึงถือว่าการตรวจนี้เป็นเงื่อนไขของการปล่อยหน้า ไม่ใช่เหรียญเอาไว้สะสม ทุกหน้าบนเว็บนี้สร้างด้วยสคริปต์ที่จะไม่ยอมเขียนไฟล์ ถ้าโครงสร้างที่มันประกาศ ไม่ตรงกับสิ่งที่ผู้อ่านเห็นจริงบนหน้า</p>
+  </div>
   </div>
 </article>
 
@@ -615,6 +654,7 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
           <div class="ffield"><label class="flab" for="org">ชื่อฟาร์ม โรงแปรรูป สหกรณ์ หรือโรงคั่ว</label><input type="text" id="org" autocomplete="organization"></div>
           <div class="ffield"><label class="flab" for="country">ประเทศ</label><input type="text" id="country" autocomplete="country-name"></div>
         </div>
+        <div class="frow"><div class="ffield"><label class="flab" for="interest">ข้อมูลที่คุณอยากรู้จาก Coffee Knowledge Vault</label><textarea id="interest" rows="3" maxlength="600"></textarea></div></div>
         <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
                aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn" type="submit">ส่งข้อมูล</button>
@@ -623,14 +663,6 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
       <div class="err" id="err" role="alert"></div>
       <p class="form-note rv">ส่งถึง hello@neogens.co หรือเขียนตรงไปที่นั่นก็ได้</p>
     </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="cta-bg"></div>
-  <div class="wrap">
-    <div class="k">ติดต่อเรา</div>
-    <div class="cta-btns"><a class="btn" href="th-contact.html">ขอ briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
   </div>
 </section>
 
@@ -713,6 +745,7 @@ figcaption{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--mu
       name:(document.getElementById('name')||{}).value||'',
       org:(document.getElementById('org')||{}).value||'',
       originCountry:(document.getElementById('country')||{}).value||'',
+interest:(document.getElementById('interest')||{}).value||'',
       topic:'MKM Coffee',
       email:v, website:hp?hp.value:'', lang:"th", page:location.pathname
     })}).then(function(res){

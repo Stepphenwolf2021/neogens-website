@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SEO as knowledge management — Neo Gens</title>
-<meta name="description" content="Content speaks to the people you want to reach. SEO speaks to the machines in between. How we designed ours as an ontology, and what the test reports.">
+<meta name="description" content="Content speaks to people. SEO speaks to software. How we designed ours as ontology-driven SEO from day one, and what the test reports.">
 <meta property="og:title" content="SEO as knowledge management — Neo Gens">
-<meta property="og:description" content="Content speaks to the people you want to reach. SEO speaks to the machines in between. How we designed ours as an ontology, and what the test reports.">
+<meta property="og:description" content="Content speaks to people. SEO speaks to software. How we designed ours as ontology-driven SEO from day one, and what the test reports.">
 <link rel="alternate" hreflang="en" href="https://www.neogens.co/seo-as-knowledge-management.html">
 <link rel="alternate" hreflang="th" href="https://www.neogens.co/th-seo-as-knowledge-management.html">
 <link rel="alternate" hreflang="x-default" href="https://www.neogens.co/seo-as-knowledge-management.html">
@@ -266,7 +266,37 @@ form button{justify-content:center;padding:14px 22px;margin-top:5px}
 .crumbs a{color:var(--mute);text-decoration:none;transition:color .2s}
 .crumbs a:hover{color:var(--go)}
 .crumbs [aria-current]{color:var(--dim)}
+/* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
+.nav-links .hs{position:relative;display:inline-flex;align-items:center}
+.nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
+.nav-links .hs>a::after{content:"";width:5px;height:5px;border-right:1.4px solid currentColor;
+  border-bottom:1.4px solid currentColor;transform:translateY(-2px) rotate(45deg);
+  opacity:.5;transition:opacity .2s,transform .2s}
+.nav-links .hs:hover>a::after,.nav-links .hs:focus-within>a::after{opacity:1;transform:translateY(1px) rotate(225deg)}
+.nav-links .sub{position:absolute;top:100%;left:-16px;min-width:262px;max-width:340px;
+  margin-top:14px;padding:9px 0;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 16px 44px var(--shadow);display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s,transform .18s,visibility .18s;z-index:120}
+.nav-links .sub::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
+.nav-links .hs:hover>.sub,.nav-links .hs:focus-within>.sub{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-links .sub a{display:block;padding:7px 18px;font-size:13.5px;line-height:1.6;
+  color:var(--dim);white-space:normal;text-decoration:none;transition:color .18s,background .18s}
+.nav-links .sub a:hover,.nav-links .sub a:focus-visible{color:var(--fg);background:var(--wash)}
+.nav-links .sub a.on{color:var(--go)}
+@media(prefers-reduced-motion:reduce){
+  .nav-links .sub,.nav-links .hs>a::after{transition:none}
+}
+/* <<< เมนูย่อยบนแถบเมนูบน <<< */
 
+/* >>> ช่องข้อมูลที่อยากรู้ · add_interest_field.py >>> */
+form textarea{width:100%;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:18px;outline:none;color:var(--fg);font-family:var(--sans);font-size:15px;
+  line-height:1.75;padding:13px 20px;min-height:98px;resize:vertical;
+  display:block;transition:border-color .22s}
+form textarea::placeholder{color:var(--mute)}
+form textarea:focus{border-color:rgba(var(--go-rgb),.5)}
+/* <<< ช่องข้อมูลที่อยากรู้ <<< */
 /* --- ภาพเปรียบเทียบและตารางผลตรวจ --- */
 /* แม่แบบ coffee-farmer มีแค่ .figplate figcaption ไม่มีกฎ figure/figcaption เปล่า ๆ
    ภาพในหน้านี้ไม่ได้อยู่ใน .figplate คำบรรยายจึงต้องมีกฎของตัวเอง ไม่งั้นตกไปใช้ขนาดตัวเนื้อ */
@@ -303,28 +333,6 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
 .m-as{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:var(--ask);letter-spacing:.1em}
 .m-am{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:var(--guess);letter-spacing:.1em}
 .rr th{letter-spacing:.1em}
-/* >>> เมนูย่อยบนแถบเมนูบน · add_nav_dropdown.py >>> */
-.nav-links .hs{position:relative;display:inline-flex;align-items:center}
-.nav-links .hs>a{display:inline-flex;align-items:center;gap:6px}
-.nav-links .hs>a::after{content:"";width:5px;height:5px;border-right:1.4px solid currentColor;
-  border-bottom:1.4px solid currentColor;transform:translateY(-2px) rotate(45deg);
-  opacity:.5;transition:opacity .2s,transform .2s}
-.nav-links .hs:hover>a::after,.nav-links .hs:focus-within>a::after{opacity:1;transform:translateY(1px) rotate(225deg)}
-.nav-links .sub{position:absolute;top:100%;left:-16px;min-width:262px;max-width:340px;
-  margin-top:14px;padding:9px 0;background:var(--surface);border:1px solid var(--line);
-  border-radius:14px;box-shadow:0 16px 44px var(--shadow);display:flex;flex-direction:column;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .18s,transform .18s,visibility .18s;z-index:120}
-.nav-links .sub::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
-.nav-links .hs:hover>.sub,.nav-links .hs:focus-within>.sub{opacity:1;visibility:visible;transform:translateY(0)}
-.nav-links .sub a{display:block;padding:7px 18px;font-size:13.5px;line-height:1.6;
-  color:var(--dim);white-space:normal;text-decoration:none;transition:color .18s,background .18s}
-.nav-links .sub a:hover,.nav-links .sub a:focus-visible{color:var(--fg);background:var(--wash)}
-.nav-links .sub a.on{color:var(--go)}
-@media(prefers-reduced-motion:reduce){
-  .nav-links .sub,.nav-links .hs>a::after{transition:none}
-}
-/* <<< เมนูย่อยบนแถบเมนูบน <<< */
 
 /* >>> footer ห้าคอลัมน์ · build_footer.py >>> */
 .f-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px}
@@ -449,7 +457,7 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       "publisher": {
         "@id": "https://www.neogens.co/#org"
       },
-      "description": "Content speaks to the people you want to reach. SEO speaks to the machines in between. How we designed ours as an ontology, and what the test reports.",
+      "description": "Content speaks to people. SEO speaks to software. How we designed ours as ontology-driven SEO from day one, and what the test reports.",
       "about": [
         {
           "@id": "https://www.neogens.co/#term-ontology"
@@ -489,8 +497,8 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
   <div class="wrap">
     <div class="inner">
 <div class="kicker">Evidence</div>
-      <h1>Content speaks to people. SEO speaks to machines. Both are knowledge work.</h1>
-      <p class="stand">Most websites are designed for the first conversation and improvised for the second. This is how we designed ours as an ontology, and what happens when a machine is asked to read it back.</p>
+      <h1>Content speaks to people.<br>SEO speaks to software.<br>All of it is Modern Knowledge Management.</h1>
+      <p class="stand">Most websites are designed for the first conversation and improvised for the second. This is how we designed ours as ontology-driven SEO from day one.</p>
       <div class="meta"><span>Neo Gens</span><span>updated 21 August 2026</span></div>
     </div>
   </div>
@@ -500,20 +508,50 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
 
 <article>
   <div class="wrap">
-    <h2>Most sites are written for one reader and read by two</h2>
-    <p>Almost every website is commissioned the same way. Someone settles the structure, someone writes the copy, someone designs the pages. Then, near the end, somebody asks about SEO. A few titles are rewritten, a plugin is installed, a list of keywords is handed over, and the site goes live.</p>
+  <div class="artbody">
+    <nav class="toc rv" aria-label="Contents"><div class="h">In this piece</div><ol><li><a href="#s01"><i>01</i><span>Most sites are written for one reader and read by two</span></a></li><li><a href="#s02"><i>02</i><span>Content speaks to people. SEO speaks to computers.</span></a></li><li><a href="#s03"><i>03</i><span>How we designed ours: ontology-driven SEO</span></a></li><li><a href="#s04"><i>04</i><span>Whether a machine can actually read it, you can check yourself</span></a></li><li><a href="#s05"><i>05</i><span>What passing buys, and what failing costs</span></a></li></ol></nav>
+    <h2 class="rv" id="s01"><span class="sn">01</span>Most sites are written for one reader and read by two</h2>
+    <p class="first">Almost every website is commissioned the same way. Someone settles the structure, someone writes the copy, someone designs the pages. Then, near the end, somebody asks about SEO. A few titles are rewritten, a plugin is installed, a list of keywords is handed over, and the site goes live.</p>
     <p>By then the structure has already been decided, and the structure was the part that mattered. What launches is a site that reads well and cannot be read: nothing in it states what the organisation is, which field it works in, how its pages relate to one another, or which of its words are being used in a specific sense. A person infers all of that in seconds. A machine cannot infer it at all.</p>
     <p>The cause is order, not effort. The question arrived after the decisions it should have shaped.</p>
-    <h2>Content speaks to people. SEO speaks to computers.</h2>
-    <p>We think of a website as two conversations sharing one file. The content is the conversation with the people we want to reach — the argument, the tone, the examples, the things worth disagreeing with. SEO is the conversation with the computers standing between us and those people: who we are, what we work on, what we are connected to.</p>
-    <p>Take the marketing vocabulary out of the second one and what is left is a cataloguing problem. Something arrives that cannot ask a question, cannot read tone, and will not come back to check. It has one pass to work out what you hold, how it connects, and whether to trust it. That is the same problem a catalogue record solves for a reader who will never meet the curator. Same discipline, different reader.</p>
+    <h2 class="rv" id="s02"><span class="sn">02</span>Content speaks to people. SEO speaks to computers.</h2>
+    <p class="first">We think of a website as two conversations sharing one file. The content is the conversation with the people we want to reach — the argument, the tone, the examples, the things worth disagreeing with. SEO is the conversation with the computers standing between us and those people: who we are, what we work on, what we are connected to.</p>
+    <p>What you prepare for that second conversation is read by a crawler — Google's and everyone else's — which records it in an index, and that index is how people looking for what you hold arrive at you. The crawler makes one pass. If it comes away without an answer it does not return to check. That single pass is the chance to say what you hold, how it connects, and how far it can be trusted.</p>
     <p>Doing it properly is what lets the right people find you for a reason. An organisation that has described itself accurately to a machine gets matched to the people looking for exactly that. The alternative is buying attention without direction — paying to appear in front of people who do not want you, again and again, for as long as the budget lasts. That cost repeats every time. An accurate description of what you are does not.</p>
-    <h2>How we designed ours: ontology-based SEO</h2>
-    <p>Most SEO work starts from keywords: guess the phrases people type, then bend the pages toward them. It treats a search engine as a lock to be picked.</p>
-    <p>We started at the other end, by describing what actually exists — the things, and the relations between them. That is an ontology, and it is the same object we build with clients. The difference is only that here the vocabulary was set by search engines rather than by a curatorial team. That vocabulary is schema.org: a shared dictionary of types and relations that the major search engines agreed on, so that a statement written once is understood the same way by all of them.</p>
-    <p>In practice: the organisation has one identifier, declared once and referenced from every page. Each of the four terms this site uses in a specific sense has its own identifier and points at the page that defines it. Both practice areas are declared as services pointing back to the same provider. Every page states which of those things it is about. The Thai and English versions of a page are bound together as one work in two languages, not two pages that happen to resemble each other. Four hundred and sixty-five statements across forty-three pages.</p>
-    <p>Around that: an address for every page that says what the page is, twenty-six redirects so that every link ever shared still arrives, and twenty-eight typeface files and every stylesheet served from this domain, so that reading a page contacts nobody but us.</p>
-    <figure class="rv">
+    <h2 class="rv" id="s03"><span class="sn">03</span>How we designed ours: ontology-driven SEO</h2>
+    <p class="first">Most SEO work starts from keywords: guess the phrases people type, then bend the pages toward them. It treats a search engine as a lock to be picked.</p>
+    <p>We started at the other end, by describing what actually exists — the things, and the relations between them. That is an ontology, and it is the same kind of material we build with clients. The difference is only that here the vocabulary was set by search engines rather than by a web team or a curatorial one. That vocabulary is schema.org: a shared dictionary of types and relations that the major search engines agreed on, so that a statement written once is understood the same way by all of them. Follow the structure schema.org already gives you and every search engine can find you, without buying expensive keywords.</p>
+    <figure class="figplate rv">
+      <div class="dbox">
+        <div class="dlab go">CONVENTIONAL SEO · ONTOLOGY-DRIVEN SEO</div>
+        <svg class="dsvg" viewBox="0 0 900 300" role="img"
+             aria-label="Conventional SEO compared with ontology-driven SEO">
+          <text class="m" x="16" y="22">CONVENTIONAL SEO</text>
+          <rect class="bx" x="16" y="60" width="140" height="164" rx="12"/>
+          <text class="t-b" x="86" y="134" text-anchor="middle">Page</text>
+          <text class="t-s" x="86" y="156" text-anchor="middle">words</text>
+          <rect class="bx" x="196" y="62" width="118" height="38" rx="9"/><text class="t-s" x="255" y="86" text-anchor="middle">ontology</text><rect class="bx" x="196" y="122" width="118" height="38" rx="9"/><text class="t-s" x="255" y="146" text-anchor="middle">museum</text><rect class="bx" x="196" y="182" width="118" height="38" rx="9"/><text class="t-s" x="255" y="206" text-anchor="middle">AI</text>
+          <path class="ln-gh" d="M314 81 L352 145"/><path class="ln-gh" d="M314 141 L352 145"/><path class="ln-gh" d="M314 201 L352 145"/>
+          <rect class="bx-as" x="352" y="112" width="96" height="66" rx="12"/>
+          <text class="t-b" x="400" y="142" text-anchor="middle">Search</text>
+          <text class="t-s" x="400" y="162" text-anchor="middle">infers</text>
+          <text class="t-s" x="16" y="262">Meaning is left for the machine to infer from the words on the page.</text>
+
+          <path class="ln-gh" d="M474 16 L474 284"/>
+
+          <text class="m-go" x="490" y="22">ONTOLOGY-DRIVEN SEO</text>
+          <rect class="bx-go" x="490" y="60" width="138" height="164" rx="12"/>
+          <text class="t-b" x="559" y="134" text-anchor="middle">Page</text>
+          <text class="t-s" x="559" y="156" text-anchor="middle">statements</text>
+          <rect class="bx" x="672" y="60" width="132" height="42" rx="9"/><text class="t-s" x="738" y="86" text-anchor="middle">Organization</text><path class="ln" d="M628 81 L672 81"/><text class="m-go" x="650" y="75" text-anchor="middle">publisher</text><rect class="bx" x="672" y="122" width="132" height="42" rx="9"/><text class="t-s" x="738" y="148" text-anchor="middle">Service</text><path class="ln" d="M628 143 L672 143"/><text class="m-go" x="650" y="137" text-anchor="middle">provider</text><rect class="bx" x="672" y="184" width="132" height="42" rx="9"/><text class="t-s" x="738" y="210" text-anchor="middle">DefinedTerm</text><path class="ln" d="M628 205 L672 205"/><text class="m-go" x="650" y="199" text-anchor="middle">about</text>
+          <text class="t-s" x="490" y="262">Every thing has an identifier and every relation is written down.</text>
+        </svg>
+      </div>
+      <figcaption><b>Two ways to be read by a machine.</b> On the left the meaning is guessed from words. On the right it is declared, and can be checked. Illustrative.</figcaption>
+    </figure>
+    <p>In practice: the organisation has one identifier, declared once and referenced from every page. Each of the four terms this site uses in a specific sense has its own identifier and points at the page that defines it. Both practice areas are declared as services pointing back to the same provider. Every page states which of those things it is about. The Thai and English versions of a page are bound together as one work in two languages, not two pages that happen to resemble each other. Three hundred and eighty statements across thirty-nine pages.</p>
+    <p>Around that: an address for every page that says what the page is, twenty-four redirects so that every link ever shared still arrives, and twenty-eight typeface files and every stylesheet served from this domain, so that reading a page contacts nobody but us.</p>
+    <figure class="figplate rv">
       <div class="dbox">
         <div class="dlab go">THE SAME SEARCH ENGINE, TWO DIFFERENT INPUTS</div>
         <svg class="dsvg" viewBox="0 0 900 400" role="img" aria-label="A comparison in three rows. On the left, a page containing only lines of text sends plain text to a search engine, which can only guess what the organisation is, and the result is being matched by guesswork. On the right, the same page also carries a small JSON-LD graph, sends it in the shared schema.org vocabulary to the same search engine, which reads who the organisation is and what it works on, and the result is being matched for a reason.">
@@ -581,21 +619,22 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       <figcaption><b>Illustrative.</b> The search engine is the same on both sides. What differs is what reaches it. Structured data does not make a page better — it makes the page legible as a thing, rather than only as prose.</figcaption>
     </figure>
     <p>The reason to prefer this to keyword work is that it does not expire. Ranking formulas change every year, and tactics built for one are worth nothing under the next. A true description of what an organisation is does not go out of date when the formula changes — and it is the same form that AI assistants read, which is where a growing share of people now put their questions.</p>
-    <h2>Whether a machine can actually read it, you can check yourself</h2>
-    <p>None of the above is worth anything as a claim. Google publishes a free tool, the Rich Results Test, which takes any address, fetches the page the way its crawler would, and reports back exactly which structured items it found and whether each one is valid. It is the closest thing there is to an outside reading of what a site says about itself.</p>
-    <figure class="rv">
+    <h2 class="rv" id="s04"><span class="sn">04</span>Whether a machine can actually read it, you can check yourself</h2>
+    <p class="first">None of the above is worth anything as a claim. Google publishes a free tool, the Rich Results Test, which takes any address, fetches the page the way its crawler would, and reports back exactly which structured items it found and whether each one is valid. It is the closest thing there is to an outside reading of what a site says about itself.</p>
+    <figure class="figplate rv">
       <div class="dbox">
         <div class="dlab go">GOOGLE RICH RESULTS TEST · 21 August 2026</div>
         <div class="rr-scroll"><table class="rr"><thead><tr><th>Address tested</th><th>Item detected</th><th>Result</th></tr></thead><tbody><tr><td>www.neogens.co</td><td>Organization</td><td class="rr-ok">Valid · 0 errors · 0 warnings</td></tr><tr><td>www.neogens.co/th-mkm-for-coffee.html</td><td>Breadcrumbs</td><td class="rr-ok">Valid · 0 errors · 0 warnings</td></tr></tbody></table></div>
       </div>
       <figcaption>Two pages, run on Google's public tool. Anyone can repeat either row in about thirty seconds without asking us for anything — which is the point of quoting it.</figcaption>
     </figure>
-    <p>Across the whole site, forty-three pages declare the organisation, 33 declare their position in the navigation, 5 are declared as articles and 2 carry questions and answers. Those numbers are counted from the files at build time, not typed in by hand — if a page loses its graph, the build stops.</p>
-    <h2>What passing buys, and what failing costs</h2>
-    <p>Passing is not a ranking boost, and anyone who tells you otherwise is selling something. What it buys is narrower: the search engine stops inferring and starts quoting. Your organisation becomes one identified thing rather than a name that happens to appear in some text; your pages can be shown with their path, their author, their questions and answers; and the same declarations are what an AI assistant reads when someone asks it a question in your field.</p>
+    <p>Across the whole site, thirty-nine pages declare the organisation, 29 declare their position in the navigation and 5 are declared as articles. Those numbers are counted from the files at build time, not typed in by hand — if a page loses its graph, the build stops.</p>
+    <h2 class="rv" id="s05"><span class="sn">05</span>What passing buys, and what failing costs</h2>
+    <p class="first">Passing is not a ranking boost, and anyone who tells you otherwise is selling something. What it buys is narrower: the search engine stops inferring and starts quoting. Your organisation becomes one identified thing rather than a name that happens to appear in some text; your pages can be shown with their path, their author, their questions and answers; and the same declarations are what an AI assistant reads when someone asks it a question in your field.</p>
     <p>Failing is worse than it looks, because of how quietly it happens. An item with an error is not shown with a red mark — it is dropped. The page still looks perfect to a person, still loads, still reads well, and simply is not considered for anything it declared. Nobody writes to tell you. A warning is the softer version: the item is kept but loses the features it did not qualify for.</p>
     <p>The deeper cost is trust that spreads. A declaration a machine cannot confirm does not only lose its own page. When two pages name each other as translations and only one of them agrees, a search engine stops trusting that kind of statement across the whole domain. One unverifiable claim quietly discounts the true ones next to it — which is the same reason a catalogue with unreliable records is worth less than its accurate half.</p>
     <p>So we treat the test as a condition of publishing rather than a badge to collect. Every page on this site is built by a script that refuses to write the file if the structure it declares does not match what the page actually shows a reader.</p>
+  </div>
   </div>
 </article>
 
@@ -615,6 +654,7 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
           <div class="ffield"><label class="flab" for="org">Farm, mill, co-op or roastery</label><input type="text" id="org" autocomplete="organization"></div>
           <div class="ffield"><label class="flab" for="country">Country</label><input type="text" id="country" autocomplete="country-name"></div>
         </div>
+        <div class="frow"><div class="ffield"><label class="flab" for="interest">What you would like to learn from the vault</label><textarea id="interest" rows="3" maxlength="600"></textarea></div></div>
         <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
                aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn" type="submit">Send my details</button>
@@ -623,14 +663,6 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       <div class="err" id="err" role="alert"></div>
       <p class="form-note rv">Goes to hello@neogens.co — or write there directly.</p>
     </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="cta-bg"></div>
-  <div class="wrap">
-    <div class="k">Get in touch</div>
-    <div class="cta-btns"><a class="btn" href="contact.html">Request a briefing</a><a class="btn btn-ghost" href="mailto:hello@neogens.co">hello@neogens.co</a></div>
   </div>
 </section>
 
@@ -713,6 +745,7 @@ figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(-
       name:(document.getElementById('name')||{}).value||'',
       org:(document.getElementById('org')||{}).value||'',
       originCountry:(document.getElementById('country')||{}).value||'',
+interest:(document.getElementById('interest')||{}).value||'',
       topic:'MKM Coffee',
       email:v, website:hp?hp.value:'', lang:"en", page:location.pathname
     })}).then(function(res){
