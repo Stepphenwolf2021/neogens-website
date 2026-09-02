@@ -38,7 +38,7 @@ COLS = {
             ("visitors-and-readers.html", "The new experience"),
             ("leadership.html", "What leadership looks like"),
             ("long-read-museums-and-libraries.html", "Long read: MKM for museums &amp; libraries")]),
-        ("Part 2 · Working together", None, [
+        ("Working together", None, [
             ("services.html", "What we do together"),
             ("engagement.html", "Engagement"),
             ("ai-sovereignty.html", "Your data · AI sovereignty"),
@@ -52,6 +52,8 @@ COLS = {
         #     ("mkm-for-coffee-commons.html", "How a commons stays a commons"),
         #     ("coffee-farmer.html", "For coffee farmers"),
         #     ("coffee-demo.html", "Demo dashboard")]),
+        # เดิมหัวคอลัมน์นี้คือ "Part 2 · Working together" ทำให้มีคอลัมน์ชื่อ Part 2
+        # สองอันติดกัน อ่านแล้วเหมือนไล่เลขใหม่หลังถอดภาค 3 แล้วทำค้างไว้ · 2026-09-01
         ("Company", "Neo Gens Co., Ltd.", [
             ("about.html", "Who we are"),
             ("seo-as-knowledge-management.html", "How we built this site"),
@@ -74,7 +76,7 @@ COLS = {
             ("th-leadership.html", "ความเป็นผู้นำหน้าตาเป็นอย่างไร"),
             ("long-read-museums-and-libraries.html",
              "บทความยาว: MKM สำหรับพิพิธภัณฑ์และห้องสมุด (อังกฤษ)")]),
-        ("ภาค 2 · การทำงานร่วมกัน", None, [
+        ("การทำงานร่วมกัน", None, [
             ("th-services.html", "เราทำอะไรร่วมกัน"),
             ("th-engagement.html", "รูปแบบการทำงาน"),
             ("th-ai-sovereignty.html", "ข้อมูลของคุณ · AI Sovereignty"),

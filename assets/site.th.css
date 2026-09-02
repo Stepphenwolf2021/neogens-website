@@ -76,7 +76,7 @@ nav.stuck{border-bottom-color:var(--line)}
 .btn-ghost:hover{box-shadow:none;border-color:var(--mute)}
 @media(max-width:1040px){.nav-links a:not(.btn){display:none}}
 /* ===== hero ===== */
-.hero{padding-top:clamp(60px,8vw,102px);padding-bottom:clamp(52px,6.5vw,88px);overflow:hidden}
+.hero{position:relative;padding-top:clamp(60px,8vw,102px);padding-bottom:clamp(52px,6.5vw,88px);overflow:hidden}
 .hero-bg{position:absolute;inset:-20% -10% auto -10%;height:120%;pointer-events:none;
   background:radial-gradient(56% 46% at 20% 8%,rgba(var(--go-rgb),.10),transparent 66%),radial-gradient(46% 42% at 84% 22%,rgba(var(--ask-rgb),.07),transparent 68%);filter:blur(6px)}
 .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
